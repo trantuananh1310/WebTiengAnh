@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Sep 26, 2018 6:04:22 AM by Hibernate Tools 5.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="toeicmyclass" dynamic-insert="false" dynamic-update="false" mutable="true" name="dakt.javatech.jhibernate.entity.Vocabularyguideline" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="vocabularyguideline">
+        <id name="vocabularyguidelineid" type="java.lang.Integer">
+            <column name="vocabularyguidelineid"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="vocabularyname" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="vocabularyname"/>
+        </property>
+        <property generated="never" lazy="false" name="vocabularyimage" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="vocabularyimage"/>
+        </property>
+        <property generated="never" lazy="false" name="checknoidung" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="checknoidung"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="cmtvocabularies" optimistic-lock="true" sort="unsorted" table="cmtvocabulary">
+            <key on-delete="noaction">
+                <column name="vocabularyguidelineid"/>
+            </key>
+            <one-to-many class="dakt.javatech.jhibernate.entity.Cmtvocabulary" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="vocabularycontents" optimistic-lock="true" sort="unsorted" table="vocabularycontent">
+            <key on-delete="noaction">
+                <column name="vocabularyguidelineid"/>
+            </key>
+            <one-to-many class="dakt.javatech.jhibernate.entity.Vocabularycontent" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Sep 26, 2018 6:04:22 AM by Hibernate Tools 5.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="toeicmyclass" dynamic-insert="false" dynamic-update="false" mutable="true" name="dakt.javatech.jhibernate.entity.Examination" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="examination">
+        <id name="examinationid" type="java.lang.Integer">
+            <column name="examinationid"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="examinationame" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="examinationame"/>
+        </property>
+        <property generated="never" lazy="false" name="examinatioimage" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="examinatioimage"/>
+        </property>
+        <property generated="never" lazy="false" name="checkedcauhoi" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="checkedcauhoi"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="results" optimistic-lock="true" sort="unsorted" table="result">
+            <key on-delete="noaction">
+                <column name="examinationid"/>
+            </key>
+            <one-to-many class="dakt.javatech.jhibernate.entity.Result" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="examinationquestions" optimistic-lock="true" sort="unsorted" table="examinationquestion">
+            <key on-delete="noaction">
+                <column name="examinationid"/>
+            </key>
+            <one-to-many class="dakt.javatech.jhibernate.entity.Examinationquestion" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

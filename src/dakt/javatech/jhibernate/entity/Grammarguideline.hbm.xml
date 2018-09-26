@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Sep 26, 2018 6:04:22 AM by Hibernate Tools 5.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="toeicmyclass" dynamic-insert="false" dynamic-update="false" mutable="true" name="dakt.javatech.jhibernate.entity.Grammarguideline" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="grammarguideline">
+        <id name="grammarguidelineid" type="java.lang.Integer">
+            <column name="grammarguidelineid"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="grammarname" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="grammarname"/>
+        </property>
+        <property generated="never" lazy="false" name="grammarimage" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="grammarimage"/>
+        </property>
+        <property generated="never" lazy="false" name="content" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="content"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="cmtgrammars" optimistic-lock="true" sort="unsorted" table="cmtgrammar">
+            <key on-delete="noaction">
+                <column name="grammarguidelineid"/>
+            </key>
+            <one-to-many class="dakt.javatech.jhibernate.entity.Cmtgrammar" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Sep 26, 2018 6:04:22 AM by Hibernate Tools 5.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="toeicmyclass" dynamic-insert="false" dynamic-update="false" mutable="true" name="dakt.javatech.jhibernate.entity.Result" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="result">
+        <id name="resultid" type="java.lang.Integer">
+            <column name="resultid"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="dakt.javatech.jhibernate.entity.Examination" embed-xml="true" fetch="select" insert="true" name="examination" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="examinationid"/>
+        </many-to-one>
+        <many-to-one class="dakt.javatech.jhibernate.entity.Member" embed-xml="true" fetch="select" insert="true" name="member" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="memberid"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="correctanswernum" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="correctanswernum"/>
+        </property>
+        <property generated="never" lazy="false" name="incorrectanswernum" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="incorrectanswernum"/>
+        </property>
+        <property generated="never" lazy="false" name="time" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="time"/>
+        </property>
+        <property generated="never" lazy="false" name="correctanswerread" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="correctanswerread"/>
+        </property>
+        <property generated="never" lazy="false" name="correctanswerlisten" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="correctanswerlisten"/>
+        </property>
+    </class>
+</hibernate-mapping>

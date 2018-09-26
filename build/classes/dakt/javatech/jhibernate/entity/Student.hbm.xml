@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Sep 26, 2018 6:04:22 AM by Hibernate Tools 5.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="toeicmyclass" dynamic-insert="false" dynamic-update="false" mutable="true" name="dakt.javatech.jhibernate.entity.Student" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="student">
+        <id name="studentId" type="java.lang.Integer">
+            <column name="student_id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="dakt.javatech.jhibernate.entity.Province" embed-xml="true" fetch="select" insert="true" name="province" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="province_id"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="studentName" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="student_name"/>
+        </property>
+    </class>
+</hibernate-mapping>

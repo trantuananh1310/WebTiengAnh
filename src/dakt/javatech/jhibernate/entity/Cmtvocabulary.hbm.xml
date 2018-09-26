@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Sep 26, 2018 6:04:22 AM by Hibernate Tools 5.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="toeicmyclass" dynamic-insert="false" dynamic-update="false" mutable="true" name="dakt.javatech.jhibernate.entity.Cmtvocabulary" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="cmtvocabulary">
+        <id name="cmtvocabularyid" type="java.lang.Integer">
+            <column name="cmtvocabularyid"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="dakt.javatech.jhibernate.entity.Member" embed-xml="true" fetch="select" insert="true" name="member" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="memberid"/>
+        </many-to-one>
+        <many-to-one class="dakt.javatech.jhibernate.entity.Vocabularyguideline" embed-xml="true" fetch="select" insert="true" name="vocabularyguideline" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="vocabularyguidelineid"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="cmtvocabularycontent" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="cmtvocabularycontent"/>
+        </property>
+    </class>
+</hibernate-mapping>

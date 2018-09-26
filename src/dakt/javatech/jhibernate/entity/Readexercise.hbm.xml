@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Sep 26, 2018 6:04:22 AM by Hibernate Tools 5.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="toeicmyclass" dynamic-insert="false" dynamic-update="false" mutable="true" name="dakt.javatech.jhibernate.entity.Readexercise" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="readexercise">
+        <id name="readexeriseid" type="java.lang.Integer">
+            <column name="readexeriseid"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="readname" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="readname"/>
+        </property>
+        <property generated="never" lazy="false" name="readimage" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="readimage"/>
+        </property>
+        <property generated="never" lazy="false" name="checkcauhoi" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="checkcauhoi"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="readquestions" optimistic-lock="true" sort="unsorted" table="readquestion">
+            <key on-delete="noaction">
+                <column name="readexeriseid"/>
+            </key>
+            <one-to-many class="dakt.javatech.jhibernate.entity.Readquestion" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

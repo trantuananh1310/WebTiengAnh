@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <mapping resource="com/javatech/jthibernate/entity/Account.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Categorymember.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Cmtgrammar.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Cmtvocabulary.hbm.xml" />
+     	<mapping resource="com/javatech/jthibernate/entity/Examination.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Examinationquestion.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Grammarguideline.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Listenexercise.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Listenquestion.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Member.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Province.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Readexercise.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Readquestion.hbm.xml" />
+     	<mapping resource="com/javatech/jthibernate/entity/Result.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Slidebanner.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Student.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Vocabularycontent.hbm.xml" />
+	    <mapping resource="com/javatech/jthibernate/entity/Vocabularyguideline.hbm.xml" />
+    </session-factory>   
+</hibernate-configuration>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Sep 26, 2018 6:04:22 AM by Hibernate Tools 5.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="toeicmyclass" dynamic-insert="false" dynamic-update="false" mutable="true" name="dakt.javatech.jhibernate.entity.Member" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="member">
+        <id name="memberid" type="java.lang.Integer">
+            <column name="memberid"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="dakt.javatech.jhibernate.entity.Categorymember" embed-xml="true" fetch="select" insert="true" name="categorymember" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="categorymemberid"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="name"/>
+        </property>
+        <property generated="never" lazy="false" name="membername" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="membername"/>
+        </property>
+        <property generated="never" lazy="false" name="memberpass" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="memberpass"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="results" optimistic-lock="true" sort="unsorted" table="result">
+            <key on-delete="noaction">
+                <column name="memberid"/>
+            </key>
+            <one-to-many class="dakt.javatech.jhibernate.entity.Result" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="cmtvocabularies" optimistic-lock="true" sort="unsorted" table="cmtvocabulary">
+            <key on-delete="noaction">
+                <column name="memberid"/>
+            </key>
+            <one-to-many class="dakt.javatech.jhibernate.entity.Cmtvocabulary" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="cmtgrammars" optimistic-lock="true" sort="unsorted" table="cmtgrammar">
+            <key on-delete="noaction">
+                <column name="memberid"/>
+            </key>
+            <one-to-many class="dakt.javatech.jhibernate.entity.Cmtgrammar" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
