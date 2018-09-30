@@ -18,9 +18,9 @@ public class Member implements java.io.Serializable {
 	private String name;
 	private String membername;
 	private String memberpass;
-	private Set results = new HashSet(0);
-	private Set cmtvocabularies = new HashSet(0);
-	private Set cmtgrammars = new HashSet(0);
+	private Set<Result> results;
+	private Set<Cmtvocabulary> cmtvocabularies;
+	private Set<Cmtgrammar> cmtgrammars;
 
 	public Member() {
 	}

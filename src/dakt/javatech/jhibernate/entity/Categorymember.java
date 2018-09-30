@@ -9,13 +9,18 @@ import java.util.Set;
  */
 public class Categorymember implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int categorymemberid;
 	private String categorymembername;
-	private Set members = new HashSet(0);
+	private Set<Member> lstMember;
+
+	public Set<Member> getLstMember() {
+		return lstMember;
+	}
+
+	public void setLstMember(Set<Member> lstMember) {
+		this.lstMember = lstMember;
+	}
 
 	public Categorymember() {
 	}
@@ -23,12 +28,12 @@ public class Categorymember implements java.io.Serializable {
 	public Categorymember(int categorymemberid) {
 		this.categorymemberid = categorymemberid;
 	}
-
-	public Categorymember(int categorymemberid, String categorymembername, Set members) {
-		this.categorymemberid = categorymemberid;
-		this.categorymembername = categorymembername;
-		this.members = members;
-	}
+//
+//	public Categorymember(int categorymemberid, String categorymembername, Set members) {
+//		this.categorymemberid = categorymemberid;
+//		this.categorymembername = categorymembername;
+//		this.members = members;
+//	}
 
 	public int getCategorymemberid() {
 		return this.categorymemberid;
@@ -44,14 +49,6 @@ public class Categorymember implements java.io.Serializable {
 
 	public void setCategorymembername(String categorymembername) {
 		this.categorymembername = categorymembername;
-	}
-
-	public Set getMembers() {
-		return this.members;
-	}
-
-	public void setMembers(Set members) {
-		this.members = members;
 	}
 
 }

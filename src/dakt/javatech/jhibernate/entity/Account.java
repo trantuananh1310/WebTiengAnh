@@ -6,9 +6,6 @@ package dakt.javatech.jhibernate.entity;
  */
 public class Account implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Integer accid;
 	private String username;

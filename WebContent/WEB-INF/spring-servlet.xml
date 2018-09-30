@@ -13,8 +13,8 @@
 		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
 <!-- 	quét tất cả các class có trong package -->
-	<context:component-scan base-package="dakt.javatech.jhibernate" />
-
+	<context:component-scan base-package="dakt.javatech.jhibernate"/>
+	
 	<!--  Configuration defining views files -->
 	
 <!-- 	thực chất mỗi trang jsp là 1 class -->

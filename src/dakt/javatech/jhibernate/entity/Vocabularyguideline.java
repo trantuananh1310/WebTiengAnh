@@ -17,8 +17,8 @@ public class Vocabularyguideline implements java.io.Serializable {
 	private String vocabularyname;
 	private String vocabularyimage;
 	private Integer checknoidung;
-	private Set cmtvocabularies = new HashSet(0);
-	private Set vocabularycontents = new HashSet(0);
+	private Set<Cmtvocabulary> cmtvocabularies;
+	private Set<Vocabularycontent> vocabularycontents;
 
 	public Vocabularyguideline() {
 	}

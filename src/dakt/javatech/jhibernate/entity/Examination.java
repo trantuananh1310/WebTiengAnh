@@ -1,7 +1,6 @@
 package dakt.javatech.jhibernate.entity;
 // Generated Sep 26, 2018 6:04:22 AM by Hibernate Tools 5.3.1.Final
 
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,20 +16,20 @@ public class Examination implements java.io.Serializable {
 	private String examinationame;
 	private String examinatioimage;
 	private Integer checkedcauhoi;
-	private Set results = new HashSet(0);
-	private Set examinationquestions = new HashSet(0);
+	private Set<Result> results;
+	private Set<Examinationquestion> examinationquestions;
 
 	public Examination() {
 	}
-
-	public Examination(String examinationame, String examinatioimage, Integer checkedcauhoi, Set results,
-			Set examinationquestions) {
-		this.examinationame = examinationame;
-		this.examinatioimage = examinatioimage;
-		this.checkedcauhoi = checkedcauhoi;
-		this.results = results;
-		this.examinationquestions = examinationquestions;
-	}
+//
+//	public Examination(String examinationame, String examinatioimage, Integer checkedcauhoi, Set results,
+//			Set examinationquestions) {
+//		this.examinationame = examinationame;
+//		this.examinatioimage = examinatioimage;
+//		this.checkedcauhoi = checkedcauhoi;
+//		this.results = results;
+//		this.examinationquestions = examinationquestions;
+//	}
 
 	public Integer getExaminationid() {
 		return this.examinationid;

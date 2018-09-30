@@ -17,18 +17,18 @@ public class Listenexercise implements java.io.Serializable {
 	private String listenexercisename;
 	private String listenexerciseimage;
 	private Integer checkcauhoi;
-	private Set listenquestions = new HashSet(0);
+	private Set<Listenquestion> listenquestions;
 
 	public Listenexercise() {
 	}
 
-	public Listenexercise(String listenexercisename, String listenexerciseimage, Integer checkcauhoi,
-			Set listenquestions) {
-		this.listenexercisename = listenexercisename;
-		this.listenexerciseimage = listenexerciseimage;
-		this.checkcauhoi = checkcauhoi;
-		this.listenquestions = listenquestions;
-	}
+//	public Listenexercise(String listenexercisename, String listenexerciseimage, Integer checkcauhoi,
+//			Set listenquestions) {
+//		this.listenexercisename = listenexercisename;
+//		this.listenexerciseimage = listenexerciseimage;
+//		this.checkcauhoi = checkcauhoi;
+//		this.listenquestions = listenquestions;
+//	}
 
 	public Integer getListenexerciseid() {
 		return this.listenexerciseid;

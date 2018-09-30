@@ -17,7 +17,7 @@ public class Readexercise implements java.io.Serializable {
 	private String readname;
 	private String readimage;
 	private Integer checkcauhoi;
-	private Set readquestions = new HashSet(0);
+	private Set<Readquestion> readquestions;
 
 	public Readexercise() {
 	}

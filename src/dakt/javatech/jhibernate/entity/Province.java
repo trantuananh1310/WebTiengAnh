@@ -15,7 +15,7 @@ public class Province implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private int provinceId;
 	private String provinceName;
-	private Set students = new HashSet(0);
+	private Set<Student> students;
 
 	public Province() {
 	}
