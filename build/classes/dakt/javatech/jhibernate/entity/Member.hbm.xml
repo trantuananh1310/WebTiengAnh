@@ -18,6 +18,12 @@
         <property generated="never" lazy="false" name="memberpass" optimistic-lock="true" type="string" unique="false">
             <column length="45" name="memberpass"/>
         </property>
+        <property generated="never" lazy="false" name="email" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="email"/>
+        </property>
+        <property generated="never" lazy="false" name="sdt" optimistic-lock="true" unique="false">
+            <column length="45" name="sodienthoai"/>
+        </property>
         <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="results" optimistic-lock="true" sort="unsorted" table="result">
             <key on-delete="noaction">
                 <column name="memberid"/>

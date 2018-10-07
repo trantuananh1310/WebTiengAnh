@@ -18,7 +18,27 @@ public class Member implements java.io.Serializable {
 	private String name;
 	private String membername;
 	private String memberpass;
+	private String email;
+	private Integer sdt;
 	private Set<Result> results;
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public Integer getSdt() {
+		return sdt;
+	}
+
+	public void setSdt(Integer sdt) {
+		this.sdt = sdt;
+	}
+
+
 	private Set<Cmtvocabulary> cmtvocabularies;
 	private Set<Cmtgrammar> cmtgrammars;
 
