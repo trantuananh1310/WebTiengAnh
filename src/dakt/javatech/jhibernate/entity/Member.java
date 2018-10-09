@@ -21,6 +21,18 @@ public class Member implements java.io.Serializable {
 	private String email;
 	private Integer sdt;
 	private Set<Result> results;
+	private Set<Cmtvocabulary> cmtvocabularies;
+	private Set<Cmtgrammar> cmtgrammars;
+	private Set<Cmtlisten> cmtlistens;
+	
+	public Set<Cmtlisten> getCmtlistens() {
+		return cmtlistens;
+	}
+
+	public void setCmtlistens(Set<Cmtlisten> cmtlistens) {
+		this.cmtlistens = cmtlistens;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -37,10 +49,6 @@ public class Member implements java.io.Serializable {
 	public void setSdt(Integer sdt) {
 		this.sdt = sdt;
 	}
-
-
-	private Set<Cmtvocabulary> cmtvocabularies;
-	private Set<Cmtgrammar> cmtgrammars;
 
 	public Member() {
 	}

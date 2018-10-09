@@ -9,41 +9,42 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import dakt.javatech.jhibernate.entity.Grammarguideline;
+import dakt.javatech.jhibernate.entity.ListenGuideline;
+import dakt.javatech.jhibernate.entity.ListenGuideline;
 
 @Component 
 @Transactional
-public class GrammarguidelineDao {
+public class ListenguidelineDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public List<Grammarguideline> list()
+	public List<ListenGuideline> list()
 	{
-		String hql="FROM Grammarguideline";
+		String hql="FROM ListenGuideline";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return query.list();
 	}
 	
-	public List<Grammarguideline> list(int first, int max)
+	public List<ListenGuideline> list(int first, int max)
 	{
-		String hql="FROM Grammarguideline";
+		String hql="FROM ListenGuideline";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setFirstResult(first);
 		query.setMaxResults(max);
 		return query.list();
 	}
-	public Grammarguideline getById(int id)
+	public ListenGuideline getById(int id)
 	{
-		return (Grammarguideline)sessionFactory.getCurrentSession().get(Grammarguideline.class, id);
+		return (ListenGuideline)sessionFactory.getCurrentSession().get(ListenGuideline.class, id);
 	}
-	public void add(Grammarguideline sp)
+	public void add(ListenGuideline sp)
 	{
 		sessionFactory.getCurrentSession().saveOrUpdate(sp);
 	}
 //	public void update(int id, String ten, int instock, String vanchuyen, Double giacu, Double giamoi, String baohanh, int moi, int dacbiet,String anh, String newsletter)
 //	{
 ////		sessionFactory.getCurrentSession().beginTransaction();
-//		Grammarguideline sp=getById(id);
+//		ListenGuideline sp=getById(id);
 //		sp.setTen(ten);
 //		sp.setInstock(instock);
 //		sp.setVanchuyen(vanchuyen);
@@ -59,21 +60,21 @@ public class GrammarguidelineDao {
 //	}
 	public void delete(int id)
 	{
-		Grammarguideline grammarguideline=getById(id);
-		sessionFactory.getCurrentSession().delete(grammarguideline);
+		ListenGuideline ListenGuideline=getById(id);
+		sessionFactory.getCurrentSession().delete(ListenGuideline);
 	}
 	
-	public List<Grammarguideline> getId(String s, int id)
+	public List<ListenGuideline> getId(String s, int id)
 	{
-		String hql="FROM Grammarguideline WHERE "+s + " = "+id+"";
+		String hql="FROM ListenGuideline WHERE "+s + " = "+id+"";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (List<Grammarguideline>)query.list();
+		return (List<ListenGuideline>)query.list();
 	}
 	
-	public List<Grammarguideline> getListByLevelId(String level){
-		String hql="FROM Grammarguideline WHERE levelid='"+ level +"'";
+	public List<ListenGuideline> getListByLevelId(String level){
+		String hql="FROM ListenGuideline WHERE levelid='"+ level +"'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (List<Grammarguideline>)query.list();
+		return (List<ListenGuideline>)query.list();
 	}
 
 }

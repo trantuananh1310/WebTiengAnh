@@ -46,7 +46,6 @@ public class LoginController {
 		{
 			if(username.equals(mem.get(i).getMembername())&& password.equals(mem.get(i).getMemberpass()))
 			{
-				System.out.println(mem.get(i).getCategorymember().getCategorymemberid());
 				if(mem.get(i).getCategorymember().getCategorymemberid()==1)
 				{
 					session.setAttribute("sessionuser", mem.get(i).getName());

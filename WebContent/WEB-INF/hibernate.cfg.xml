@@ -23,5 +23,8 @@
 	    <mapping resource="dakt/javatech/jhibernate/entity/Student.hbm.xml" />
 	    <mapping resource="dakt/javatech/jhibernate/entity/Vocabularycontent.hbm.xml" />
 	    <mapping resource="dakt/javatech/jhibernate/entity/Vocabularyguideline.hbm.xml" />
+	    <mapping resource="dakt/javatech/jhibernate/entity/Level.hbm.xml" />
+	    <mapping resource="dakt/javatech/jhibernate/entity/Listenguideline.hbm.xml" />
+	    <mapping resource="dakt/javatech/jhibernate/entity/Cmtlisten.hbm.xml" />
     </session-factory>   
 </hibernate-configuration>

@@ -42,5 +42,11 @@
             </key>
             <one-to-many class="dakt.javatech.jhibernate.entity.Cmtgrammar" embed-xml="true" not-found="exception"/>
         </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="cmtlistens" optimistic-lock="true" sort="unsorted" table="cmtlisten">
+            <key on-delete="noaction">
+                <column name="memberid"/>
+            </key>
+            <one-to-many class="dakt.javatech.jhibernate.entity.Cmtlisten" embed-xml="true" not-found="exception"/>
+        </set>
     </class>
 </hibernate-mapping>

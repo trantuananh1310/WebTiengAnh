@@ -18,6 +18,15 @@ public class Listenexercise implements java.io.Serializable {
 	private String listenexerciseimage;
 	private Integer checkcauhoi;
 	private Set<Listenquestion> listenquestions;
+	private Level level;
+
+	public Level getLevel() {
+		return level;
+	}
+
+	public void setLevel(Level level) {
+		this.level = level;
+	}
 
 	public Listenexercise() {
 	}

@@ -600,7 +600,7 @@ ul.sub-menu {
   color: #B4B1AB;
   font-family: abel;
   font-size: 48px;
-  margin-top: 115px;
+  margin-top: 30px;
 }
 
 .item h1 span {
@@ -612,7 +612,7 @@ ul.sub-menu {
   font-family: 'Roboto', sans-serif;
   font-size: 28px;
   font-weight: 700;
-  margin-bottom: 22px;
+  margin-bottom: 10px;
   margin-top: 10px;
 }
 
@@ -631,7 +631,8 @@ ul.sub-menu {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  margin-top: 23px;
+  margin-top: 10px;
+  margin-bottom: 90px;
 }
 
 
@@ -656,8 +657,8 @@ ul.sub-menu {
 
 .category-products {
   border: 1px solid #F7F7F0;
-  margin-bottom: 35px;
-  padding-bottom: 20px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
   padding-top: 15px;
 }
 .left-sidebar h2, .brands_products h2 {

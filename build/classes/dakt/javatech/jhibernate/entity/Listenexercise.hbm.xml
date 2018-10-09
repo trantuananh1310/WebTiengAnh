@@ -21,5 +21,8 @@
             </key>
             <one-to-many class="dakt.javatech.jhibernate.entity.Listenquestion" embed-xml="true" not-found="exception"/>
         </set>
+        <many-to-one class="dakt.javatech.jhibernate.entity.Level" embed-xml="true" fetch="select" insert="true" name="level" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="levelid"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

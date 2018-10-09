@@ -17,17 +17,17 @@ public class Grammarguideline implements java.io.Serializable {
 	private String grammarname;
 	private String grammarimage;
 	private String content;
+	private Level level;
 	private Set<Cmtgrammar> cmtgrammars;
 
-	public Grammarguideline() {
+	public Level getLevel() {
+		return level;
 	}
 
-//	public Grammarguideline(String grammarname, String grammarimage, String content, Set cmtgrammars) {
-//		this.grammarname = grammarname;
-//		this.grammarimage = grammarimage;
-//		this.content = content;
-//		this.cmtgrammars = cmtgrammars;
-//	}
+	public void setLevel(Level level) {
+		this.level = level;
+	}
+
 
 	public Integer getGrammarguidelineid() {
 		return this.grammarguidelineid;

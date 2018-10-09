@@ -18,6 +18,15 @@ public class Readexercise implements java.io.Serializable {
 	private String readimage;
 	private Integer checkcauhoi;
 	private Set<Readquestion> readquestions;
+	private Level level;
+
+	public Level getLevel() {
+		return level;
+	}
+
+	public void setLevel(Level level) {
+		this.level = level;
+	}
 
 	public Readexercise() {
 	}

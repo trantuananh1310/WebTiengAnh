@@ -9,21 +9,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import dakt.javatech.jhibernate.dao.GrammarguidelineDao;
 import dakt.javatech.jhibernate.dao.LevelDao;
+import dakt.javatech.jhibernate.entity.Grammarguideline;
 import dakt.javatech.jhibernate.entity.Level;
 
 @Controller
-public class HomeController {
+public class GrammarguidelineController {
 
+	@Autowired
+	GrammarguidelineDao gramDao;
+	
 	@Autowired
 	LevelDao levelDao;
 	
-	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public ModelAndView getAllMembers(ModelMap model)
+	@RequestMapping(value="/listGrammarguideline", method=RequestMethod.GET)
+	public ModelAndView getAllMembers(String level)
 	{
+		List<Grammarguideline> lstGrammar=gramDao.getListByLevelId(level);
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView=new ModelAndView("home");
+		ModelAndView modelView=new ModelAndView("listgrammarguideline");
 		modelView.addObject("lstLevel", lstLevel);
+		modelView.addObject("lstGrammar", lstGrammar);
 		return modelView;
 	}
 }

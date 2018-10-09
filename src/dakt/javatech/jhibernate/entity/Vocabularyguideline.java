@@ -19,6 +19,15 @@ public class Vocabularyguideline implements java.io.Serializable {
 	private Integer checknoidung;
 	private Set<Cmtvocabulary> cmtvocabularies;
 	private Set<Vocabularycontent> vocabularycontents;
+	private Level level;
+
+	public Level getLevel() {
+		return level;
+	}
+
+	public void setLevel(Level level) {
+		this.level = level;
+	}
 
 	public Vocabularyguideline() {
 	}
