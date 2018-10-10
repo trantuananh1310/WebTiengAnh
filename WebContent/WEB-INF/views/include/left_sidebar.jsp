@@ -15,7 +15,6 @@
 			<!--category-productsr-->
 			<c:forEach items="${lstLevel }" var="m">
 				<div class="panel panel-default">
-					
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordian"
@@ -42,7 +41,6 @@
 		<div class="panel-group category-products" id="accordian">
 			<c:forEach items="${lstLevel }" var="m">
 				<div class="panel panel-default">
-					
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordian"
@@ -54,7 +52,7 @@
 					<div id="exercise${m.levelid }" class="panel-collapse collapse">
 						<div class="panel-body" style="padding-bottom: 0px;">
 							<ul>
-								<li><a href="#">Reading </a></li>
+								<li><a href="listReadExercise?level=${m.levelid }">Reading </a></li>
 								<li><a href="#">Listening </a></li>
 							</ul>
 						</div>
@@ -63,6 +61,5 @@
 			</c:forEach>
 		</div>
 	</div>
-
 </body>
 </html>

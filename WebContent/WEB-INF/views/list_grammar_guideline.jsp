@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="en">
+    pageEncoding="utf-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+
 <link rel="stylesheet" href="css/sweetalert.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -44,9 +42,10 @@
 // 					}else if(result=="ADMIN"){
 // 						window.location.href = 'test';
 // 					}else {
-// // 						$("#xyz").text("Tài khoản hoặc mật khẩu không đúng!");
-// 						swal("", "Tài khoản hoặc mật khẩu không đúng!", "error");
+// 						$("#xyz").text("Tài khoản hoặc mật khẩu không đúng!");
 // 					}
+// // 						$("#xyz").html(result);
+// // 						$("#xyz").slideToggle();
 // 				}
 // 			})
 // 		});
@@ -88,12 +87,11 @@
 // 		});
 // 	});
 </script>
-</head>
-<!--/head-->
 
+</head>
 <body>
-	<jsp:include page="include/header_middle.jsp"></jsp:include>
-	<jsp:include page="include/slider.jsp"></jsp:include>
+
+<jsp:include page="include/header_middle.jsp"></jsp:include>
 
 	<section>
 		<div class="container">
@@ -103,9 +101,20 @@
 				</div>
 				<div class="col-sm-9 padding-right">
 					<div class="features_items">
-							<!--features_items-->
-							<h2 class="title text-center">Features Items</h2>
-<!-- 							<div id="xyz"></div> -->
+						<!--features_items-->
+						<h2 class="title text-center">Features Items</h2>
+						<table border="1">
+							<tr>
+								<td>TÊN BÀI</td>
+								<td>LEVEL</td>
+							</tr>
+							<c:forEach items="${lstGrammar }" var="item">
+							<tr>
+								<td>${item.grammarname }</td>
+								<td>${item.level.levelname }</td>
+							</tr>	
+							</c:forEach>	
+						</table>
 					</div>
 				</div>
 			</div>
@@ -113,7 +122,7 @@
 	</section>
 
 	<jsp:include page="include/footer.jsp"></jsp:include>
-
+	
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.scrollUp.min.js"></script>
@@ -121,6 +130,6 @@
 	<script src="js/jquery.prettyPhoto.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/sweetalert.min.js"></script>
-
+	
 </body>
 </html>
