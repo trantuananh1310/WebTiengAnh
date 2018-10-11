@@ -60,16 +60,31 @@ public class ListenQuestionController {
 				au.setAnswer(answer);
 				lstAnswerUser.add(au);
 			}
-//			else{
-//				ModelAndView modelView= new ModelAndView("listreadquestion");
-//				modelView.addObject("lstLevel", lstLevel);
-//				modelView.addObject("lstReadQuestion", lstReadQuestion);
-//				modelView.addObject("msg","Bạn chưa trả lời hết các câu hỏi.");
-//				modelView.addObject("readexerciseid",readexerciseid);
-//				return modelView;
-//			}
 		}
 		ModelAndView modelView=new ModelAndView(" result_listen_exercise");
+		modelView.addObject("lstLevel", lstLevel);
+		modelView.addObject("lstListenQuestion",lstListenQuestion);
+		modelView.addObject("lstAnswerUser",lstAnswerUser);
+		return modelView;
+	}
+	@RequestMapping(value="/AnswerListen_Score", method=RequestMethod.POST)
+	public ModelAndView check_Answer_Score(HttpServletRequest request, String ListenExerciseid)
+	{
+		List<Listenquestion> lstListenQuestion=ListenQuestionDao.getListByListenExerciseId(ListenExerciseid);
+		List<Level> lstLevel=levelDao.list();
+		int countrow=lstListenQuestion.size();
+		List<AnswerUser> lstAnswerUser = new ArrayList<>();
+		
+		for(int i=0; i<countrow; i++){
+			String answer = request.getParameter("answer["+i+"]");
+			if(answer!=null){
+				AnswerUser au=new AnswerUser();
+				au.setNumber(lstListenQuestion.get(i).getListenquestionid());
+				au.setAnswer(answer);
+				lstAnswerUser.add(au);
+			}
+		}
+		ModelAndView modelView=new ModelAndView("result_listen_exercise_score");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstListenQuestion",lstListenQuestion);
 		modelView.addObject("lstAnswerUser",lstAnswerUser);

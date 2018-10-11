@@ -26,8 +26,35 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#check_form').on('submit',function(event) {
-			debugger;
+		$('#btn_score_listen').on('click',function(event){
+			event.preventDefault();
+			var countInput=$("input[type='radio']").length;
+			var countQuestion=countInput/4;
+			var countCheck=$("input[type='radio']:checked").length;
+
+			if(countCheck < countQuestion){
+				swal("", "Bạn chưa trả lời hết các câu hỏi", "warning");
+			}
+			else{
+				$.ajax({
+					type:"POST",
+					url:"AnswerListen_Score",
+					data:$('form').serialize(),
+					success: function(result){
+						$('#check_form').hide();
+						$('#check_Answer').html(result);
+						$('#btn_score_listen').hide();
+						$('#btn_tapescript').hide();
+					}
+				});
+			}
+			
+		});
+		$('#btn_again_Listen').on('click',function(event){
+			event.preventDefault();
+			window.location.reload();
+		});
+		$('#btn_tapescript').on('click',function(event) {
 			event.preventDefault();
 			var countInput=$("input[type='radio']").length;
 			var countQuestion= (countInput/4);
@@ -50,6 +77,8 @@
 					success : function(result) {
 						$('#check_form').hide();
 						$('#check_Answer').html(result);
+						$('#btn_score_listen').hide();
+						$('#btn_tapescript').hide();
 					}
 				});
 			}
@@ -82,22 +111,24 @@
 										<div><img class="img_listening" src="images/ListenQuestion/${item.imagename }" width="240px" height="160px"> </div>
 										<div> <audio controls> <source src="Audio/${item.audiomp3 }" type="audio/mpeg"></audio></div>
 										<div class="radio">
-										  	<label><input type="radio" name="answer[<%=i %>]" value="${item.option1 }">A. ${item.option1 }</label>
+										  	<label><input type="radio" name="answer[<%=i %>]" value="${item.option1 }">A </label>
 										</div>
 										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option2 }">B. ${item.option2 }</label>
+										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option2 }">B </label>
 										</div>
 										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option3 }">C. ${item.option3 }</label>
+										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option3 }">C </label>
 										</div>
 										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option4 }">D. ${item.option4 }</label>
+										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option4 }">D </label>
 										</div>
 										<%i++; %>
 									</c:forEach>
 									<input type="hidden" name="ListenExerciseid" value="${ListenExerciseid }"/>
-									<input type="submit" value="Tapescript" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
 								</form>
+									<input type="button"  id="btn_tapescript"  value="Tapescript" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
+									<input type="button"  id="btn_score_listen" value="Score" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
+									<input type="button" id ="btn_again_Listen" value="Again" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
 							</div>
 					</div>
 				</div>
