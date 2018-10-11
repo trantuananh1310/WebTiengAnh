@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import dakt.javatech.jhibernate.entity.Listenquestion;
+import dakt.javatech.jhibernate.entity.Readquestion;
 
 @Component 
 @Transactional
@@ -65,6 +66,12 @@ public class ListenquestionDao {
 	public List<Listenquestion> getId(String s, int id)
 	{
 		String hql="FROM Listenquestion WHERE "+s + " = "+id+"";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		return (List<Listenquestion>)query.list();
+	}
+
+	public List<Listenquestion> getListByListenExerciseId(String ListenExerciseId) {
+		String hql="From Listenquestion where listenexerciseid ='"+ListenExerciseId +"'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Listenquestion>)query.list();
 	}

@@ -104,7 +104,7 @@
 				
 				$.ajax({
 					type : "POST",
-					url : "checkAction",
+					url : "AnswerListen",
 					data : $('form').serialize(),
 					success : function(result) {
 						$('#check_form').hide();
@@ -131,28 +131,30 @@
 				<div class="col-sm-9 padding-right">
 					<div class="features_items">
 						<!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
+						<h2 class="title text-center">Listen Test</h2>
 							<div class="container">
 								<div id="check_Answer"></div>
 <%-- 								<h4 style="color: red;">${msg}</h4> --%>
 								<form action="" method="post" id="check_form">
-									<c:forEach items="${lstReadQuestion }" var="item">
+									<c:forEach items="${lstListenQuestion }" var="item">
 										<p><b><%=i+1 %>. ${item.question }</b></p>
+										<div><img src="images/ListenQuestion/${item.imagename }" width="240px" height="160px"> </div>
+										<div> <audio controls> <source src="Audio/${item.audiomp3 }" type="audio/mpeg"></audio></div>
 										<div class="radio">
-										  	<label><input type="radio" name="answer[<%=i %>]" value="${item.option1 }">A. ${item.option1 }</label>
+										  	<label><input type="radio" name="answer[<%=i %>]" value="${item.option1 }"> ${item.option1 }</label>
 										</div>
 										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option2 }">B. ${item.option2 }</label>
+										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option2 }">${item.option2 }</label>
 										</div>
 										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option3 }">C. ${item.option3 }</label>
+										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option3 }">${item.option3 }</label>
 										</div>
 										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option4 }">D. ${item.option4 }</label>
+										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option4 }">${item.option4 }</label>
 										</div>
 										<%i++; %>
 									</c:forEach>
-									<input type="hidden" name="readexerciseid" value="${readexerciseid }"/>
+									<input type="hidden" name="ListenExerciseid" value="${ListenExerciseid }"/>
 									<input type="submit" value="Tapescript" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
 								</form>
 							</div>

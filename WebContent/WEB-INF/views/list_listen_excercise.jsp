@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="css/sweetalert.css">
 
 <script type="text/javascript">
-	$(document).ready(function() {
+// 	$(document).ready(function() {
 // 		$('#login_form').on('submit',function(event) {
 // 			event.preventDefault();
 // 			$.ajax({
@@ -85,77 +85,29 @@
 // 				}
 // 			})
 // 		});
-		$('#check_form').on('submit',function(event) {
-			debugger;
-			event.preventDefault();
-			var countInput=$("input[type='radio']").length;
-			var countQuestion= (countInput/4);
-			var countCheck=$("input[type='radio']:checked").length;
-			var input=$("input[type='radio'][name='answer[0]']:checked").val();
-			
-			if(countCheck < countQuestion){
-				swal("", "Bạn chưa trả lời hết các câu hỏi", "warning");
-			}
-			else{
-// 				$("input[type='radio']:checked").each(function( index ) {
-// 					alert(index);
-// 					alert( index + ": " + $("input[type='radio'][name='answer["+index+"]']:checked").val());
-// 				});
-				
-				$.ajax({
-					type : "POST",
-					url : "checkAction",
-					data : $('form').serialize(),
-					success : function(result) {
-						$('#check_form').hide();
-						$('#check_Answer').html(result);
-					}
-				});
-			}
-		});
-	});
+// 	});
 </script>
 
 </head>
 <body>
-<%int i=0; %>
 
 <jsp:include page="include/header_middle.jsp"></jsp:include>
+
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
 					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
 				</div>
-				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items">
 						<!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
-							<div class="container">
-								<div id="check_Answer"></div>
-<%-- 								<h4 style="color: red;">${msg}</h4> --%>
-								<form action="" method="post" id="check_form">
-									<c:forEach items="${lstReadQuestion }" var="item">
-										<p><b><%=i+1 %>. ${item.question }</b></p>
-										<div class="radio">
-										  	<label><input type="radio" name="answer[<%=i %>]" value="${item.option1 }">A. ${item.option1 }</label>
-										</div>
-										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option2 }">B. ${item.option2 }</label>
-										</div>
-										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option3 }">C. ${item.option3 }</label>
-										</div>
-										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option4 }">D. ${item.option4 }</label>
-										</div>
-										<%i++; %>
-									</c:forEach>
-									<input type="hidden" name="readexerciseid" value="${readexerciseid }"/>
-									<input type="submit" value="Tapescript" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
-								</form>
-							</div>
+						<h2 class="title text-center">Features Items-Listen</h2>
+						<div class="container">
+							<c:forEach items="${lstListenExcercise }" var="item">
+								<a href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }">${item.listenexercisename }</a>
+							</c:forEach>	
+						</div>
 					</div>
 				</div>
 			</div>
