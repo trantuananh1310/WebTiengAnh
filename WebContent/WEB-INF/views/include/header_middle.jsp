@@ -75,7 +75,7 @@
 
 	<c:if test="${sessionuser !=null }">
 		<div class="header-middle"><!--header-middle-->
-			<div class="container">
+			<div class="container header_bim">
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
@@ -97,7 +97,7 @@
 	
 	<c:if test="${sessionuser == null }">
 		<div class="header-middle"><!--header-middle-->
-			<div class="container">
+			<div class="container header_bim">
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
@@ -118,7 +118,7 @@
 	</c:if>
 		
 		<div class="header-bottom"><!--header-bottom-->
-			<div class="container">
+			<div class="container header_bim">
 				<div class="row">
 					<div class="col-sm-9">
 						<div class="navbar-header">
