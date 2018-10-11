@@ -104,7 +104,7 @@
 				
 				$.ajax({
 					type : "POST",
-					url : "AnswerListen",
+					url : "AnswerListen_Tapescript",
 					data : $('form').serialize(),
 					success : function(result) {
 						$('#check_form').hide();

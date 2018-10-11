@@ -44,7 +44,7 @@ public class ListenQuestionController {
 		return modelView;
 	}
 	
-	@RequestMapping(value="/AnswerListen", method=RequestMethod.POST)
+	@RequestMapping(value="/AnswerListen_Tapescript", method=RequestMethod.POST)
 	public ModelAndView getAllMembers(HttpServletRequest request, String ListenExerciseid)
 	{
 		List<Listenquestion> lstListenQuestion=ListenQuestionDao.getListByListenExerciseId(ListenExerciseid);
