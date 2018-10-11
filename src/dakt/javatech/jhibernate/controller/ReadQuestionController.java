@@ -66,8 +66,32 @@ public class ReadQuestionController {
 //				return modelView;
 //			}
 		}
-		ModelAndView modelView=new ModelAndView("result_read_exercise");
+		ModelAndView modelView=new ModelAndView("result_read_exercise_tapescript");
 		modelView.addObject("lstLevel", lstLevel);
+		modelView.addObject("lstReadQuestion",lstReadQuestion);
+		modelView.addObject("lstAnswerUser",lstAnswerUser);
+		return modelView;
+	}
+	
+	@RequestMapping(value="/checkScoreReadQuestion", method=RequestMethod.POST)
+	public ModelAndView checkScoreReadQuestion(HttpServletRequest request, String readexerciseid)
+	{
+		List<Readquestion> lstReadQuestion=readQuestionDao.getListByLevelId(readexerciseid);
+//		List<Level> lstLevel=levelDao.list();
+		int countrow=lstReadQuestion.size();
+		List<AnswerUser> lstAnswerUser = new ArrayList<>();
+		
+		for(int i=0; i<countrow; i++){
+			String answer = request.getParameter("answer["+i+"]");
+			if(answer!=null){
+				AnswerUser au=new AnswerUser();
+				au.setNumber(lstReadQuestion.get(i).getReadquestionid());
+				au.setAnswer(answer);
+				lstAnswerUser.add(au);
+			}
+		}
+		ModelAndView modelView=new ModelAndView("result_read_exercise_score");
+//		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstReadQuestion",lstReadQuestion);
 		modelView.addObject("lstAnswerUser",lstAnswerUser);
 		return modelView;

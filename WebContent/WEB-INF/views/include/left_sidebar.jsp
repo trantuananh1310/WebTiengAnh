@@ -38,12 +38,12 @@
 		
 		<!-- Luyện tập -->
 		<h2>Luyện tập</h2>
-		<div class="panel-group category-products" id="accordian">
+		<div class="panel-group category-products" id="accordian1">
 			<c:forEach items="${lstLevel }" var="m">
 				<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordian"
+								<a data-toggle="collapse" data-parent="#accordian1"
 									href="#exercise${m.levelid }"> <span class="badge pull-right"><i
 										class="fa fa-angle-down"></i></span> ${m.levelname }
 								</a>

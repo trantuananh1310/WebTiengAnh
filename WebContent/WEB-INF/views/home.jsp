@@ -23,71 +23,8 @@
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 <script language="javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
-
 <link rel="stylesheet" href="css/sweetalert.css">
 
-<script type="text/javascript">
-// 	$(document).ready(function() {
-// 		$('#login_form').on('submit',function(event) {
-// 			event.preventDefault();
-// 			$.ajax({
-// 				type : "POST",
-// 				url : "loginAction",
-// 				data : {
-// 					username : $('#username').val(),
-// 					password : $('#password').val()
-// 				},
-// 				success : function(result) {
-
-// 					if (result == "USER") {
-// 						window.location.reload();
-// 					}else if(result=="ADMIN"){
-// 						window.location.href = 'test';
-// 					}else {
-// // 						$("#xyz").text("Tài khoản hoặc mật khẩu không đúng!");
-// 						swal("", "Tài khoản hoặc mật khẩu không đúng!", "error");
-// 					}
-// 				}
-// 			})
-// 		});
-		
-// 		$('#register_form').on('submit',function(event) {
-// 			event.preventDefault();
-// 			$.ajax({
-// 				type : "POST",
-// 				url : "registerAction",
-// 				data : {
-// 					username : $('#user').val(),
-// 					password : $('#pass').val(),
-// 					fullname : $('#fullname').val(),
-// 					email : $('#email').val(),
-// 					confirmpass : $('#confirmpass').val(),
-// 					phone : $('#phone').val(),
-// 				},
-// 				success : function(result) {
-// 					if (result == "ErrConfirmPass") {
-// 						swal("", "Mật khẩu không khớp. Hãy thử lại", "error");
-// 					}else if(result=="ErrUserName"){
-// 						swal(" ", "Tên người dùng đã được sử dụng. Hãy thử tên khác.", "error");
-// 					}else if(result=="ErrPhone"){
-// 						swal(" ", "Số điện thoại không đúng !!!", "error");
-// 					}else{
-// 						swal({
-// 							  title: "Thành công",
-// 							  text: "Đăng ký tài khoản thành công!",
-// 							  type: "success",
-// 							  confirmButtonText: "OK",
-// //							  closeOnConfirm: false
-// 							},
-// 							function(){
-// 							  window.location.reload();
-// 						});
-// 					}
-// 				}
-// 			})
-// 		});
-// 	});
-</script>
 </head>
 <!--/head-->
 
