@@ -103,7 +103,7 @@
 						<!--features_items-->
 						<h2 class="title text-center">Listen Test</h2>
 							<div class="container">
-								<div id="check_Answer"></div>
+								<div id="check_Answer" class="col-sm-6 padding-right"></div>
 <%-- 								<h4 style="color: red;">${msg}</h4> --%>
 								<form class="col-sm-6 padding-right" action="" method="post" id="check_form">
 									<c:forEach items="${lstListenQuestion }" var="item">
@@ -126,9 +126,11 @@
 									</c:forEach>
 									<input type="hidden" name="ListenExerciseid" value="${ListenExerciseid }"/>
 								</form>
+								<div class="col-sm-6 padding-right">
 									<input type="button"  id="btn_tapescript"  value="Tapescript" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
 									<input type="button"  id="btn_score_listen" value="Score" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
 									<input type="button" id ="btn_again_Listen" value="Again" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
+								</div>
 							</div>
 					</div>
 				</div>
