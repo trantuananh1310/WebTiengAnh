@@ -44,6 +44,8 @@
 					data : $('form').serialize(),
 					success : function(result) {
 						$('#check_form').hide();
+						$("#btn_score").hide();
+						$("#btn_tapescript").hide();
 						$('#result_score').html(result);
 					}
 				});
@@ -77,7 +79,9 @@
 					data : $('form').serialize(),
 					success : function(result) {
 						$('#check_form').hide();
-						$('#result_tapescript').html(result);
+						$("#btn_score").hide();
+						$("#btn_tapescript").hide();
+						$('#result_score').html(result);
 					}
 				});
 			}
@@ -93,18 +97,18 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-3 menu_sidebar_left">
 					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
 				</div>
 				
-				<div class="col-sm-9 padding-right">
+				<div class="col-sm-6 padding-right">
 					<div class="features_items">
 						<!--features_items-->
 						<h2 class="title text-center">Features Items</h2>
 						<div class="container">
-							<div id="result_tapescript"></div>
-							<div id="result_score"></div>
-							<form action="" method="post" id="check_form">
+<!-- 							<div id="result_tapescript" class="col-sm-6 menu_sidebar_content"></div> -->
+							<div id="result_score" class="col-sm-6 padding-right"></div>
+							<form class="col-sm-6 padding-right" action="" method="post" id="check_form">
 								<c:forEach items="${lstReadQuestion }" var="item">
 									<p><b><%=i+1 %>. ${item.question }</b></p>
 									<div class="radio">
@@ -123,11 +127,17 @@
 								</c:forEach>
 								<input type="hidden" name="readexerciseid" value="${readexerciseid }"/>
 							</form>
-							<input type="submit" id="btn_tapescript" value="Tapescript" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
-							<input type="button" id="btn_score" value="Score" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
-							<input type="button" id="btn_again" value="Again" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
+							<div class="col-sm-6 padding-right">
+								<input type="submit" id="btn_tapescript" value="Tapescript" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
+								<input type="button" id="btn_score" value="Score" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
+								<input type="button" id="btn_again" value="Again" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
+							</div>
 						</div>
 					</div>
+				</div>
+				
+				<div class="col-sm-3 menu_sidebar_right">
+					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>

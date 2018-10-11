@@ -32,19 +32,22 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-3 menu_sidebar_left">
 					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
 				</div>
-				<div class="col-sm-9 padding-right">
+				<div class="col-sm-6 padding-right">
 					<div class="features_items">
 						<!--features_items-->
 						<h2 class="title text-center">Features Items</h2>
-						<div class="container">
+						<div class="container col-sm-12">
 							<c:forEach items="${lstReadExcercise }" var="item">
 								<a href="listReadQuestion?readexercise=${item.readexeriseid }">${item.readname }</a>
 							</c:forEach>	
 						</div>
 					</div>
+				</div>
+				<div class="col-sm-3 menu_sidebar_right">
+					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>

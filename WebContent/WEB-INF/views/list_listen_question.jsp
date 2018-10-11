@@ -65,18 +65,18 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-3 menu_sidebar_left">
 					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
 				</div>
 				
-				<div class="col-sm-9 padding-right">
+				<div class="col-sm-6 padding-right">
 					<div class="features_items">
 						<!--features_items-->
 						<h2 class="title text-center">Listen Test</h2>
 							<div class="container">
 								<div id="check_Answer"></div>
 <%-- 								<h4 style="color: red;">${msg}</h4> --%>
-								<form action="" method="post" id="check_form">
+								<form class="col-sm-6 padding-right" action="" method="post" id="check_form">
 									<c:forEach items="${lstListenQuestion }" var="item">
 										<p><b><%=i+1 %>. ${item.question }</b></p>
 										<div><img class="img_listening" src="images/ListenQuestion/${item.imagename }" width="240px" height="160px"> </div>
@@ -100,6 +100,9 @@
 								</form>
 							</div>
 					</div>
+				</div>
+				<div class="col-sm-3 menu_sidebar_right">
+					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>
