@@ -26,65 +26,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-// 		$('#login_form').on('submit',function(event) {
-// 			event.preventDefault();
-// 			$.ajax({
-// 				type : "POST",
-// 				url : "loginAction",
-// 				data : {
-// 					username : $('#username').val(),
-// 					password : $('#password').val()
-// 				},
-// 				success : function(result) {
-
-// 					if (result == "USER") {
-// 						window.location.reload();
-// 					}else if(result=="ADMIN"){
-// 						window.location.href = 'test';
-// 					}else {
-// 						$("#xyz").text("Tài khoản hoặc mật khẩu không đúng!");
-// 					}
-// // 						$("#xyz").html(result);
-// // 						$("#xyz").slideToggle();
-// 				}
-// 			})
-// 		});
-		
-// 		$('#register_form').on('submit',function(event) {
-// 			event.preventDefault();
-// 			$.ajax({
-// 				type : "POST",
-// 				url : "registerAction",
-// 				data : {
-// 					username : $('#user').val(),
-// 					password : $('#pass').val(),
-// 					fullname : $('#fullname').val(),
-// 					email : $('#email').val(),
-// 					confirmpass : $('#confirmpass').val(),
-// 					phone : $('#phone').val(),
-// 				},
-// 				success : function(result) {
-// 					if (result == "ErrConfirmPass") {
-// 						swal("", "Mật khẩu không khớp. Hãy thử lại", "error");
-// 					}else if(result=="ErrUserName"){
-// 						swal(" ", "Tên người dùng đã được sử dụng. Hãy thử tên khác.", "error");
-// 					}else if(result=="ErrPhone"){
-// 						swal(" ", "Số điện thoại không đúng !!!", "error");
-// 					}else{
-// 						swal({
-// 							  title: "Thành công",
-// 							  text: "Đăng ký tài khoản thành công!",
-// 							  type: "success",
-// 							  confirmButtonText: "OK",
-// //							  closeOnConfirm: false
-// 							},
-// 							function(){
-// 							  window.location.reload();
-// 						});
-// 					}
-// 				}
-// 			})
-// 		});
 		$('#check_form').on('submit',function(event) {
 			debugger;
 			event.preventDefault();
@@ -138,19 +79,19 @@
 								<form action="" method="post" id="check_form">
 									<c:forEach items="${lstListenQuestion }" var="item">
 										<p><b><%=i+1 %>. ${item.question }</b></p>
-										<div><img src="images/ListenQuestion/${item.imagename }" width="240px" height="160px"> </div>
+										<div><img class="img_listening" src="images/ListenQuestion/${item.imagename }" width="240px" height="160px"> </div>
 										<div> <audio controls> <source src="Audio/${item.audiomp3 }" type="audio/mpeg"></audio></div>
 										<div class="radio">
-										  	<label><input type="radio" name="answer[<%=i %>]" value="${item.option1 }"> ${item.option1 }</label>
+										  	<label><input type="radio" name="answer[<%=i %>]" value="${item.option1 }">A. ${item.option1 }</label>
 										</div>
 										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option2 }">${item.option2 }</label>
+										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option2 }">B. ${item.option2 }</label>
 										</div>
 										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option3 }">${item.option3 }</label>
+										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option3 }">C. ${item.option3 }</label>
 										</div>
 										<div class="radio">
-										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option4 }">${item.option4 }</label>
+										  <label><input type="radio" name="answer[<%=i %>]" value="${item.option4 }">D. ${item.option4 }</label>
 										</div>
 										<%i++; %>
 									</c:forEach>

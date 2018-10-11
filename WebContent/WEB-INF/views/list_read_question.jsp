@@ -27,8 +27,35 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		$('#check_form').on('submit',function(event) {
-			debugger;
+		$("#btn_score").on('click',function(event) {
+			event.preventDefault();
+			var countInput=$("input[type='radio']").length;
+			var countQuestion= (countInput/4);
+			var countCheck=$("input[type='radio']:checked").length;
+			var input=$("input[type='radio'][name='answer[0]']:checked").val();
+			
+			if(countCheck < countQuestion){
+				swal("", "Bạn chưa trả lời hết các câu hỏi", "warning");
+			}
+			else{
+				$.ajax({
+					type : "POST",
+					url : "checkScoreReadQuestion",
+					data : $('form').serialize(),
+					success : function(result) {
+						$('#check_form').hide();
+						$('#result_score').html(result);
+					}
+				});
+			}
+		});
+		
+		$("#btn_again").on('click',function(event) {
+			event.preventDefault();
+			window.location.reload();
+		});
+		
+		$("#btn_tapescript").on('click',function(event) {
 			event.preventDefault();
 			var countInput=$("input[type='radio']").length;
 			var countQuestion= (countInput/4);
@@ -50,7 +77,7 @@
 					data : $('form').serialize(),
 					success : function(result) {
 						$('#check_form').hide();
-						$('#check_Answer').html(result);
+						$('#result_tapescript').html(result);
 					}
 				});
 			}
@@ -75,7 +102,8 @@
 						<!--features_items-->
 						<h2 class="title text-center">Features Items</h2>
 						<div class="container">
-							<div id="check_Answer"></div>
+							<div id="result_tapescript"></div>
+							<div id="result_score"></div>
 							<form action="" method="post" id="check_form">
 								<c:forEach items="${lstReadQuestion }" var="item">
 									<p><b><%=i+1 %>. ${item.question }</b></p>
@@ -94,8 +122,10 @@
 									<%i++; %>
 								</c:forEach>
 								<input type="hidden" name="readexerciseid" value="${readexerciseid }"/>
-								<input type="submit" value="Tapescript" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
 							</form>
+							<input type="submit" id="btn_tapescript" value="Tapescript" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
+							<input type="button" id="btn_score" value="Score" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
+							<input type="button" id="btn_again" value="Again" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
 						</div>
 					</div>
 				</div>
