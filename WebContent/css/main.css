@@ -6,11 +6,35 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
 
+.menu_sidebar_left{
+	padding-left: 0px;
+    width: 20%;
+}
+
+.menu_sidebar_right{
+	padding-right: 0px;
+    width: 20%;
+}
+
+.menu_sidebar_content{
+    width: 60%;
+}
+
+.header_bim{
+	padding-left: 0px;
+    padding-right: 0px;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   background:;
   position: relative;
   font-weight:400px;
+}
+
+.img_listening{
+	border-radius: 15px;
+    margin-bottom: 10px;
 }
 
 ul li {
@@ -642,7 +666,7 @@ ul.sub-menu {
 
 .control-carousel {
   position: absolute;
-  top: 50%;
+  top: 30%;
   font-size: 60px;
   color: #C2C2C1;
 }
@@ -828,7 +852,9 @@ h2.title:before{
 
 
 .padding-right {
-  padding-right: 0;
+  padding-right: 0px;
+  padding-left: 0px;
+    width: 60%;
 }
 
 .features_items{

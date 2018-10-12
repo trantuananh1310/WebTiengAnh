@@ -68,5 +68,11 @@ public class ReadquestionDao {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Readquestion>)query.list();
 	}
+	
+	public List<Readquestion> getListByLevelId(String readexeriseid){
+		String hql="FROM Readquestion WHERE readexeriseid='"+ readexeriseid +"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		return (List<Readquestion>)query.list();
+	}
 
 }
