@@ -41,7 +41,7 @@
 						<h2 class="title text-center">Features Items-Listen</h2>
 						<div class="container col-sm-12">
 							<c:forEach items="${lstListenExcercise }" var="item">
-								<a href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }">${item.listenexercisename }</a>
+								<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }">${item.listenexercisename }</a>
 							</c:forEach>	
 						</div>
 					</div>
