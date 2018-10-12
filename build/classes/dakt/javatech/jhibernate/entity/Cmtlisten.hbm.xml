@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Sep 26, 2018 6:04:22 AM by Hibernate Tools 5.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="dakt.javatech.jhibernate.entity" auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="toeicmyclass" dynamic-insert="false" dynamic-update="false" mutable="true" name="dakt.javatech.jhibernate.entity.Cmtlisten" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="cmtlisten">
+        <id name="cmtlistenid" type="java.lang.Integer">
+            <column name="cmtlistenid"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="dakt.javatech.jhibernate.entity.ListenGuideline" embed-xml="true" fetch="select" insert="true" name="listenguideline" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="listenguidelineid"/>
+        </many-to-one>
+        <many-to-one class="dakt.javatech.jhibernate.entity.Member" embed-xml="true" fetch="select" insert="true" name="member" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="memberid"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="cmtlistencontent" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="cmtlistencontent"/>
+        </property>
+    </class>
+</hibernate-mapping>

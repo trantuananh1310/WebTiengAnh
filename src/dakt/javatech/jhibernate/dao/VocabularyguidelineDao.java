@@ -68,5 +68,11 @@ public class VocabularyguidelineDao {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Vocabularyguideline>)query.list();
 	}
+	
+	public List<Vocabularyguideline> getListByLevelId(String level){
+		String hql="FROM Vocabularyguideline WHERE levelid='"+ level +"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		return (List<Vocabularyguideline>)query.list();
+	}
 
 }

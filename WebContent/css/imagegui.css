@@ -1,0 +1,24 @@
+@charset "ISO-8859-1";
+
+
+.main_content {
+    padding: 0 10px;
+    /* line-height: 18px; */
+}
+
+.img_news {
+    width: 100px;
+    margin-right: 10px;
+    float: left;
+}
+
+#news_lists .item {
+    border-bottom: 1px dotted #DDDDDD;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.clearfix, .clear {
+    overflow: hidden;
+    clear: both;
+}

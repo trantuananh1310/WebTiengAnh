@@ -28,7 +28,7 @@ public class GrammarguidelineController {
 	{
 		List<Grammarguideline> lstGrammar=gramDao.getListByLevelId(level);
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView=new ModelAndView("listgrammarguideline");
+		ModelAndView modelView=new ModelAndView("list_grammar_guideline");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstGrammar", lstGrammar);
 		return modelView;

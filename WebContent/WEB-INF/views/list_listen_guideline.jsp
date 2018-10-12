@@ -102,15 +102,18 @@
 				<div class="col-sm-9 padding-right">
 					<div class="features_items">
 						<!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
+						<h2 class="title text-center">Vocabulary level 250-500</h2>
 						<table border="1">
 							<tr>
-								<td>TÊN BÀI</td>
+								<td style="width: 500px;">TÊN BÀI</td>
 								<td>LEVEL</td>
 							</tr>
-							<c:forEach items="${lstGrammar }" var="item">
+							<c:forEach items="${lstListen }" var="item">
 							<tr>
-								<td>${item.grammarname }</td>
+								<td>
+								    <a href="contentlisten">${item.listenname }</a>
+								
+								</td>
 								<td>${item.level.levelname }</td>
 							</tr>	
 							</c:forEach>	
