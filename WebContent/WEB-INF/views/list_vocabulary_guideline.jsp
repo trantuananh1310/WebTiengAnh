@@ -142,28 +142,37 @@
 	<section>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-3 menu_sidebar_left">
 				<jsp:include page="include/left_sidebar.jsp"></jsp:include>
 			</div>
-			<div class="col-sm-9 padding-right">
+			<div class="col-sm-6 padding-right">
 				<div class="features_items">
 					<!--features_items-->
 					<h2 class="title text-center">Vocabulary level 250-500</h2>
-					<table border="1">
-						<tr>
-							<td>TÊN BÀI</td>
-							<td>LEVEL</td>
-						</tr>
+					<div class="container col-sm-12">
 						<c:forEach items="${lstVocab }" var="item">
-							<tr>
-								<td>
-								   <a href="contentvocabulary">${item.vocabularyname }</a>
-								</td>
-								<td>${item.level.levelname }</td>
-							</tr>
+							<a href="contentvocabulary">${item.vocabularyname }</a>
 						</c:forEach>
-					</table>
+						<!-- 					<table border="1"> -->
+						<!-- 						<tr> -->
+						<!-- 							<td>TÊN BÀI</td> -->
+						<!-- 							<td>LEVEL</td> -->
+						<!-- 						</tr> -->
+
+						<%-- 						<c:forEach items="${lstVocab }" var="item"> --%>
+						<!-- 							<tr> -->
+						<!-- 								<td> -->
+						<%-- 								   <a href="contentvocabulary">${item.vocabularyname }</a> --%>
+						<!-- 								</td> -->
+						<%-- 								<td>${item.level.levelname }</td> --%>
+						<!-- 							</tr> -->
+						<%-- 						</c:forEach> --%>
+						<!-- 					</table> -->
+					</div>
 				</div>
+			</div>
+			<div class="col-sm-3 menu_sidebar_right">
+				<jsp:include page="include/right_sidebar.jsp"></jsp:include>
 			</div>
 		</div>
 	</div>

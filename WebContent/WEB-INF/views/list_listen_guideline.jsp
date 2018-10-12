@@ -96,13 +96,14 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-3 menu_sidebar_left">
 					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
 				</div>
 				<div class="col-sm-9 padding-right">
 					<div class="features_items">
 						<!--features_items-->
 						<h2 class="title text-center">Vocabulary level 250-500</h2>
+						<div class="container col-sm-12">
 						<table border="1">
 							<tr>
 								<td style="width: 500px;">TÊN BÀI</td>
@@ -118,7 +119,11 @@
 							</tr>	
 							</c:forEach>	
 						</table>
+						</div>
 					</div>
+				</div>
+				<div class="col-sm-3 menu_sidebar_right">
+					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>
