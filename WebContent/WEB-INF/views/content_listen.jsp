@@ -142,16 +142,21 @@
 	<section>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-3">
-				<jsp:include page="include/left_sidebar.jsp"></jsp:include>
-			</div>
-			<div class="col-sm-9 padding-right">
-				<div class="features_items">
-					<!--features_items-->
-					<h2 class="title text-center">Listen level 250-500</h2>
-					Day la cua Listen
+			<div class="col-sm-3 menu_sidebar_left">
+					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
 				</div>
-			</div>
+				<div class="col-sm-9 padding-right">
+					<div class="features_items">
+						<!--features_items-->
+						<h2 class="title text-center">Listen</h2>
+							${Content.content}			
+					</div>					
+				</div>
+				<div class="col-sm-3 menu_sidebar_right">
+					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
+				</div>
+	  </div>
+				
 		</div>
 	</div>
 	</section>

@@ -10,15 +10,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import dakt.javatech.jhibernate.dao.VocabularyguidelineDao;
+import dakt.javatech.jhibernate.dao.VocabularycontentDao;
 import dakt.javatech.jhibernate.dao.LevelDao;
 import dakt.javatech.jhibernate.entity.Vocabularyguideline;
 import dakt.javatech.jhibernate.entity.Level;
+import dakt.javatech.jhibernate.entity.ListenGuideline;
+import dakt.javatech.jhibernate.entity.Readquestion;
+import dakt.javatech.jhibernate.entity.Vocabularycontent;
 
 @Controller
 public class VocabularyguidelineController {
 
 	@Autowired
 	VocabularyguidelineDao vocabDao;
+	
+	@Autowired
+	VocabularycontentDao vocabctDao;
 	
 	@Autowired
 	LevelDao levelDao;
@@ -35,11 +42,13 @@ public class VocabularyguidelineController {
 	}
 	
 	@RequestMapping(value="/contentvocabulary", method=RequestMethod.GET)
-	public ModelAndView getAllMembers()
+	public ModelAndView getContentById(String vocabid)
 	{
-		List<Level> lstLevel=levelDao.list();
+		List<Vocabularycontent> lstContent=vocabctDao.getListByLevelId(vocabid);
+		List<Level> lstLevel=levelDao.list();		
 		ModelAndView modelView=new ModelAndView("content_vocabulary");
-		modelView.addObject("lstLevel", lstLevel);		
+		modelView.addObject("lstLevel", lstLevel);
+		modelView.addObject("lstContent", lstContent);
         return modelView;
 	}
 }

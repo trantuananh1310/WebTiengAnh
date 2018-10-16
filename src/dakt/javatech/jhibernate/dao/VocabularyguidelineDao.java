@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import dakt.javatech.jhibernate.entity.ListenGuideline;
 import dakt.javatech.jhibernate.entity.Vocabularyguideline;
 
 @Component 
@@ -74,5 +75,7 @@ public class VocabularyguidelineDao {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Vocabularyguideline>)query.list();
 	}
+	
+	
 
 }
