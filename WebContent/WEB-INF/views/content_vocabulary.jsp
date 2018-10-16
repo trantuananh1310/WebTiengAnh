@@ -108,25 +108,44 @@
 						<c:forEach items="${lstContent}" var="item">
 						<div class="container col-sm-12">
 							<div class="col-sm-3 header_bim">
-							<span style="font-size: 21px;">${item.vocabularycontentname}</span>
-							<br/>
-							<span>${item.image}</span>
-							<br/>
-							<span>${item.audiomp3}</span>
-							<br/>
-							<span>${item.audiogg}</span>
-							<br/>
-							<span style="color:red">${item.transcribe}</span>
-							<br/>
-							<span>${item.mean}</span>
+							<img alt="" style="width: 150px;"
+									src="images/VocabContent/${item.image }">								
 							</div>
-							
+							<div class="col-sm-9 header_bim">
+								<span style="font-size: 21px;">${item.vocabularycontentname}</span>
+									<br/>
+									<span><audio controls> <source src="Audio/${item.audiomp3 }" type="audio/mpeg"></audio></span>
+									<br/>
+									<span>${item.audiogg}</span>
+									<br/>
+									<span style="color:red">${item.transcribe}</span>
+									<br/>
+									<span>${item.mean}</span>
+							</div>
 
 						</div>
 						<div class="container col-sm-12">
 							<hr />
 						</div>
-					</c:forEach>
+<!-- 						  <div class="container col-sm-12"> -->
+<!-- 							<div class="col-sm-3 header_bim"> -->
+<%-- 							<span style="font-size: 21px;">${item.vocabularycontentname}</span> --%>
+<!-- 							<br/> -->
+<%-- 							<span>${item.image}</span> --%>
+<!-- 							<br/> -->
+<%-- 							<span>${item.audiomp3}</span> --%>
+<!-- 							<br/> -->
+<%-- 							<span>${item.audiogg}</span> --%>
+<!-- 							<br/> -->
+<%-- 							<span style="color:red">${item.transcribe}</span> --%>
+<!-- 							<br/> -->
+<%-- 							<span>${item.mean}</span> --%>
+<!-- 							</div> -->
+<!-- 						  </div> -->
+<!-- 						  <div class="container col-sm-12"> -->
+<!-- 							  <hr /> -->
+<!-- 						  </div> -->
+					    </c:forEach>
 					</div>
 				</div>
 				
