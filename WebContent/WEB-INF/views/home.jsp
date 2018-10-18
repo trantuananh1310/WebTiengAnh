@@ -29,6 +29,7 @@
 <!--/head-->
 
 <body>
+
 	<jsp:include page="include/header_middle.jsp"></jsp:include>
 	<jsp:include page="include/slider.jsp"></jsp:include>
 
@@ -41,7 +42,7 @@
 				<div class="col-sm-6 padding-right">
 					<div class="features_items">
 							<!--features_items-->
-							<h2 class="title text-center">Features Items</h2>
+							<h2 class="title text-center">DAKT English</h2>
 					</div>
 				</div>
 				<div class="col-sm-3 menu_sidebar_right">

@@ -74,5 +74,14 @@ public class ReadquestionDao {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Readquestion>)query.list();
 	}
-
+	
+	public List<Readquestion> getListPage(int first, int max, String readexeriseid)
+	{
+		String hql="FROM Readquestion WHERE readexeriseid='"+ readexeriseid +"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(first);
+		query.setMaxResults(max);
+		return query.list();
+	}
+	
 }
