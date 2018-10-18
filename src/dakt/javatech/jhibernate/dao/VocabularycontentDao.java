@@ -9,6 +9,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import dakt.javatech.jhibernate.entity.Readexercise;
+import dakt.javatech.jhibernate.entity.Readquestion;
 import dakt.javatech.jhibernate.entity.Vocabularycontent;
 
 @Component 
@@ -39,23 +41,7 @@ public class VocabularycontentDao {
 	{
 		sessionFactory.getCurrentSession().saveOrUpdate(sp);
 	}
-//	public void update(int id, String ten, int instock, String vanchuyen, Double giacu, Double giamoi, String baohanh, int moi, int dacbiet,String anh, String newsletter)
-//	{
-////		sessionFactory.getCurrentSession().beginTransaction();
-//		Vocabularycontent sp=getById(id);
-//		sp.setTen(ten);
-//		sp.setInstock(instock);
-//		sp.setVanchuyen(vanchuyen);
-//		sp.setGiacu(giacu);
-//		sp.setGiamoi(giamoi);
-//		sp.setBaohanh(baohanh);
-//		sp.setMoi(moi);
-//		sp.setDacbiet(dacbiet);
-//		sp.setAnh(anh);
-//		sp.setNewsletter(newsletter);
-//		sessionFactory.getCurrentSession().update(sp);
-////		sessionFactory.getCurrentSession().getTransaction().commit();
-//	}
+
 	public void delete(int id)
 	{
 		Vocabularycontent vocabularycontent=getById(id);
@@ -68,5 +54,12 @@ public class VocabularycontentDao {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Vocabularycontent>)query.list();
 	}
+	public List<Vocabularycontent> getListByLevelId(String id){
+		String hql="FROM Vocabularycontent WHERE vocabularyguidelineid='"+ id +"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		return (List<Vocabularycontent>)query.list();
+	}
+
+
 
 }

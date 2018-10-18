@@ -35,12 +35,15 @@ public class ListenguidelineController {
 	}
 	
 	@RequestMapping(value="/contentlisten", method=RequestMethod.GET)
-	public ModelAndView getAllMembers()
+	public ModelAndView getContentById(String id)
 	{
 		
 		List<Level> lstLevel=levelDao.list();
+		ListenGuideline  content= listenDao.getListenGuidelineById(id);
 		ModelAndView modelView=new ModelAndView("content_listen");
 		modelView.addObject("lstLevel", lstLevel);
+		modelView.addObject("Content", content);
+		
 		return modelView;
 	}
 }

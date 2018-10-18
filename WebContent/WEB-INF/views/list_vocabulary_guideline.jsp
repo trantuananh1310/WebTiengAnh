@@ -148,33 +148,33 @@
 			<div class="col-sm-6 padding-right">
 				<div class="features_items">
 					<!--features_items-->
-					<h2 class="title text-center">Vocabulary level 250-500</h2>
-					<div class="container col-sm-12">
-						<c:forEach items="${lstVocab }" var="item">
-							<a href="contentvocabulary">${item.vocabularyname }</a>
-						</c:forEach>
-						<!-- 					<table border="1"> -->
-						<!-- 						<tr> -->
-						<!-- 							<td>TÊN BÀI</td> -->
-						<!-- 							<td>LEVEL</td> -->
-						<!-- 						</tr> -->
+					<h2 class="title text-center">Vocabulary</h2>
+					<c:forEach items="${lstVocab }" var="item">
+						<div class="container col-sm-12">
+							<div class="col-sm-3 header_bim">
+							<a href ="contentvocabulary?vocabid=${item.vocabularyguidelineid}"><img alt="" style="width: 150px;"
+									src="images/Vocabgui/${item.vocabularyimage }">
+							</a>
+								
+							</div>
+							<div class="col-sm-9 header_bim">
+								<a href="contentvocabulary?vocabid=${item.vocabularyguidelineid}">${item.vocabularyname }</a>
+							</div>
 
-						<%-- 						<c:forEach items="${lstVocab }" var="item"> --%>
-						<!-- 							<tr> -->
-						<!-- 								<td> -->
-						<%-- 								   <a href="contentvocabulary">${item.vocabularyname }</a> --%>
-						<!-- 								</td> -->
-						<%-- 								<td>${item.level.levelname }</td> --%>
-						<!-- 							</tr> -->
-						<%-- 						</c:forEach> --%>
-						<!-- 					</table> -->
-					</div>
+						</div>
+						<div class="container col-sm-12">
+							<hr />
+						</div>
+					</c:forEach>
+
 				</div>
 			</div>
 			<div class="col-sm-3 menu_sidebar_right">
 				<jsp:include page="include/right_sidebar.jsp"></jsp:include>
 			</div>
 		</div>
+		
+	</div>
 	</div>
 	</section>
 
