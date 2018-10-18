@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import dakt.javatech.jhibernate.dao.LevelDao;
+import dakt.javatech.jhibernate.dao.SlidebannerDao;
 import dakt.javatech.jhibernate.entity.Level;
+import dakt.javatech.jhibernate.entity.Slidebanner;
 
 @Controller
 public class HomeController {
@@ -18,12 +20,19 @@ public class HomeController {
 	@Autowired
 	LevelDao levelDao;
 	
+	@Autowired
+	SlidebannerDao slideDao;
+	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public ModelAndView getAllMembers(ModelMap model)
 	{
 		List<Level> lstLevel=levelDao.list();
+		List<Slidebanner> lstSlide =slideDao.list();
 		ModelAndView modelView=new ModelAndView("home");
 		modelView.addObject("lstLevel", lstLevel);
+		modelView.addObject("slideActive", lstSlide.get(0));
+		lstSlide.remove(0);
+		modelView.addObject("lstSlide", lstSlide);
 		return modelView;
 	}
 }

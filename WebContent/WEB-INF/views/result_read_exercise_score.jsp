@@ -81,7 +81,7 @@
 				</c:if>
 				
 				<c:if test="${listcorrectanswer.correctanswer.toLowerCase() != listansweruser.answer.toLowerCase() }">
-					<c:if test="${listcorrectanswer.option1.toLowerCase() == listcorrectanswer.correctanswer.toLowerCase() }">
+					<c:if test="${listcorrectanswer.option1.toLowerCase() == listansweruser.answer.toLowerCase() }">
 						<p><b><%=i+1 %>. ${listcorrectanswer.question }</b></p>
 						<div class="radio">
 						  	<label><input type="radio" checked="checked">A. ${listcorrectanswer.option1 } </label><img alt="" src="images/incorrect.png" style="width: 13px;">
@@ -96,7 +96,7 @@
 						  <label><input type="radio">D. ${listcorrectanswer.option4 }</label>
 						</div>
 					</c:if>
-					<c:if test="${listcorrectanswer.option2.toLowerCase() == listcorrectanswer.correctanswer.toLowerCase() }">
+					<c:if test="${listcorrectanswer.option2.toLowerCase() == listansweruser.answer.toLowerCase() }">
 						<p><b><%=i+1 %>. ${listcorrectanswer.question }</b></p>
 						<div class="radio">
 						  	<label><input type="radio">A. ${listcorrectanswer.option1 }</label>
@@ -111,7 +111,7 @@
 						  <label><input type="radio">D. ${listcorrectanswer.option4 }</label>
 						</div>
 					</c:if>
-					<c:if test="${listcorrectanswer.option3.toLowerCase() == listcorrectanswer.correctanswer.toLowerCase() }">
+					<c:if test="${listcorrectanswer.option3.toLowerCase() == listansweruser.answer.toLowerCase() }">
 						<p><b><%=i+1 %>. ${listcorrectanswer.question }</b></p>
 						<div class="radio">
 						  	<label><input type="radio">A. ${listcorrectanswer.option1 }</label>
@@ -126,7 +126,7 @@
 						  <label><input type="radio">D. ${listcorrectanswer.option4 }</label>
 						</div>
 					</c:if>
-					<c:if test="${listcorrectanswer.option4.toLowerCase() == listcorrectanswer.correctanswer.toLowerCase() }">
+					<c:if test="${listcorrectanswer.option4.toLowerCase() == listansweruser.answer.toLowerCase() }">
 						<p><b><%=i+1 %>. ${listcorrectanswer.question }</b></p>
 						<div class="radio">
 						  	<label><input type="radio">A. ${listcorrectanswer.option1 }</label>

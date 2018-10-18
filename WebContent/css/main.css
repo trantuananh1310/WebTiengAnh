@@ -246,7 +246,7 @@ a#scrollUp i{
 
 
 .header-bottom {
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   padding-top: 30px;
 }
 
@@ -656,7 +656,7 @@ ul.sub-menu {
   font-size: 16px;
   font-weight: 300;
   margin-top: 10px;
-  margin-bottom: 90px;
+  margin-bottom: 95px;
 }
 
 
@@ -690,7 +690,7 @@ ul.sub-menu {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  margin: 0 auto 10px;
+  margin: 5px auto 10px;
   text-align: center;
   text-transform: uppercase;
   position: relative;
@@ -867,7 +867,7 @@ h2.title {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  margin: 0 15px;
+  margin: 5px 15px;
   text-transform: uppercase;
   margin-bottom: 10px;
   position: relative;

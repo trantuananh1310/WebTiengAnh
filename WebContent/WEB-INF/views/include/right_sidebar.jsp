@@ -8,58 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	
 	<div class="left-sidebar">
-	<!-- Chia sẻ -->
-		<h2>Chia sẻ</h2>
-		<div class="panel-group category-products" id="accordian">
-			<!--category-productsr-->
-			<c:forEach items="${lstLevel }" var="m">
-				<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordian"
-									href="#share${m.levelid }"> <span class="badge pull-right"><i
-										class="fa fa-angle-down"></i></span> ${m.levelname }
-								</a>
-							</h4>
-						</div>
-					<div id="share${m.levelid }" class="panel-collapse collapse">
-						<div class="panel-body" style="padding-bottom: 0px;">
-							<ul>
-								<li><a href="listGrammarguideline?level=${m.levelid }">Reading </a></li>
-								<li><a href="#">Listening </a></li>
-								<li><a href="#">Vocabulary </a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
-		
-		<!-- Luyện tập -->
-		<h2>Luyện tập</h2>
-		<div class="panel-group category-products" id="accordian1">
-			<c:forEach items="${lstLevel }" var="m">
-				<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordian1"
-									href="#exercise${m.levelid }"> <span class="badge pull-right"><i
-										class="fa fa-angle-down"></i></span> ${m.levelname }
-								</a>
-							</h4>
-						</div>
-					<div id="exercise${m.levelid }" class="panel-collapse collapse">
-						<div class="panel-body" style="padding-bottom: 0px;">
-							<ul>
-								<li><a href="listReadExercise?level=${m.levelid }">Reading </a></li>
-								<li><a href="listListenExcercise?level=${m.levelid }">Listening </a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
+		<img style="width: 200px;" alt="" src="images/right_sidebar_1.jpg">
+		<br/>
+		<img style="width: 200px;" alt="" src="images/right_sidebar_2.png">
 	</div>
 </body>
 </html>

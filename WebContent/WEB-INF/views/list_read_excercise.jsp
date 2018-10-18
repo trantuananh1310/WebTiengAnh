@@ -38,16 +38,17 @@
 				<div class="col-sm-6 padding-right">
 					<div class="features_items">
 						<!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
+						<h2 class="title text-center">Luyện tập</h2>
 						<c:forEach items="${lstReadExcercise }" var="item">
 							<div class="container col-sm-12">
 								
 									<div class="col-sm-3 header_bim">
-										<img alt="" style="width: 150px;" src="images/readexercises/${item.readimage }">
+										<a style="font-size: 18px;" href="listReadQuestion?readexercise=${item.readexeriseid }&page=1">
+										<img alt="" style="width: 150px;" src="images/readexercises/${item.readimage }"></a>
 									</div>
 									
 									<div class="col-sm-9 header_bim">
-										<a style="font-size: 18px;" href="listReadQuestion?readexercise=${item.readexeriseid }">${item.readname }</a>
+										<a style="font-size: 18px;" href="listReadQuestion?readexercise=${item.readexeriseid }&page=1">${item.readname }</a>
 									</div>
 							</div>
 							<div class="container col-sm-12">

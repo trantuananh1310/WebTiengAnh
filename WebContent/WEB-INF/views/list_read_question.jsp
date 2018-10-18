@@ -57,12 +57,35 @@
 			window.location.reload();
 		});
 		
+// 		$("#btn_next").on('click',function(event) {
+// 			event.preventDefault();
+// 			var pageStr = $("#pageid").val();
+// 			var pageid = parseInt(pageStr) +1;
+// 			var readexerciseid = $("#readexerciseid").val();
+// 			$.ajax({
+// 				type : "GET",
+// 				url : "listReadQuestionPage",
+// 				data : {
+// 					page: pageid,
+// 					readexercise :readexerciseid
+// 				},
+// 				success : function(result) {
+// 					$('#check_form').hide();
+// 					$('form').remove();
+// 					$('#result_score').html(result);
+					
+// 				}
+// 			});
+// 		});
+		
 		$("#btn_tapescript").on('click',function(event) {
 			event.preventDefault();
 			var countInput=$("input[type='radio']").length;
 			var countQuestion= (countInput/4);
+// 			alert(countQuestion);
 			var countCheck=$("input[type='radio']:checked").length;
 			var input=$("input[type='radio'][name='answer[0]']:checked").val();
+			var pageid = $("#pageid").val();
 			
 			if(countCheck < countQuestion){
 				swal("", "Bạn chưa trả lời hết các câu hỏi", "warning");
@@ -77,6 +100,7 @@
 					type : "POST",
 					url : "checkAction",
 					data : $('form').serialize(),
+						
 					success : function(result) {
 						$('#check_form').hide();
 						$("#btn_score").hide();
@@ -125,12 +149,29 @@
 									</div>
 									<%i++; %>
 								</c:forEach>
-								<input type="hidden" name="readexerciseid" value="${readexerciseid }"/>
+								<input type="hidden" id="readexerciseid" name="readexerciseid" value="${readexerciseid }"/>
+								<input type="hidden" id="pageid" name="page" value="${page }"/>
 							</form>
 							<div class="col-sm-6 padding-right">
 								<input type="submit" id="btn_tapescript" value="Tapescript" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
 								<input type="button" id="btn_score" value="Score" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
 								<input type="button" id="btn_again" value="Again" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;">
+<!-- 								<input type="button" id="btn_again" value="Prev" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;"> -->
+<!-- 								<input type="button" id="btn_next" value="Next" class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;"> -->
+								<c:if test="${page ==1 }">
+									<a class="btn btn-default disabled" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="listReadQuestion?readexercise=${readexerciseid }&page=${page-1 }">Prev</a>
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="listReadQuestion?readexercise=${readexerciseid }&page=${page+1 }">Next</a>
+								</c:if>
+								<c:if test="${page>1 && page<maxpage }">
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="listReadQuestion?readexercise=${readexerciseid }&page=${page-1 }">Prev</a>
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="listReadQuestion?readexercise=${readexerciseid }&page=${page+1 }">Next</a>
+								</c:if>
+								<c:if test="${page == maxpage }">
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="listReadQuestion?readexercise=${readexerciseid }&page=${page-1 }">Prev</a>
+									<a class="btn btn-default disabled" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="listReadQuestion?readexercise=${readexerciseid }&page=${page+1 }">Next</a>
+								</c:if>
+<%-- 								<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="listReadQuestion?readexercise=${readexerciseid }&page=${page-1 }">Prev</a> --%>
+								
 							</div>
 						</div>
 					</div>
