@@ -93,6 +93,15 @@
 <body>
 <%int i=0; %>
 
+<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=725974994429230&autoLogAppEvents=1';
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
 <jsp:include page="include/header_middle.jsp"></jsp:include>
 	<section>
 		<div class="container">
@@ -112,15 +121,15 @@
 									src="images/VocabContent/${item.image }">								
 							</div>
 							<div class="col-sm-9 header_bim">
-								<span style="font-size: 21px;">${item.vocabularycontentname}</span>
+								    <b style="font-size: 21px;">${item.vocabularycontentname}</b>
+									<br/>
+<%-- 									<span style="font-size: 16px;">${item.audiogg}</span> --%>
+<!-- 									<br/> -->
+									<span style="color:red; font-size: 16px;">${item.transcribe}</span>
+									<br/>
+									<span style="font-size: 16px;">${item.mean}</span>
 									<br/>
 									<span><audio controls> <source src="Audio/${item.audiomp3 }" type="audio/mpeg"></audio></span>
-									<br/>
-									<span>${item.audiogg}</span>
-									<br/>
-									<span style="color:red">${item.transcribe}</span>
-									<br/>
-									<span>${item.mean}</span>
 							</div>
 
 						</div>
@@ -146,11 +155,15 @@
 <!-- 							  <hr /> -->
 <!-- 						  </div> -->
 					    </c:forEach>
+					    <div class="fb-comments" data-href="http://localhost:8080/WebTiengAnh/" data-numposts="5">
+				        </div>
 					</div>
 				</div>
 				
 				<div class="col-sm-3 menu_sidebar_right">
 					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
+				</div>
+				
 				</div>
 			</div>
 		</div>
