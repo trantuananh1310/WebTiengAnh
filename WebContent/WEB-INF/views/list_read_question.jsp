@@ -183,7 +183,7 @@
 			</div>
 		</div>
 	</section>
-
+<!-- //////////////////////////////////////////////////////////// -->
 	<jsp:include page="include/footer.jsp"></jsp:include>
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>

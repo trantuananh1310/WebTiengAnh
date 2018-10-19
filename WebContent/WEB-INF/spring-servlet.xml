@@ -46,6 +46,7 @@
 		</property>
 		<property name="hibernateProperties">
 			<props>
+<!-- 				hiển thị câu truy vấn ra màn -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
