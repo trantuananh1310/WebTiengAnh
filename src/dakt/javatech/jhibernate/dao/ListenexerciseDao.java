@@ -31,6 +31,14 @@ public class ListenexerciseDao {
 		query.setMaxResults(max);
 		return query.list();
 	}
+	public List<Listenexercise> getListByLevelId(String id, int first, int max)
+	{
+		String hql="From Listenexercise  where levelid ='"+id+"'"; 
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(first);
+		query.setMaxResults(max);
+		return query.list();
+	}
 	public List<Listenexercise> getListByLevelId(String id)
 	{
 		String hql="From Listenexercise  where levelid ='"+id+"'"; 

@@ -37,7 +37,7 @@ public class ListenQuestionController {
 	{
 		List<Listenquestion> lstListenQuestion=ListenQuestionDao.getListByListenExerciseId(ListenExerciseId);
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView=new ModelAndView("list_listen_question");
+		ModelAndView modelView=new ModelAndView("Listen_exercise/list_listen_question");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstListenQuestion", lstListenQuestion);
 		modelView.addObject("ListenExerciseid",ListenExerciseId);
@@ -61,7 +61,7 @@ public class ListenQuestionController {
 				lstAnswerUser.add(au);
 			}
 		}
-		ModelAndView modelView=new ModelAndView(" result_listen_exercise");
+		ModelAndView modelView=new ModelAndView("Listen_exercise/result_listen_exercise");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstListenQuestion",lstListenQuestion);
 		modelView.addObject("lstAnswerUser",lstAnswerUser);
@@ -84,7 +84,7 @@ public class ListenQuestionController {
 				lstAnswerUser.add(au);
 			}
 		}
-		ModelAndView modelView=new ModelAndView("result_listen_exercise_score");
+		ModelAndView modelView=new ModelAndView("Listen_exercise/result_listen_exercise_score");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstListenQuestion",lstListenQuestion);
 		modelView.addObject("lstAnswerUser",lstAnswerUser);

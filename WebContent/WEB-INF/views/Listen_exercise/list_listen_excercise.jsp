@@ -27,33 +27,56 @@
 </head>
 <body>
 
-<jsp:include page="include/header_middle.jsp"></jsp:include>
+<jsp:include page="../include/header_middle.jsp"></jsp:include>
 
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3 menu_sidebar_left">
-					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
+					<jsp:include page="../include/left_sidebar.jsp"></jsp:include>
 				</div>
 				<div class="col-sm-6 padding-right">
 					<div class="features_items">
 						<!--features_items-->
 						<h2 class="title text-center">Features Items-Listen</h2>
-						<div class="container col-sm-12">
+						
 							<c:forEach items="${lstListenExcercise }" var="item">
-								<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }">${item.listenexercisename }</a>
-							</c:forEach>	
-						</div>
+								<div class="container col-sm-12">
+									<div class="col-sm-3 header_bim">
+										<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }">
+										<img alt="" style="width: 150px;" src="images/Listengui/${item.listenexerciseimage }"></a>
+									</div>
+									<div class="col-sm-9 header_bim">
+										<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }">${item.listenexercisename }</a>
+									</div>
+								</div>
+								<div class="container col-sm-12">
+								<hr/>
+								</div>
+							</c:forEach>
+							<div class="container col-sm-12">	
+								<div class="container">
+								  <ul class="pagination">
+								  	 	<c:if test="${Page!=1}" ><li class=><a  href="listListenExcercise?level=${levelid }&Page=${Page-1}">Prev</a></li></c:if>
+								  	 <c:forEach var="item" items="${ListPage}">
+								  	 	<c:if test="${item==Page}" ><li class="active"><a  href="listListenExcercise?level=${levelid }&Page=${item}">${item}</a></li></c:if>
+								  		<c:if test="${item!=Page}" ><li><a href="listListenExcercise?level=${levelid }&Page=${item}">${item}</a></li></c:if>
+								  	 </c:forEach>
+										<c:if test="${Page!=TotalPage}" ><li class=><a  href="listListenExcercise?level=${levelid }&Page=${Page+1}">Next</a></li></c:if>
+								  	 
+								  </ul>
+								</div>
+							</div>
 					</div>
 				</div>
 				<div class="col-sm-3 menu_sidebar_right">
-					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
+					<jsp:include page="../include/right_sidebar.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<jsp:include page="include/footer.jsp"></jsp:include>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
