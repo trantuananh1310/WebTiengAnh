@@ -117,7 +117,7 @@
 						<c:forEach items="${lstContent}" var="item">
 						<div class="container col-sm-12">
 							<div class="col-sm-3 header_bim">
-							<img alt="" style="width: 150px;"
+							<img alt="" style="width: 150px; height: 125px;"
 									src="images/VocabContent/${item.image }">								
 							</div>
 							<div class="col-sm-9 header_bim">

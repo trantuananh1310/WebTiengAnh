@@ -115,7 +115,7 @@
 						<div class="container col-sm-12">
 							<div class="col-sm-3 header_bim">
 							<a href="contentlisten?id=${item.listenguidelineid }">
-							        <img alt="" style="width: 150px;"
+							        <img alt="" style="width: 150px; height: 100px;"
 									src="images/Listengui/${item.listenimage }">
 						    </a>
 								
