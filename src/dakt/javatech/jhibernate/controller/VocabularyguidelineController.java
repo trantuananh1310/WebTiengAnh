@@ -14,9 +14,6 @@ import dakt.javatech.jhibernate.dao.VocabularycontentDao;
 import dakt.javatech.jhibernate.dao.LevelDao;
 import dakt.javatech.jhibernate.entity.Vocabularyguideline;
 import dakt.javatech.jhibernate.entity.Level;
-import dakt.javatech.jhibernate.entity.ListenGuideline;
-import dakt.javatech.jhibernate.entity.Readquestion;
-import dakt.javatech.jhibernate.entity.Vocabularycontent;
 
 @Controller
 public class VocabularyguidelineController {
@@ -41,14 +38,5 @@ public class VocabularyguidelineController {
 		return modelView;
 	}
 	
-	@RequestMapping(value="/contentvocabulary", method=RequestMethod.GET)
-	public ModelAndView getContentById(String vocabid)
-	{
-		List<Vocabularycontent> lstContent=vocabctDao.getListByLevelId(vocabid);
-		List<Level> lstLevel=levelDao.list();		
-		ModelAndView modelView=new ModelAndView("content_vocabulary");
-		modelView.addObject("lstLevel", lstLevel);
-		modelView.addObject("lstContent", lstContent);
-        return modelView;
-	}
+
 }
