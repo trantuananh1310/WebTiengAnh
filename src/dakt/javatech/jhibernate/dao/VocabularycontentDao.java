@@ -54,10 +54,19 @@ public class VocabularycontentDao {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Vocabularycontent>)query.list();
 	}
-	public List<Vocabularycontent> getListByLevelId(String id){
-		String hql="FROM Vocabularycontent WHERE vocabularyguidelineid='"+ id +"'";
+	public List<Vocabularycontent> getListByLevelId(String vocabid){
+		String hql="FROM Vocabularycontent WHERE vocabularyguidelineid='"+ vocabid +"'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Vocabularycontent>)query.list();
+	}
+	
+	public List<Vocabularycontent> getListPage(int first, int max, String vocabctid)
+	{
+		String hql="FROM Vocabularycontent WHERE vocabularyguidelineid='"+ vocabctid +"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(first);
+		query.setMaxResults(max);
+		return query.list();
 	}
 
 
