@@ -28,7 +28,7 @@
 							<ul>
 								<li><a href="listGrammarguideline?level=${m.levelid }">Reading </a></li>
 								<li><a href="listListenguideline?level=${m.levelid }">Listening </a></li>
-								<li><a href="listVocabularyguideline?level=${m.levelid }">Vocabulary </a></li>
+								<li><a href="listVocabularyguideline?level=${m.levelid }&Page=1">Vocabulary </a></li>
 							</ul>
 						</div>
 					</div>

@@ -36,7 +36,7 @@ public class VocabularyContentController {
 	{
 		List<Vocabularycontent> lstContent=vocabctDao.getListByLevelId(vocabid);
 		List<Level> lstLevel=levelDao.list();		
-		ModelAndView modelView=new ModelAndView("content_vocabulary");
+		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/content_vocabulary");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstContent", lstContent);
         return modelView;

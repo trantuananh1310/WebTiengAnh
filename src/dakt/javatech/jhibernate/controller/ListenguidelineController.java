@@ -28,7 +28,7 @@ public class ListenguidelineController {
 	{
 		List<ListenGuideline> lstListen=listenDao.getListByLevelId(level);
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView=new ModelAndView("list_listen_guideline");
+		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/list_listen_guideline");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstListen", lstListen);
 		return modelView;
@@ -40,7 +40,7 @@ public class ListenguidelineController {
 		
 		List<Level> lstLevel=levelDao.list();
 		ListenGuideline  content= listenDao.getListenGuidelineById(id);
-		ModelAndView modelView=new ModelAndView("content_listen");
+		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/content_listen");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("Content", content);
 		
