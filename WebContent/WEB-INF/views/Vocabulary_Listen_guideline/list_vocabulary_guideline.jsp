@@ -159,12 +159,12 @@
 					<c:forEach items="${lstVocab }" var="item">
 						<div class="container col-sm-12">
 							<div class="col-sm-3 header_bim">
-							<a href ="contentvocabulary?vocabid=${item.vocabularyguidelineid}"><img alt="" style="width: 150px; height: 100px;"
+							<a href ="contentvocabulary?vocabid=${item.vocabularyguidelineid}&page=1"><img alt="" style="width: 150px; height: 100px;"
 									src="images/Vocabgui/${item.vocabularyimage }">
 							</a>								
 							</div>
 							<div class="col-sm-9 header_bim">
-								<a href="contentvocabulary?vocabid=${item.vocabularyguidelineid}">${item.vocabularyname }</a>
+								<a href="contentvocabulary?vocabid=${item.vocabularyguidelineid}&page=1">${item.vocabularyname }</a>
 							</div>
 						</div>
 						<div class="container col-sm-12">

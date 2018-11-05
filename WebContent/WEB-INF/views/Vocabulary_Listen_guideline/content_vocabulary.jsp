@@ -136,7 +136,23 @@
 							<hr />
 						</div>
 					    </c:forEach>
-					    	
+					    <input type="hidden" id="vocabularyid" name="vocabularyid" value="${vocabularyid }"/>
+						<input type="hidden" id="pageid" name="page" value="${page }"/>	
+						
+						<div class="col-sm-6 padding-right">
+								<c:if test="${page ==1 }">
+									<a class="btn btn-default disabled" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page-1 }">Prev</a>
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page+1 }">Next</a>
+								</c:if>
+								<c:if test="${page>1 && page<maxpage }">
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page-1 }">Prev</a>
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page+1 }">Next</a>
+								</c:if>
+								<c:if test="${page == maxpage }">
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page-1 }">Prev</a>
+									<a class="btn btn-default disabled" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page+1 }">Next</a>
+								</c:if>								
+						</div>
 						
 					    <div class="fb-comments" data-href="http://localhost:8080/WebTiengAnh/" data-numposts="5">
 				        </div>

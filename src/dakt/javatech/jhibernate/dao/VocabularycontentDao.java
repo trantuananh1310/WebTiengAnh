@@ -60,9 +60,9 @@ public class VocabularycontentDao {
 		return (List<Vocabularycontent>)query.list();
 	}
 	
-	public List<Vocabularycontent> getListPage(int first, int max, String vocabctid)
+	public List<Vocabularycontent> getListPage(int first, int max, String vocabid)
 	{
-		String hql="FROM Vocabularycontent WHERE vocabularyguidelineid='"+ vocabctid +"'";
+		String hql="FROM Vocabularycontent WHERE vocabularyguidelineid='"+ vocabid +"'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setFirstResult(first);
 		query.setMaxResults(max);
