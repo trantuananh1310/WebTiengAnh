@@ -102,12 +102,12 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 
-<jsp:include page="include/header_middle.jsp"></jsp:include>
+<jsp:include page="../include/header_middle.jsp"></jsp:include>
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3 menu_sidebar_left">
-					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
+					<jsp:include page="../include/left_sidebar.jsp"></jsp:include>
 				</div>
 				
 				<div class="col-sm-6 padding-right">
@@ -136,7 +136,23 @@
 							<hr />
 						</div>
 					    </c:forEach>
-					    	
+					    <input type="hidden" id="vocabularyid" name="vocabularyid" value="${vocabularyid }"/>
+						<input type="hidden" id="pageid" name="page" value="${page }"/>	
+						
+						<div class="col-sm-6 padding-right">
+								<c:if test="${page ==1 }">
+									<a class="btn btn-default disabled" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page-1 }">Prev</a>
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page+1 }">Next</a>
+								</c:if>
+								<c:if test="${page>1 && page<maxpage }">
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page-1 }">Prev</a>
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page+1 }">Next</a>
+								</c:if>
+								<c:if test="${page == maxpage }">
+									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page-1 }">Prev</a>
+									<a class="btn btn-default disabled" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page+1 }">Next</a>
+								</c:if>								
+						</div>
 						
 					    <div class="fb-comments" data-href="http://localhost:8080/WebTiengAnh/" data-numposts="5">
 				        </div>
@@ -144,7 +160,7 @@
 				</div>
 				
 				<div class="col-sm-3 menu_sidebar_right">
-					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
+					<jsp:include page="../include/right_sidebar.jsp"></jsp:include>
 				</div>
 				
 				</div>
@@ -152,7 +168,7 @@
 		</div>
 	</section>
 
-	<jsp:include page="include/footer.jsp"></jsp:include>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.scrollUp.min.js"></script>

@@ -99,13 +99,13 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 
-<jsp:include page="include/header_middle.jsp"></jsp:include>
+<jsp:include page="../include/header_middle.jsp"></jsp:include>
 
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3 menu_sidebar_left">
-					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
+					<jsp:include page="../include/left_sidebar.jsp"></jsp:include>
 				</div>
 				<div class="col-sm-9 padding-right">
 					<div class="features_items">
@@ -129,13 +129,13 @@
 							<hr />
 						</div>
 					    </c:forEach>
-					    <div class="fb-comments" data-href="http://localhost:8080/WebTiengAnh/" data-numposts="5">
-					    </div>
+<!-- 					    <div class="fb-comments" data-href="http://localhost:8080/WebTiengAnh/" data-numposts="5"> -->
+<!-- 					    </div> -->
 								    					
 						</div>
 					</div>
 				<div class="col-sm-3 menu_sidebar_right">
-					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
+					<jsp:include page="../include/right_sidebar.jsp"></jsp:include>
 				</div>
 				</div>
 				
@@ -143,7 +143,7 @@
 		</div>
 	</section>
 
-	<jsp:include page="include/footer.jsp"></jsp:include>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>

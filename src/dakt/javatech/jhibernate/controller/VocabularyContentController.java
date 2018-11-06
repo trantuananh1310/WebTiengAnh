@@ -19,7 +19,7 @@ import dakt.javatech.jhibernate.entity.Vocabularycontent;
 public class VocabularyContentController {
 
 
-	public static final int COUNT_PAGE = 2;
+	public static final int COUNT_PAGE = 4;
 	
 	
 	
@@ -31,47 +31,70 @@ public class VocabularyContentController {
 	
 	
 	
+//	@RequestMapping(value="/contentvocabulary", method=RequestMethod.GET)
+//	public ModelAndView getContentById(String vocabid)
+//	{
+//		List<Vocabularycontent> lstContent=vocabctDao.getListByLevelId(vocabid);
+//		List<Level> lstLevel=levelDao.list();		
+//		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/content_vocabulary");
+//		modelView.addObject("lstLevel", lstLevel);
+//		modelView.addObject("lstContent", lstContent);
+//        return modelView;
+//	}
+	
 	@RequestMapping(value="/contentvocabulary", method=RequestMethod.GET)
-	public ModelAndView getContentById(String vocabid)
+	public ModelAndView getAllMembers(String page, String vocabid)
 	{
+		int sumRow=0;
+		int maxPage=0;
+		int pageid= Integer.parseInt(page);
+		int count=COUNT_PAGE;
+		if(pageid==1){
+		}
+		else{
+			pageid=pageid-1;
+			pageid=pageid*count +1;
+		}
 		List<Vocabularycontent> lstContent=vocabctDao.getListByLevelId(vocabid);
-		List<Level> lstLevel=levelDao.list();		
-		ModelAndView modelView=new ModelAndView("content_vocabulary");
+		List<Vocabularycontent> lstContentPage=vocabctDao.getListPage((pageid-1), count, vocabid);
+		List<Level> lstLevel=levelDao.list();
+		sumRow = lstContent.size();
+		if(sumRow%count != 0){
+			maxPage = (sumRow/count)+1;
+		}
+		else{
+			maxPage = (sumRow/count);
+		}
+		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/content_vocabulary");
 		modelView.addObject("lstLevel", lstLevel);
-		modelView.addObject("lstContent", lstContent);
-        return modelView;
+		modelView.addObject("lstContent", lstContentPage);
+		modelView.addObject("vocabularyid",vocabid);
+		modelView.addObject("page", page);
+		modelView.addObject("maxpage", maxPage);
+		return modelView;
 	}
 	
-	
-//	@RequestMapping(value="/contentvocabulary", method=RequestMethod.GET)
-//	public ModelAndView getContentById(String page, String vocabid)
+//	@RequestMapping(value="/listContentPage", method=RequestMethod.GET)
+//	public ModelAndView getListPage(String page, String vocabid)
 //	{
-//		int sumRow=0;
-//		int maxPage=0;
 //		int pageid= Integer.parseInt(page);
-//		int count=COUNT_PAGE;
+//		int count=2;
 //		if(pageid==1){
+//			
 //		}
 //		else{
 //			pageid=pageid-1;
 //			pageid=pageid*count +1;
 //		}
-//		List<Vocabularycontent> lstContent=vocabctDao.getListByLevelId(vocabid);
-//		List<Vocabularycontent> lstContentPage=vocabctDao.getListPage((pageid-1), count, vocabid);
+//		
+//		List<Vocabularycontent> lstContent=vocabctDao.list((pageid-1), count);
 //		List<Level> lstLevel=levelDao.list();
-//		sumRow = lstContent.size();
-//		if(sumRow%count != 0){
-//			maxPage = (sumRow/count)+1;
-//		}
-//		else{
-//			maxPage = (sumRow/count);
-//		}
-//		ModelAndView modelView=new ModelAndView("content_vocabulary");
+//		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/content_vocabulary_page");
 //		modelView.addObject("lstLevel", lstLevel);
 //		modelView.addObject("lstContent", lstContent);
-//		modelView.addObject("vocabularycontent",vocabid);
+//		modelView.addObject("vocabularyid",vocabid);
 //		modelView.addObject("page", page);
-//		modelView.addObject("maxpage", maxPage);
 //		return modelView;
 //	}
+
 }

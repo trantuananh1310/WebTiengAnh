@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import dakt.javatech.jhibernate.entity.ListenGuideline;
+import dakt.javatech.jhibernate.entity.Listenexercise;
 import dakt.javatech.jhibernate.entity.Vocabularyguideline;
 
 @Component 
@@ -74,6 +75,15 @@ public class VocabularyguidelineDao {
 		String hql="FROM Vocabularyguideline WHERE levelid='"+ level +"'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Vocabularyguideline>)query.list();
+	}
+	
+	public List<Vocabularyguideline> getListByLevelId(String id, int first, int max)
+	{
+		String hql="From Vocabularyguideline  WHERE levelid ='"+id+"'"; 
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(first);
+		query.setMaxResults(max);
+		return query.list();
 	}
 	
 	
