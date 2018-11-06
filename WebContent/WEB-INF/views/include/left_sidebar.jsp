@@ -26,7 +26,7 @@
 					<div id="share${m.levelid }" class="panel-collapse collapse">
 						<div class="panel-body" style="padding-bottom: 0px;">
 							<ul>
-								<li><a href="listGrammarguideline?level=${m.levelid }">Reading </a></li>
+								<li><a href="listGrammarguideline?level=${m.levelid }&page=1">Reading </a></li>
 								<li><a href="listListenguideline?level=${m.levelid }">Listening </a></li>
 								<li><a href="listVocabularyguideline?level=${m.levelid }">Vocabulary </a></li>
 							</ul>

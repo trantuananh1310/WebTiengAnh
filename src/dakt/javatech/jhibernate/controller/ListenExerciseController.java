@@ -20,8 +20,8 @@ import dakt.javatech.jhibernate.entity.Readexercise;
 @Controller
 public class ListenExerciseController {
 
-	private static final int Count_Exc_Page=5;
-	private static final int Count_Silde=5;
+	private static final int Count_Exc_Page=2;
+	private static final int Count_Silde=3;
 	@Autowired
 	LevelDao levelDao;
 	
