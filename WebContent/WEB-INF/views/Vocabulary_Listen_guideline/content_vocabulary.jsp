@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Content Vocabulary</title>
 
 <link rel="stylesheet" href="css/sweetalert.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">

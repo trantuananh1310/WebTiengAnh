@@ -27,7 +27,7 @@
 						<div class="panel-body" style="padding-bottom: 0px;">
 							<ul>
 								<li><a href="listGrammarguideline?level=${m.levelid }&page=1">Reading </a></li>
-								<li><a href="listListenguideline?level=${m.levelid }">Listening </a></li>
+								<li><a href="listListenguideline?level=${m.levelid }&Page=1">Listening </a></li>
 								<li><a href="listVocabularyguideline?level=${m.levelid }&Page=1">Vocabulary </a></li>
 							</ul>
 						</div>

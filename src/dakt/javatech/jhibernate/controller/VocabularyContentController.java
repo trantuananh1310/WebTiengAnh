@@ -74,27 +74,5 @@ public class VocabularyContentController {
 		return modelView;
 	}
 	
-//	@RequestMapping(value="/listContentPage", method=RequestMethod.GET)
-//	public ModelAndView getListPage(String page, String vocabid)
-//	{
-//		int pageid= Integer.parseInt(page);
-//		int count=2;
-//		if(pageid==1){
-//			
-//		}
-//		else{
-//			pageid=pageid-1;
-//			pageid=pageid*count +1;
-//		}
-//		
-//		List<Vocabularycontent> lstContent=vocabctDao.list((pageid-1), count);
-//		List<Level> lstLevel=levelDao.list();
-//		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/content_vocabulary_page");
-//		modelView.addObject("lstLevel", lstLevel);
-//		modelView.addObject("lstContent", lstContent);
-//		modelView.addObject("vocabularyid",vocabid);
-//		modelView.addObject("page", page);
-//		return modelView;
-//	}
 
 }
