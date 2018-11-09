@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Listenning</title>
 
 <link rel="stylesheet" href="css/sweetalert.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -129,6 +129,19 @@
 							<hr />
 						</div>
 					    </c:forEach>
+					    <div class="container col-sm-12">	
+								<div class="container">
+								  <ul class="pagination">
+								  	 	<c:if test="${Page!=1}" ><li class=><a  href="listListenguideline?level=${levelid }&Page=${Page-1}">Prev</a></li></c:if>
+								  	 <c:forEach var="item" items="${ListPage}">
+								  	 	<c:if test="${item==Page}" ><li class="active"><a  href="listListenguideline?level=${levelid }&Page=${item}">${item}</a></li></c:if>
+								  		<c:if test="${item!=Page}" ><li><a href="listListenguideline?level=${levelid }&Page=${item}">${item}</a></li></c:if>
+								  	 </c:forEach>
+										<c:if test="${Page!=TotalPage}" ><li class=><a  href="listListenguideline?level=${levelid }&Page=${Page+1}">Next</a></li></c:if>
+								  	 
+								  </ul>
+								</div>
+						</div>
 <!-- 					    <div class="fb-comments" data-href="http://localhost:8080/WebTiengAnh/" data-numposts="5"> -->
 <!-- 					    </div> -->
 								    					
