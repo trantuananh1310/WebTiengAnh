@@ -35,26 +35,48 @@
 				<div class="col-sm-3 menu_sidebar_left">
 					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
 				</div>
-				<div class="col-sm-6 padding-right">
+				<div class="col-sm-9 padding-right">
 					<div class="features_items">
 						<!--features_items-->
-						<h2 class="title text-center">Reading level 250-500</h2>
-						<table border="1">
-							<tr>
-								<td>TÊN BÀI</td>
-								<td>LEVEL</td>
-							</tr>
-							<c:forEach items="${lstGrammar }" var="item">
-							<tr>
-								<td>${item.grammarname }</td>
-								<td>${item.level.levelname }</td>
-							</tr>	
-							</c:forEach>	
-						</table>
+						<h2 class="title text-center">Read</h2>
+						<c:forEach items="${lstGrammar }" var="item">
+						<div class="container col-sm-12">
+							<div class="col-sm-3 header_bim">
+							<a href="contentGrammar?id=${item.grammarguidelineid }">
+							        <img alt="" style="width: 150px; height: 100px;"
+									src="images/grammargui/${item.grammarimage }">
+						    </a>
+								
+							</div>
+							<div class="col-sm-9 header_bim">
+								<a href="contentGrammar?id=${item.grammarguidelineid }">${item.grammarname }</a>
+							</div>
+
+						</div>
+						<div class="container col-sm-12">
+							<hr />
+						</div>
+					    </c:forEach>
+					   <div>
+					   <ul class="pagination">
+					   <c:forEach items="${List_Page }" var ="item">
+					  
+					   <c:if test="${item==page }">
+					   <li class="active"><a href="listGrammarguideline?level=1&page=${item }">${item}</a></li>
+					   </c:if>
+					   <c:if test="${item!=page }">
+					    <li><a href="listGrammarguideline?level=1&page=${item }">${item}</a></li>
+					   </c:if>
+					   </c:forEach>
+						  
+						  
+						</ul>
+					   </div>
+								    					
+						</div>
 					</div>
-				</div>
 				<div class="col-sm-3 menu_sidebar_right">
-					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
+					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>

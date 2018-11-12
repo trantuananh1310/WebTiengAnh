@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import dakt.javatech.jhibernate.entity.Grammarguideline;
+import dakt.javatech.jhibernate.entity.Listenexercise;
 
 @Component 
 @Transactional
@@ -74,6 +75,14 @@ public class GrammarguidelineDao {
 		String hql="FROM Grammarguideline WHERE levelid='"+ level +"'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Grammarguideline>)query.list();
+	}
+	public List<Grammarguideline> getListByLevelId(String id, int first, int max)
+	{
+		String hql="From Grammarguideline  where levelid ='"+id+"'"; 
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(first);
+		query.setMaxResults(max);
+		return query.list();
 	}
 
 }

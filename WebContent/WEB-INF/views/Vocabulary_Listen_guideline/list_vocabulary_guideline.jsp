@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Vocabulary</title>
 
 <link rel="stylesheet" href="css/sweetalert.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -144,34 +144,61 @@
 	  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=725974994429230&autoLogAppEvents=1';
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-
-	<jsp:include page="include/header_middle.jsp"></jsp:include>
+	<jsp:include page="../include/header_middle.jsp"></jsp:include>
 
 	<section>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3 menu_sidebar_left">
-					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
+				<jsp:include page="../include/left_sidebar.jsp"></jsp:include>
+			</div>
+			<div class="col-sm-6 padding-right">
+				<div class="features_items">
+					<!--features_items-->
+					<h2 class="title text-center">Vocabulary</h2>
+					<c:forEach items="${lstVocab }" var="item">
+						<div class="container col-sm-12">
+							<div class="col-sm-3 header_bim">
+							<a href ="contentvocabulary?vocabid=${item.vocabularyguidelineid}&page=1"><img alt="" style="width: 150px; height: 100px;"
+									src="images/Vocabgui/${item.vocabularyimage }">
+							</a>								
+							</div>
+							<div class="col-sm-9 header_bim">
+								<a href="contentvocabulary?vocabid=${item.vocabularyguidelineid}&page=1">${item.vocabularyname }</a>
+							</div>
+						</div>
+						<div class="container col-sm-12">
+							<hr />
+						</div>
+					</c:forEach>
+					<div class="container col-sm-12">	
+								<div class="container">
+								  <ul class="pagination">
+								  	 	<c:if test="${Page!=1}" ><li class=><a  href="listVocabularyguideline?level=${levelid }&Page=${Page-1}">Prev</a></li></c:if>
+								  	 <c:forEach var="item" items="${ListPage}">
+								  	 	<c:if test="${item==Page}" ><li class="active"><a  href="listVocabularyguideline?level=${levelid }&Page=${item}">${item}</a></li></c:if>
+								  		<c:if test="${item!=Page}" ><li><a href="listVocabularyguideline?level=${levelid }&Page=${item}">${item}</a></li></c:if>
+								  	 </c:forEach>
+										<c:if test="${Page!=TotalPage}" ><li class=><a  href="listVocabularyguideline?level=${levelid }&Page=${Page+1}">Next</a></li></c:if>
+								  	 
+								  </ul>
+								</div>
+					</div>
+<!-- 					<div class="fb-comments" data-href="http://localhost:8080/WebTiengAnh/" data-numposts="5"> -->
+<!-- 					</div> -->
+
 				</div>
-				<div class="col-sm-9 padding-right">
-					<div class="features_items">
-						<!--features_items-->
-						<h2 class="title text-center">Listen</h2>
-							${Content.content}			
-					</div>	
-					<div class="fb-comments" data-href="http://localhost:8080/WebTiengAnh/" data-numposts="5">
-					</div>				
-				</div>
-				<div class="col-sm-3 menu_sidebar_right">
-					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
-				</div>
-	  </div>
-				
+			</div>
+			<div class="col-sm-3 menu_sidebar_right">
+				<jsp:include page="../include/right_sidebar.jsp"></jsp:include>
+			</div>
 		</div>
+		
+	</div>
 	</div>
 	</section>
 
-	<jsp:include page="include/footer.jsp"></jsp:include>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>

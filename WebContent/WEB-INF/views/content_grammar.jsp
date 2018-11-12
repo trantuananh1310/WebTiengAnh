@@ -110,25 +110,8 @@
 				<div class="col-sm-9 padding-right">
 					<div class="features_items">
 						<!--features_items-->
-						<h2 class="title text-center">Listen</h2>
-						<c:forEach items="${lstListen }" var="item">
-						<div class="container col-sm-12">
-							<div class="col-sm-3 header_bim">
-							<a href="contentlisten?id=${item.listenguidelineid }">
-							        <img alt="" style="width: 150px; height: 100px;"
-									src="images/Listengui/${item.listenimage }">
-						    </a>
-								
-							</div>
-							<div class="col-sm-9 header_bim">
-								<a href="contentlisten?id=${item.listenguidelineid }">${item.listenname }</a>
-							</div>
-
-						</div>
-						<div class="container col-sm-12">
-							<hr />
-						</div>
-					    </c:forEach>
+						<h2 class="title text-center">Read</h2>
+						${item.content}
 					    <div class="fb-comments" data-href="http://localhost:8080/WebTiengAnh/" data-numposts="5">
 					    </div>
 								    					
