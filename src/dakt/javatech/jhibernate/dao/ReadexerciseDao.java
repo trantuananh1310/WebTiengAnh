@@ -74,5 +74,14 @@ public class ReadexerciseDao {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Readexercise>)query.list();
 	}
+	
+	public List<Readexercise> getListByLevelIdPage(String level, int first, int max)
+	{
+		String hql="From Readexercise  where levelid ='"+level+"'"; 
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(first);
+		query.setMaxResults(max);
+		return query.list();
+	}
 
 }
