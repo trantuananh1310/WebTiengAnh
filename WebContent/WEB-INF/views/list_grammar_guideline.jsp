@@ -59,8 +59,10 @@
 					    </c:forEach>
 					   <div>
 					   <ul class="pagination">
+					   <c:if test="${page>1 }">
+					    <li><a href="listGrammarguideline?level=1&page=${page-1 }">Prev</a></li>
+					   </c:if>
 					   <c:forEach items="${List_Page }" var ="item">
-					  
 					   <c:if test="${item==page }">
 					   <li class="active"><a href="listGrammarguideline?level=1&page=${item }">${item}</a></li>
 					   </c:if>
@@ -68,8 +70,10 @@
 					    <li><a href="listGrammarguideline?level=1&page=${item }">${item}</a></li>
 					   </c:if>
 					   </c:forEach>
-						  
-						  
+					   <c:if test="${page<TotalPage }">
+					   <li><a href="listGrammarguideline?level=1&page=${page+1 }">Next</a></li>
+					   </c:if>
+						   
 						</ul>
 					   </div>
 								    					

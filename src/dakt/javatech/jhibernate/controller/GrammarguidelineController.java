@@ -26,6 +26,7 @@ public class GrammarguidelineController {
 	LevelDao levelDao;
 	
 	private static final int Count_Exc_Page=2;
+	private static final int Count_Silde=3;
 
 	@RequestMapping(value="/listGrammarguideline", method=RequestMethod.GET)
 	public ModelAndView getAllMembers(String level, int page)
@@ -40,11 +41,23 @@ public class GrammarguidelineController {
 		if(Total_Exc%Count_Exc_Page==0) Total_Page=Total_Exc/Count_Exc_Page;
 		else Total_Page=Total_Exc/Count_Exc_Page +1;
 		
+		// Lấy tổng silde 
+		int Total_Silde;
+		 Total_Silde=Total_Page/Count_Silde ;
+		// Silde hiện tại
+		int Silde_Now;
+		Silde_Now=page/Count_Silde;
 		//Lấy ra list tên trang
 		List<Integer> List_Page = new ArrayList<Integer>();
-		for(int i =1; i<=Total_Page;i++)
-		{
-			List_Page.add(i);
+		if(Silde_Now==Total_Silde){
+			for( int i=(Silde_Now)*Count_Silde+1;i<=Total_Page;i++){
+				List_Page.add(i);
+			}
+		}
+		else{
+			for( int i=(Silde_Now)*Count_Silde+1;i<=(Silde_Now+1)*Count_Silde;i++){
+				List_Page.add(i);
+			}
 		}
 		
 		List<Grammarguideline> lstGrammar=gramDao.getListByLevelId(level,Count_Exc_Page*page,Count_Exc_Page);
@@ -53,6 +66,7 @@ public class GrammarguidelineController {
 		ModelAndView modelView=new ModelAndView("list_grammar_guideline");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstGrammar", lstGrammar);
+		modelView.addObject("TotalPage",Total_Page );
 		modelView.addObject("List_Page", List_Page);
 		modelView.addObject("page", page+1);
 		return modelView;
