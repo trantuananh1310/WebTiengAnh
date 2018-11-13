@@ -56,6 +56,20 @@
 							</div>
 						</c:forEach>
 						
+						<div class="container col-sm-12">	
+								<div class="container">
+								  <ul class="pagination">
+								  	 <c:if test="${Page!=1}" ><li class=><a  href="listReadExercise?level=${levelid }&Page=${Page-1}">Prev</a></li></c:if>
+								  	 <c:forEach var="item" items="${ListPage}">
+								  	 	<c:if test="${item==Page}" ><li class="active"><a  href="listReadExercise?level=${levelid }&Page=${item}">${item}</a></li></c:if>
+								  		<c:if test="${item!=Page}" ><li><a href="listReadExercise?level=${levelid }&Page=${item}">${item}</a></li></c:if>
+								  	 </c:forEach>
+									<c:if test="${Page!=TotalPage}" ><li class=><a  href="listReadExercise?level=${levelid }&Page=${Page+1}">Next</a></li></c:if>
+								  	 
+								  </ul>
+								</div>
+							</div>
+						
 					</div>
 				</div>
 				<div class="col-sm-3 menu_sidebar_right">

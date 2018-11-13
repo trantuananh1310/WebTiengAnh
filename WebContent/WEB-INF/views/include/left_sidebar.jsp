@@ -52,7 +52,7 @@
 					<div id="exercise${m.levelid }" class="panel-collapse collapse">
 						<div class="panel-body" style="padding-bottom: 0px;">
 							<ul>
-								<li><a href="listReadExercise?level=${m.levelid }">Reading </a></li>
+								<li><a href="listReadExercise?level=${m.levelid }&Page=1">Reading </a></li>
 								<li><a href="listListenExcercise?level=${m.levelid }&Page=1">Listening </a></li>
 							</ul>
 						</div>
