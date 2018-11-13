@@ -26,6 +26,8 @@ import dakt.javatech.jhibernate.entity.Readquestion;
 @Controller
 public class ListenQuestionController {
 
+	public static final int COUNT_PAGE = 2;
+
 	@Autowired
 	LevelDao levelDao;
 	
@@ -33,21 +35,36 @@ public class ListenQuestionController {
 	ListenquestionDao ListenQuestionDao;
 	
 	@RequestMapping(value="/ListListenQuestion", method=RequestMethod.GET)
-	public ModelAndView getAllMembers(String ListenExerciseId)
+	public ModelAndView getAllMembers(String ListenExerciseId,int page)
 	{
-		List<Listenquestion> lstListenQuestion=ListenQuestionDao.getListByListenExerciseId(ListenExerciseId);
+		int sumRow=0;
+		int maxPage=0;
+		int count=COUNT_PAGE;
+		page=page-1;
+		List<Listenquestion> lstListenQuestion=ListenQuestionDao.getListByListenExerciseId(ListenExerciseId,page*COUNT_PAGE,COUNT_PAGE);
 		List<Level> lstLevel=levelDao.list();
+		sumRow = lstListenQuestion.size();
+		if(sumRow%count != 0){
+			maxPage = (sumRow/count)+1;
+		}
+		else{
+			maxPage = (sumRow/count);
+		}
 		ModelAndView modelView=new ModelAndView("Listen_exercise/list_listen_question");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstListenQuestion", lstListenQuestion);
 		modelView.addObject("ListenExerciseid",ListenExerciseId);
+		modelView.addObject("page", page+1);
+		modelView.addObject("maxpage", maxPage);
 		return modelView;
 	}
 	
 	@RequestMapping(value="/AnswerListen_Tapescript", method=RequestMethod.POST)
-	public ModelAndView getAllMembers(HttpServletRequest request, String ListenExerciseid)
+	public ModelAndView getAllMembers(HttpServletRequest request, String ListenExerciseid,int page)
 	{
-		List<Listenquestion> lstListenQuestion=ListenQuestionDao.getListByListenExerciseId(ListenExerciseid);
+		page=page-1;
+		int count=COUNT_PAGE;
+		List<Listenquestion> lstListenQuestion=ListenQuestionDao.getListByListenExerciseId(ListenExerciseid,page*COUNT_PAGE,COUNT_PAGE);
 		List<Level> lstLevel=levelDao.list();
 		int countrow=lstListenQuestion.size();
 		List<AnswerUser> lstAnswerUser = new ArrayList<>();
@@ -68,9 +85,10 @@ public class ListenQuestionController {
 		return modelView;
 	}
 	@RequestMapping(value="/AnswerListen_Score", method=RequestMethod.POST)
-	public ModelAndView check_Answer_Score(HttpServletRequest request, String ListenExerciseid)
+	public ModelAndView check_Answer_Score(HttpServletRequest request, String ListenExerciseid,int page)
 	{
-		List<Listenquestion> lstListenQuestion=ListenQuestionDao.getListByListenExerciseId(ListenExerciseid);
+		page=page-1;
+		List<Listenquestion> lstListenQuestion=ListenQuestionDao.getListByListenExerciseId(ListenExerciseid,page*COUNT_PAGE,COUNT_PAGE);
 		List<Level> lstLevel=levelDao.list();
 		int countrow=lstListenQuestion.size();
 		List<AnswerUser> lstAnswerUser = new ArrayList<>();

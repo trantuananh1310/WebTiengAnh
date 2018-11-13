@@ -7,7 +7,12 @@ import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+
 
 import dakt.javatech.jhibernate.entity.Listenexercise;
 
@@ -41,13 +46,22 @@ public class ListenexerciseDao {
 	}
 	public List<Listenexercise> getListByLevelId(String id)
 	{
-		String hql="From Listenexercise  where levelid ='"+id+"'"; 
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListListenexerciseByLevelId/levelId="+id;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Listenexercise>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Listenexercise>>(){});
+		List<Listenexercise> lstEmp = rateResponse.getBody();
+		return lstEmp;
+		
 	}
 	public Listenexercise getById(int id)
 	{
-		return (Listenexercise)sessionFactory.getCurrentSession().get(Listenexercise.class, id);
+		String uri="http://localhost:8084/Service/getListListenexerciseById/id="+id;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<Listenexercise> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<Listenexercise>(){});
+		Listenexercise lstEmp = rateResponse.getBody();
+		return lstEmp;
 	}
 	public void add(Listenexercise sp)
 	{

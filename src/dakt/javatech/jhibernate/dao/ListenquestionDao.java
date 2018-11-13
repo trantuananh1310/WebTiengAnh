@@ -7,8 +7,13 @@ import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
+import dakt.javatech.jhibernate.entity.Listenexercise;
 import dakt.javatech.jhibernate.entity.Listenquestion;
 import dakt.javatech.jhibernate.entity.Readquestion;
 
@@ -19,22 +24,32 @@ public class ListenquestionDao {
 	private SessionFactory sessionFactory;
 	public List<Listenquestion> list()
 	{
-		String hql="FROM Listenquestion";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListListenquestion";
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Listenquestion>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Listenquestion>>(){});
+		List<Listenquestion> lst = rateResponse.getBody();
+		return lst;
 	}
 	
 	public List<Listenquestion> list(int first, int max)
 	{
-		String hql="FROM Listenquestion";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(first);
-		query.setMaxResults(max);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListListenquestion/first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Listenquestion>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Listenquestion>>(){});
+		List<Listenquestion> lst = rateResponse.getBody();
+		return lst;
 	}
 	public Listenquestion getById(int id)
 	{
-		return (Listenquestion)sessionFactory.getCurrentSession().get(Listenquestion.class, id);
+
+		String uri="http://localhost:8084/Service/getListListenquestion/id="+id;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<Listenquestion> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<Listenquestion>(){});
+		Listenquestion item = rateResponse.getBody();
+		return item;
 	}
 	public void add(Listenquestion sp)
 	{
@@ -70,10 +85,13 @@ public class ListenquestionDao {
 		return (List<Listenquestion>)query.list();
 	}
 
-	public List<Listenquestion> getListByListenExerciseId(String ListenExerciseId) {
-		String hql="From Listenquestion where listenexerciseid ='"+ListenExerciseId +"'";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (List<Listenquestion>)query.list();
+	public List<Listenquestion> getListByListenExerciseId(String ListenExerciseId,int first, int max) {
+		String uri="http://localhost:8084/Service/getListByListenExerciseId/ListenExerciseId="+ListenExerciseId+"&first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Listenquestion>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Listenquestion>>(){});
+		List<Listenquestion> lst = rateResponse.getBody();
+		return lst;
 	}
 
 }
