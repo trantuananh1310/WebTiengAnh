@@ -43,11 +43,11 @@
 							<c:forEach items="${lstListenExcercise }" var="item">
 								<div class="container col-sm-12">
 									<div class="col-sm-3 header_bim">
-										<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }">
-										<img alt="" style="width: 150px;" src="images/Listengui/${item.listenexerciseimage }"></a>
+										<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }&page=1">
+										<img alt="" style="width: 150px;" src="images/listenexercises/${item.listenexerciseimage }"></a>
 									</div>
 									<div class="col-sm-9 header_bim">
-										<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }">${item.listenexercisename }</a>
+										<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }&page=1">${item.listenexercisename }</a>
 									</div>
 								</div>
 								<div class="container col-sm-12">

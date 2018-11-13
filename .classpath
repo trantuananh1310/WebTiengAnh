@@ -71,5 +71,13 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/sqljdbc4-2.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/standard-1.1.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-8.0.12.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpclient-4.5.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpclient-cache-4.5.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpclient-win-4.5.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpcore-4.4.10.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpmime-4.5.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-core-asl-1.9.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-databind-2.9.5.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-mapper-asl-1.9.7.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
