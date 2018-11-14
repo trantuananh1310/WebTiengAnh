@@ -38,11 +38,12 @@ public class ListenexerciseDao {
 	}
 	public List<Listenexercise> getListByLevelId(String id, int first, int max)
 	{
-		String hql="From Listenexercise  where levelid ='"+id+"'"; 
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(first);
-		query.setMaxResults(max);
-		return query.list();
+		String uri="http://localhost:8084/Service/getLstListenexerciseById/id="+id+"&first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Listenexercise>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Listenexercise>>(){});
+		List<Listenexercise> lstEmp = rateResponse.getBody();
+		return lstEmp;
 	}
 	public List<Listenexercise> getListByLevelId(String id)
 	{
