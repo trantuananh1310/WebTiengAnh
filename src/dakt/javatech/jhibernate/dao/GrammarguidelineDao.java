@@ -7,7 +7,11 @@ import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import dakt.javatech.jhibernate.entity.Grammarguideline;
 import dakt.javatech.jhibernate.entity.Listenexercise;
@@ -20,9 +24,12 @@ public class GrammarguidelineDao {
 	
 	public List<Grammarguideline> list()
 	{
-		String hql="FROM Grammarguideline";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListGrammarguideline";
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Grammarguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Grammarguideline>>(){});
+		List<Grammarguideline> lstEmp = rateResponse.getBody();
+		return lstEmp;
 	}
 	
 	public List<Grammarguideline> list(int first, int max)
@@ -72,17 +79,21 @@ public class GrammarguidelineDao {
 	}
 	
 	public List<Grammarguideline> getListByLevelId(String level){
-		String hql="FROM Grammarguideline WHERE levelid='"+ level +"'";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (List<Grammarguideline>)query.list();
+		String uri="http://localhost:8084/Service/getListListenexerciseByLevelId/levelId="+level;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Grammarguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Grammarguideline>>(){});
+		List<Grammarguideline> lstEmp = rateResponse.getBody();
+		return lstEmp;
 	}
 	public List<Grammarguideline> getListByLevelId(String id, int first, int max)
 	{
-		String hql="From Grammarguideline  where levelid ='"+id+"'"; 
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(first);
-		query.setMaxResults(max);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListGrammarguidelineByLevelId/LevelId="+id+"&first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Grammarguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Grammarguideline>>(){});
+		List<Grammarguideline> lstEmp = rateResponse.getBody();
+		return lstEmp;
 	}
 
 }

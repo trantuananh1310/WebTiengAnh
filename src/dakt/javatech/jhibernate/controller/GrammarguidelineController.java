@@ -29,7 +29,7 @@ public class GrammarguidelineController {
 	private static final int Count_Silde=3;
 
 	@RequestMapping(value="/listGrammarguideline", method=RequestMethod.GET)
-	public ModelAndView getAllMembers(String level, int page)
+	public ModelAndView getListGrammarguideline1(String level, int page)
 	{
 		page=page-1;
 		//  lấy tổng các chủ đề
