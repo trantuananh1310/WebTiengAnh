@@ -7,7 +7,11 @@ import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import dakt.javatech.jhibernate.entity.ListenGuideline;
 import dakt.javatech.jhibernate.entity.Listenexercise;
@@ -20,9 +24,12 @@ public class VocabularyguidelineDao {
 	private SessionFactory sessionFactory;
 	public List<Vocabularyguideline> list()
 	{
-		String hql="FROM Vocabularyguideline";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListVocabularyguideline";
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Vocabularyguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Vocabularyguideline>>(){});
+		List<Vocabularyguideline> lst = rateResponse.getBody();
+		return lst;
 	}
 	
 	public List<Vocabularyguideline> list(int first, int max)
@@ -79,11 +86,12 @@ public class VocabularyguidelineDao {
 	
 	public List<Vocabularyguideline> getListByLevelId(String id, int first, int max)
 	{
-		String hql="From Vocabularyguideline  WHERE levelid ='"+id+"'"; 
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(first);
-		query.setMaxResults(max);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListListVocabularyguidelineByLevelId/LevelId="+id+"&first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Vocabularyguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Vocabularyguideline>>(){});
+		List<Vocabularyguideline> lst = rateResponse.getBody();
+		return lst;
 	}
 	
 	
