@@ -118,45 +118,45 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
                     
-         
-        <li class="treeview active">
-          <a href="#">
-            <i class="fa fa-book"></i> <span>Quản lý chia sẻ từ vựng</span>
-            
-          </a>
-<!--           <ul class="treeview-menu"> -->
-<!--             <li><a href="new 1.html"><i class="fa fa-circle-o"></i> Simple tables</a></li> -->
-<!--             <li class="active"><a href="new 1.html"><i class="fa fa-circle-o"></i> Data tables</a></li> -->
-<!--           </ul> -->
-        </li>
-           
-        <li class="treeview active">
-          <a href="#">
-            <i class="fa fa-book"></i> <span>Quản lý chia sẻ ngữ pháp</span>
-         
-          </a>           
-        </li>
-        <li class="treeview active">
-          <a href="#">
-            <i class="fa fa-book"></i> <span>Quản lý bài tập đọc</span>
-           
-          </a>           
-        </li>
          <li class="treeview active">
           <a href="#">
-            <i class="fa fa-book"></i> <span>Quản lý nghe</span>
-            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
+            <i class="fa fa-book"></i> <span>Quản lý người dùng</span>
+         
+          </a>   
+        <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>Quản lý chia sẻ </span>
+            
           </a>
-            <ul class="treeview-menu">
-            <li><a href="new 1.html"><i class="fa fa-circle-o"></i> Lý thuyết</a></li>
-            <li class="active"><a href="new 1.html"><i class="fa fa-circle-o"></i> Bài tập</a></li>
-          </ul>           
+          <ul class="treeview-menu">
+            <li><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý chia sẻ từ vựng</a></li>
+            <li ><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý chia sẻ ngữ pháp</a></li>
+            <li ><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý chia sẻ nghe</a></li>
+          </ul>
         </li>
+           
+        <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>Quản lý bài tập</span>
+          </a>   
+           <ul class="treeview-menu">
+            <li><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý bài tập đọc</a></li>
+            <li ><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý bài tập nghe</a></li>
+          </ul>        
+        </li>
+          <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>Quản lý đề thi</span>
+          </a>           
+        </li>
+        
+<!--             <ul class="treeview-menu"> -->
+<!--             <li><a href="new 1.html"><i class="fa fa-circle-o"></i> Lý thuyết</a></li> -->
+<!--             <li class="active"><a href="new 1.html"><i class="fa fa-circle-o"></i> Bài tập</a></li> -->
+        
        
       
-      </ul>
+      
     </section>
     <!-- /.sidebar -->
   </aside>

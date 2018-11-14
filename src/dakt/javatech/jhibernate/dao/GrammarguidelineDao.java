@@ -14,24 +14,22 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import dakt.javatech.jhibernate.entity.Grammarguideline;
-import dakt.javatech.jhibernate.entity.Listenexercise;
+import dakt.javatech.jhibernate.entity.Listenquestion;
 
 @Component 
 @Transactional
 public class GrammarguidelineDao {
 	@Autowired
 	private SessionFactory sessionFactory;
-	
 	public List<Grammarguideline> list()
 	{
 		String uri="http://localhost:8084/Service/getListGrammarguideline";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<List<Grammarguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
 																			new ParameterizedTypeReference<List<Grammarguideline>>(){});
-		List<Grammarguideline> lstEmp = rateResponse.getBody();
-		return lstEmp;
+		List<Grammarguideline> lst = rateResponse.getBody();
+		return lst;
 	}
-	
 	public List<Grammarguideline> list(int first, int max)
 	{
 		String hql="FROM Grammarguideline";
@@ -70,30 +68,28 @@ public class GrammarguidelineDao {
 		Grammarguideline grammarguideline=getById(id);
 		sessionFactory.getCurrentSession().delete(grammarguideline);
 	}
-	
 	public List<Grammarguideline> getId(String s, int id)
 	{
 		String hql="FROM Grammarguideline WHERE "+s + " = "+id+"";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (List<Grammarguideline>)query.list();
 	}
-	
-	public List<Grammarguideline> getListByLevelId(String level){
-		String uri="http://localhost:8084/Service/getListListenexerciseByLevelId/levelId="+level;
+	public List<Grammarguideline> getListByLevelId(String LevelId){
+		String uri="http://localhost:8084/Service/getListGrammarguidelineByLevelId/LevelId="+LevelId;
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<List<Grammarguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
 																			new ParameterizedTypeReference<List<Grammarguideline>>(){});
-		List<Grammarguideline> lstEmp = rateResponse.getBody();
-		return lstEmp;
+		List<Grammarguideline> lst = rateResponse.getBody();
+		return lst;
 	}
-	public List<Grammarguideline> getListByLevelId(String id, int first, int max)
+	public List<Grammarguideline> getListByLevelId(String LevelId, int first, int max)
 	{
-		String uri="http://localhost:8084/Service/getListGrammarguidelineByLevelId/LevelId="+id+"&first="+first+"&max="+max;
+		String uri="http://localhost:8084/Service/getListGrammarguidelineByLevelId/LevelId="+LevelId+"&first="+first+"&max="+max;
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<List<Grammarguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
 																			new ParameterizedTypeReference<List<Grammarguideline>>(){});
-		List<Grammarguideline> lstEmp = rateResponse.getBody();
-		return lstEmp;
+		List<Grammarguideline> lst = rateResponse.getBody();
+		return lst;
 	}
 
 }
