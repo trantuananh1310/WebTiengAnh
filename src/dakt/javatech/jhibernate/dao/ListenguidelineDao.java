@@ -81,7 +81,7 @@ public class ListenguidelineDao {
 	
 	public List<ListenGuideline> getListByLevelId(String id, int first, int max)
 	{
-		String uri="http://localhost:8084/Service/getListListenguidelineByLevelId/LevelId="+id+"&first="+first+"&max="+max;
+		String uri="http://localhost:8084/Service/getListPageListenguidelineByLevelId/LevelId="+id+"&first="+first+"&max="+max;
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<List<ListenGuideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
 																			new ParameterizedTypeReference<List<ListenGuideline>>(){});
