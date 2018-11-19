@@ -7,7 +7,11 @@ import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import dakt.javatech.jhibernate.entity.Readquestion;
 
@@ -25,11 +29,12 @@ public class ReadquestionDao {
 	
 	public List<Readquestion> list(int first, int max)
 	{
-		String hql="FROM Readquestion";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(first);
-		query.setMaxResults(max);
-		return query.list();
+		String uri="http://localhost:8084/Service/getList/first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Readquestion>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Readquestion>>(){});
+		List<Readquestion> lstReadQuestion = rateResponse.getBody();
+		return lstReadQuestion;
 	}
 	public Readquestion getById(int id)
 	{
@@ -70,18 +75,25 @@ public class ReadquestionDao {
 	}
 	
 	public List<Readquestion> getListByLevelId(String readexeriseid){
-		String hql="FROM Readquestion WHERE readexeriseid='"+ readexeriseid +"'";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (List<Readquestion>)query.list();
+		
+		String uri="http://localhost:8084/Service/getListReadQuestionByExId/readexeriseid="+readexeriseid;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Readquestion>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Readquestion>>(){});
+		List<Readquestion> lstReadQuestion = rateResponse.getBody();
+		return lstReadQuestion;
+		
 	}
 	
 	public List<Readquestion> getListPage(int first, int max, String readexeriseid)
 	{
-		String hql="FROM Readquestion WHERE readexeriseid='"+ readexeriseid +"'";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(first);
-		query.setMaxResults(max);
-		return query.list();
+		
+		String uri="http://localhost:8084/Service/getListReadQuestionPage/first="+first+"&max="+max+"&readexeriseid="+readexeriseid;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Readquestion>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Readquestion>>(){});
+		List<Readquestion> lstReadQuestion = rateResponse.getBody();
+		return lstReadQuestion;
 	}
 	
 }

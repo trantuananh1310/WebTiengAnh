@@ -7,7 +7,11 @@ import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import dakt.javatech.jhibernate.entity.Readexercise;
 
@@ -69,19 +73,39 @@ public class ReadexerciseDao {
 		return (List<Readexercise>)query.list();
 	}
 	
+//	public List<Readexercise> getListByLevelId(String level){
+//		String hql="FROM Readexercise WHERE levelid='"+ level +"'";
+//		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+//		return (List<Readexercise>)query.list();
+//	}
+	
 	public List<Readexercise> getListByLevelId(String level){
-		String hql="FROM Readexercise WHERE levelid='"+ level +"'";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (List<Readexercise>)query.list();
+		String uri="http://localhost:8084/Service//getListReadExerciseByLevelId/levelId="+level;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Readexercise>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Readexercise>>(){});
+		List<Readexercise> lstReadEx = rateResponse.getBody();
+		return lstReadEx;
 	}
+	
+//	public List<Readexercise> getListByLevelIdPage(String level, int first, int max)
+//	{
+//		String hql="From Readexercise  where levelid ='"+level+"'"; 
+//		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+//		query.setFirstResult(first);
+//		query.setMaxResults(max);
+//		return query.list();
+//	}
 	
 	public List<Readexercise> getListByLevelIdPage(String level, int first, int max)
 	{
-		String hql="From Readexercise  where levelid ='"+level+"'"; 
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(first);
-		query.setMaxResults(max);
-		return query.list();
+		
+		String uri="http://localhost:8084/Service/getListByLevelIdPage/level="+level+"&first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Readexercise>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Readexercise>>(){});
+		List<Readexercise> lstReadEx = rateResponse.getBody();
+		return lstReadEx;
 	}
 
 }
