@@ -43,7 +43,7 @@
 					url : "checkScoreReadQuestion",
 					data : $('form').serialize(),
 					success : function(result) {
-						$('#check_form').hide();
+						$('#3            ').hide();
 						$("#btn_score").hide();
 						$("#btn_tapescript").hide();
 						$('#result_score').html(result);
