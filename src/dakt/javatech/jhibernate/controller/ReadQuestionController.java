@@ -21,7 +21,7 @@ import dakt.javatech.jhibernate.entity.Readquestion;
 @Controller
 public class ReadQuestionController {
 
-	public static final int COUNT_PAGE = 2;
+	public static final int COUNT_PAGE = 5;
 	
 	@Autowired
 	LevelDao levelDao;
@@ -64,7 +64,7 @@ public class ReadQuestionController {
 		else{
 			maxPage = (sumRow/count);
 		}
-		ModelAndView modelView=new ModelAndView("list_read_question");
+		ModelAndView modelView=new ModelAndView("read_exercise/list_read_question");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstReadQuestion", lstReadQuestionPage);
 		modelView.addObject("readexerciseid",readexercise);
@@ -88,7 +88,7 @@ public class ReadQuestionController {
 		
 		List<Readquestion> lstReadQuestion=readQuestionDao.list((pageid-1), count);
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView=new ModelAndView("list_read_question_page");
+		ModelAndView modelView=new ModelAndView("read_exercise/list_read_question_page");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstReadQuestion", lstReadQuestion);
 		modelView.addObject("readexerciseid",readexercise);
@@ -124,7 +124,7 @@ public class ReadQuestionController {
 				lstAnswerUser.add(au);
 			}
 		}
-		ModelAndView modelView=new ModelAndView("result_read_exercise_tapescript");
+		ModelAndView modelView=new ModelAndView("read_exercise/result_read_exercise_tapescript");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstReadQuestion",lstReadQuestionPage);
 		modelView.addObject("lstAnswerUser",lstAnswerUser);
@@ -161,7 +161,7 @@ public class ReadQuestionController {
 				lstAnswerUser.add(au);
 			}
 		}
-		ModelAndView modelView=new ModelAndView("result_read_exercise_score");
+		ModelAndView modelView=new ModelAndView("read_exercise/result_read_exercise_score");
 //		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstReadQuestion",lstReadQuestionPage);
 		modelView.addObject("lstAnswerUser",lstAnswerUser);
