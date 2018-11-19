@@ -50,6 +50,14 @@
       <h1>
         Quản lý từ vựng
       </h1>
+      <div class="container" > Level:
+      <select id="Level">
+            <c:forEach items="${listLevel}" var="item">
+			   <option value=${item.levelid }>${item.levelname}</option>
+			 </c:forEach>
+		</select>
+      </div>
+      
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
@@ -68,11 +76,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-            <select id="ListenExer">
-            <c:forEach items="${listLevel}" var="item">
-			   <option value=”0″>${item.levelname}</option>
-			 </c:forEach>
-				</select>
+            
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -92,8 +96,8 @@
 									src="images/listenexercises/${item.listenexerciseimage }"></td>
                  <td class="container"> <p>
                  		<a href="#"><span class="glyphicon glyphicon-search"></span> </a>Xem chi tiết
-                 		<a href="#"><span class="glyphicon glyphicon-pencil"></span> </a>Sửa
-                 		<a href="#"><span class="glyphicon glyphicon-trash"></span> </a>Xóa</p>
+                 		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> </a>Sửa
+                 		<a href="#" ><span class="glyphicon glyphicon-trash"></span> </a>Xóa</p>
                  </td>
                   
                  
@@ -110,8 +114,16 @@
                   <th></th>
                
                 </tr>
+                
                 </tfoot>
+                
               </table>
+              <div class="row">
+						<div class="col-xs-12">
+							<h5 style="color: red">${msg }</h5>
+							<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-white btn-default btn-round">Thêm đề bài hd ngữ pháp</button>
+						</div>
+				</div>
 <!--               <textarea class="form-textarea" id="noiDung">Chào mừng bạn đến với Blog Kênh Lập Trình</textarea> -->
             </div>
             <!-- /.box-body -->
@@ -125,9 +137,148 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-    
+  <!--Modal-->
+  <div class="row">
+	<div class="col-xs-12">
+		<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-white btn-default btn-round">Thêm mới chủ đề</button>
+	</div>
+
+ </div>
+    <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+			<form action="editGMGLAction" method="post"
+				enctype="multipart/form-data">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Thêm mới chủ đề</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<label class="col-sm-2 " for="form-field-1">
+									<h5>Nhập tên:</h5> <br />
+									<h5>Chọn ảnh:</h5> <br />
+									<h5>Nội dung:</h5>
+								</label>
+
+								<div class="col-sm-10">
+									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="grammarname"  /> 
+										<br />
+										<input type="file" name="file" class="form-control" />
+										<br />
+
+									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
 
 
+									<div class="col-xs-12" >
+										<!-- PAGE CONTENT BEGINS -->
+										<div class="row" >
+
+											<div class="widget-box widget-color-grey">
+
+												<div class="widget-body">
+													<div class="widget-main no-padding">
+														<textarea name="content" data-provide="markdown" data-iconlibrary="fa" rows="10" ></textarea>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- <a href="#" id="btn-scroll-up"
+											class="btn-scroll-up btn btn-sm btn-inverse"> <i
+											class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+										</a> -->
+
+									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-info" type="submit">
+							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+<div class="row">
+	
+
+ </div>
+    <div class="modal fade" id="myModalEdit" role="dialog">
+		<div class="modal-dialog">
+			<form action="editGMGLAction" method="post"
+				enctype="multipart/form-data">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Sửa nội dung chủ đề</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<label class="col-sm-2 " for="form-field-1">
+									<h5>Nhập tên:</h5> <br />
+									<h5>Chọn ảnh:</h5> <br />
+									<h5>Nội dung:</h5>
+								</label>
+
+								<div class="col-sm-10">
+									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="grammarname"  /> 
+										<br />
+										<input type="file" name="file" class="form-control" />
+										<br />
+
+									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
+
+
+									<div class="col-xs-12" >
+										<!-- PAGE CONTENT BEGINS -->
+										<div class="row" >
+
+											<div class="widget-box widget-color-grey">
+
+												<div class="widget-body">
+													<div class="widget-main no-padding">
+														<textarea name="content" data-provide="markdown" data-iconlibrary="fa" rows="10" ></textarea>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- <a href="#" id="btn-scroll-up"
+											class="btn-scroll-up btn btn-sm btn-inverse"> <i
+											class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+										</a> -->
+
+									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-info" type="submit">
+							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 
 
   <!-- Control Sidebar -->
@@ -170,13 +321,10 @@
     })
   })
   $(document).ready(function() {
-	  $("#ListenExer").on('click',function(event){
-		  $.ajax({
-			  type:"GET",
-			  url:"AdminListenExercis",
-			  data:$("#ListenExer").val(),
-			  
-		  })
+	  debugger;
+	  $("#Level").on('change',function(event){
+		  var val= $("#Level").val();
+		  window.location="http://localhost:8084/WebTiengAnh/AdminListenExercise?levelId="+val;
 	  })
   })
 </script>

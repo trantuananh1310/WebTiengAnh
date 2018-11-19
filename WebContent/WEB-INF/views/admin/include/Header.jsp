@@ -118,33 +118,34 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
                     
-         <li class="treeview active">
+         <li class="treeview ">
           <a href="#">
             <i class="fa fa-book"></i> <span>Quản lý người dùng</span>
-         
+         	
           </a>   
-        <li class="treeview active">
+        <li class="treeview ">
           <a href="#">
             <i class="fa fa-book"></i> <span>Quản lý chia sẻ </span>
-            
+            <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">
+          <ul class="treeview-menu ">
             <li><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý chia sẻ từ vựng</a></li>
             <li ><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý chia sẻ ngữ pháp</a></li>
             <li ><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý chia sẻ nghe</a></li>
           </ul>
         </li>
            
-        <li class="treeview active">
+        <li class="treeview ">
           <a href="#">
             <i class="fa fa-book"></i> <span>Quản lý bài tập</span>
+            <i class="fa fa-angle-left pull-right"></i>
           </a>   
            <ul class="treeview-menu">
             <li><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý bài tập đọc</a></li>
             <li ><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý bài tập nghe</a></li>
           </ul>        
         </li>
-          <li class="treeview active">
+          <li class="treeview ">
           <a href="#">
             <i class="fa fa-book"></i> <span>Quản lý đề thi</span>
           </a>           
