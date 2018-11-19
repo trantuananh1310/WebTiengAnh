@@ -14,7 +14,6 @@ import dakt.javatech.jhibernate.dao.LevelDao;
 import dakt.javatech.jhibernate.dao.ReadexerciseDao;
 import dakt.javatech.jhibernate.entity.Level;
 import dakt.javatech.jhibernate.entity.Readexercise;
-import sun.java2d.SurfaceDataProxy.CountdownTracker;
 
 @Controller
 public class ReadExerciseController {
