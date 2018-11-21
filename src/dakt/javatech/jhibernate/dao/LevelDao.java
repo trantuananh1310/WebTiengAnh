@@ -7,8 +7,13 @@ import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
+import dakt.javatech.jhibernate.entity.Grammarguideline;
 import dakt.javatech.jhibernate.entity.Level;
 
 @Component 
@@ -19,9 +24,12 @@ public class LevelDao {
 	
 	public List<Level> list()
 	{
-		String hql="FROM Level";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListLevel";
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Level>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Level>>(){});
+		List<Level> lst = rateResponse.getBody();
+		return lst;
 	}
 	
 	public List<Level> list(int first, int max)

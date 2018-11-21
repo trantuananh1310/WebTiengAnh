@@ -27,13 +27,13 @@
 </head>
 <body>
 
-<jsp:include page="include/header_middle.jsp"></jsp:include>
+<jsp:include page="../include/header_middle.jsp"></jsp:include>
 
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3 menu_sidebar_left">
-					<jsp:include page="include/left_sidebar.jsp"></jsp:include>
+					<jsp:include page="../include/left_sidebar.jsp"></jsp:include>
 				</div>
 				<div class="col-sm-6 padding-right">
 					<div class="features_items">
@@ -73,13 +73,13 @@
 					</div>
 				</div>
 				<div class="col-sm-3 menu_sidebar_right">
-					<jsp:include page="include/right_sidebar.jsp"></jsp:include>
+					<jsp:include page="../include/right_sidebar.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<jsp:include page="include/footer.jsp"></jsp:include>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>

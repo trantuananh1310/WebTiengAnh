@@ -63,7 +63,7 @@ public class ReadExerciseController {
 		
 		List<Readexercise> lstReadExcercisePage=readExDao.getListByLevelIdPage(level, Count_Exc_Page*Page, Count_Exc_Page);
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView=new ModelAndView("list_read_excercise");
+		ModelAndView modelView=new ModelAndView("read_exercise/list_read_excercise");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstReadExcercise", lstReadExcercisePage);
 		modelView.addObject("TotalPage",Total_Page );

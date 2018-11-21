@@ -82,9 +82,9 @@ public class GrammarguidelineDao {
 		List<Grammarguideline> lst = rateResponse.getBody();
 		return lst;
 	}
-	public List<Grammarguideline> getListByLevelId(String LevelId, int first, int max)
+	public List<Grammarguideline> getListByLevelIdPhanTrang(String LevelId, int first, int max)
 	{
-		String uri="http://localhost:8084/Service/getListGrammarguidelineByLevelId/LevelId="+LevelId+"&first="+first+"&max="+max;
+		String uri="http://localhost:8084/Service/getListGrammarguidelineByLevelIdPhanTrang/LevelId="+LevelId+"&first="+first+"&max="+max;
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<List<Grammarguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
 																			new ParameterizedTypeReference<List<Grammarguideline>>(){});
