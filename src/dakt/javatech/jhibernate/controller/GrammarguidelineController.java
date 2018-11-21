@@ -60,7 +60,7 @@ public class GrammarguidelineController {
 			}
 		}
 		
-		List<Grammarguideline> lstGrammar=gramDao.getListByLevelId(level,Count_Exc_Page*page,Count_Exc_Page);
+		List<Grammarguideline> lstGrammar=gramDao.getListByLevelIdPhanTrang(level,Count_Exc_Page*page,Count_Exc_Page);
 		
 		List<Level> lstLevel=levelDao.list();
 		ModelAndView modelView=new ModelAndView("list_grammar_guideline");
