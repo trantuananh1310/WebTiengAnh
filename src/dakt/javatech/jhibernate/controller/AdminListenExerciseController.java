@@ -22,15 +22,38 @@ public class AdminListenExerciseController {
 	@Autowired
 	ListenexerciseDao listenExDao;
 	@RequestMapping(value="/AdminListenExercise", method=RequestMethod.GET)
-	public ModelAndView AdminListenExercise(String levelId)
+	public ModelAndView AdminListenExercise()
 	{
 		List<Listenexercise> list= new ArrayList<Listenexercise>();
-		list= listenExDao.getListByLevelId(levelId);
+		list= listenExDao.list();
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView= new ModelAndView("admin/ListenExercise/List_ListenExercise");
+		ModelAndView modelView= new ModelAndView("admin/ListenExercise/list_listenExerciseAdmin");
 		modelView.addObject("listListenExer",list);
 		modelView.addObject("listLevel",lstLevel);
 		return modelView;
+	}
+	@RequestMapping(value="/getListExrciseByLevelIdAjax",method=RequestMethod.GET)
+	public ModelAndView getListExrciseByLevelIdAjax(String levelId)
+	{
+		List<Listenexercise> list= new ArrayList<Listenexercise>();
+		if(levelId.equals("0")) list=listenExDao.list();
+		else
+			list= listenExDao.getListByLevelId(levelId);
+		ModelAndView modelView= new ModelAndView("admin/ListenExercise/list_exercise_byLevelIdAdmin");
+		modelView.addObject("listListenExer",list);
+		return modelView;
+
+	}
+	@RequestMapping(value="/addListenExercise",method=RequestMethod.POST)
+	public ModelAndView addListenExercise(String listenExerciseName, String levelId )	
+	{
+		Level level = levelDao.getById(Integer.parseInt(levelId));
+		Listenexercise item= new Listenexercise();
+		item.setListenexercisename(listenExerciseName);
+		item.setLevel(level);
+		item.setListenexerciseimage("abc");
+		listenExDao.add(item);
+		return new ModelAndView("redirect:/AdminListenExercise");
 	}
 		
 }

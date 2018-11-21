@@ -50,12 +50,27 @@
       <h1>
         Quản lý từ vựng
       </h1>
-      <div class="container" > Level:
-      <select id="Level">
+      <div class="container" > 
+      <div>
+      <div class="col-sm-6 " style=" padding-top: 10px;">
+      <select id="Level" class="form-control" style="margin-left: -29px;width: 150px;">
+      		<option value="0">Tất cả</option>
             <c:forEach items="${listLevel}" var="item">
 			   <option value=${item.levelid }>${item.levelname}</option>
 			 </c:forEach>
 		</select>
+		</div>	
+		<div class="col-sm-6 " style=" text-align: right;padding-right: 60px;">
+			<div class="col-xs-12">
+				<h5 style="color: red">${msg }</h5>
+				<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-block btn-primary btn-flat" 
+				style="width: 200px;margin-left: 272px;">
+				Thêm mới
+				</button>
+			</div>
+		</div>
+		</div>
+		 
       </div>
       
       <ol class="breadcrumb">
@@ -75,32 +90,37 @@
             <div class="box-header">
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body" >
             
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>STT</th>
-                  <th>Tên chủ đề</th>
-                  <th>Hình Ảnh</th>
+                  <th>Câu hỏi</th>
+                  <th>Hình Ảnh/File nghe</th>
+                  <th>Câu trả lời </th>
+                  <th>Đáp án</th>
                   <th></th>
                   	
                 </tr>
                 </thead>
-                <tbody>
-                <c:forEach items="${listListenExer}" var="item">
+                <tbody id="box-body1">
+                <c:forEach items="${listQuestion}" var="item">
                  <tr>
                   <td><%=i %></td>
-                  <td class="container">${item.listenexercisename}</td>
-                  <td class="container"><img alt="" style="width: 150px; height: 100px; "
-									src="images/listenexercises/${item.listenexerciseimage }"></td>
+                  <td class="container">${item.question}</td>
+                  <td class="container">
+               		   <img alt="" style="width: 150px; height: 100px; "src="images/ListenQuestion/${item.imagename }">
+						<br> ${item.audiomp3 }			
+				  </td>
+<%-- 				 <td class="container"> <audio controls style="width: 250px;"> <source src="Audio/${item.audiomp3 }" type="audio/mpeg"></audio></td> --%>
+				 <td class="container">Đáp án 1: ${item.option1}<br>Đáp án 2: ${item.option2}<br>Đáp án 3: ${item.option3}<br>Đáp án 4: ${item.option4}</td>
+				 <td class="container">${item.correctanswer}</td>
                  <td class="container"> <p>
-                 		<a href="#"><span class="glyphicon glyphicon-search"></span> </a>Xem chi tiết
-                 		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> </a>Sửa
-                 		<a href="#" ><span class="glyphicon glyphicon-trash"></span> </a>Xóa</p>
+                 		<a href="/AdminListListenQuestion?idListenExercis=${item.listenquestionid}"><span class="glyphicon glyphicon-search"></span> DS câu hỏi</a>
+                 		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>
+                 		<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
                  </td>
-                  
-                 
                 </tr>
                 <%i++; %>
                 </c:forEach>
@@ -108,22 +128,19 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>STT</th>
-                  <th>Tên chủ đề</th>
-                  <th>Hình Ảnh</th>
-                  <th></th>
+<!--                   <th>STT</th> -->
+<!--                   <th>Câu hỏi</th> -->
+<!--                   <th>Hình Ảnh</th> -->
+<!--                   <th>File nghe </th> -->
+<!--                   <th>Câu trả lời </th> -->
+<!--                   <th>Đáp án</th> -->
+<!-- <!--                   <th></th> --> 
                
                 </tr>
                 
                 </tfoot>
                 
               </table>
-              <div class="row">
-						<div class="col-xs-12">
-							<h5 style="color: red">${msg }</h5>
-							<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-white btn-default btn-round">Thêm đề bài hd ngữ pháp</button>
-						</div>
-				</div>
 <!--               <textarea class="form-textarea" id="noiDung">Chào mừng bạn đến với Blog Kênh Lập Trình</textarea> -->
             </div>
             <!-- /.box-body -->
@@ -161,7 +178,7 @@
 								<label class="col-sm-2 " for="form-field-1">
 									<h5>Nhập tên:</h5> <br />
 									<h5>Chọn ảnh:</h5> <br />
-									<h5>Nội dung:</h5>
+									<h5>Level:</h5>
 								</label>
 
 								<div class="col-sm-10">
@@ -181,8 +198,11 @@
 
 												<div class="widget-body">
 													<div class="widget-main no-padding">
-														<textarea name="content" data-provide="markdown" data-iconlibrary="fa" rows="10" ></textarea>
-													</div>
+													<select id="Level" class="form-control" >
+											            <c:forEach items="${listLevel}" var="item">
+														   <option value=${item.levelid }>${item.levelname}</option>
+														 </c:forEach>
+													</select>													</div>
 
 												</div>
 											</div>
@@ -231,7 +251,7 @@
 								<label class="col-sm-2 " for="form-field-1">
 									<h5>Nhập tên:</h5> <br />
 									<h5>Chọn ảnh:</h5> <br />
-									<h5>Nội dung:</h5>
+									<h5>Level:</h5>
 								</label>
 
 								<div class="col-sm-10">
@@ -251,7 +271,11 @@
 
 												<div class="widget-body">
 													<div class="widget-main no-padding">
-														<textarea name="content" data-provide="markdown" data-iconlibrary="fa" rows="10" ></textarea>
+													<select id="Level" class="form-control" >
+											            <c:forEach items="${listLevel}" var="item">
+														   <option value=${item.levelid }>${item.levelname}</option>
+														 </c:forEach>
+													</select> 
 													</div>
 
 												</div>
@@ -306,9 +330,10 @@
 <script src="admin/js/ckeditor/ckeditor.js" ></script>
 
 <script type="text/javascript" language="javascript">
-   CKEDITOR.replace('noiDung');
+//    CKEDITOR.replace('noiDung');
 </script>
 <script>
+
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
@@ -321,10 +346,18 @@
     })
   })
   $(document).ready(function() {
-	  debugger;
 	  $("#Level").on('change',function(event){
 		  var val= $("#Level").val();
-		  window.location="http://localhost:8084/WebTiengAnh/AdminListenExercise?levelId="+val;
+		  $.ajax({
+			 type:"GET",
+			 url:"getListExrciseByLevelIdAjax",
+			 data: {levelId: $("#Level").val()},
+			 success:function(result)
+			 {
+				 $('#box-body1').html(result);
+			 }
+			 
+		  })
 	  })
   })
 </script>

@@ -85,8 +85,16 @@ public class ListenquestionDao {
 		return (List<Listenquestion>)query.list();
 	}
 
-	public List<Listenquestion> getListByListenExerciseId(String ListenExerciseId,int first, int max) {
-		String uri="http://localhost:8084/Service/getListByListenExerciseId/ListenExerciseId="+ListenExerciseId+"&first="+first+"&max="+max;
+	public List<Listenquestion> getListByListenExerciseId(String listenExerciseId,int first, int max) {
+		String uri="http://localhost:8084/Service/getListByListenExerciseId/ListenExerciseId="+listenExerciseId+"&first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Listenquestion>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Listenquestion>>(){});
+		List<Listenquestion> lst = rateResponse.getBody();
+		return lst;
+	}
+	public List<Listenquestion> getListByListenExerciseId(int listenExerciseId) {
+		String uri="http://localhost:8084/Service/getListByListenExerciseId1/ListenExerciseId="+listenExerciseId;
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<List<Listenquestion>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
 																			new ParameterizedTypeReference<List<Listenquestion>>(){});
