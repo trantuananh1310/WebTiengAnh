@@ -67,7 +67,7 @@ public class LoginController {
 		return modelView;
 	}
 	
-	@RequestMapping(value="/test", method=RequestMethod.GET)
+	@RequestMapping(value="/homeAdmin", method=RequestMethod.GET)
 	public ModelAndView getAllMembers(ModelMap model)
 	{
 		ModelAndView modelView=new ModelAndView("admin/index");
