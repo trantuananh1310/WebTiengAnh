@@ -1,3 +1,4 @@
+
 package dakt.javatech.jhibernate.entity;
 // Generated Sep 26, 2018 6:04:22 AM by Hibernate Tools 5.3.1.Final
 
@@ -11,7 +12,7 @@ public class Vocabularycontent implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer vocabularycontentid;
-	private Vocabularyguideline vocabularyguideline;
+	private Integer vocabularyguidelineid;
 	private Integer num;
 	private String vocabularycontentname;
 	private String transcribe;
@@ -23,17 +24,17 @@ public class Vocabularycontent implements java.io.Serializable {
 	public Vocabularycontent() {
 	}
 
-	public Vocabularycontent(Vocabularyguideline vocabularyguideline, Integer num, String vocabularycontentname,
-			String transcribe, String image, String audiomp3, String audiogg, String mean) {
-		this.vocabularyguideline = vocabularyguideline;
-		this.num = num;
-		this.vocabularycontentname = vocabularycontentname;
-		this.transcribe = transcribe;
-		this.image = image;
-		this.audiomp3 = audiomp3;
-		this.audiogg = audiogg;
-		this.mean = mean;
-	}
+//	public Vocabularycontent(Vocabularyguideline vocabularyguideline, Integer num, String vocabularycontentname,
+//			String transcribe, String image, String audiomp3, String audiogg, String mean) {
+//		this.vocabularyguideline = vocabularyguideline;
+//		this.num = num;
+//		this.vocabularycontentname = vocabularycontentname;
+//		this.transcribe = transcribe;
+//		this.image = image;
+//		this.audiomp3 = audiomp3;
+//		this.audiogg = audiogg;
+//		this.mean = mean;
+//	}
 
 	public Integer getVocabularycontentid() {
 		return this.vocabularycontentid;
@@ -41,14 +42,6 @@ public class Vocabularycontent implements java.io.Serializable {
 
 	public void setVocabularycontentid(Integer vocabularycontentid) {
 		this.vocabularycontentid = vocabularycontentid;
-	}
-
-	public Vocabularyguideline getVocabularyguideline() {
-		return this.vocabularyguideline;
-	}
-
-	public void setVocabularyguideline(Vocabularyguideline vocabularyguideline) {
-		this.vocabularyguideline = vocabularyguideline;
 	}
 
 	public Integer getNum() {
@@ -107,4 +100,12 @@ public class Vocabularycontent implements java.io.Serializable {
 		this.mean = mean;
 	}
 
+	public Integer getVocabularyguidelineid() {
+		return vocabularyguidelineid;
+	}
+
+	public void setVocabularyguidelineid(Integer vocabularyguidelineid) {
+		this.vocabularyguidelineid = vocabularyguidelineid;
+	}
+	
 }

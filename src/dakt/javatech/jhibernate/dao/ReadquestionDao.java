@@ -1,6 +1,8 @@
 package dakt.javatech.jhibernate.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -20,11 +22,14 @@ import dakt.javatech.jhibernate.entity.Readquestion;
 public class ReadquestionDao {
 	@Autowired
 	private SessionFactory sessionFactory;
-	public List<Readquestion> list()
-	{
-		String hql="FROM Readquestion";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return query.list();
+	
+	public List<Readquestion> list(){
+		String uri="http://localhost:8084/Service/getListReadQuestion";
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Readquestion>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Readquestion>>(){});
+		List<Readquestion> lstReadQues = rateResponse.getBody();
+		return lstReadQues;
 	}
 	
 	public List<Readquestion> list(int first, int max)
@@ -36,35 +41,39 @@ public class ReadquestionDao {
 		List<Readquestion> lstReadQuestion = rateResponse.getBody();
 		return lstReadQuestion;
 	}
+	
 	public Readquestion getById(int id)
 	{
-		return (Readquestion)sessionFactory.getCurrentSession().get(Readquestion.class, id);
+		String uri="http://localhost:8084/Service/getReadQuestionById/"+id;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<Readquestion> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<Readquestion>(){});
+		Readquestion readQues = rateResponse.getBody();
+		return readQues;
 	}
-	public void add(Readquestion sp)
+	
+	public void add(Readquestion readQues)
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(sp);
+			String url="http://localhost:8084/TestWebService/addReadexercise";
+			RestTemplate restTemplate = new RestTemplate();
+			Readquestion readQuestion = restTemplate.postForObject(url, readQues, Readquestion.class);
 	}
-//	public void update(int id, String ten, int instock, String vanchuyen, Double giacu, Double giamoi, String baohanh, int moi, int dacbiet,String anh, String newsletter)
-//	{
-////		sessionFactory.getCurrentSession().beginTransaction();
-//		Readquestion sp=getById(id);
-//		sp.setTen(ten);
-//		sp.setInstock(instock);
-//		sp.setVanchuyen(vanchuyen);
-//		sp.setGiacu(giacu);
-//		sp.setGiamoi(giamoi);
-//		sp.setBaohanh(baohanh);
-//		sp.setMoi(moi);
-//		sp.setDacbiet(dacbiet);
-//		sp.setAnh(anh);
-//		sp.setNewsletter(newsletter);
-//		sessionFactory.getCurrentSession().update(sp);
-////		sessionFactory.getCurrentSession().getTransaction().commit();
-//	}
+	
+	public void update(Readquestion readquestion)
+	{
+	    final String uri = "http://localhost:8084/Service/updateReadQuestion";
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.put(uri, readquestion);
+	}
+	
 	public void delete(int id)
 	{
-		Readquestion readquestion=getById(id);
-		sessionFactory.getCurrentSession().delete(readquestion);
+	    String uri = "http://localhost:8084/Service/deleteReadQuestion/"+id;
+	    Map<String, Integer> params = new HashMap<String, Integer>();
+	    params.put("id", id);
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.delete( uri,  params );
 	}
 	
 	public List<Readquestion> getId(String s, int id)

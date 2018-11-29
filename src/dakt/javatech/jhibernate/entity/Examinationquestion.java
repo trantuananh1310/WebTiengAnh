@@ -11,7 +11,7 @@ public class Examinationquestion implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer examinationquestionid;
-	private Examination examination;
+	private Integer examinationid;
 	private Integer num;
 	private String imagequestion;
 	private String audiogg;
@@ -27,22 +27,22 @@ public class Examinationquestion implements java.io.Serializable {
 	public Examinationquestion() {
 	}
 
-	public Examinationquestion(Examination examination, Integer num, String imagequestion, String audiogg,
-			String audiomp3, String paragraph, String question, String option1, String option2, String option3,
-			String option4, String correctanswer) {
-		this.examination = examination;
-		this.num = num;
-		this.imagequestion = imagequestion;
-		this.audiogg = audiogg;
-		this.audiomp3 = audiomp3;
-		this.paragraph = paragraph;
-		this.question = question;
-		this.option1 = option1;
-		this.option2 = option2;
-		this.option3 = option3;
-		this.option4 = option4;
-		this.correctanswer = correctanswer;
-	}
+//	public Examinationquestion(Examination examination, Integer num, String imagequestion, String audiogg,
+//			String audiomp3, String paragraph, String question, String option1, String option2, String option3,
+//			String option4, String correctanswer) {
+//		this.examination = examination;
+//		this.num = num;
+//		this.imagequestion = imagequestion;
+//		this.audiogg = audiogg;
+//		this.audiomp3 = audiomp3;
+//		this.paragraph = paragraph;
+//		this.question = question;
+//		this.option1 = option1;
+//		this.option2 = option2;
+//		this.option3 = option3;
+//		this.option4 = option4;
+//		this.correctanswer = correctanswer;
+//	}
 
 	public Integer getExaminationquestionid() {
 		return this.examinationquestionid;
@@ -50,14 +50,6 @@ public class Examinationquestion implements java.io.Serializable {
 
 	public void setExaminationquestionid(Integer examinationquestionid) {
 		this.examinationquestionid = examinationquestionid;
-	}
-
-	public Examination getExamination() {
-		return this.examination;
-	}
-
-	public void setExamination(Examination examination) {
-		this.examination = examination;
 	}
 
 	public Integer getNum() {
@@ -146,6 +138,14 @@ public class Examinationquestion implements java.io.Serializable {
 
 	public void setCorrectanswer(String correctanswer) {
 		this.correctanswer = correctanswer;
+	}
+
+	public Integer getExaminationid() {
+		return examinationid;
+	}
+
+	public void setExaminationid(Integer examinationid) {
+		this.examinationid = examinationid;
 	}
 
 }

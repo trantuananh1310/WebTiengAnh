@@ -47,10 +47,9 @@ public class AdminListenExerciseController {
 	@RequestMapping(value="/addListenExercise",method=RequestMethod.POST)
 	public ModelAndView addListenExercise(String listenExerciseName, String levelId )	
 	{
-		Level level = levelDao.getById(Integer.parseInt(levelId));
 		Listenexercise item= new Listenexercise();
 		item.setListenexercisename(listenExerciseName);
-		item.setLevel(level);
+		item.setLevelid(Integer.parseInt(levelId));
 		item.setListenexerciseimage("abc");
 		listenExDao.add(item);
 		return new ModelAndView("redirect:/AdminListenExercise");

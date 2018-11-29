@@ -56,7 +56,7 @@ public class AdminListenGuidelineController {
 		Level level = levelDao.getById(Integer.parseInt(levelId));
 		ListenGuideline item= new ListenGuideline();
 		item.setListenname(listenGuidelineName);
-		item.setLevel(level);
+		item.setLevelid(Integer.parseInt(levelId));
 		item.setListenimage("abc");
 		lisGuidao.add(item);
 		return new ModelAndView("redirect:/AdminListenGuideline");

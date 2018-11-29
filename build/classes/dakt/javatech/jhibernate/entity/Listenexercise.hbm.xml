@@ -15,14 +15,9 @@
         <property generated="never" lazy="false" name="checkcauhoi" optimistic-lock="true" type="java.lang.Integer" unique="false">
             <column name="checkcauhoi"/>
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="listenquestions" optimistic-lock="true" sort="unsorted" table="listenquestion">
-            <key on-delete="noaction">
-                <column name="listenexerciseid"/>
-            </key>
-            <one-to-many class="dakt.javatech.jhibernate.entity.Listenquestion" embed-xml="true" not-found="exception"/>
-        </set>
-        <many-to-one class="dakt.javatech.jhibernate.entity.Level" embed-xml="true" fetch="select" insert="true" name="level" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <property generated="never" lazy="false" name="levelid" optimistic-lock="true" type="java.lang.Integer" unique="false">
             <column name="levelid"/>
-        </many-to-one>
+        </property>
+        
     </class>
 </hibernate-mapping>

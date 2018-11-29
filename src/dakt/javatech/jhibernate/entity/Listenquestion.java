@@ -11,7 +11,7 @@ public class Listenquestion implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer listenquestionid;
-	private Listenexercise listenexercise;
+	private Integer listenexerciseid;
 	private Integer num;
 	private String imagename;
 	private String audiomp3;
@@ -26,20 +26,20 @@ public class Listenquestion implements java.io.Serializable {
 	public Listenquestion() {
 	}
 
-	public Listenquestion(Listenexercise listenexercise, Integer num, String imagename, String audiomp3, String audiogg,
-			String question, String option1, String option2, String option3, String option4, String correctanswer) {
-		this.listenexercise = listenexercise;
-		this.num = num;
-		this.imagename = imagename;
-		this.audiomp3 = audiomp3;
-		this.audiogg = audiogg;
-		this.question = question;
-		this.option1 = option1;
-		this.option2 = option2;
-		this.option3 = option3;
-		this.option4 = option4;
-		this.correctanswer = correctanswer;
-	}
+//	public Listenquestion(Listenexercise listenexercise, Integer num, String imagename, String audiomp3, String audiogg,
+//			String question, String option1, String option2, String option3, String option4, String correctanswer) {
+//		this.listenexercise = listenexercise;
+//		this.num = num;
+//		this.imagename = imagename;
+//		this.audiomp3 = audiomp3;
+//		this.audiogg = audiogg;
+//		this.question = question;
+//		this.option1 = option1;
+//		this.option2 = option2;
+//		this.option3 = option3;
+//		this.option4 = option4;
+//		this.correctanswer = correctanswer;
+//	}
 
 	public Integer getListenquestionid() {
 		return this.listenquestionid;
@@ -47,14 +47,6 @@ public class Listenquestion implements java.io.Serializable {
 
 	public void setListenquestionid(Integer listenquestionid) {
 		this.listenquestionid = listenquestionid;
-	}
-
-	public Listenexercise getListenexercise() {
-		return this.listenexercise;
-	}
-
-	public void setListenexercise(Listenexercise listenexercise) {
-		this.listenexercise = listenexercise;
 	}
 
 	public Integer getNum() {
@@ -136,5 +128,14 @@ public class Listenquestion implements java.io.Serializable {
 	public void setCorrectanswer(String correctanswer) {
 		this.correctanswer = correctanswer;
 	}
+
+	public Integer getListenexerciseid() {
+		return listenexerciseid;
+	}
+
+	public void setListenexerciseid(Integer listenexerciseid) {
+		this.listenexerciseid = listenexerciseid;
+	}
+	
 
 }

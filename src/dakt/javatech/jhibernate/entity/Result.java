@@ -11,8 +11,8 @@ public class Result implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer resultid;
-	private Examination examination;
-	private Member member;
+	private Integer examinationid;
+	private Integer memberid;
 	private Integer correctanswernum;
 	private Integer incorrectanswernum;
 	private String time;
@@ -22,16 +22,16 @@ public class Result implements java.io.Serializable {
 	public Result() {
 	}
 
-	public Result(Examination examination, Member member, Integer correctanswernum, Integer incorrectanswernum,
-			String time, Integer correctanswerread, Integer correctanswerlisten) {
-		this.examination = examination;
-		this.member = member;
-		this.correctanswernum = correctanswernum;
-		this.incorrectanswernum = incorrectanswernum;
-		this.time = time;
-		this.correctanswerread = correctanswerread;
-		this.correctanswerlisten = correctanswerlisten;
-	}
+//	public Result(Examination examination, Member member, Integer correctanswernum, Integer incorrectanswernum,
+//			String time, Integer correctanswerread, Integer correctanswerlisten) {
+//		this.examination = examination;
+//		this.member = member;
+//		this.correctanswernum = correctanswernum;
+//		this.incorrectanswernum = incorrectanswernum;
+//		this.time = time;
+//		this.correctanswerread = correctanswerread;
+//		this.correctanswerlisten = correctanswerlisten;
+//	}
 
 	public Integer getResultid() {
 		return this.resultid;
@@ -39,22 +39,6 @@ public class Result implements java.io.Serializable {
 
 	public void setResultid(Integer resultid) {
 		this.resultid = resultid;
-	}
-
-	public Examination getExamination() {
-		return this.examination;
-	}
-
-	public void setExamination(Examination examination) {
-		this.examination = examination;
-	}
-
-	public Member getMember() {
-		return this.member;
-	}
-
-	public void setMember(Member member) {
-		this.member = member;
 	}
 
 	public Integer getCorrectanswernum() {
@@ -95,6 +79,22 @@ public class Result implements java.io.Serializable {
 
 	public void setCorrectanswerlisten(Integer correctanswerlisten) {
 		this.correctanswerlisten = correctanswerlisten;
+	}
+
+	public Integer getMemberid() {
+		return memberid;
+	}
+
+	public void setMemberid(Integer memberid) {
+		this.memberid = memberid;
+	}
+
+	public Integer getExaminationid() {
+		return examinationid;
+	}
+
+	public void setExaminationid(Integer examinationid) {
+		this.examinationid = examinationid;
 	}
 
 }

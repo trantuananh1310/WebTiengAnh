@@ -15,14 +15,8 @@
         <property generated="never" lazy="false" name="content" optimistic-lock="true" type="string" unique="false">
             <column length="65535" name="content"/>
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="cmtlistens" optimistic-lock="true" sort="unsorted" table="cmtlisten">
-            <key on-delete="noaction">
-                <column name="listenguidelineid"/>
-            </key>
-            <one-to-many class="dakt.javatech.jhibernate.entity.Cmtlisten" embed-xml="true" not-found="exception"/>
-        </set>
-        <many-to-one class="dakt.javatech.jhibernate.entity.Level" embed-xml="true" fetch="select" insert="true" name="level" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <property generated="never" lazy="false" name="levelid" optimistic-lock="true" type="java.lang.Integer" unique="false">
             <column name="levelid"/>
-        </many-to-one>
+        </property>
     </class>
 </hibernate-mapping>
