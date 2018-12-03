@@ -110,8 +110,7 @@
                   <td class="container">${item.listenname}</td>
                   <td class="container"><img alt="" style="width: 150px; height: 100px; "
 									src="images/Listengui/${item.listenimage }"></td>
-				<td class="container">${item.level.levelname}</td>
-                 <td class="container"> <p>
+                  <td class="container"> <p>
                  		<a href="AdminListenGuidelineContent?id=${item.listenguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>
                  		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>
                  		<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>

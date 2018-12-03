@@ -17,8 +17,7 @@
                   <td class="container">${item.listenname}</td>
                   <td class="container"><img alt="" style="width: 150px; height: 100px; "
 									src="images/Listengui/${item.listenimage }"></td>
-				<td class="container">${item.level.levelname}</td>
-                 <td class="container"> <p>
+                  <td class="container"> <p>
                  		<a href="AdminListListenQuestion?idListenExercis=${item.listenguidelineid}"><span class="glyphicon glyphicon-search"></span> DS câu hỏi</a>
                  		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> </a>Sửa
                  		<a href="#" ><span class="glyphicon glyphicon-trash"></span> </a>Xóa</p>
