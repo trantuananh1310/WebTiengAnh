@@ -73,25 +73,27 @@
             
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
+                
+                <tr>
+                  <th>Nội dung</th>
+                  <th></th>
+                  
+                </tr>
       
                 </thead>
                 <tbody id="box-body1">
                 
                  <tr>
-                  
                   <td class="container">${Content.content}</td>
-                 		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>
-                 		<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
-                 </td>
+                  </td>
+                  <td >
+                   <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                
+                  </td> 
                   
-                 
                 </tr>
        
-                
-               
                 </tbody>
           
-                
               </table>
 <!--               <textarea class="form-textarea" id="noiDung">Chào mừng bạn đến với Blog Kênh Lập Trình</textarea> -->
             </div>

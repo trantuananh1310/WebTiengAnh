@@ -98,8 +98,9 @@
                   <th>STT</th>
                   <th>Tên chủ đề</th>
                   <th>Hình Ảnh</th>
-                  <th>Level </th>
-                  <th></th>
+                  <th> </th>
+                  <th> </th>
+                  <th> </th>
                   	
                 </tr>
                 </thead>
@@ -110,10 +111,14 @@
                   <td class="container">${item.listenname}</td>
                   <td class="container"><img alt="" style="width: 150px; height: 100px; "
 									src="images/Listengui/${item.listenimage }"></td>
-                  <td class="container"> <p>
-                 		<a href="AdminListenGuidelineContent?id=${item.listenguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>
-                 		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>
-                 		<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
+                  <td> <p>
+                 		<a href="AdminListenGuidelineContent?id=${item.listenguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>               		
+                 </td>
+                 <td >
+                 <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                
+                 </td>
+                 <td>
+                 <a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
                  </td>
                   
                  
@@ -123,14 +128,7 @@
                
                 </tbody>
                 <tfoot>
-                <tr>
-                  <th>STT</th>
-                  <th>Tên chủ đề</th>
-                  <th>Hình Ảnh</th>
-                  <th>Level </th>
-                  <th></th>
-               
-                </tr>
+             
                 
                 </tfoot>
                 

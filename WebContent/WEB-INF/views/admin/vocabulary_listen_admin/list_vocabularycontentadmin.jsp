@@ -95,7 +95,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                                    <th>STT</th>
+                  <th>STT</th>
                   <th>Nội dung</th>
                   <th>Phiên âm</th>
                   <th>Mp3</th>
@@ -115,7 +115,9 @@
                   <td class="container"><img alt="" style="width: 150px; height: 100px; "
 									src="images/VocabContent/${item.image }"></td>
 				 <td class="container">${item.mean}</td>
-                  
+                 <td >
+                 <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                
+                 </td> 
                  
                 </tr>
                 <%i++; %>
@@ -123,14 +125,7 @@
                
                 </tbody>
                 <tfoot>
-                <tr>
-                  <th>STT</th>
-                  <th>Tên chủ đề</th>
-                  <th>Hình Ảnh</th>
-                  <th>Level </th>
-                  <th></th>
-               
-                </tr>
+             
                 
                 </tfoot>
                 
