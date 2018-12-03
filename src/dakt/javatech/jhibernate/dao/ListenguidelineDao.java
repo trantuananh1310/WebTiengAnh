@@ -1,6 +1,8 @@
 package dakt.javatech.jhibernate.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -36,33 +38,53 @@ public class ListenguidelineDao {
 	
 	public List<ListenGuideline> list(int first, int max)
 	{
-		String hql="FROM ListenGuideline";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(first);
-		query.setMaxResults(max);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListListenGuideline/first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<ListenGuideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<ListenGuideline>>(){});
+		List<ListenGuideline> lstListen = rateResponse.getBody();
+		return lstListen;
 	}
 	public ListenGuideline getById(int id)
 	{
-		return (ListenGuideline)sessionFactory.getCurrentSession().get(ListenGuideline.class, id);
+		String uri="http://localhost:8084/Service/getListenGuidelineById/"+id;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<ListenGuideline> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<ListenGuideline>(){});
+		ListenGuideline listenguideline = rateResponse.getBody();
+		return listenguideline;
 	}
 	public void add(ListenGuideline sp)
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(sp);
+		String url="http://localhost:8084/Service/addListenGuideline";
+		RestTemplate restTemplate = new RestTemplate();
+		ListenGuideline vocabgui = restTemplate.postForObject(url, sp, ListenGuideline.class);
+	}
+	
+	public void update(ListenGuideline listenguideline)
+	{
+	    final String uri = "http://localhost:8084/Service/updateListenGuideline";
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.put(uri, listenguideline);
 	}
 
 	public void delete(int id)
 	{
-		ListenGuideline ListenGuideline=getById(id);
-		sessionFactory.getCurrentSession().delete(ListenGuideline);
+		String uri = "http://localhost:8084/Service/deleteListenGuideline/"+id;
+	    Map<String, Integer> params = new HashMap<String, Integer>();
+	    params.put("id", id);
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.delete( uri,  params );
 	}
 	
-	public List<ListenGuideline> getId(String s, int id)
-	{
-		String hql="FROM ListenGuideline WHERE "+s + " = "+id+"";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (List<ListenGuideline>)query.list();
-	}
+//	public List<ListenGuideline> getId(String s, int id)
+//	{
+//		String hql="FROM ListenGuideline WHERE "+s + " = "+id+"";
+//		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+//		return (List<ListenGuideline>)query.list();
+//	}
 	
 	public List<ListenGuideline> getListByLevelId(String level){
 		String uri="http://localhost:8084/Service/getListListenguidelineByLevelId/LevelId="+level;
@@ -74,9 +96,12 @@ public class ListenguidelineDao {
 	}
 	public  ListenGuideline getListenGuidelineById(String id)
 	{
-		String hql="From ListenGuideline  Where listenguidelineid = '"+id+"'";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (ListenGuideline)query.list().get(0);
+		String uri="http://localhost:8084/Service/getListenGuidelineById/"+id;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<ListenGuideline> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<ListenGuideline>(){});
+		ListenGuideline listenguideline = rateResponse.getBody();
+		return listenguideline;
 	}
 	
 	public List<ListenGuideline> getListByLevelId(String id, int first, int max)
