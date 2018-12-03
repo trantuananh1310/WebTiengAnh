@@ -31,7 +31,7 @@ public class AdminListenGuidelineController {
 		List<ListenGuideline> list= new ArrayList<ListenGuideline>();
 		list= lisGuidao.list();
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView= new ModelAndView("admin/Vocab_Listen_Guideline/list_listenGuidelineAdmin");
+		ModelAndView modelView= new ModelAndView("admin/vocabulary_listen_admin/list_listenguideline_admin");
 		modelView.addObject("listAdListenGui",list);
 		modelView.addObject("listLevel",lstLevel);
 		return modelView;
@@ -44,7 +44,7 @@ public class AdminListenGuidelineController {
 		if(levelId.equals("0")) list=lisGuidao.list();
 		else
 			list= lisGuidao.getListByLevelId(levelId);
-		ModelAndView modelView= new ModelAndView("admin/Vocab_Listen_Guideline/list_listen_byLevelIdAdmin");
+		ModelAndView modelView= new ModelAndView("admin/vocabulary_listen_admin/list_listen_bylevelidadmin");
 		modelView.addObject("listAdListenGui",list);
 		return modelView;
 
@@ -69,7 +69,7 @@ public class AdminListenGuidelineController {
 		
 		List<Level> lstLevel=levelDao.list();
 		ListenGuideline  content= lisGuidao.getListenGuidelineById(id);
-		ModelAndView modelView=new ModelAndView("admin/Vocab_Listen_Guideline/list_listenGuidelineContentAdmin");
+		ModelAndView modelView=new ModelAndView("admin/vocabulary_listen_admin/list_listen_contentadmin");
 		modelView.addObject("listLevel", lstLevel);
 		modelView.addObject("Content", content);
 		

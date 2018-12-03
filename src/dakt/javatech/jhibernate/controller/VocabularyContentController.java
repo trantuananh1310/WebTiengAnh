@@ -65,7 +65,7 @@ public class VocabularyContentController {
 		else{
 			maxPage = (sumRow/count);
 		}
-		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/content_vocabulary");
+		ModelAndView modelView=new ModelAndView("listen_vocabulary_guideline/content_vocabulary");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstContent", lstContentPage);
 		modelView.addObject("vocabularyid",vocabid);
