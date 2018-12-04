@@ -1,6 +1,8 @@
 package dakt.javatech.jhibernate.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import dakt.javatech.jhibernate.entity.Grammarguideline;
+import dakt.javatech.jhibernate.entity.Level;
 import dakt.javatech.jhibernate.entity.Listenquestion;
 
 @Component 
@@ -32,19 +35,34 @@ public class GrammarguidelineDao {
 	}
 	public List<Grammarguideline> list(int first, int max)
 	{
-		String hql="FROM Grammarguideline";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(first);
-		query.setMaxResults(max);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListGrammarguideline/first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Grammarguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Grammarguideline>>(){});
+		List<Grammarguideline> lstGr = rateResponse.getBody();
+		return lstGr;
 	}
 	public Grammarguideline getById(int id)
 	{
-		return (Grammarguideline)sessionFactory.getCurrentSession().get(Grammarguideline.class, id);
+		String uri="http://localhost:8084/Service/getGrammarguideline/"+id;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<Grammarguideline> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<Grammarguideline>(){});
+		Grammarguideline grguideline = rateResponse.getBody();
+		return grguideline;
 	}
 	public void add(Grammarguideline sp)
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(sp);
+		String url="http://localhost:8084/Service/addGrammarguideline";
+		RestTemplate restTemplate = new RestTemplate();
+		Grammarguideline grguideline = restTemplate.postForObject(url,sp , Grammarguideline.class);
+	}
+	public void update(Grammarguideline grammarguideline )
+	{
+		 final String uri = "http://localhost:8084/Service/updateGrammarguideline";
+	     
+		    RestTemplate restTemplate = new RestTemplate();
+		    restTemplate.put(uri, grammarguideline);
 	}
 //	public void update(int id, String ten, int instock, String vanchuyen, Double giacu, Double giamoi, String baohanh, int moi, int dacbiet,String anh, String newsletter)
 //	{
@@ -65,8 +83,12 @@ public class GrammarguidelineDao {
 //	}
 	public void delete(int id)
 	{
-		Grammarguideline grammarguideline=getById(id);
-		sessionFactory.getCurrentSession().delete(grammarguideline);
+		String uri = "http://localhost:8084/Service/deleteGrammarguideline/"+id;
+	    Map<String, Integer> params = new HashMap<String, Integer>();
+	    params.put("id", id);
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.delete( uri,  params );
 	}
 	public List<Grammarguideline> getId(String s, int id)
 	{
