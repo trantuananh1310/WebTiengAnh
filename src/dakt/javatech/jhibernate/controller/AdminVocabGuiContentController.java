@@ -30,7 +30,7 @@ public class AdminVocabGuiContentController {
 	{
 		List<Vocabularycontent> list = new ArrayList<Vocabularycontent>();
 		list= vocabconDao.getListByLevelId(vocabid);
-		ModelAndView modelView = new ModelAndView("admin/Vocab_Listen_Guideline/list_VocabGuidelineContentAdmin");
+		ModelAndView modelView = new ModelAndView("admin/vocabulary_listen_admin/list_vocabularycontentadmin");
 		modelView.addObject("listAdVocabCon", list);
 		return modelView;
 	}

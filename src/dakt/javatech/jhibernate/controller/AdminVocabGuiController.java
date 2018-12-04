@@ -30,7 +30,7 @@ public class AdminVocabGuiController {
 		List<Vocabularyguideline> list= new ArrayList<Vocabularyguideline>();
 		list= vocabDao.list();
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView= new ModelAndView("admin/Vocab_Listen_Guideline/list_VocabGuidelineAdmin");
+		ModelAndView modelView= new ModelAndView("admin/vocabulary_listen_admin/list_vocabularyguidelineadmin");
 		modelView.addObject("listAdVocabGui",list);
 		modelView.addObject("listLevel",lstLevel);
 		return modelView;
@@ -43,7 +43,7 @@ public class AdminVocabGuiController {
 		if(levelId.equals("0")) list=vocabDao.list();
 		else
 			list= vocabDao.getListByLevelId(levelId);
-		ModelAndView modelView= new ModelAndView("admin/Vocab_Listen_Guideline/list_vocab_byLevelIdAdmin");
+		ModelAndView modelView= new ModelAndView("admin/vocabulary_listen_admin/list_vocab_bylevelidadmin");
 		modelView.addObject("listAdVocabGui",list);
 		return modelView;
 

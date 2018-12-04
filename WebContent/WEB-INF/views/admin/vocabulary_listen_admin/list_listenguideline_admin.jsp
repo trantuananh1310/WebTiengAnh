@@ -48,7 +48,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quản lý Vocabulary
+        Quản lý Listen
       </h1>
       <div class="container" > 
       <div>
@@ -75,7 +75,7 @@
       
       <ol class="breadcrumb">
         <li><a href="HomeAdmin"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="AdminVocabularyGuideline">Quản lý Vocabulary</a></li>
+        <li><a href="AdminListenGuideline">Quản lý Listen</a></li>
         <li class="active">Data tables</li>
       </ol>
     </section>
@@ -95,26 +95,31 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                                    <th>STT</th>
-                  <th>Nội dung</th>
-                  <th>Phiên âm</th>
-                  <th>Mp3</th>
+                  <th>STT</th>
+                  <th>Tên chủ đề</th>
                   <th>Hình Ảnh</th>
-                  <th>Nghĩa Tiếng Việt </th>
-                  <th></th>
+                  <th> </th>
+                  <th> </th>
+                  <th> </th>
                   	
                 </tr>
                 </thead>
                 <tbody id="box-body1">
-                <c:forEach items="${listAdVocabCon}" var="item">
+                <c:forEach items="${listAdListenGui}" var="item">
                  <tr>
                   <td><%=i %></td>
-                  <td class="container">${item.vocabularycontentname}</td>
-                  <td class="container">${item.transcribe}</td>
-                  <td class="container">${item.audiomp3}</td>
+                  <td class="container">${item.listenname}</td>
                   <td class="container"><img alt="" style="width: 150px; height: 100px; "
-									src="images/VocabContent/${item.image }"></td>
-				 <td class="container">${item.mean}</td>
+									src="images/Listengui/${item.listenimage }"></td>
+                  <td> <p>
+                 		<a href="AdminListenGuidelineContent?id=${item.listenguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>               		
+                 </td>
+                 <td >
+                 <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                
+                 </td>
+                 <td>
+                 <a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
+                 </td>
                   
                  
                 </tr>
@@ -123,14 +128,7 @@
                
                 </tbody>
                 <tfoot>
-                <tr>
-                  <th>STT</th>
-                  <th>Tên chủ đề</th>
-                  <th>Hình Ảnh</th>
-                  <th>Level </th>
-                  <th></th>
-               
-                </tr>
+             
                 
                 </tfoot>
                 
@@ -343,7 +341,7 @@
 		  var val= $("#Level").val();
 		  $.ajax({
 			 type:"GET",
-			 url:"getListVocabByLevelIdAjax",
+			 url:"getListListenByLevelIdAjax",
 			 data: {levelId: $("#Level").val()},
 			 success:function(result)
 			 {

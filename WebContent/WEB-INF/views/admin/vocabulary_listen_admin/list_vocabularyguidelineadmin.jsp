@@ -48,13 +48,34 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quản lý Listen
+        Quản lý Vocabulary
       </h1>
+      <div class="container" > 
+      <div>
+      <div class="col-sm-6 " style=" padding-top: 10px;">
+      <select id="Level" class="form-control" style="margin-left: -29px;width: 150px;">
+      		<option value="0">Tất cả</option>
+            <c:forEach items="${listLevel}" var="item">
+			   <option value=${item.levelid }>${item.levelname}</option>
+			 </c:forEach>
+		</select>
+		</div>	
+		<div class="col-sm-6 " style=" text-align: right;padding-right: 60px;">
+			<div class="col-xs-12">
+				<h5 style="color: red">${msg }</h5>
+				<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-block btn-primary btn-flat" 
+				style="width: 200px;margin-left: 272px;">
+				Thêm mới
+				</button>
+			</div>
+		</div>
+		</div>
+		 
+      </div>
       
       <ol class="breadcrumb">
         <li><a href="HomeAdmin"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="AdminListenGuideline">Quản lý Listen</a></li>
-        <li><a href="AdminListenGuidelineContent">Nội dung</a></li>
+        <li><a href="AdminVocabularyGuideline">Quản lý Vocabulary</a></li>
         <li class="active">Data tables</li>
       </ol>
     </section>
@@ -73,24 +94,43 @@
             
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-      
+                <tr>
+                  <th>STT</th>
+                  <th>Tên chủ đề</th>
+                  <th>Hình Ảnh</th>
+                  <th> </th>
+                  <th> </th>
+                  <th> </th>
+                  	
+                </tr>
                 </thead>
                 <tbody id="box-body1">
-                
+                <c:forEach items="${listAdVocabGui}" var="item">
                  <tr>
-                  
-                  <td class="container">${Content.content}</td>
-                 		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>
-                 		<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
+                  <td><%=i %></td>
+                  <td class="container">${item.vocabularyname}</td>
+                  <td class="container"><img alt="" style="width: 150px; height: 100px; "
+									src="images/Vocabgui/${item.vocabularyimage }"></td>
+                 <td class=> <p>
+                 		<a href="AdminVocabularyContent?vocabid=${item.vocabularyguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>
+                 </td>
+                 <td >
+                 <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                
+                 </td>
+                 <td>
+                 <a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
                  </td>
                   
                  
                 </tr>
-       
-                
+                <%i++; %>
+                </c:forEach>
                
                 </tbody>
-          
+                <tfoot>
+               
+                
+                </tfoot>
                 
               </table>
 <!--               <textarea class="form-textarea" id="noiDung">Chào mừng bạn đến với Blog Kênh Lập Trình</textarea> -->
@@ -301,7 +341,7 @@
 		  var val= $("#Level").val();
 		  $.ajax({
 			 type:"GET",
-			 url:"getListListenByLevelIdAjax",
+			 url:"getListVocabByLevelIdAjax",
 			 data: {levelId: $("#Level").val()},
 			 success:function(result)
 			 {

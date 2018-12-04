@@ -1,6 +1,8 @@
 package dakt.javatech.jhibernate.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -17,6 +19,7 @@ import dakt.javatech.jhibernate.entity.ListenGuideline;
 import dakt.javatech.jhibernate.entity.Readexercise;
 import dakt.javatech.jhibernate.entity.Readquestion;
 import dakt.javatech.jhibernate.entity.Vocabularycontent;
+import dakt.javatech.jhibernate.entity.Vocabularyguideline;
 
 @Component 
 @Transactional
@@ -35,33 +38,53 @@ public class VocabularycontentDao {
 	
 	public List<Vocabularycontent> list(int first, int max)
 	{
-		String hql="FROM Vocabularycontent";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(first);
-		query.setMaxResults(max);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListVocabularycontent/first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Vocabularycontent>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Vocabularycontent>>(){});
+		List<Vocabularycontent> lstVocabCon = rateResponse.getBody();
+		return lstVocabCon;
 	}
 	public Vocabularycontent getById(int id)
 	{
-		return (Vocabularycontent)sessionFactory.getCurrentSession().get(Vocabularycontent.class, id);
+		String uri="http://localhost:8084/Service/getVocabularycontentById/"+id;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<Vocabularycontent> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<Vocabularycontent>(){});
+		Vocabularycontent vocabularycontent = rateResponse.getBody();
+		return vocabularycontent;
 	}
 	public void add(Vocabularycontent sp)
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(sp);
+		String url="http://localhost:8084/Service/addVocabularycontent";
+		RestTemplate restTemplate = new RestTemplate();
+		Vocabularycontent vocabcon = restTemplate.postForObject(url, sp, Vocabularycontent.class);
 	}
 
 	public void delete(int id)
 	{
-		Vocabularycontent vocabularycontent=getById(id);
-		sessionFactory.getCurrentSession().delete(vocabularycontent);
+		String uri = "http://localhost:8084/Service/deleteVocabularycontent/"+id;
+	    Map<String, Integer> params = new HashMap<String, Integer>();
+	    params.put("id", id);
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.delete( uri,  params );
 	}
 	
-	public List<Vocabularycontent> getId(String s, int id)
+	public void update(Vocabularycontent vocabularycontent)
 	{
-		String hql="FROM Vocabularycontent WHERE "+s + " = "+id+"";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (List<Vocabularycontent>)query.list();
+	    final String uri = "http://localhost:8084/Service/updateVocabularycontent";
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.put(uri, vocabularycontent);
 	}
+	
+//	public List<Vocabularycontent> getId(String s, int id)
+//	{
+//		String hql="FROM Vocabularycontent WHERE "+s + " = "+id+"";
+//		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+//		return (List<Vocabularycontent>)query.list();
+//	}
 	public List<Vocabularycontent> getListByLevelId(String vocabid){
 		String uri="http://localhost:8084/Service/getListListVocabularycontentByLevelId/LevelId="+vocabid;
 		RestTemplate restTemplate = new RestTemplate();

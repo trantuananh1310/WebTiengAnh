@@ -32,8 +32,13 @@
 	<!--  Database-related Configuration to connect with database -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+<<<<<<< HEAD
 		p:driverClassName="com.mysql.jdbc.Driver" p:url="jdbc:mysql://localhost:3308/toeicmyclass"
 		p:username="root" p:password="1234" />
+=======
+		p:driverClassName="com.mysql.jdbc.Driver" p:url="jdbc:mysql://localhost:3306/toeicmyclass"
+		p:username="root" p:password="Khanh8597" />
+>>>>>>> 7eb3269fbc0d25a713d65e44d1671eb43063887e
 
 	<!--  Hibernate-related Configuration -->
 

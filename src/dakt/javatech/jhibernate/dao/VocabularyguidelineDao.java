@@ -1,6 +1,8 @@
 package dakt.javatech.jhibernate.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -15,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import dakt.javatech.jhibernate.entity.ListenGuideline;
 import dakt.javatech.jhibernate.entity.Listenexercise;
+import dakt.javatech.jhibernate.entity.Readexercise;
 import dakt.javatech.jhibernate.entity.Vocabularyguideline;
 
 @Component 
@@ -24,7 +27,7 @@ public class VocabularyguidelineDao {
 	private SessionFactory sessionFactory;
 	public List<Vocabularyguideline> list()
 	{
-		String uri="http://localhost:8084/Service/getListVocabularyguideline";
+		String uri="http://localhost:8084/Service/getAllListVocabularyguideline";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<List<Vocabularyguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
 																			new ParameterizedTypeReference<List<Vocabularyguideline>>(){});
@@ -34,54 +37,59 @@ public class VocabularyguidelineDao {
 	
 	public List<Vocabularyguideline> list(int first, int max)
 	{
-		String hql="FROM Vocabularyguideline";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(first);
-		query.setMaxResults(max);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListVocabularyguideline/first="+first+"&max="+max;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Vocabularyguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Vocabularyguideline>>(){});
+		List<Vocabularyguideline> lstVocabGui = rateResponse.getBody();
+		return lstVocabGui;
 	}
 	public Vocabularyguideline getById(int id)
 	{
-		return (Vocabularyguideline)sessionFactory.getCurrentSession().get(Vocabularyguideline.class, id);
+		String uri="http://localhost:8084/Service/getVocabularyguidelineById/"+id;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<Vocabularyguideline> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<Vocabularyguideline>(){});
+		Vocabularyguideline vocabularyguideline = rateResponse.getBody();
+		return vocabularyguideline;
 	}
 	public void add(Vocabularyguideline sp)
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(sp);
+		String url="http://localhost:8084/Service/addVocabularyguideline";
+		RestTemplate restTemplate = new RestTemplate();
+		Vocabularyguideline vocabgui = restTemplate.postForObject(url, sp, Vocabularyguideline.class);
 	}
-//	public void update(int id, String ten, int instock, String vanchuyen, Double giacu, Double giamoi, String baohanh, int moi, int dacbiet,String anh, String newsletter)
-//	{
-////		sessionFactory.getCurrentSession().beginTransaction();
-//		Vocabularyguideline sp=getById(id);
-//		sp.setTen(ten);
-//		sp.setInstock(instock);
-//		sp.setVanchuyen(vanchuyen);
-//		sp.setGiacu(giacu);
-//		sp.setGiamoi(giamoi);
-//		sp.setBaohanh(baohanh);
-//		sp.setMoi(moi);
-//		sp.setDacbiet(dacbiet);
-//		sp.setAnh(anh);
-//		sp.setNewsletter(newsletter);
-//		sessionFactory.getCurrentSession().update(sp);
-////		sessionFactory.getCurrentSession().getTransaction().commit();
-//	}
+	public void update(Vocabularyguideline vocabularyguideline)
+	{
+	    final String uri = "http://localhost:8084/Service/updateVocabularyguideline";
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.put(uri, vocabularyguideline);
+	}
 	public void delete(int id)
 	{
-		Vocabularyguideline vocabularyguideline=getById(id);
-		sessionFactory.getCurrentSession().delete(vocabularyguideline);
+		 	String uri = "http://localhost:8084/Service/deleteVocabularyguideline/"+id;
+		    Map<String, Integer> params = new HashMap<String, Integer>();
+		    params.put("id", id);
+		     
+		    RestTemplate restTemplate = new RestTemplate();
+		    restTemplate.delete( uri,  params );
 	}
 	
-	public List<Vocabularyguideline> getId(String s, int id)
-	{
-		String hql="FROM Vocabularyguideline WHERE "+s + " = "+id+"";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (List<Vocabularyguideline>)query.list();
-	}
+//	public List<Vocabularyguideline> getId(String s, int id)
+//	{
+//		String hql="FROM Vocabularyguideline WHERE "+s + " = "+id+"";
+//		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+//		return (List<Vocabularyguideline>)query.list();
+//	}
 	
 	public List<Vocabularyguideline> getListByLevelId(String level){
-		String hql="FROM Vocabularyguideline WHERE levelid='"+ level +"'";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (List<Vocabularyguideline>)query.list();
+		String uri="http://localhost:8084/Service/getListVocabularyguidelineByLevel/levelId="+level;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Vocabularyguideline>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Vocabularyguideline>>(){});
+		List<Vocabularyguideline> lstByLevel = rateResponse.getBody();
+		return lstByLevel;
 	}
 	
 	public List<Vocabularyguideline> getListByLevelId(String id, int first, int max)
