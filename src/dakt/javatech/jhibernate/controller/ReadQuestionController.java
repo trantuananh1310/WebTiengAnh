@@ -54,7 +54,7 @@ public class ReadQuestionController {
 			pageid=pageid-1;
 			pageid=pageid*count +1;
 		}
-		List<Readquestion> lstReadQuestion=readQuestionDao.getListByLevelId(readexercise);
+		List<Readquestion> lstReadQuestion=readQuestionDao.getListByReadExId(Integer.parseInt(readexercise));
 		List<Readquestion> lstReadQuestionPage=readQuestionDao.getListPage((pageid-1), count, readexercise);
 		List<Level> lstLevel=levelDao.list();
 		sumRow = lstReadQuestion.size();

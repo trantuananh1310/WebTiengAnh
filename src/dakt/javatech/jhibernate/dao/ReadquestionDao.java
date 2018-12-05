@@ -76,14 +76,14 @@ public class ReadquestionDao {
 	    restTemplate.delete( uri,  params );
 	}
 	
-	public List<Readquestion> getId(String s, int id)
-	{
-		String hql="FROM Readquestion WHERE "+s + " = "+id+"";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return (List<Readquestion>)query.list();
-	}
+//	public List<Readquestion> getId(String s, int id)
+//	{
+//		String hql="FROM Readquestion WHERE "+s + " = "+id+"";
+//		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+//		return (List<Readquestion>)query.list();
+//	}
 	
-	public List<Readquestion> getListByLevelId(String readexeriseid){
+	public List<Readquestion> getListByReadExId(int readexeriseid){
 		
 		String uri="http://localhost:8084/Service/getListReadQuestionByExId/readexeriseid="+readexeriseid;
 		RestTemplate restTemplate = new RestTemplate();

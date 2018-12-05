@@ -61,5 +61,9 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="multipartResolver"
+            class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        	<property name="maxUploadSize" value="100000"/>
+    </bean>
 
 </beans>
