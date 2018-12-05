@@ -48,7 +48,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quản lý Listen
+        Quản lý Vocabulary
       </h1>
       <div class="container" > 
       <div>
@@ -75,7 +75,7 @@
       
       <ol class="breadcrumb">
         <li><a href="HomeAdmin"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="AdminListenGuideline">Quản lý Listen</a></li>
+        <li><a href="AdminVocabularyGuideline">Quản lý Vocabulary</a></li>
         <li class="active">Data tables</li>
       </ol>
     </section>
@@ -96,27 +96,28 @@
                 <thead>
                 <tr>
                   <th>STT</th>
-                  <th>Tên chủ đề</th>
+                  <th>Nội dung</th>
+                  <th>Phiên âm</th>
+                  <th>Mp3</th>
                   <th>Hình Ảnh</th>
-                  <th>Level </th>
+                  <th>Nghĩa Tiếng Việt </th>
                   <th></th>
                   	
                 </tr>
                 </thead>
                 <tbody id="box-body1">
-                <c:forEach items="${listAdListenGui}" var="item">
+                <c:forEach items="${listAdVocabCon}" var="item">
                  <tr>
                   <td><%=i %></td>
-                  <td class="container">${item.listenname}</td>
+                  <td class="container">${item.vocabularycontentname}</td>
+                  <td class="container">${item.transcribe}</td>
+                  <td class="container">${item.audiomp3}</td>
                   <td class="container"><img alt="" style="width: 150px; height: 100px; "
-									src="images/Listengui/${item.listenimage }"></td>
-				<td class="container">${item.level.levelname}</td>
-                 <td class="container"> <p>
-                 		<a href="AdminListenGuidelineContent?id=${item.listenguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>
-                 		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>
-                 		<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
-                 </td>
-                  
+									src="images/VocabContent/${item.image }"></td>
+				 <td class="container">${item.mean}</td>
+                 <td >
+                 <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                
+                 </td> 
                  
                 </tr>
                 <%i++; %>
@@ -124,14 +125,7 @@
                
                 </tbody>
                 <tfoot>
-                <tr>
-                  <th>STT</th>
-                  <th>Tên chủ đề</th>
-                  <th>Hình Ảnh</th>
-                  <th>Level </th>
-                  <th></th>
-               
-                </tr>
+             
                 
                 </tfoot>
                 
@@ -344,7 +338,7 @@
 		  var val= $("#Level").val();
 		  $.ajax({
 			 type:"GET",
-			 url:"getListListenByLevelIdAjax",
+			 url:"getListVocabByLevelIdAjax",
 			 data: {levelId: $("#Level").val()},
 			 success:function(result)
 			 {

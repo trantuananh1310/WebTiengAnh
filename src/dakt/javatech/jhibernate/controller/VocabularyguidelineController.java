@@ -76,7 +76,7 @@ public class VocabularyguidelineController {
 		for(int i=Count_Slide*(Page-1)+1;i<=Count_Slide*Page+1;i++ )LsPage.add(i);
 		List<Vocabularyguideline> lstVocab=vocabDao.getListByLevelId(level,Count_Exc_Page*Page,Count_Exc_Page);
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/list_vocabulary_guideline");
+		ModelAndView modelView=new ModelAndView("listen_vocabulary_guideline/list_vocabulary_guideline");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstVocab", lstVocab);
 		modelView.addObject("TotalPage",Total_Page );
