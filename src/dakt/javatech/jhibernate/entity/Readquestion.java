@@ -6,12 +6,9 @@ package dakt.javatech.jhibernate.entity;
  */
 public class Readquestion implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Integer readquestionid;
-	private Readexercise readexercise;
+	private Integer readexerciseid;
 	private Integer num;
 	private String paragraph;
 	private String question;
@@ -24,18 +21,18 @@ public class Readquestion implements java.io.Serializable {
 	public Readquestion() {
 	}
 
-	public Readquestion(Readexercise readexercise, Integer num, String paragraph, String question, String option1,
-			String option2, String option3, String option4, String correctanswer) {
-		this.readexercise = readexercise;
-		this.num = num;
-		this.paragraph = paragraph;
-		this.question = question;
-		this.option1 = option1;
-		this.option2 = option2;
-		this.option3 = option3;
-		this.option4 = option4;
-		this.correctanswer = correctanswer;
-	}
+//	public Readquestion(Readexercise readexercise, Integer num, String paragraph, String question, String option1,
+//			String option2, String option3, String option4, String correctanswer) {
+//		this.readexercise = readexercise;
+//		this.num = num;
+//		this.paragraph = paragraph;
+//		this.question = question;
+//		this.option1 = option1;
+//		this.option2 = option2;
+//		this.option3 = option3;
+//		this.option4 = option4;
+//		this.correctanswer = correctanswer;
+//	}
 
 	public Integer getReadquestionid() {
 		return this.readquestionid;
@@ -43,14 +40,6 @@ public class Readquestion implements java.io.Serializable {
 
 	public void setReadquestionid(Integer readquestionid) {
 		this.readquestionid = readquestionid;
-	}
-
-	public Readexercise getReadexercise() {
-		return this.readexercise;
-	}
-
-	public void setReadexercise(Readexercise readexercise) {
-		this.readexercise = readexercise;
 	}
 
 	public Integer getNum() {
@@ -115,6 +104,14 @@ public class Readquestion implements java.io.Serializable {
 
 	public void setCorrectanswer(String correctanswer) {
 		this.correctanswer = correctanswer;
+	}
+
+	public Integer getReadexerciseid() {
+		return readexerciseid;
+	}
+
+	public void setReadexerciseid(Integer readexerciseid) {
+		this.readexerciseid = readexerciseid;
 	}
 
 }

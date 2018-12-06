@@ -6,9 +6,9 @@
             <column name="listenquestionid"/>
             <generator class="identity"/>
         </id>
-        <many-to-one class="dakt.javatech.jhibernate.entity.Listenexercise" embed-xml="true" fetch="select" insert="true" name="listenexercise" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <property generated="never" lazy="false" name="listenexerciseid" optimistic-lock="true" type="java.lang.Integer" unique="false">
             <column name="listenexerciseid"/>
-        </many-to-one>
+        </property>
         <property generated="never" lazy="false" name="num" optimistic-lock="true" type="java.lang.Integer" unique="false">
             <column name="num"/>
         </property>

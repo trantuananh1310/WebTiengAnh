@@ -29,16 +29,6 @@ public class ListenguidelineController {
 	@Autowired
 	LevelDao levelDao;
 	
-//	@RequestMapping(value="/listListenguideline", method=RequestMethod.GET)
-//	public ModelAndView getAllMembers(String level)
-//	{
-//		List<ListenGuideline> lstListen=listenDao.getListByLevelId(level);
-//		List<Level> lstLevel=levelDao.list();
-//		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/list_listen_guideline");
-//		modelView.addObject("lstLevel", lstLevel);
-//		modelView.addObject("lstListen", lstListen);
-//		return modelView;
-//	}
 	
 	@RequestMapping(value="/listListenguideline", method=RequestMethod.GET)
 	public ModelAndView getAllMembers(String level, int Page)
@@ -75,7 +65,7 @@ public class ListenguidelineController {
 		for(int i=Count_Slide*(Page-1)+1;i<=Count_Slide*Page+1;i++ )LsPage.add(i);
 		List<ListenGuideline> lstListen=listenDao.getListByLevelId(level,Count_Exc_Page*Page,Count_Exc_Page);
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/list_listen_guideline");
+		ModelAndView modelView=new ModelAndView("listen_vocabulary_guideline/list_listen_guideline");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("lstListen", lstListen);
 		modelView.addObject("TotalPage",Total_Page );
@@ -91,7 +81,7 @@ public class ListenguidelineController {
 		
 		List<Level> lstLevel=levelDao.list();
 		ListenGuideline  content= listenDao.getListenGuidelineById(id);
-		ModelAndView modelView=new ModelAndView("Vocabulary_Listen_guideline/content_listen");
+		ModelAndView modelView=new ModelAndView("listen_vocabulary_guideline/content_listen");
 		modelView.addObject("lstLevel", lstLevel);
 		modelView.addObject("Content", content);
 		

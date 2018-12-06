@@ -116,7 +116,6 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
                     
          <li class="treeview ">
           <a href="#">
@@ -129,9 +128,9 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu ">
-            <li><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý chia sẻ từ vựng</a></li>
+            <li><a href="AdminVocabularyGuideline"><i class="fa fa-circle-o"></i> Quản lý chia sẻ từ vựng</a></li>
             <li ><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý chia sẻ ngữ pháp</a></li>
-            <li ><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý chia sẻ nghe</a></li>
+            <li ><a href="AdminListenGuideline"><i class="fa fa-circle-o"></i> Quản lý chia sẻ nghe</a></li>
           </ul>
         </li>
            
@@ -141,7 +140,7 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>   
            <ul class="treeview-menu">
-            <li><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý bài tập đọc</a></li>
+            <li><a href="AdminReadExercise"><i class="fa fa-circle-o"></i> Quản lý bài tập đọc</a></li>
             <li ><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý bài tập nghe</a></li>
           </ul>        
         </li>
@@ -154,10 +153,6 @@
 <!--             <ul class="treeview-menu"> -->
 <!--             <li><a href="new 1.html"><i class="fa fa-circle-o"></i> Lý thuyết</a></li> -->
 <!--             <li class="active"><a href="new 1.html"><i class="fa fa-circle-o"></i> Bài tập</a></li> -->
-        
-       
-      
-      
     </section>
     <!-- /.sidebar -->
   </aside>

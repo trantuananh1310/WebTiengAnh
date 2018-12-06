@@ -5,26 +5,6 @@
 
 <hibernate-configuration>
     <session-factory>
-        <mapping resource="dakt/javatech/jhibernate/entity/Account.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Categorymember.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Cmtgrammar.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Cmtvocabulary.hbm.xml" />
-     	<mapping resource="dakt/javatech/jhibernate/entity/Examination.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Examinationquestion.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Grammarguideline.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Listenexercise.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Listenquestion.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Member.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Province.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Readexercise.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Readquestion.hbm.xml" />
-     	<mapping resource="dakt/javatech/jhibernate/entity/Result.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Slidebanner.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Student.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Vocabularycontent.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Vocabularyguideline.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Level.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Listenguideline.hbm.xml" />
-	    <mapping resource="dakt/javatech/jhibernate/entity/Cmtlisten.hbm.xml" />
+	   
     </session-factory>   
 </hibernate-configuration>

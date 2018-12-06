@@ -6,12 +6,12 @@
             <column name="resultid"/>
             <generator class="identity"/>
         </id>
-        <many-to-one class="dakt.javatech.jhibernate.entity.Examination" embed-xml="true" fetch="select" insert="true" name="examination" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <property generated="never" lazy="false" name="examinationid" optimistic-lock="true" type="java.lang.Integer" unique="false">
             <column name="examinationid"/>
-        </many-to-one>
-        <many-to-one class="dakt.javatech.jhibernate.entity.Member" embed-xml="true" fetch="select" insert="true" name="member" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        </property>
+        <property generated="never" lazy="false" name="memberid" optimistic-lock="true" type="java.lang.Integer" unique="false">
             <column name="memberid"/>
-        </many-to-one>
+        </property>
         <property generated="never" lazy="false" name="correctanswernum" optimistic-lock="true" type="java.lang.Integer" unique="false">
             <column name="correctanswernum"/>
         </property>

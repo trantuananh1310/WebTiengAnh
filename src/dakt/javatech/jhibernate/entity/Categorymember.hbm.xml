@@ -9,11 +9,5 @@
         <property generated="never" lazy="false" name="categorymembername" optimistic-lock="true" type="string" unique="false">
             <column length="45" name="categorymembername"/>
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="lstMember" optimistic-lock="true" sort="unsorted" table="member">
-            <key on-delete="noaction">
-                <column name="categorymemberid"/>
-            </key>
-            <one-to-many class="dakt.javatech.jhibernate.entity.Member" embed-xml="true" not-found="exception"/>
-        </set>
     </class>
 </hibernate-mapping>

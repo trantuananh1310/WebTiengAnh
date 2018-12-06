@@ -46,7 +46,7 @@ public class LoginController {
 		{
 			if(username.equals(mem.get(i).getMembername())&& password.equals(mem.get(i).getMemberpass()))
 			{
-				if(mem.get(i).getCategorymember().getCategorymemberid()==1)
+				if(mem.get(i).getCategorymemberid()==1)
 				{
 					session.setAttribute("sessionuser", mem.get(i).getName());
 					return LOGIN_USER_SUCCESS;
@@ -67,7 +67,7 @@ public class LoginController {
 		return modelView;
 	}
 	
-	@RequestMapping(value="/test", method=RequestMethod.GET)
+	@RequestMapping(value="/homeAdmin", method=RequestMethod.GET)
 	public ModelAndView getAllMembers(ModelMap model)
 	{
 		ModelAndView modelView=new ModelAndView("admin/index");
@@ -101,13 +101,12 @@ public class LoginController {
 			}
 		}
 		Member mem= new Member();
-		Categorymember cate=cateDao.getById(1);
 		mem.setName(fullname);
 		mem.setMembername(username);
 		mem.setMemberpass(password);
 		mem.setEmail(email);
 		mem.setSdt(Integer.parseInt(phone));
-		mem.setCategorymember(cate);
+		mem.setCategorymemberid(1);;
 		memDao.add(mem);
 		session.setAttribute("sessionuser", fullname);
 		return REGISTER_SUCCESS;
