@@ -33,7 +33,7 @@ public class ListenQuestionController {
 	ListenquestionDao ListenQuestionDao;
 	
 	@RequestMapping(value="/ListListenQuestion", method=RequestMethod.GET)
-	public ModelAndView getAllMembers(String ListenExerciseId,int page)
+	public ModelAndView getListenQuestionByLsExrId(String ListenExerciseId,int page)
 	{
 		int sumRow=0;
 		int maxPage=0;

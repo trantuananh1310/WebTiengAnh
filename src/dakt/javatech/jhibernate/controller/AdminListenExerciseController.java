@@ -1,10 +1,14 @@
 package dakt.javatech.jhibernate.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,7 +26,7 @@ public class AdminListenExerciseController {
 	@Autowired
 	ListenexerciseDao listenExDao;
 	@RequestMapping(value="/AdminListenExercise", method=RequestMethod.GET)
-	public ModelAndView AdminListenExercise()
+	public ModelAndView getListListenExercise()
 	{
 		List<Listenexercise> list= new ArrayList<Listenexercise>();
 		list= listenExDao.list();
@@ -45,9 +49,9 @@ public class AdminListenExerciseController {
 
 	}
 	@RequestMapping(value="/addListenExercise",method=RequestMethod.POST)
-	public ModelAndView addListenExercise(String listenExerciseName, String levelId )	
+	public ModelAndView addListenExercise(HttpServletRequest request, ModelMap modelMap,String listenExerciseName, String levelId ) throws UnsupportedOperationException, IOException 
 	{
-		Level level = levelDao.getById(Integer.parseInt(levelId));
+		Level level = levelDao.getById(Integer.parseInt("1"));
 		Listenexercise item= new Listenexercise();
 		item.setListenexercisename(listenExerciseName);
 		item.setLevel(level);

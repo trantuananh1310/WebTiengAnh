@@ -29,7 +29,7 @@ public class ListenExerciseController {
 	ListenexerciseDao listenExDao;
 	
 	@RequestMapping(value="/listListenExcercise", method=RequestMethod.GET)
-	public ModelAndView getAllMembers(String level, int Page)
+	public ModelAndView getListListenExcercise(String level, int Page)
 	{	
 		Page=Page-1;
 		// Lấy tổng số trang

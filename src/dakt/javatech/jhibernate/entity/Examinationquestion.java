@@ -23,13 +23,14 @@ public class Examinationquestion implements java.io.Serializable {
 	private String option3;
 	private String option4;
 	private String correctanswer;
+	private String part;
 
 	public Examinationquestion() {
 	}
 
 	public Examinationquestion(Examination examination, Integer num, String imagequestion, String audiogg,
 			String audiomp3, String paragraph, String question, String option1, String option2, String option3,
-			String option4, String correctanswer) {
+			String option4, String correctanswer,String part) {
 		this.examination = examination;
 		this.num = num;
 		this.imagequestion = imagequestion;
@@ -42,6 +43,15 @@ public class Examinationquestion implements java.io.Serializable {
 		this.option3 = option3;
 		this.option4 = option4;
 		this.correctanswer = correctanswer;
+		this.part=part;
+	}
+
+	public String getPart(){
+		return part;
+	}
+
+	public void setPart(String part) {
+		this.part = part;
 	}
 
 	public Integer getExaminationquestionid() {
