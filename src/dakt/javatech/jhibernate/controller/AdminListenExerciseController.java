@@ -54,7 +54,7 @@ public class AdminListenExerciseController {
 		Level level = levelDao.getById(Integer.parseInt("1"));
 		Listenexercise item= new Listenexercise();
 		item.setListenexercisename(listenExerciseName);
-		item.setLevel(level);
+		//item.setLevel(level);
 		item.setListenexerciseimage("abc");
 		listenExDao.add(item);
 		return new ModelAndView("redirect:/AdminListenExercise");

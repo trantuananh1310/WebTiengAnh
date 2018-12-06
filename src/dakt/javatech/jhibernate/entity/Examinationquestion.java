@@ -11,7 +11,7 @@ public class Examinationquestion implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer examinationquestionid;
-	private Examination examination;
+	private Integer examination;
 	private Integer num;
 	private String imagequestion;
 	private String audiogg;
@@ -28,7 +28,7 @@ public class Examinationquestion implements java.io.Serializable {
 	public Examinationquestion() {
 	}
 
-	public Examinationquestion(Examination examination, Integer num, String imagequestion, String audiogg,
+	public Examinationquestion(int examination, Integer num, String imagequestion, String audiogg,
 			String audiomp3, String paragraph, String question, String option1, String option2, String option3,
 			String option4, String correctanswer,String part) {
 		this.examination = examination;
@@ -62,11 +62,11 @@ public class Examinationquestion implements java.io.Serializable {
 		this.examinationquestionid = examinationquestionid;
 	}
 
-	public Examination getExamination() {
+	public int getExamination() {
 		return this.examination;
 	}
 
-	public void setExamination(Examination examination) {
+	public void setExamination(int examination) {
 		this.examination = examination;
 	}
 
