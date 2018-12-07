@@ -55,7 +55,7 @@ public class AdminReadExerciseController {
 			ModelMap modelMap,HttpServletRequest request)
 	{
 		String nameFile = commonsMultipartFiles.getOriginalFilename();
-		if(readexeriseidd!=null || !readexeriseidd.isEmpty()) {
+		if(readexeriseidd!=null && !readexeriseidd.isEmpty()) {
 			Readexercise readEx = new Readexercise();
 			readEx = readExDao.getById(Integer.parseInt(readexeriseidd));
 			readEx.setReadname(readname);

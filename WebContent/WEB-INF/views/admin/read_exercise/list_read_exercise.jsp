@@ -85,7 +85,6 @@
                   <th style="text-align: center;">Level</th>
                   <th style="text-align: center;"></th>
                   <th style="text-align: center;"></th>
-                  <th style="text-align: center;"></th>
                   	
                 </tr>
                 </thead>
@@ -104,12 +103,25 @@
 							<td class="container" style="text-align: center;">
 								<a href="AdminListReadQuestion?readexerciseid=${item.readexeriseid}"><span class="glyphicon glyphicon-search"></span> Chi Tiết</a>
 							</td>
-							<td class="container" style="text-align: center;">
-								<input type="button" value="Sửa" class="btn btn-primary btn-flat edit_data" id="${item.readexeriseid }"></input>
+<!-- 							<td class="container" style="text-align: center;"> -->
+							
+<%-- 								<button class="btn btn-primary edit_data" id="${item.readexeriseid }"> --%>
+<!-- 									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa -->
+<!-- 								</button> -->
+							
+<%-- 								<input type="button" value="Sửa" class="btn btn-primary btn-flat edit_data" id="${item.readexeriseid }"></input> --%>
 <%-- 								<a href="" id="${item.readexeriseid }" class="edit_data"><span class="glyphicon glyphicon-pencil"></span> Sửa</a> --%>
-							</td>
+<!-- 							</td> -->
 			                <td class="container" style="text-align: center;">
-			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.readexeriseid }"></input>
+			                
+			                	<button class="btn btn-primary edit_data" id="${item.readexeriseid }">
+									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
+								</button>
+			                
+			                	<button class="btn btn-danger delete_data" id="${item.readexeriseid }">
+									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
+								</button>
+<%-- 			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.readexeriseid }"></input> --%>
 <!-- 			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a> -->
 			                </td>
 		                </tr>
@@ -180,10 +192,13 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="submit" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add"></input>
-<!-- 						<button class="btn btn-info" type="submit" id="btn_add"> -->
-<!-- 							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới -->
-<!-- 						</button> -->
+<!-- 						<input type="submit" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add"></input> -->
+						<button class="btn btn-info" type="submit" id="btn_edit">
+							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
+						</button>
+						<button class="btn btn-info" type="submit" id="btn_add">
+							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới
+						</button>
 					</div>
 				</div>
 			</form>
@@ -277,7 +292,8 @@
 					 $("#add_level").val(result.levelid);
 					 $("#read_exerise_id").val(result.readexeriseid);
 					 $("#modal_title").text("Sửa chủ đề");
-					 $("#btn_add").val("Sửa");
+					 $("#btn_edit").show();
+					 $("#btn_add").hide();
 					 $("#myModal").modal('show');
 				 }
 			  })
@@ -287,7 +303,8 @@
 					 $("#readname").val('');
 					 $("#add_level").val("1");
 					 $("#read_exerise_id").val('');
-					 $("#btn_add").val("Thêm");
+					 $("#btn_add").show();
+					 $("#btn_edit").hide();
 					 $("#modal_title").text("Thêm mới chủ đề");
 					 $("#myModal").modal('show');
 	  });
