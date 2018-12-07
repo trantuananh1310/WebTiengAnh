@@ -69,7 +69,8 @@
           				</div>
           			
           				<div class="col-sm-6" style="text-align: right;">
-          					<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-flat" style="width: 150px;">Thêm mới</a>
+          					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
+<!--           					<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-flat" style="width: 150px;">Thêm mới</a> -->
           				</div>
           			</div>
           	</div>
@@ -100,10 +101,16 @@
 									<td class="container" style="text-align: center;">${level.levelname}</td>
 								</c:if>
 							</c:forEach>
-							<td class="container" style="text-align: center;"><a href="AdminListReadQuestion?readexerciseid=${item.readexeriseid}"><span class="glyphicon glyphicon-search"></span> Chi Tiết</a></td>
-							<td class="container" style="text-align: center;"><a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a></td>
+							<td class="container" style="text-align: center;">
+								<a href="AdminListReadQuestion?readexerciseid=${item.readexeriseid}"><span class="glyphicon glyphicon-search"></span> Chi Tiết</a>
+							</td>
+							<td class="container" style="text-align: center;">
+								<input type="button" value="Sửa" class="btn btn-primary btn-flat edit_data" id="${item.readexeriseid }"></input>
+<%-- 								<a href="" id="${item.readexeriseid }" class="edit_data"><span class="glyphicon glyphicon-pencil"></span> Sửa</a> --%>
+							</td>
 			                <td class="container" style="text-align: center;">
-			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a>
+			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.readexeriseid }"></input>
+<!-- 			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a> -->
 			                </td>
 		                </tr>
 	                <%i++; %>
@@ -129,13 +136,12 @@
   <!--Modal-->
     <div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
-			<form action="editGMGLAction" method="post" id="add_form"
-				enctype="multipart/form-data">
+			<form id="add_form" action="addReadExercise" method="post" enctype="multipart/form-data">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm mới chủ đề</h4>
+						<h4 id="modal_title" class="modal-title">Thêm mới chủ đề</h4>
 					</div>
 					<div class="modal-body">
 						<div class="row">
@@ -148,19 +154,20 @@
 								</label>
 
 								<div class="col-sm-10">
-									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="readname"  /> 
+									<input type="text" id="readname" placeholder="Tên tiêu đề bài tập" class="form-control" name="readname"  /> 
 									<br />
 									<input id="file_add" type="file" name="file" class="form-control" />
 									<br />
+									<input type="hidden" name="readexeriseidd" id="read_exerise_id"  />
 									<div class="col-xs-12" >
 										<!-- PAGE CONTENT BEGINS -->
 										<div class="row" >
 											<div class="widget-box widget-color-grey">
 												<div class="widget-body">
 													<div class="widget-main no-padding">
-														<select id="Level" class="form-control" >
+														<select id="add_level" name="levelid" class="form-control" >
 												            <c:forEach items="${listLevel}" var="item">
-																<option name="levelid" value=${item.levelid }>${item.levelname}</option>
+																<option value=${item.levelid }>${item.levelname}</option>
 															</c:forEach>
 														</select>													
 													</div>
@@ -173,9 +180,10 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-info" type="submit" id="btn_add">
-							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới
-						</button>
+						<input type="submit" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add"></input>
+<!-- 						<button class="btn btn-info" type="submit" id="btn_add"> -->
+<!-- 							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới -->
+<!-- 						</button> -->
 					</div>
 				</div>
 			</form>
@@ -228,8 +236,7 @@
     })
   })
   $(document).ready(function() {
-	  
-	  swal("", "Các trường không được để trống", "warning");
+// 	  swal("", "Các trường không được để trống", "warning");
 	  $("#Level").on('change',function(event){
 		  var val= $("#Level").val();
 		  $.ajax({
@@ -244,40 +251,100 @@
 		  })
 	  });
 	  
-	  $("#btn_add").on('click',function(event) {
+	  $('#btn_add').on('click',function(event) {
 			event.preventDefault();
-			var readname= $("#form-file_add-2-1").val();
+			var readname= $("#readname").val();
 			var filename= $("#file_add").val();
 			if(readname=='' || filename==''){
 				swal("", "Các trường không được để trống", "warning");
 			}
 			else{
 				$('#add_form').submit();
-// 				swal("", "ngon rồi", "warning");
 			}
-// 			swal("", "Bạn chưa trả lời hết các câu hỏi", "warning");
-//			var countInput=$("input[type='radio']").length;
-//			var countQuestion= (countInput/4);
-//			var countCheck=$("input[type='radio']:checked").length;
-//			var input=$("input[type='radio'][name='answer[0]']:checked").val();
-			
-//			if(countCheck < countQuestion){
-//				swal("", "Bạn chưa trả lời hết các câu hỏi", "warning");
-//			}
-//			else{
-//				$.ajax({
-//					type : "POST",
-//					url : "checkScoreReadQuestion",
-//					data : $('form').serialize(),
-//					success : function(result) {
-//						$('#3            ').hide();
-//						$("#btn_score").hide();
-//						$("#btn_tapescript").hide();
-//						$('#result_score').html(result);
-//					}
-//				});
-//			}
+				
 		});
+	  
+	  $(document).on('click','.edit_data',function() {
+			var readExerciseId = $(this).attr("id");
+			$.ajax({
+				 type:"GET",
+				 contentType : "application/json",
+				 url:"editReadExercise",
+				 data: {readExerciseId: readExerciseId},
+				 dataType:"json",
+				 success:function(result){
+					 $("#readname").val(result.readname);
+					 $("#add_level").val(result.levelid);
+					 $("#read_exerise_id").val(result.readexeriseid);
+					 $("#modal_title").text("Sửa chủ đề");
+					 $("#btn_add").val("Sửa");
+					 $("#myModal").modal('show');
+				 }
+			  })
+	  });
+	  
+	  $(document).on('click','.add_data',function() {
+					 $("#readname").val('');
+					 $("#add_level").val("1");
+					 $("#read_exerise_id").val('');
+					 $("#btn_add").val("Thêm");
+					 $("#modal_title").text("Thêm mới chủ đề");
+					 $("#myModal").modal('show');
+	  });
+	  
+	  $(document).on('click','.delete_data',function() {
+		  debugger;
+		  var readExerciseId = $(this).attr("id");
+		  swal({
+			  title: "Bạn có chắc chắn muốn xóa?",
+// 			  text: "Your will not be able to recover this imaginary file!",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonClass: "btn-danger",
+			  confirmButtonText: "Yes, delete it!",
+			  closeOnConfirm: false
+			},
+			function(){
+				$.ajax({
+					 type:"POST",
+					 url:"deleteReadExercise",
+					 data: {readExerciseId: readExerciseId},
+				})
+				swal({
+					  title: "Đã xóa thành công!",
+					  type: "success",
+					  confirmButtonText: "OK",
+//					  closeOnConfirm: false
+					},
+					function(){
+					  window.location.reload();
+				});
+				
+// 			  swal("Đã xóa thành công!", "", "success");
+			});
+		  
+	  });
+	  
+// 	  $('#add_form').on('submit',function(event) {
+// 			event.preventDefault();
+// 			var readname= $("#form-file_add-2-1").val();
+// 			var filename= $("#file_add").val();
+// 			if(readname=='' || filename==''){
+// 				swal("", "Các trường không được để trống", "warning");
+// 			}
+// 			else{
+// 				$('#add_form').submit();
+// 				swal("", "ngon rồi", "success");
+// 				$.ajax({
+// 					type: "POST",
+// 					url: "addReadExercise",
+// 					data:{},
+// 					success:function(result){
+// 						alert("dm");
+// 					}
+// 				})
+// 			}
+// 		});
   });
 </script>
 <script src="js/sweetalert.min.js"></script>

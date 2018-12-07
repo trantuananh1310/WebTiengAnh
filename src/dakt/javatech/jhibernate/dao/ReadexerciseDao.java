@@ -87,7 +87,6 @@ public class ReadexerciseDao {
 	    String uri = "http://localhost:8084/Service/deleteReadexercise/"+id;
 	    Map<String, Integer> params = new HashMap<String, Integer>();
 	    params.put("id", id);
-	     
 	    RestTemplate restTemplate = new RestTemplate();
 	    restTemplate.delete( uri,  params );
 	}
