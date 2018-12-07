@@ -58,7 +58,7 @@ public class ListenQuestionController {
 	}
 	
 	@RequestMapping(value="/AnswerListen_Tapescript", method=RequestMethod.POST)
-	public ModelAndView getAllMembers(HttpServletRequest request, String ListenExerciseid,int page)
+	public ModelAndView TapeScript(HttpServletRequest request, String ListenExerciseid,int page)
 	{
 		page=page-1;
 		int count=COUNT_PAGE;

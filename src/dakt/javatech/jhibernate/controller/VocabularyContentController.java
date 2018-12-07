@@ -43,7 +43,7 @@ public class VocabularyContentController {
 //	}
 	
 	@RequestMapping(value="/contentvocabulary", method=RequestMethod.GET)
-	public ModelAndView getAllMembers(String page, String vocabid)
+	public ModelAndView getVocabularyContent(String page, String vocabid)
 	{
 		int sumRow=0;
 		int maxPage=0;

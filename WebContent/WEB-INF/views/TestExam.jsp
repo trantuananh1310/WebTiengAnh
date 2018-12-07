@@ -216,33 +216,33 @@
 
 	<section >
 		<div class="container" style="background-color: white;height: 600px;">
-			<h2 class="title text-center">Exam</h2>
+			<h2 class="title text-center">Practice Full Test TOEIC Reading, Listening </h2>
 		<div class="row" style="background-color: white;">
 		
 			<div class="col-md-8 col-sm-8 col-xs-12" style="height: 500px;background-color: white;">
 			<div class="clear col_box_baihoc_view" id="NoiDungCauHoi">
 				<c:if test="${part eq '1'}">
-					<button id="part1" type="button" class="btn-default btn active" style=" width: 150px;height: 50px;">Part1</button>
+					<button id="part1" type="button" class="btn-default btn active" style="margin-top: -50px; width: 150px;height: 50px;">Part1</button>
 				</c:if>
 				<c:if test="${part!='1'}">
-					<button id="part1" type="button" class="btn-default btn " style=" width: 150px;height: 50px;">Part1</button>
+					<button id="part1" type="button" class="btn-default btn " style="margin-top: -50px; width: 150px;height: 50px;">Part1</button>
 				</c:if>
 				<c:if test="${part eq '2'}">
-					 <button id="part2" type="button" class="btn-default btn active" style=" width: 150px;height:50px;">Part2</button>
+					 <button id="part2" type="button" class="btn-default btn active" style="margin-top: -50px; width: 150px;height:50px;">Part2</button>
 				</c:if>
 				<c:if test="${part!='2'}">
-					<button id="part2" type="button" class="btn-default btn " style=" width: 150px;height: 50px;">Part1</button>
+					<button id="part2" type="button" class="btn-default btn " style=" margin-top: -50px;width: 150px;height: 50px;">Part2</button>
 				</c:if>
 				<c:if test="${part eq '3'}">
-					 <button id="part3" type="button" class="btn-default btn active" style=" width: 150px;height: 50px;">Part3</button>
+					 <button id="part3" type="button" class="btn-default btn active" style="margin-top: -50px; width: 150px;height: 50px;">Part3</button>
 				</c:if>
 				<c:if test="${part!='3'}">
-					 <button id="part3" type="button" class="btn-default btn " style=" width: 150px;height: 50px;">Part3</button>
+					 <button id="part3" type="button" class="btn-default btn " style="margin-top: -50px; width: 150px;height: 50px;">Part3</button>
 				</c:if>
 					 <br>
 			 <div class="col-md-12 col-sm-12 col-xs-12" style="height: 400px;border: 1px solid #ecebeb;">
 			 <br>
-			 <div>${stt}:${Question.question}</div>
+			 <div><b>${stt}:${Question.question}</b></div>
 			<c:if test="${not empty Question.imagequestion }">
 			 <div style="text-align:center;height: 200px;">
 			 	<img src="images/examinationquestion/${Question.imagequestion }" >
@@ -285,7 +285,7 @@
                      <table class="col-md-12 col-sm-12 col-xs-12">
             		<c:forEach var="item" items="${listQuestion}">
 	            		<tr>
-	            		<td><a href="javascript:clickSTT(<%=i%>)" class="hrefQuestion" value="<%=i%>" style="padding-left: 5px;"><%=i+1%>&nbsp&nbsp</a></td>
+	            		<td><a href="javascript:clickSTT(<%=i+1%>)" class="hrefQuestion" value="<%=i%>" style="padding-left: 5px;"><%=i+1%>&nbsp&nbsp</a></td>
 	            		<td>A.<input  type="radio" name="question[<%=i %>]" value="${item.option1 }">&nbsp&nbsp&nbsp</td>
 	            		<td>B.<input  type="radio" name="question[<%=i %>]" value="${item.option2 }">&nbsp&nbsp&nbsp</td>
 	            		<td>C.<input  type="radio" name="question[<%=i %>]" value="${item.option3 }">&nbsp&nbsp&nbsp</td>

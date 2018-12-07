@@ -18,8 +18,9 @@ public class Categorymember implements java.io.Serializable {
 	public Categorymember() {
 	}
 
-	public Categorymember(int categorymemberid) {
+	public Categorymember(int categorymemberid,String categorymembername) {
 		this.categorymemberid = categorymemberid;
+		this.categorymembername=categorymembername;
 	}
 //
 //	public Categorymember(int categorymemberid, String categorymembername, Set members) {

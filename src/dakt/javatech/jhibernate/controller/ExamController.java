@@ -30,25 +30,11 @@ public class ExamController {
 	ExaminationquestionDao examinationquestionDAO;
 	@Autowired
 	ExaminationDao examinationDao;
-	@RequestMapping(value="/Exam", method=RequestMethod.GET)
-	public  ModelAndView Exam(int stt)
-	{
-		
-		List<Level> lstLevel=levelDao.list();
-		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(26);
-		int totalQuestion= list.size();
-		ModelAndView modelView = new ModelAndView("/Exam");
-		modelView.addObject("lstLevel", lstLevel);
-		modelView.addObject("listQuestion",  list);
-		modelView.addObject("totalQuestion",totalQuestion);
-		modelView.addObject("Question", list.get(stt-1));
-		modelView.addObject("stt", stt);
-		return modelView;
-	}
+	
 	@RequestMapping(value="/ExamQuestion", method=RequestMethod.GET)
 	public ModelAndView getQuestionByStt(int stt,String examinationId)
 	{
-		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(Integer.parseInt(examinationId));
+		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(Integer.parseInt("26"));
 		ModelAndView modelView = new ModelAndView("/ExamQuestion");
 		modelView.addObject("listQuestion",  list);
 		modelView.addObject("Question", list.get(stt-1));
@@ -59,14 +45,14 @@ public class ExamController {
 	@RequestMapping(value="/ExamQuestionByPart", method=RequestMethod.GET)
 	public ModelAndView getQuestionByPart(String part,String examinationId)
 	{
-		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(Integer.parseInt(examinationId));
+		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(Integer.parseInt("26"));
 		int stt=0;
 		// tìm vị trí của câu hỏi đầu tiên thỏa mãn đk 
 		for (Examinationquestion item : list) {
 			stt++;
-			if(item.getPart()==part) break;
+			if(item.getPart().equals(part)) break;
 		};
-		ModelAndView modelView = new ModelAndView("/exam_question_part");
+		ModelAndView modelView = new ModelAndView("exam_question_part");
 		modelView.addObject("listQuestion",  list);
 		modelView.addObject("Question", list.get(stt-1));
 		modelView.addObject("stt", stt);
@@ -93,9 +79,9 @@ public class ExamController {
 				}
 			}
 		}
-		return String.valueOf(soCauDung);
+		return String.valueOf(soCauDung)+"/"+countRow;
 	}
-	@RequestMapping(value="/TestExam", method=RequestMethod.GET)
+	@RequestMapping(value="/exam", method=RequestMethod.GET)
 	public ModelAndView getQuestionByStt2(int stt)
 	{	// lấy list các đề thi
 		List<Examination> listExam = examinationDao.list();
@@ -104,8 +90,8 @@ public class ExamController {
         int randomNum =rn.nextInt(listExam.size());
         int examinationId = listExam.get(randomNum).getExaminationid();
 		// lấy các câu hỏi của đề thi
-		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(examinationId);
-		ModelAndView modelView = new ModelAndView("/TestExam");
+		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(26);
+		ModelAndView modelView = new ModelAndView("/exam");
 		modelView.addObject("listQuestion",  list);
 		modelView.addObject("Question", list.get(stt-1));
 		modelView.addObject("stt", stt);

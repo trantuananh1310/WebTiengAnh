@@ -15,6 +15,9 @@ public class ListenGuideline implements java.io.Serializable {
 	private String content;
 	private Integer levelid;
 	
+	public ListenGuideline(){
+		
+	}
 	public Integer getListenguidelineid() {
 		return listenguidelineid;
 	}

@@ -31,7 +31,7 @@ public class ListenguidelineController {
 	
 	
 	@RequestMapping(value="/listListenguideline", method=RequestMethod.GET)
-	public ModelAndView getAllMembers(String level, int Page)
+	public ModelAndView listListenguideline(String level, int Page)
 	{	
 		Page=Page-1;
 		// Lấy tổng số trang

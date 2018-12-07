@@ -9,9 +9,10 @@ public class Examinationquestion implements java.io.Serializable {
 	/**
 	 * 
 	 */
+	 
 	private static final long serialVersionUID = 1L;
 	private Integer examinationquestionid;
-	private Integer examination;
+	private Integer examinationid;
 	private Integer num;
 	private String imagequestion;
 	private String audiogg;
@@ -25,13 +26,21 @@ public class Examinationquestion implements java.io.Serializable {
 	private String correctanswer;
 	private String part;
 
+	public String getPart() {
+		return part;
+	}
+
+	public void setPart(String part) {
+		this.part = part;
+	}
+
 	public Examinationquestion() {
 	}
 
-	public Examinationquestion(int examination, Integer num, String imagequestion, String audiogg,
+	public Examinationquestion(Integer examinationId, Integer num, String imagequestion, String audiogg,
 			String audiomp3, String paragraph, String question, String option1, String option2, String option3,
-			String option4, String correctanswer,String part) {
-		this.examination = examination;
+			String option4, String correctanswer) {
+		this.examinationid = examinationId;
 		this.num = num;
 		this.imagequestion = imagequestion;
 		this.audiogg = audiogg;
@@ -43,15 +52,6 @@ public class Examinationquestion implements java.io.Serializable {
 		this.option3 = option3;
 		this.option4 = option4;
 		this.correctanswer = correctanswer;
-		this.part=part;
-	}
-
-	public String getPart(){
-		return part;
-	}
-
-	public void setPart(String part) {
-		this.part = part;
 	}
 
 	public Integer getExaminationquestionid() {
@@ -60,14 +60,6 @@ public class Examinationquestion implements java.io.Serializable {
 
 	public void setExaminationquestionid(Integer examinationquestionid) {
 		this.examinationquestionid = examinationquestionid;
-	}
-
-	public int getExamination() {
-		return this.examination;
-	}
-
-	public void setExamination(int examination) {
-		this.examination = examination;
 	}
 
 	public Integer getNum() {
@@ -157,5 +149,14 @@ public class Examinationquestion implements java.io.Serializable {
 	public void setCorrectanswer(String correctanswer) {
 		this.correctanswer = correctanswer;
 	}
+
+	public Integer getExaminationid() {
+		return examinationid;
+	}
+
+	public void setExaminationid(Integer examinationid) {
+		this.examinationid = examinationid;
+	}
+
 
 }

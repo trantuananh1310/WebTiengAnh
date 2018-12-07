@@ -5,27 +5,27 @@
 <html>
 
  <c:if test="${part eq '1'}">
-	<button type="button" class="btn-default btn active" style=" width: 150px;height: 50px;">Part1</button>
+	<button id="part1" type="button" class="btn-default btn active" style="margin-top: -50px; width: 150px;height: 50px;">Part1</button>
 </c:if>
 <c:if test="${part!='1'}">
-	<button type="button" class="btn-default btn " style=" width: 150px;height: 50px;">Part1</button>
+	<button id="part1" type="button" class="btn-default btn " style="margin-top: -50px; width: 150px;height: 50px;">Part1</button>
 </c:if>
 <c:if test="${part eq '2'}">
-	 <button type="button" class="btn-default btn active" style=" width: 150px;height: 50px;">Part2</button>
+	 <button id="part2" type="button" class="btn-default btn active" style="margin-top: -50px; width: 150px;height: 50px;">Part2</button>
 </c:if>
 <c:if test="${part!='2'}">
-	<button type="button" class="btn-default btn " style=" width: 150px;height: 50px;">Part2</button>
+	<button id="part2" type="button" class="btn-default btn " style="margin-top: -50px; width: 150px;height: 50px;">Part2</button>
 </c:if>
 <c:if test="${part eq '3'}">
-	 <button type="button" class="btn-default btn active" style=" width: 150px;height: 50px;">Part3</button>
+	 <button id="part3" type="button" class="btn-default btn active" style="margin-top: -50px; width: 150px;height: 50px;">Part3</button>
 </c:if>
 <c:if test="${part!='3'}">
-	 <button type="button" class="btn-default btn " style=" width: 150px;height: 50px;">Part3</button>
+	 <button id="part3" type="button" class="btn-default btn " style="margin-top: -50px; width: 150px;height: 50px;">Part3</button>
 </c:if>
  <br>
 <div class="col-md-12 col-sm-12 col-xs-12" style="height: 400px;border: 1px solid #ecebeb;">
 			 <br>
-<div>${stt}:${Question.question}</div>
+<div><b>${stt}:${Question.question}</b></div>
 	<c:if test="${not empty Question.imagequestion }">
 	 <div style="text-align:center;height: 200px;">
 	 	<img src="images/examinationquestion/${Question.imagequestion }" >
@@ -65,7 +65,16 @@
 					 $('#NoiDungCauHoi').html(result);
 				 }
 			})
-		})
+		});
+		$('#part1').on('click',function(event){
+			clickPart(1);
+		});
+		$('#part2').on('click',function(event){
+			clickPart(2);
+		});
+		$('#part3').on('click',function(event){
+			clickPart(3);
+		});
 		$('#Prev').on('click',function(event){
 			$.ajax({
 				type:"GET",
@@ -78,6 +87,23 @@
 			})
 		})
 	});
+	function clickPart(part)
+	{
+		{
+			$.ajax({
+				type:"GET",
+				url:"ExamQuestionByPart",
+				data:{
+					part:part,
+					examinationId:$("#examinationId").val(),
+					},
+				success:function(result)
+				 {
+					 $('#NoiDungCauHoi').html(result);
+				 }
+			})
+		}
+	}
 	
 	</script>
 </html>

@@ -21,6 +21,8 @@ public class Grammarguideline implements java.io.Serializable {
 	private String content;
 	private Integer levelid;
 	
+	public Grammarguideline(){}
+	
 	public Integer getGrammarguidelineid() {
 		return this.grammarguidelineid;
 	}
