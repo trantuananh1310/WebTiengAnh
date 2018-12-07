@@ -33,7 +33,7 @@ public class ListenQuestionController {
 	ListenquestionDao ListenQuestionDao;
 	
 	@RequestMapping(value="/ListListenQuestion", method=RequestMethod.GET)
-	public ModelAndView getAllMembers(String ListenExerciseId,int page)
+	public ModelAndView getListenQuestionByLsExrId(String ListenExerciseId,int page)
 	{
 		int sumRow=0;
 		int maxPage=0;
@@ -58,7 +58,7 @@ public class ListenQuestionController {
 	}
 	
 	@RequestMapping(value="/AnswerListen_Tapescript", method=RequestMethod.POST)
-	public ModelAndView getAllMembers(HttpServletRequest request, String ListenExerciseid,int page)
+	public ModelAndView TapeScript(HttpServletRequest request, String ListenExerciseid,int page)
 	{
 		page=page-1;
 		int count=COUNT_PAGE;

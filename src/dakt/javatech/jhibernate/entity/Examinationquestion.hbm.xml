@@ -42,5 +42,8 @@
         <property generated="never" lazy="false" name="correctanswer" optimistic-lock="true" type="string" unique="false">
             <column length="45" name="correctanswer"/>
         </property>
+        <property generated="never" lazy="false" name="part" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="part"/>
+        </property>
     </class>
 </hibernate-mapping>

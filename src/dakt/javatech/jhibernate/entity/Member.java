@@ -23,6 +23,7 @@ public class Member implements java.io.Serializable {
 	private String email;
 	private Integer sdt;
 	
+	
 	public String getEmail() {
 		return email;
 	}

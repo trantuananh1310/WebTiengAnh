@@ -17,7 +17,10 @@ public class Readexercise implements java.io.Serializable {
 	private String readimage;
 	private Integer checkcauhoi;
 	private Integer levelid;
-
+	
+	public Readexercise(){
+		
+	}
 	public Integer getLevelid() {
 		return levelid;
 	}

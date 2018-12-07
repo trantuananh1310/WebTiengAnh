@@ -76,5 +76,23 @@ public class ExaminationquestionDao {
 		    RestTemplate restTemplate = new RestTemplate();
 		    restTemplate.delete( uri,  params );
 	}
-
+	public List<Examinationquestion> getListByExaminationId(int examinationId )
+	{
+		String uri="http://localhost:8084/Service/getListExaminationquestionByExaminationId/ExaminationId="+examinationId;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Examinationquestion>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Examinationquestion>>(){});
+		List<Examinationquestion> lstExam = rateResponse.getBody();
+		return lstExam;
+	}
+	public List<Examinationquestion> getListByPart(String part,String  examinationId )
+	{
+		String uri="http://localhost:8084/Service/getListExaminationquestionByPart/part="+part+"&examinationId="+examinationId;
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Examinationquestion>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Examinationquestion>>(){});
+		List<Examinationquestion> lstExam = rateResponse.getBody();
+		return lstExam;
+	}
+	
 }

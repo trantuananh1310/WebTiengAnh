@@ -67,6 +67,7 @@
 				style="width: 200px;margin-left: 272px;">
 				Thêm mới
 				</button>
+				<button  value="Clickho" id="Clickho">clickho</button>
 			</div>
 		</div>
 		</div>
@@ -100,6 +101,8 @@
                   <th>Hình Ảnh</th>
                   <th>Level </th>
                   <th></th>
+                  <th></th>
+                  <th></th>
                   	
                 </tr>
                 </thead>
@@ -113,7 +116,11 @@
 				<td class="container">${item.level.levelname}</td>
                  <td class="container"> <p>
                  		<a href="AdminListListenQuestion?idListenExercis=${item.listenexerciseid}"><span class="glyphicon glyphicon-search"></span> DS câu hỏi</a>
+                 </td>
+                 <td>		
                  		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>
+                 </td>
+                 <td>		
                  		<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
                  </td>
                   
@@ -125,11 +132,13 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>STT</th>
+                 <th>STT</th>
                   <th>Tên chủ đề</th>
                   <th>Hình Ảnh</th>
                   <th>Level </th>
-                  <th></th>
+                  <th> </th>
+                  <th> </th>
+                  <th> </th>
                
                 </tr>
                 
@@ -158,8 +167,7 @@
  </div>
     <div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
-			<form action="editGMGLAction" method="post"
-				enctype="multipart/form-data">
+			<form action="addListenExercise" method="post">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -177,7 +185,7 @@
 								</label>
 
 								<div class="col-sm-10">
-									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="grammarname"  /> 
+									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="listenExerciseName"  /> 
 										<br />
 										<input type="file" name="file" class="form-control" />
 										<br />
@@ -193,7 +201,7 @@
 
 												<div class="widget-body">
 													<div class="widget-main no-padding">
-													<select id="Level" class="form-control" >
+													<select id="Level" class="form-control" name="levelId" >
 											            <c:forEach items="${listLevel}" var="item">
 														   <option value=${item.levelid }>${item.levelname}</option>
 														 </c:forEach>
@@ -352,7 +360,10 @@
 			 }
 			 
 		  })
-	  })
+	  });
+	  $("#Clickho").on('click',function(event){
+		  alert('Bim oc cho');
+	  } )
   })
 </script>
 </body>

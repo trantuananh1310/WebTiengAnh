@@ -42,7 +42,7 @@ public class VocabularyguidelineController {
 //	}
 	
 	@RequestMapping(value="/listVocabularyguideline", method=RequestMethod.GET)
-	public ModelAndView getAllMembers(String level, int Page)
+	public ModelAndView getListVocabularyguideline(String level, int Page)
 	{	
 		Page=Page-1;
 		// Lấy tổng số trang

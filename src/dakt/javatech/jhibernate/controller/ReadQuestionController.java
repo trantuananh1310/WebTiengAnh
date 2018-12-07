@@ -42,7 +42,7 @@ public class ReadQuestionController {
 //	}
 	
 	@RequestMapping(value="/listReadQuestion", method=RequestMethod.GET)
-	public ModelAndView getAllMembers(String page, String readexercise)
+	public ModelAndView getlistReadQuestion(String page, String readexercise)
 	{
 		int sumRow=0;
 		int maxPage=0;
@@ -74,7 +74,7 @@ public class ReadQuestionController {
 	}
 	
 	@RequestMapping(value="/listReadQuestionPage", method=RequestMethod.GET)
-	public ModelAndView getListPage(String page, String readexercise)
+	public ModelAndView listReadQuestionPage(String page, String readexercise)
 	{
 		int pageid= Integer.parseInt(page);
 		int count=2;
@@ -97,7 +97,7 @@ public class ReadQuestionController {
 	}
 	
 	@RequestMapping(value="/checkAction", method=RequestMethod.POST)
-	public ModelAndView getAllMembers(HttpServletRequest request, String readexerciseid,String page)
+	public ModelAndView checkAction(HttpServletRequest request, String readexerciseid,String page)
 	{
 		
 		int sumRow=0;

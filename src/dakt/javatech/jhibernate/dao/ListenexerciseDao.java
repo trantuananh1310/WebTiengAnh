@@ -1,9 +1,19 @@
 package dakt.javatech.jhibernate.dao;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.codehaus.jackson.JsonProcessingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,9 +74,12 @@ public class ListenexerciseDao {
 		Listenexercise lstEmp = rateResponse.getBody();
 		return lstEmp;
 	}
-	public void add(Listenexercise sp)
+	public void add(Listenexercise sp) throws UnsupportedOperationException, IOException
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(sp);
+		String url="http://localhost:8084/Service/addListenexercise";
+		RestTemplate restTemplate = new RestTemplate();
+		Listenexercise emp = restTemplate.postForObject(url, sp, Listenexercise.class);
+	
 	}
 //	public void update(int id, String ten, int instock, String vanchuyen, Double giacu, Double giamoi, String baohanh, int moi, int dacbiet,String anh, String newsletter)
 //	{

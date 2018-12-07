@@ -22,5 +22,9 @@ public class Level implements java.io.Serializable {
 	public void setLevelname(String levelname) {
 		this.levelname = levelname;
 	}
+	public Level()
+	{
+		
+	}
 
 }

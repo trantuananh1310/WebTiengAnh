@@ -60,7 +60,6 @@
 			var countQuestion= (countInput/4);
 			var countCheck=$("input[type='radio']:checked").length;
 			var input=$("input[type='radio'][name='answer[0]']:checked").val();
-			
 			if(countCheck < countQuestion){
 				swal("", "Bạn chưa trả lời hết các câu hỏi", "warning");
 			}
@@ -69,13 +68,11 @@
 // 					alert(index);
 // 					alert( index + ": " + $("input[type='radio'][name='answer["+index+"]']:checked").val());
 // 				});
-				debugger;
 				$.ajax({
 					type : "POST",
 					url : "AnswerListen_Tapescript",
 					data : $('form').serialize(),
 					success : function(result) {
-						alert('hello');
 						$('#check_form').hide();
 						$('#check_Answer').html(result);
 						$('#btn_score_listen').hide();
