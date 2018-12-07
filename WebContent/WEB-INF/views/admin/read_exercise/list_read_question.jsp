@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminLTE 2 | Data Tables</title>
+  <link rel="stylesheet" href="css/sweetalert.css">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -61,7 +62,8 @@
 <!--           		<div class="box-title"> -->
           			<div class="row">
           				<div class="col-sm-12" style="text-align: right;">
-          					<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-flat" style="width: 150px;">Thêm mới</a>
+          					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
+<!--           					<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-flat" style="width: 150px;">Thêm mới</a> -->
           				</div>
           			</div>
           	</div>
@@ -77,7 +79,7 @@
                   <th style="text-align: center;">Đáp án 3</th>
                   <th style="text-align: center;">Đáp án 4</th>
                   <th style="text-align: center;">Đáp án đúng</th>
-                  <th style="text-align: center;"></th>
+<!--                   <th style="text-align: center;"></th> -->
                   <th style="text-align: center;"></th>
                   	
                 </tr>
@@ -92,9 +94,16 @@
 			                <td class="container" style="text-align: center;">${item.option3}</td>
 			                <td class="container" style="text-align: center;">${item.option4}</td>
 			                <td class="container" style="text-align: center;">${item.correctanswer}</td>
-							<td class="container" style="text-align: center;"><a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a></td>
+<!-- 							<td class="container" style="text-align: center;"><a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a></td> -->
 			                <td class="container" style="text-align: center;">
-			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a>
+			                	<button class="btn btn-primary edit_data" id="${item.readquestionid }">
+									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
+								</button>
+			                
+			                	<button class="btn btn-danger delete_data" id="${item.readquestionid }">
+									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
+								</button>
+<!-- 			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a> -->
 			                </td>
 		                </tr>
 	                <%i++; %>
@@ -104,7 +113,6 @@
                 </tfoot>
                 
               </table>
-<!--               <textarea class="form-textarea" id="noiDung">Chào mừng bạn đến với Blog Kênh Lập Trình</textarea> -->
             </div>
             <!-- /.box-body -->
           </div>
@@ -117,63 +125,55 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <!--Modal-->
-<!--   <div class="row"> -->
-<!-- 	<div class="col-xs-12"> -->
-<!-- 		<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-white btn-default btn-round">Thêm mới chủ đề</button> -->
-<!-- 	</div> -->
 
-<!--  </div> -->
+  <!--Modal-->
     <div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
-			<form action="editGMGLAction" method="post"
-				enctype="multipart/form-data">
+			<form action="" method="post" id="add_form">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm mới chủ đề</h4>
+						<h4 class="modal-title" id="modal_title">Thêm mới câu hỏi</h4>
 					</div>
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<label class="col-sm-2 " for="form-field-1">
-									<h5>Nhập tên:</h5> <br />
-									<h5>Chọn ảnh:</h5> <br />
-									<h5>Level:</h5>
+								<label class="col-sm-3 " for="form-field-1">
+									<h5 rows="3">Câu hỏi:</h5> <br /><br /><br />
+									<h5>Đáp án 1:</h5> <br />
+									<h5>Đáp án 2:</h5> <br />
+									<h5>Đáp án 3:</h5> <br />
+									<h5>Đáp án 4:</h5> <br />
+									<h5>Đáp án đúng:</h5>
 								</label>
 
-								<div class="col-sm-10">
-									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="readname"  /> 
+								<div class="col-sm-9">
+									<textarea class="form-control" rows="3" placeholder="Câu hỏi" id="question" name="question"></textarea>
 									<br />
-									<input type="file" name="file" class="form-control" />
+<!-- 									<input type="text" id="question" placeholder="Câu hỏi" class="form-control" name="question"  />  -->
+<!-- 									<br /> -->
+									<input type="text" id="option1" placeholder="Đáp án 1" class="form-control" name="option1"  /> 
 									<br />
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-									<div class="col-xs-12" >
-										<!-- PAGE CONTENT BEGINS -->
-										<div class="row" >
-											<div class="widget-box widget-color-grey">
-												<div class="widget-body">
-													<div class="widget-main no-padding">
-														<select id="Level" class="form-control" >
-												            <c:forEach items="${listLevel}" var="item">
-																<option name="levelid" value=${item.levelid }>${item.levelname}</option>
-															</c:forEach>
-														</select>													
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
+									<input type="text" id="option2" placeholder="Đáp án 2" class="form-control" name="option2"  /> 
+									<br />
+									<input type="text" id="option3" placeholder="Đáp án 3" class="form-control" name="option3"  /> 
+									<br />
+									<input type="text" id="option4" placeholder="Đáp án 4" class="form-control" name="option4"  /> 
+									<br />
+									<input type="text" id="correctanswer" placeholder="Đáp án đúng" class="form-control" name="correctanswer"  />
+									<input type="hidden" id="readexerciseid" class="form-control" name="readexerciseid" value="${readexerciseid }" />
+									<input type="hidden" name="readquestionid" id="read_question_id"  /> 
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-info" type="submit">
+<!-- 						<button class="btn btn-info" type="submit" id="btn_edit"> -->
+<!-- 							<i class="ace-icon fa fa-check bigger-110"></i> Sửa -->
+<!-- 						</button> -->
+						<button class="btn btn-info" type="submit" id="btn_add" >
 							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới
 						</button>
 					</div>
@@ -183,77 +183,7 @@
 	</div>
 
 <div class="row">
-	
-
- </div>
-    <div class="modal fade" id="myModalEdit" role="dialog">
-		<div class="modal-dialog">
-			<form action="editGMGLAction" method="post"
-				enctype="multipart/form-data">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Sửa nội dung chủ đề</h4>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<label class="col-sm-2 " for="form-field-1">
-									<h5>Nhập tên:</h5> <br />
-									<h5>Chọn ảnh:</h5> <br />
-									<h5>Level:</h5>
-								</label>
-
-								<div class="col-sm-10">
-									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="listenExerciseName"  /> 
-										<br />
-										<input type="file" name="file" class="form-control" />
-										<br />
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-									<div class="col-xs-12" >
-										<!-- PAGE CONTENT BEGINS -->
-										<div class="row" >
-
-											<div class="widget-box widget-color-grey">
-
-												<div class="widget-body">
-													<div class="widget-main no-padding">
-													<select id="Level" class="form-control" name="levelId" >
-											            <c:forEach items="${listLevel}" var="item">
-														   <option value=${item.levelid }>${item.levelname}</option>
-														 </c:forEach>
-													</select> 
-													</div>
-
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- <a href="#" id="btn-scroll-up"
-											class="btn-scroll-up btn btn-sm btn-inverse"> <i
-											class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-										</a> -->
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-info" type="submit">
-							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-
+</div>
 
   <!-- Control Sidebar -->
  <jsp:include page="../include/footer.jsp"></jsp:include>
@@ -285,20 +215,9 @@
 <script>
   $(function () {
 	  
-// 	  var table = $('#example1').removeAttr('width').DataTable( {
-// 	        scrollY:        "1000px",
-// 	        scrollX:        true,
-// 	        scrollCollapse: true,
-// 	        paging:         true,
-// 	        columnDefs: [
-// 	            { 'width': "390px", 'targets': 1 }
-// 	        ],
-// 	        fixedColumns: true
-// 	    } );
 	  
-    $('#example1').DataTable({
-    	scrollY: true,
-    })
+	  
+    $('#example1').DataTable()
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': true,
@@ -322,7 +241,113 @@
 			 
 		  })
 	  })
+	  
+	  $('#btn_add').on('click',function(event) {
+			event.preventDefault();
+			var question= $("#question").val().toLowerCase();
+			var option1= $("#option1").val().toLowerCase();
+			var option2= $("#option2").val().toLowerCase();
+			var option3= $("#option3").val().toLowerCase();
+			var option4= $("#option4").val().toLowerCase();
+			var correctanswer= $("#correctanswer").val().toLowerCase();
+			if(question=='' || option1=='' || option2=='' || option3=='' || option4=='' || correctanswer==''){
+				swal("", "Các trường không được để trống", "warning");
+			}
+			else if(option1!=correctanswer && option2!=correctanswer && 
+					option3!=correctanswer && option4!=correctanswer){
+				swal("", "Đáp án đúng phải trùng 1 trong 4 đáp án", "warning");
+			}
+			else if(option1==option2 || option1==option3 || option1==option4 || 
+					option2==option3 || option2==option4 || option3==option4){
+				swal("", "Các đáp án không được trùng nhau", "warning");
+			}
+			else{
+				$.ajax({
+					type: "POST",
+					url: "addReadQuestion",
+					data: $('#add_form').serialize(),
+					success:function(result){
+						swal({
+							  title: "Thành công!",
+							  type: "success",
+							  confirmButtonText: "OK",
+							  closeOnConfirm: false
+							},
+							function(){
+							  window.location.reload();
+						});
+					}
+				})
+			}
+		});
+		  
+		$(document).on('click','.edit_data',function() {
+			var readQuestionId = $(this).attr("id");
+			$.ajax({
+				 type:"GET",
+				 contentType : "application/json",
+				 url:"editReadQuestion",
+				 data: {readQuestionId: readQuestionId},
+				 dataType:"json",
+				 success:function(result){
+					 $("#question").val(result.question);
+					 $("#option1").val(result.option1);
+					 $("#option2").val(result.option2);
+					 $("#option3").val(result.option3);
+					 $("#option4").val(result.option4);
+					 $("#correctanswer").val(result.correctanswer);
+					 $("#read_question_id").val(result.readquestionid);
+					 $("#modal_title").text("Sửa câu hỏi");
+					 $("#btn_add").text("Sửa");
+					 $("#myModal").modal('show');
+				 }
+			  })
+		});
+		
+		$(document).on('click','.add_data',function() {
+			 $("#question").val('');
+			 $("#option1").val('');
+			 $("#option2").val('');
+			 $("#option3").val('');
+			 $("#option4").val('');
+			 $("#correctanswer").val('');
+			 $("#read_question_id").val('');
+			 $("#btn_add").text("Thêm mới");
+// 			 $("#btn_edit").hide();
+			 $("#modal_title").text("Thêm mới chủ đề");
+			 $("#myModal").modal('show');
+		});
+		
+		$(document).on('click','.delete_data',function() {
+			var readQuestionId = $(this).attr("id");
+			  swal({
+				  title: "Bạn có chắc chắn muốn xóa?",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonClass: "btn-danger",
+				  confirmButtonText: "Yes, delete it!",
+				  closeOnConfirm: false
+				},
+				function(){
+					$.ajax({
+						 type:"POST",
+						 url:"deleteReadQuestion",
+						 data: {readQuestionId: readQuestionId},
+					})
+					swal({
+						  title: "Đã xóa thành công!",
+						  type: "success",
+						  confirmButtonText: "OK",
+//						  closeOnConfirm: false
+						},
+						function(){
+						  window.location.reload();
+					});
+				});
+			  
+		  });
   })
 </script>
+<script src="js/sweetalert.min.js"></script>
 </body>
 </html>

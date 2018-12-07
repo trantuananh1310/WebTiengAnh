@@ -238,9 +238,7 @@
 <script>
   $(function () {
 	  
-    $('#example1').DataTable({
-    	'scrollY': true
-    })
+    $('#example1').DataTable()
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': true,
@@ -276,7 +274,6 @@
 			else{
 				$('#add_form').submit();
 			}
-				
 		});
 	  
 	  $(document).on('click','.edit_data',function() {
