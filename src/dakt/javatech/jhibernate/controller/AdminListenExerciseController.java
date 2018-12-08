@@ -31,7 +31,7 @@ public class AdminListenExerciseController {
 		List<Listenexercise> list= new ArrayList<Listenexercise>();
 		list= listenExDao.list();
 		List<Level> lstLevel=levelDao.list();
-		ModelAndView modelView= new ModelAndView("admin/ListenExercise/list_listenExerciseAdmin");
+		ModelAndView modelView= new ModelAndView("admin/listen_exercise/list_listenExerciseAdmin");
 		modelView.addObject("listListenExer",list);
 		modelView.addObject("listLevel",lstLevel);
 		return modelView;
@@ -39,12 +39,14 @@ public class AdminListenExerciseController {
 	@RequestMapping(value="/getListExrciseByLevelIdAjax",method=RequestMethod.GET)
 	public ModelAndView getListExrciseByLevelIdAjax(String levelId)
 	{
+		List<Level> lstLevel=levelDao.list();
 		List<Listenexercise> list= new ArrayList<Listenexercise>();
 		if(levelId.equals("0")) list=listenExDao.list();
 		else
 			list= listenExDao.getListByLevelId(levelId);
-		ModelAndView modelView= new ModelAndView("admin/ListenExercise/list_exercise_byLevelIdAdmin");
+		ModelAndView modelView= new ModelAndView("admin/listen_exercise/list_exercise_byLevelIdAdmin");
 		modelView.addObject("listListenExer",list);
+		modelView.addObject("listLevel",lstLevel);
 		return modelView;
 
 	}

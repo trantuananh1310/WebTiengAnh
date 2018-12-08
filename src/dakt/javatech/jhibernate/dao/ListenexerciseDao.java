@@ -33,9 +33,12 @@ public class ListenexerciseDao {
 	private SessionFactory sessionFactory;
 	public List<Listenexercise> list()
 	{
-		String hql="FROM Listenexercise";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		return query.list();
+		String uri="http://localhost:8084/Service/getListListenexercise";
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List<Listenexercise>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
+																			new ParameterizedTypeReference<List<Listenexercise>>(){});
+		List<Listenexercise> lstEmp = rateResponse.getBody();
+		return lstEmp;
 	}
 	
 	public List<Listenexercise> list(int first, int max)

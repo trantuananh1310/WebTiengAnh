@@ -33,7 +33,7 @@ public class AdminReadQuestionController {
 	ReadquestionDao readQuesDao;
 	
 	@RequestMapping(value="/AdminListReadQuestion", method=RequestMethod.GET)
-	public ModelAndView listListenQuestion(int readexerciseid)
+	public ModelAndView listReadQuestion(int readexerciseid)
 	{
 		List<Readquestion> list = new ArrayList<Readquestion>();
 		list= readQuesDao.getListByReadExId(readexerciseid);
@@ -47,7 +47,7 @@ public class AdminReadQuestionController {
 	
 	@RequestMapping(value="/addReadQuestion", method=RequestMethod.POST)
 	@ResponseBody
-	public void AddReadQuestion(Readquestion readQuestion, String readquestionid,ModelMap modelMap,HttpServletRequest request)
+	public void AddAndEditReadQuestion(Readquestion readQuestion, String readquestionid,ModelMap modelMap,HttpServletRequest request)
 	{
 		
 		if(readquestionid!=null && !readquestionid.isEmpty()) {
