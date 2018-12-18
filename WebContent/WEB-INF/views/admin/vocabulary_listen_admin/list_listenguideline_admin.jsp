@@ -156,7 +156,7 @@
 	
  </div>
     <div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog" style="width: 1100px">
 			<form id="add_form" action="addListenGuideline" method="post" enctype="multipart/form-data">
 				<!-- Modal content-->
 				<div class="modal-content">
@@ -197,8 +197,10 @@
 											</div>
 										</div>
 									</div>
-									<textarea id="content" class="ckeditor" name="content" class="col-xs-12" >
-       							    </textarea>
+									<br/>
+									<br/>
+									<br/>
+									<textarea id="content" class="ckeditor" name="content" class="form-control" ></textarea>
 								</div>
 							</div>
 						</div>
