@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminLTE 2 | Data Tables</title>
@@ -22,6 +23,10 @@
   <!-- AdminLTE Skins. Choose a skin from the admin/css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="admin/css/_all-skins.min.css">
+  
+  <link rel="stylesheet" href="css/sweetalert.css">
+  <!-- page script -->
+<script src="admin/js/ckeditor/ckeditor.js" ></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,29 +55,6 @@
       <h1>
         Quản lý Vocabulary
       </h1>
-      <div class="container" > 
-      <div>
-      <div class="col-sm-6 " style=" padding-top: 10px;">
-      <select id="Level" class="form-control" style="margin-left: -29px;width: 150px;">
-      		<option value="0">Tất cả</option>
-            <c:forEach items="${listLevel}" var="item">
-			   <option value=${item.levelid }>${item.levelname}</option>
-			 </c:forEach>
-		</select>
-		</div>	
-		<div class="col-sm-6 " style=" text-align: right;padding-right: 60px;">
-			<div class="col-xs-12">
-				<h5 style="color: red">${msg }</h5>
-				<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-block btn-primary btn-flat" 
-				style="width: 200px;margin-left: 272px;">
-				Thêm mới
-				</button>
-			</div>
-		</div>
-		</div>
-		 
-      </div>
-      
       <ol class="breadcrumb">
         <li><a href="HomeAdmin"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="AdminVocabularyGuideline">Quản lý Vocabulary</a></li>
@@ -84,52 +66,70 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          
-
           <div class="box">
-            <div class="box-header">
-            </div>
+          <div style="display: block;padding-top: 10px; padding-right: 10px; padding-left: 10px">
+<!--           		<div class="box-title"> -->
+          			<div class="row">
+          				<div class="col-sm-6">
+          					<select id="Level" class="form-control" style="width: 150px;">
+							    <option value="0">Tất cả</option>
+							    <c:forEach items="${listLevel}" var="item">
+									<option value=${item.levelid }>${item.levelname}</option>
+								</c:forEach>
+							</select>
+          				</div>
+          			
+          				<div class="col-sm-6" style="text-align: right;">
+          					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
+<!--           					<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-flat" style="width: 150px;">Thêm mới</a> -->
+          				</div>
+          			</div>
+          	</div>
             <!-- /.box-header -->
             <div class="box-body" >
-            
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>STT</th>
-                  <th>Tên chủ đề</th>
-                  <th>Hình Ảnh</th>
-                  <th> </th>
-                  <th> </th>
-                  <th> </th>
+                  <th style="text-align: center;">STT</th>
+                  <th style="text-align: center;">Tên chủ đề</th>
+                  <th style="text-align: center;">Hình Ảnh</th>
+                  <th style="text-align: center;">Level</th>
+                  <th style="text-align: center;"></th>
+                  <th style="text-align: center;"></th>
                   	
                 </tr>
+                </thead>
                 </thead>
                 <tbody id="box-body1">
                 <c:forEach items="${listAdVocabGui}" var="item">
                  <tr>
-                  <td><%=i %></td>
+                  <td style="text-align: center;"><%=i %></td>
                   <td class="container">${item.vocabularyname}</td>
-                  <td class="container"><img alt="" style="width: 150px; height: 100px; "
+                  <td class="container" style="text-align: center;"><img alt="" style="height: 50px; ""
 									src="images/Vocabgui/${item.vocabularyimage }"></td>
-                 <td class=> <p>
-                 		<a href="AdminVocabularyContent?vocabid=${item.vocabularyguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>
-                 </td>
-                 <td >
-                 <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                
-                 </td>
-                 <td>
-                 <a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
-                 </td>
-                  
-                 
+				  <c:forEach items="${listLevel}" var="level">
+								<c:if test="${item.levelid eq level.levelid}">
+									<td class="container" style="text-align: center;">${level.levelname}</td>
+								</c:if>
+				  </c:forEach>
+                 <td class="container" style="text-align: center;">
+								<a href="AdminVocabularyContent?vocabid=${item.vocabularyguidelineid}"><span class="glyphicon glyphicon-search"></span> Chi Tiết</a>
+				 <td class="container" style="text-align: center;">
+			                
+			                	<button class="btn btn-primary edit_data" id="${item.vocabularyguidelineid }">
+									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
+								</button>
+			                
+			                	<button class="btn btn-danger delete_data" id="${item.vocabularyguidelineid }">
+									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
+								</button>
+			     </td>
                 </tr>
                 <%i++; %>
                 </c:forEach>
                
                 </tbody>
                 <tfoot>
-               
-                
                 </tfoot>
                 
               </table>
@@ -147,21 +147,20 @@
   </div>
   <!-- /.content-wrapper -->
   <!--Modal-->
-  <div class="row">
-	<div class="col-xs-12">
-		<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-white btn-default btn-round">Thêm mới chủ đề</button>
-	</div>
+<!--   <div class="row"> -->
+<!-- 	<div class="col-xs-12"> -->
+<!-- 		<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-white btn-default btn-round">Thêm mới chủ đề</button> -->
+<!-- 	</div> -->
 
  </div>
     <div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
-			<form action="editGMGLAction" method="post"
-				enctype="multipart/form-data">
+			<form id="add_form" action="addVocabularyGuideline" method="post" enctype="multipart/form-data">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm mới chủ đề</h4>
+						<h4 class="modal-title" class="modal-title">Thêm mới chủ đề</h4>
 					</div>
 					<div class="modal-body">
 						<div class="row">
@@ -170,18 +169,15 @@
 								<label class="col-sm-2 " for="form-field-1">
 									<h5>Nhập tên:</h5> <br />
 									<h5>Chọn ảnh:</h5> <br />
-									<h5>Level:</h5>
+									<h5>Level:</h5> <br />
 								</label>
 
 								<div class="col-sm-10">
-									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="grammarname"  /> 
-										<br />
-										<input type="file" name="file" class="form-control" />
-										<br />
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-
-
+									<input type="text" id="vocabularyname" placeholder="Tên tiêu đề bài tập" class="form-control" name="vocabularyname"  /> 
+									<br />
+									<input id="file_add" type="file" name="file" class="form-control" />
+									<br />
+									<input type="hidden" name="vocabularyguidelineid" id="vocabulary_guideline_id"  />
 									<div class="col-xs-12" >
 										<!-- PAGE CONTENT BEGINS -->
 										<div class="row" >
@@ -190,30 +186,26 @@
 
 												<div class="widget-body">
 													<div class="widget-main no-padding">
-													<select id="Level" class="form-control" >
+													<select id="add_level" name="levelid" class="form-control" >
 											            <c:forEach items="${listLevel}" var="item">
 														   <option value=${item.levelid }>${item.levelname}</option>
 														 </c:forEach>
-													</select>													</div>
-
+													</select>			
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-
-									<!-- <a href="#" id="btn-scroll-up"
-											class="btn-scroll-up btn btn-sm btn-inverse"> <i
-											class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-										</a> -->
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-info" type="submit">
+<!-- 						<input type="submit" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add"></input> -->
+						<button class="btn btn-info" type="submit" id="btn_edit">
+							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
+						</button>
+						<button class="btn btn-info" type="submit" id="btn_add">
 							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới
 						</button>
 					</div>
@@ -221,83 +213,6 @@
 			</form>
 		</div>
 	</div>
-
-<div class="row">
-	
-
- </div>
-    <div class="modal fade" id="myModalEdit" role="dialog">
-		<div class="modal-dialog">
-			<form action="editGMGLAction" method="post"
-				enctype="multipart/form-data">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Sửa nội dung chủ đề</h4>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<label class="col-sm-2 " for="form-field-1">
-									<h5>Nhập tên:</h5> <br />
-									<h5>Chọn ảnh:</h5> <br />
-									<h5>Level:</h5>
-								</label>
-
-								<div class="col-sm-10">
-									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="listenExerciseName"  /> 
-										<br />
-										<input type="file" name="file" class="form-control" />
-										<br />
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-
-
-									<div class="col-xs-12" >
-										<!-- PAGE CONTENT BEGINS -->
-										<div class="row" >
-
-											<div class="widget-box widget-color-grey">
-
-												<div class="widget-body">
-													<div class="widget-main no-padding">
-													<select id="Level" class="form-control" name="levelId" >
-											            <c:forEach items="${listLevel}" var="item">
-														   <option value=${item.levelid }>${item.levelname}</option>
-														 </c:forEach>
-													</select> 
-													</div>
-
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- <a href="#" id="btn-scroll-up"
-											class="btn-scroll-up btn btn-sm btn-inverse"> <i
-											class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-										</a> -->
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-info" type="submit">
-							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-
-
-  <!-- Control Sidebar -->
  <jsp:include page="../include/footer.jsp"></jsp:include>
  
 </div>
@@ -318,8 +233,7 @@
 <script src="admin/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="admin/js/demo.js"></script>
-<!-- page script -->
-<script src="admin/js/ckeditor/ckeditor.js" ></script>
+
 
 <script type="text/javascript" language="javascript">
 //    CKEDITOR.replace('noiDung');
@@ -349,8 +263,86 @@
 			 }
 			 
 		  })
-	  })
-  })
+	  });
+	  
+	  $('#btn_add').on('click',function(event) {
+		  debugger;
+			event.preventDefault();
+			var vocabularyname= $("#vocabularyname").val();
+			var filename= $("#file_add").val();
+			if(vocabularyname=='' || filename==''){
+				swal("", "Các trường không được để trống", "warning");
+			}
+			else{
+				$('#add_form').submit();
+			}
+		});
+	  
+	  $(document).on('click','.add_data',function() {
+			 $("#vocabularyname").val('');
+			 $("#add_level").val("1");
+			 $("#vocabulary_guideline_id").val('');
+			 $("#btn_add").show();
+			 $("#btn_edit").hide();
+			 $("#modal_title").text("Thêm mới chủ đề");
+			 $("#myModal").modal('show');
+		});
+	  
+	  $(document).on('click','.edit_data',function() {
+			var vocabularyGuidelineId = $(this).attr("id");
+			$.ajax({
+				 type:"GET",
+				 contentType : "application/json",
+				 url:"editVocabularyGuideline",
+				 data: {vocabularyGuidelineId: vocabularyGuidelineId},
+				 dataType:"json",
+				 success:function(result){
+					 $("#vocabularyname").val(result.vocabularyname);
+					 $("#add_level").val(result.levelid);
+					 $("#vocabulary_guideline_id").val(result.vocabularyguidelineid);
+					 $("#modal_title").text("Sửa chủ đề");
+					 $("#btn_edit").show();
+					 $("#btn_add").hide();
+					 $("#myModal").modal('show');
+				 }
+			  })
+	  });
+	  
+	  $(document).on('click','.delete_data',function() {
+		  debugger;
+		  var vocabularyGuidelineId = $(this).attr("id");
+		  swal({
+			  title: "Bạn có chắc chắn muốn xóa?",
+// 			  text: "Your will not be able to recover this imaginary file!",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonClass: "btn-danger",
+			  confirmButtonText: "Yes, delete it!",
+			  closeOnConfirm: false
+			},
+			function(){
+				$.ajax({
+					 type:"POST",
+					 url:"deleteVocabularyGuideline",
+					 data: {vocabularyGuidelineId: vocabularyGuidelineId},
+				})
+				swal({
+					  title: "Đã xóa thành công!",
+					  type: "success",
+					  confirmButtonText: "OK",
+//					  closeOnConfirm: false
+					},
+					function(){
+					  window.location.reload();
+				});
+// 			  swal("Đã xóa thành công!", "", "success");
+			});
+		  
+	  });
+   })
+   
+  
 </script>
+<script src="js/sweetalert.min.js"></script>
 </body>
 </html>

@@ -50,29 +50,6 @@
       <h1>
         Quản lý Vocabulary
       </h1>
-      <div class="container" > 
-      <div>
-      <div class="col-sm-6 " style=" padding-top: 10px;">
-      <select id="Level" class="form-control" style="margin-left: -29px;width: 150px;">
-      		<option value="0">Tất cả</option>
-            <c:forEach items="${listLevel}" var="item">
-			   <option value=${item.levelid }>${item.levelname}</option>
-			 </c:forEach>
-		</select>
-		</div>	
-		<div class="col-sm-6 " style=" text-align: right;padding-right: 60px;">
-			<div class="col-xs-12">
-				<h5 style="color: red">${msg }</h5>
-				<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-block btn-primary btn-flat" 
-				style="width: 200px;margin-left: 272px;">
-				Thêm mới
-				</button>
-			</div>
-		</div>
-		</div>
-		 
-      </div>
-      
       <ol class="breadcrumb">
         <li><a href="HomeAdmin"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="AdminVocabularyGuideline">Quản lý Vocabulary</a></li>
@@ -84,40 +61,59 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          
-
           <div class="box">
-            <div class="box-header">
-            </div>
+            <div style="display: block;padding-top: 10px; padding-right: 10px; padding-left: 10px">
+<!--           		<div class="box-title"> -->
+          			<div class="row">
+          				<div class="col-sm-6">
+          					<select id="Level" class="form-control" style="width: 150px;">
+							    <option value="0">Tất cả</option>
+							    <c:forEach items="${listLevel}" var="item">
+									<option value=${item.levelid }>${item.levelname}</option>
+								</c:forEach>
+							</select>
+          				</div>
+          			
+          				<div class="col-sm-6" style="text-align: right;">
+          					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
+          				</div>
+          			</div>
+          	</div>
             <!-- /.box-header -->
             <div class="box-body" >
             
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>STT</th>
-                  <th>Nội dung</th>
-                  <th>Phiên âm</th>
-                  <th>Mp3</th>
-                  <th>Hình Ảnh</th>
-                  <th>Nghĩa Tiếng Việt </th>
-                  <th></th>
+                  <th style="text-align: center;">STT</th>
+                  <th style="text-align: center;">Từ vựng</th>
+                  <th style="text-align: center;">Phiên âm</th>
+                  <th style="text-align: center;">Mp3</th>
+                  <th style="text-align: center;">Hình Ảnh</th>
+                  <th style="text-align: center;">Nghĩa Tiếng Việt </th>
                   	
                 </tr>
                 </thead>
                 <tbody id="box-body1">
                 <c:forEach items="${listAdVocabCon}" var="item">
                  <tr>
-                  <td><%=i %></td>
-                  <td class="container">${item.vocabularycontentname}</td>
-                  <td class="container">${item.transcribe}</td>
-                  <td class="container">${item.audiomp3}</td>
-                  <td class="container"><img alt="" style="width: 150px; height: 100px; "
+                  <td style="text-align: center;"><%=i %></td>
+                  <td class="container" style="text-align: center;">${item.vocabularycontentname}</td>
+                  <td class="container" style="text-align: center;">${item.transcribe}</td>
+                  <td class="container" style="text-align: center;">${item.audiomp3}</td>
+                  <td class="container" style="text-align: center;"><img alt="" style="width: 150px; height: 100px; "
 									src="images/VocabContent/${item.image }"></td>
-				 <td class="container">${item.mean}</td>
-                 <td >
-                 <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                
-                 </td> 
+				 <td class="container" style="text-align: center;">${item.mean}</td>
+                 <td class="container" style="text-align: center;">
+			                
+			                	<button class="btn btn-primary edit_data" id="${item.vocabularyguidelineid }">
+									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
+								</button>
+			                
+			                	<button class="btn btn-danger delete_data" id="${item.vocabularyguidelineid }">
+									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
+								</button>
+			     </td>
                  
                 </tr>
                 <%i++; %>
@@ -152,51 +148,43 @@
  </div>
     <div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
-			<form action="editGMGLAction" method="post"
-				enctype="multipart/form-data">
+			<form id="add_form" action="addVocabularyContent" method="post" enctype="multipart/form-data">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm mới chủ đề</h4>
+						<h4 class="modal-title">Thêm mới nội dung chủ đề</h4>
 					</div>
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<label class="col-sm-2 " for="form-field-1">
-									<h5>Nhập tên:</h5> <br />
-									<h5>Chọn ảnh:</h5> <br />
-									<h5>Level:</h5>
+									<h5>Từ vựng:</h5> <br />
+									<h5>Phiên âm:</h5> <br />
+<!-- 									<h5>Chọn mp3:</h5> <br /> -->
+<!-- 									<h5>Chọn ảnh:</h5> <br /> -->
+									<h5>Nghĩa tiếng Việt:</h5>
 								</label>
 
 								<div class="col-sm-10">
-									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="grammarname"  /> 
+										<input type="text" id="vocabularycontentname" placeholder="Từ vựng" class="form-control" name="vocabularycontentname"  /> 
 										<br />
-										<input type="file" name="file" class="form-control" />
+										<input type="text" id="trancribe" placeholder="Phiên âm" class="form-control" name="trancribe"  /> 
 										<br />
+<!-- 										<input id ="file_mp3" type="file" name="filemp3" class="form-control" /> -->
+<!-- 										<br /> -->
+<!-- 										<input id="file_add" type="file" name="file" class="form-control" /> -->
+<!-- 										<br /> -->
+										<input type="text" id="mean" placeholder="Nghĩa của từ vựng" class="form-control" name="mean"  /> 
+										<br />
+										<input type="hidden" id="vocabularyguidelineid" class="form-control" name="vocabularyguidelineid" value="${vocabularyguidelineid }" />
+									    <input type="hidden" name="vocabularycontentid" id="vocabulary_content_id"  /> 
 
 									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
 
 
-									<div class="col-xs-12" >
-										<!-- PAGE CONTENT BEGINS -->
-										<div class="row" >
-
-											<div class="widget-box widget-color-grey">
-
-												<div class="widget-body">
-													<div class="widget-main no-padding">
-													<select id="Level" class="form-control" >
-											            <c:forEach items="${listLevel}" var="item">
-														   <option value=${item.levelid }>${item.levelname}</option>
-														 </c:forEach>
-													</select>													</div>
-
-												</div>
-											</div>
-										</div>
-									</div>
+									
 
 									<!-- <a href="#" id="btn-scroll-up"
 											class="btn-scroll-up btn btn-sm btn-inverse"> <i
@@ -238,39 +226,24 @@
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<label class="col-sm-2 " for="form-field-1">
-									<h5>Nhập tên:</h5> <br />
+									<h5>Từ vựng:</h5> <br />
+									<h5>Phiên âm:</h5> <br />
+									<h5>Chọn mp3:</h5> <br />
 									<h5>Chọn ảnh:</h5> <br />
-									<h5>Level:</h5>
+									<h5>Nghĩa tiếng Việt:</h5>
 								</label>
 
 								<div class="col-sm-10">
-									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="listenExerciseName"  /> 
+									<input type="text" id="form-field-2-1" placeholder="Từ vựng" class="form-control" name="vocabularyname"  /> 
 										<br />
-										<input type="file" name="file" class="form-control" />
+										<input type="text" id="form-field-2-2" placeholder="Phiên âm" class="form-control" name="trancribe"  /> 
 										<br />
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-
-
-									<div class="col-xs-12" >
-										<!-- PAGE CONTENT BEGINS -->
-										<div class="row" >
-
-											<div class="widget-box widget-color-grey">
-
-												<div class="widget-body">
-													<div class="widget-main no-padding">
-													<select id="Level" class="form-control" name="levelId" >
-											            <c:forEach items="${listLevel}" var="item">
-														   <option value=${item.levelid }>${item.levelname}</option>
-														 </c:forEach>
-													</select> 
-													</div>
-
-												</div>
-											</div>
-										</div>
-									</div>
+										<input type="file" name="filemp3" class="form-control" />
+										<br />
+										<input type="file" name="fileimg" class="form-control" />
+										<br />
+										<input type="text" id="form-field-2-3" placeholder="Nghĩa của từ vựng" class="form-control" name="mean"  /> 
+										<br />
 
 									<!-- <a href="#" id="btn-scroll-up"
 											class="btn-scroll-up btn btn-sm btn-inverse"> <i
@@ -346,7 +319,33 @@
 			 }
 			 
 		  })
-	  })
+	  });
+	  $('#btn_add').on('click',function(event) {
+		  debugger;
+			event.preventDefault();
+			var vocabularycontentname= $("#vocabularycontentname").val();
+			var trancribe= $("#trancribe").val();
+// 			var filename= $("#file_add").val();
+			var mean= $("#mean").val();
+// 			if(vocabularycontentname=='' || filename==''){
+			if(vocabularycontentname==''){
+				swal("", "Các trường không được để trống", "warning");
+			}
+			else{
+				$('#add_form').submit();
+			}
+		});
+	  
+	  $(document).on('click','.add_data',function() {
+			 $("#vocabularycontentname").val('');
+			 $("#trancribe").val('');
+			 $("#mean").val('');
+			 $("#vocabulary_content_id").val('');
+			 $("#btn_add").show();
+// 			 $("#btn_edit").hide();
+			 $("#modal_title").text("Thêm mới chủ đề");
+			 $("#myModal").modal('show');
+		});
   })
 </script>
 </body>

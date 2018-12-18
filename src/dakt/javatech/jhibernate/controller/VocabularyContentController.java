@@ -55,7 +55,7 @@ public class VocabularyContentController {
 			pageid=pageid-1;
 			pageid=pageid*count +1;
 		}
-		List<Vocabularycontent> lstContent=vocabctDao.getListByLevelId(vocabid);
+		List<Vocabularycontent> lstContent=vocabctDao.getListByLevelId(Integer.parseInt(vocabid));
 		List<Vocabularycontent> lstContentPage=vocabctDao.getListPage((pageid-1), count, vocabid);
 		List<Level> lstLevel=levelDao.list();
 		sumRow = lstContent.size();
