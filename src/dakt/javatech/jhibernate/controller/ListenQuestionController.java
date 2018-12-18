@@ -39,9 +39,10 @@ public class ListenQuestionController {
 		int maxPage=0;
 		int count=COUNT_PAGE;
 		page=page-1;
+		List<Listenquestion> lst=ListenQuestionDao.getListByListenExerciseId(Integer.parseInt(ListenExerciseId));
 		List<Listenquestion> lstListenQuestion=ListenQuestionDao.getListByListenExerciseId(ListenExerciseId,page*COUNT_PAGE,COUNT_PAGE);
 		List<Level> lstLevel=levelDao.list();
-		sumRow = lstListenQuestion.size();
+		sumRow = lst.size();
 		if(sumRow%count != 0){
 			maxPage = (sumRow/count)+1;
 		}

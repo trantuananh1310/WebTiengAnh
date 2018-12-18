@@ -11,12 +11,12 @@
 <%int i=1;%>
 
                 <tbody >
-                <c:forEach items="${listListenExer}" var="item">
+                 <c:forEach items="${listListenExer}" var="item">
 		                <tr>
 			                <td  style="text-align: center;"><%=i %></td>
 			                <td class="container">${item.listenexercisename}</td>
 			                <td class="container" style="text-align: center;"><img alt="" style="height: 50px; "
-												src="images/listenexercises/${item.listenexerciseimage }"></td>
+												src="images/readexercises/${item.listenexerciseimage }"></td>
 							<c:forEach items="${listLevel}" var="level">
 								<c:if test="${item.levelid eq level.levelid}">
 									<td class="container" style="text-align: center;">${level.levelname}</td>
@@ -25,12 +25,25 @@
 							<td class="container" style="text-align: center;">
 								<a href="AdminListListenQuestion?idListenExercis=${item.listenexerciseid}"><span class="glyphicon glyphicon-search"></span> Chi Tiết</a>
 							</td>
-							<td class="container" style="text-align: center;">
-								<input type="button" value="Sửa" class="btn btn-primary btn-flat edit_data" id="${item.listenexerciseid }"></input>
+<!-- 							<td class="container" style="text-align: center;"> -->
+							
+<%-- 								<button class="btn btn-primary edit_data" id="${item.readexeriseid }"> --%>
+<!-- 									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa -->
+<!-- 								</button> -->
+							
+<%-- 								<input type="button" value="Sửa" class="btn btn-primary btn-flat edit_data" id="${item.readexeriseid }"></input> --%>
 <%-- 								<a href="" id="${item.readexeriseid }" class="edit_data"><span class="glyphicon glyphicon-pencil"></span> Sửa</a> --%>
-							</td>
+<!-- 							</td> -->
 			                <td class="container" style="text-align: center;">
-			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.listenexerciseid }"></input>
+			                
+			                	<button class="btn btn-primary edit_data" id="${item.listenexerciseid }">
+									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
+								</button>
+			                
+			                	<button class="btn btn-danger delete_data" id="${item.listenexerciseid }">
+									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
+								</button>
+<%-- 			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.readexeriseid }"></input> --%>
 <!-- 			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a> -->
 			                </td>
 		                </tr>

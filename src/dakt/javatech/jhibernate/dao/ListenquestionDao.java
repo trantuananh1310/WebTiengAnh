@@ -1,6 +1,8 @@
 package dakt.javatech.jhibernate.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -51,9 +53,11 @@ public class ListenquestionDao {
 		Listenquestion item = rateResponse.getBody();
 		return item;
 	}
-	public void add(Listenquestion sp)
+	public void add(Listenquestion listenQuestion)
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(sp);
+			String url="http://localhost:8084/Service/addListenQuestion";
+			RestTemplate restTemplate = new RestTemplate();
+			Listenquestion listenQues = restTemplate.postForObject(url, listenQuestion, Listenquestion.class);
 	}
 //	public void update(int id, String ten, int instock, String vanchuyen, Double giacu, Double giamoi, String baohanh, int moi, int dacbiet,String anh, String newsletter)
 //	{
@@ -72,11 +76,22 @@ public class ListenquestionDao {
 //		sessionFactory.getCurrentSession().update(sp);
 ////		sessionFactory.getCurrentSession().getTransaction().commit();
 //	}
+	public void update(Listenquestion listenQuestion)
+	{
+	    final String uri = "http://localhost:8084/Service/updateListenQuestion";
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.put(uri, listenQuestion);
+	}
+	
 	public void delete(int id)
 	{
-		Listenquestion listenquestion=getById(id);
-		sessionFactory.getCurrentSession().delete(listenquestion);
+	    String uri = "http://localhost:8084/Service/deleteListenQuestion/"+id;
+	    Map<String, Integer> params = new HashMap<String, Integer>();
+	    params.put("id", id);
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.delete( uri,  params );
 	}
+	
 	
 	public List<Listenquestion> getId(String s, int id)
 	{

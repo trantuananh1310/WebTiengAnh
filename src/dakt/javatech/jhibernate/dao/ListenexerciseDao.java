@@ -1,10 +1,12 @@
-package dakt.javatech.jhibernate.dao;
+	package dakt.javatech.jhibernate.dao;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -24,7 +26,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 
+
+
 import dakt.javatech.jhibernate.entity.Listenexercise;
+import dakt.javatech.jhibernate.entity.Readexercise;
 
 @Component 
 @Transactional
@@ -101,10 +106,20 @@ public class ListenexerciseDao {
 //		sessionFactory.getCurrentSession().update(sp);
 ////		sessionFactory.getCurrentSession().getTransaction().commit();
 //	}
+	public void update(Listenexercise listenExercise)
+	{
+	    final String uri = "http://localhost:8084/Service/updateListenexercise";
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.put(uri, listenExercise);
+	}
 	public void delete(int id)
 	{
-		Listenexercise listenexercise=getById(id);
-		sessionFactory.getCurrentSession().delete(listenexercise);
+	    String uri = "http://localhost:8084/Service/deleteListenexercise/"+id;
+	    Map<String, Integer> params = new HashMap<String, Integer>();
+	    params.put("id", id);
+	    RestTemplate restTemplate = new RestTemplate();
+	    restTemplate.delete( uri,  params );
 	}
 	
 	public List<Listenexercise> getId(String s, int id)

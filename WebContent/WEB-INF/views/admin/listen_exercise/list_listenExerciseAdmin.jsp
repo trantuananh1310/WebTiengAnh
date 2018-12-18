@@ -70,7 +70,8 @@
           			
           				<div class="col-sm-6" style="text-align: right;">
           					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
-<!--           					<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-flat" style="width: 150px;">Thêm mới</a> -->
+          					<input type="button" value="Nhập từ file" class="btn btn-primary btn-flat" id="addNewWithFileModel" style="width: 150px;"></input>
+<!--           					<a data-toggle="modal" data-target="#AddNewWithFileExecl" class="btn btn-primary btn-flat" style="width: 150px;">Nhập từ  file execl</a> -->
           				</div>
           			</div>
           	</div>
@@ -83,7 +84,6 @@
                   <th style="text-align: center;">Tên chủ đề</th>
                   <th style="text-align: center;">Hình Ảnh</th>
                   <th style="text-align: center;">Level</th>
-                  <th style="text-align: center;"></th>
                   <th style="text-align: center;"></th>
                   <th style="text-align: center;"></th>
                   	
@@ -104,16 +104,29 @@
 							<td class="container" style="text-align: center;">
 								<a href="AdminListListenQuestion?idListenExercis=${item.listenexerciseid}"><span class="glyphicon glyphicon-search"></span> Chi Tiết</a>
 							</td>
-							<td class="container" style="text-align: center;">
-								<input type="button" value="Sửa" class="btn btn-primary btn-flat edit_data" id="${item.listenexerciseid }"></input>
+<!-- 							<td class="container" style="text-align: center;"> -->
+							
+<%-- 								<button class="btn btn-primary edit_data" id="${item.readexeriseid }"> --%>
+<!-- 									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa -->
+<!-- 								</button> -->
+							
+<%-- 								<input type="button" value="Sửa" class="btn btn-primary btn-flat edit_data" id="${item.readexeriseid }"></input> --%>
 <%-- 								<a href="" id="${item.readexeriseid }" class="edit_data"><span class="glyphicon glyphicon-pencil"></span> Sửa</a> --%>
-							</td>
+<!-- 							</td> -->
 			                <td class="container" style="text-align: center;">
-			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.listenexerciseid }"></input>
+			                
+			                	<button class="btn btn-primary edit_data" id="${item.listenexerciseid }">
+									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
+								</button>
+			                
+			                	<button class="btn btn-danger delete_data" id="${item.listenexerciseid }">
+									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
+								</button>
+<%-- 			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.readexeriseid }"></input> --%>
 <!-- 			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a> -->
 			                </td>
 		                </tr>
-	                <%i++;%>
+	                <%i++; %>
 	                </c:forEach>
                 </tbody>
                 <tfoot>
@@ -136,7 +149,7 @@
   <!--Modal-->
     <div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
-			<form id="add_form" action="addReadExercise" method="post" enctype="multipart/form-data">
+			<form id="add_form" action="addAndEditListenExercise" method="post" enctype="multipart/form-data">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -147,18 +160,18 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<label class="col-sm-2 " for="form-field-1">
+								<label class="col-sm-2" for="form-field-1">
 									<h5>Nhập tên:</h5> <br />
 									<h5>Chọn ảnh:</h5> <br />
 									<h5>Level:</h5>
 								</label>
 
 								<div class="col-sm-10">
-									<input type="text" id="readname" placeholder="Tên tiêu đề bài tập" class="form-control" name="readname"  /> 
+									<input type="text" id="listenname" placeholder="Tên tiêu đề bài tập" class="form-control" name="listenname"  /> 
 									<br />
 									<input id="file_add" type="file" name="file" class="form-control" />
 									<br />
-									<input type="hidden" name="readexeriseidd" id="read_exerise_id"  />
+									<input type="hidden" name="listenexeriseid" id="listen_exerise_id"  />
 									<div class="col-xs-12" >
 										<!-- PAGE CONTENT BEGINS -->
 										<div class="row" >
@@ -189,6 +202,45 @@
 			</form>
 		</div>
 	</div>
+	
+	<div class="modal fade" id="AddNewWithFileExecl" role="dialog">
+		<div class="modal-dialog">
+			<form id="add_form_file" action="addWithFileExecl" method="post" enctype="multipart/form-data">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 id="modal_title" class="modal-title">Thêm mới chủ đề</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<table>
+								<tr>
+									<td class="col-sm-3"><label  for="form-field-1"><h5>Chọn ảnh:</h5> <br /></label></td>
+									<td class="col-sm-12">
+										<div >
+										<input id="file_add" type="file" name="file" class="form-control" />
+										</div>
+									</td>
+								</tr>
+								
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add_file"></input>
+<!-- 						<button class="btn btn-info" type="submit" id="btn_add"> -->
+<!-- 							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới -->
+<!-- 						</button> -->
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	
 <div class="row">
 </div>
 
@@ -250,12 +302,46 @@
 			 
 		  })
 	  });
-	  
+	  $('#addNewWithFileModel').on('click',function(event) {
+		  $("#AddNewWithFileExecl").modal('show');
+	  });
+	  $('#btn_add_file').on('click',function(event) {
+		  event.preventDefault();
+		  $.ajax({
+			  type:"POST",
+			  url:"addWithFileExecl",
+		  	  data:$('#add_form_file').serialize(),
+		  	  success:function(result)
+				 {
+		  		  if(result=="Nhập dữ liệu thành công"){
+				  		swal({
+							  title: "Thông báo",
+							  text: ""+result,
+							  type: "success",
+							  confirmButtonText: "OK",
+		//					  closeOnConfirm: false
+							},
+							function(){
+								window.location.href = "AdminListenExercise"
+						});
+					 } 
+		  		else{
+		  			swal({
+						  title: "Thông báo",
+						  text: ""+result,
+						  type: "waring",
+						  confirmButtonText: "OK",
+	//					  closeOnConfirm: false
+						});
+		  		}
+			 }		
+		  })
+	  });
 	  $('#btn_add').on('click',function(event) {
 			event.preventDefault();
-			var readname= $("#readname").val();
+			var listenname= $("#listenname").val();
 			var filename= $("#file_add").val();
-			if(readname=='' || filename==''){
+			if(listenname=='' || filename==''){
 				swal("", "Các trường không được để trống", "warning");
 			}
 			else{
@@ -265,17 +351,18 @@
 		});
 	  
 	  $(document).on('click','.edit_data',function() {
-			var readExerciseId = $(this).attr("id");
+		  debugger;
+			var listenExerciseId = $(this).attr("id");
 			$.ajax({
 				 type:"GET",
 				 contentType : "application/json",
-				 url:"editReadExercise",
-				 data: {readExerciseId: readExerciseId},
+				 url:"getListenExerciseByExrId",
+				 data: {listenExerciseId: listenExerciseId},
 				 dataType:"json",
 				 success:function(result){
-					 $("#readname").val(result.readname);
+					 $("#listenname").val(result.listenexercisename);
 					 $("#add_level").val(result.levelid);
-					 $("#read_exerise_id").val(result.readexeriseid);
+					 $("#listen_exerise_id").val(result.listenexerciseid);
 					 $("#modal_title").text("Sửa chủ đề");
 					 $("#btn_add").val("Sửa");
 					 $("#myModal").modal('show');
@@ -284,17 +371,16 @@
 	  });
 	  
 	  $(document).on('click','.add_data',function() {
-					 $("#readname").val('');
+					 $("#listenname").val('');
 					 $("#add_level").val("1");
-					 $("#read_exerise_id").val('');
+					 $("#listen_exerise_id").val('');
 					 $("#btn_add").val("Thêm");
 					 $("#modal_title").text("Thêm mới chủ đề");
 					 $("#myModal").modal('show');
 	  });
 	  
 	  $(document).on('click','.delete_data',function() {
-		  debugger;
-		  var readExerciseId = $(this).attr("id");
+		  var listenExerciseId = $(this).attr("id");
 		  swal({
 			  title: "Bạn có chắc chắn muốn xóa?",
 // 			  text: "Your will not be able to recover this imaginary file!",
@@ -307,8 +393,8 @@
 			function(){
 				$.ajax({
 					 type:"POST",
-					 url:"deleteReadExercise",
-					 data: {readExerciseId: readExerciseId},
+					 url:"deleteListenExercise",
+					 data: {listenExerciseId: listenExerciseId},
 				})
 				swal({
 					  title: "Đã xóa thành công!",

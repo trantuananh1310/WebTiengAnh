@@ -28,7 +28,7 @@ public class ReadExerciseController {
 	private static final int Count_Silde=5;
 	
 	@RequestMapping(value="/listReadExercise", method=RequestMethod.GET)
-	public ModelAndView listReadExercise(String level, int Page)
+	public ModelAndView getListReadExercise(String level, int Page)
 	{
 		int Total_Exc;
 		int Total_Page;
