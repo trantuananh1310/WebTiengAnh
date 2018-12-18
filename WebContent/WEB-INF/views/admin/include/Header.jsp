@@ -141,7 +141,7 @@
           </a>   
            <ul class="treeview-menu">
             <li><a href="AdminReadExercise"><i class="fa fa-circle-o"></i> Quản lý bài tập đọc</a></li>
-            <li ><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý bài tập nghe</a></li>
+            <li ><a href="AdminListenExercise"><i class="fa fa-circle-o"></i> Quản lý bài tập nghe</a></li>
           </ul>        
         </li>
           <li class="treeview ">

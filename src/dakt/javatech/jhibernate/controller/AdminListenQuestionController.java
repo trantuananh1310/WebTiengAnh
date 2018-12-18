@@ -20,7 +20,8 @@ public class AdminListenQuestionController {
 	{
 		List<Listenquestion> list = new ArrayList<Listenquestion>();
 		list= listQuestionDao.getListByListenExerciseId(idListenExercis);
-		ModelAndView modelView = new ModelAndView("admin/ListenExercise/list_listenQuestion");
+		ModelAndView modelView = new ModelAndView("admin/listen_exercise/list_listenQuestion");
+		
 		modelView.addObject("listQuestion", list);
 		return modelView;
 	}

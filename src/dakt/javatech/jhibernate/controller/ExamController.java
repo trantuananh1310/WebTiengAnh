@@ -82,7 +82,7 @@ public class ExamController {
 		return String.valueOf(soCauDung)+"/"+countRow;
 	}
 	@RequestMapping(value="/exam", method=RequestMethod.GET)
-	public ModelAndView getQuestionByStt2(int stt)
+	public ModelAndView Exam(int stt)
 	{	// lấy list các đề thi
 		List<Examination> listExam = examinationDao.list();
 		// lấy ramdom 1 đề trong list các dề thi

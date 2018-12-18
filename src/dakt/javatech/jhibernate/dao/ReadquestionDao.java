@@ -54,7 +54,7 @@ public class ReadquestionDao {
 	
 	public void add(Readquestion readQues)
 	{
-			String url="http://localhost:8084/TestWebService/addReadexercise";
+			String url="http://localhost:8084/Service/addReadQuestion";
 			RestTemplate restTemplate = new RestTemplate();
 			Readquestion readQuestion = restTemplate.postForObject(url, readQues, Readquestion.class);
 	}

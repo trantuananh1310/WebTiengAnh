@@ -51,11 +51,11 @@ public class AdminReadExerciseController {
 	}
 	
 	@RequestMapping(value="/addReadExercise", method=RequestMethod.POST)
-	public ModelAndView AddReadExercise(String readname,Integer levelid, String readexeriseidd, @RequestParam(value = "file") CommonsMultipartFile commonsMultipartFiles,
+	public ModelAndView AddAndEditReadExercise(String readname,Integer levelid, String readexeriseidd, @RequestParam(value = "file") CommonsMultipartFile commonsMultipartFiles,
 			ModelMap modelMap,HttpServletRequest request)
 	{
 		String nameFile = commonsMultipartFiles.getOriginalFilename();
-		if(readexeriseidd!=null && !readexeriseidd.isEmpty()) {
+		if(!readexeriseidd.isEmpty() &&readexeriseidd!=null  ) {
 			Readexercise readEx = new Readexercise();
 			readEx = readExDao.getById(Integer.parseInt(readexeriseidd));
 			readEx.setReadname(readname);

@@ -85,7 +85,7 @@ public class VocabularycontentDao {
 //		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 //		return (List<Vocabularycontent>)query.list();
 //	}
-	public List<Vocabularycontent> getListByLevelId(String vocabid){
+	public List<Vocabularycontent> getListByLevelId(int vocabid){
 		String uri="http://localhost:8084/Service/getListListVocabularycontentByLevelId/LevelId="+vocabid;
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<List<Vocabularycontent>> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 

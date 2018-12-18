@@ -24,7 +24,7 @@ public class HomeController {
 	SlidebannerDao slideDao;
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public ModelAndView getAllMembers(ModelMap model)
+	public ModelAndView Home(ModelMap model)
 	{
 		List<Level> lstLevel=levelDao.list();
 		List<Slidebanner> lstSlide =slideDao.list();
