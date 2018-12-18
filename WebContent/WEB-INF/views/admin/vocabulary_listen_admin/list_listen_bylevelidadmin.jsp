@@ -13,21 +13,30 @@
                 <tbody >
                 <c:forEach items="${listAdListenGui}" var="item">
                  <tr>
-                  <td><%=i %></td>
+                  <td style="text-align: center;"><%=i %></td>
                   <td class="container">${item.listenname}</td>
-                  <td class="container"><img alt="" style="width: 150px; height: 100px; "
-									src="images/Listengui/${item.listenimage }"></td>
-                  <td class="container"> <p>
-                 		<a href="AdminListListenQuestion?idListenExercis=${item.listenguidelineid}"><span class="glyphicon glyphicon-search"></span> DS câu hỏi</a>
-                 		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> </a>Sửa
-                 		<a href="#" ><span class="glyphicon glyphicon-trash"></span> </a>Xóa</p>
+                  <td class="container" style="text-align: center;"><img alt="" style="width: 150px; height: 100px; "
+									src="images/Listengui/${item.listenimage }">
+				  </td>
+				  <c:forEach items="${listLevel}" var="level">
+								<c:if test="${item.levelid eq level.levelid}">
+									<td class="container" style="text-align: center;">${level.levelname}</td>
+								</c:if>
+				  </c:forEach>
+                  <td class="container" style="text-align: center;"> <p>
+                 		<a href="AdminListenGuidelineContent?id=${item.listenguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>               		
+                 </td>
+                 <td class="container" style="text-align: center;">
+                 <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                
+                 </td>
+                 <td class="container" style="text-align: center;">
+                 <a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
                  </td>
                   
                  
                 </tr>
-                <%i++;%>
+                <%i++; %>
                 </c:forEach>
-               
                 </tbody>
                 
 </body>

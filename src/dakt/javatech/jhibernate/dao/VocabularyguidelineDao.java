@@ -57,7 +57,7 @@ public class VocabularyguidelineDao {
 	{
 		String url="http://localhost:8084/Service/addVocabularyguideline";
 		RestTemplate restTemplate = new RestTemplate();
-		Vocabularyguideline vocabgui = restTemplate.postForObject(url, sp, Vocabularyguideline.class);
+		Vocabularyguideline vocabGui = restTemplate.postForObject(url, sp, Vocabularyguideline.class);
 	}
 	public void update(Vocabularyguideline vocabularyguideline)
 	{

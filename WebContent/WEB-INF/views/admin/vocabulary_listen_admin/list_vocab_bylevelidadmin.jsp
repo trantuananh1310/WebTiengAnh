@@ -10,22 +10,34 @@
 <body>
 <%int i=1;%>
 
-                <tbody >
+                <tbody id="box-body1">
                 <c:forEach items="${listAdVocabGui}" var="item">
                  <tr>
-                  <td><%=i %></td>
+                  <td style="text-align: center;"><%=i %></td>
                   <td class="container">${item.vocabularyname}</td>
-                  <td class="container"><img alt="" style="width: 150px; height: 100px; "
+                  <td class="container" style="text-align: center;"><img alt="" style="height: 50px; ""
 									src="images/Vocabgui/${item.vocabularyimage }"></td>
-                  <td class="container"> <p>
-                 		<a href="AdminVocabularyContent?id=${item.vocabularyguidelineid}"><span class="glyphicon glyphicon-search"></span> DS câu hỏi</a>
-                 		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> </a>Sửa
-                 		<a href="#" ><span class="glyphicon glyphicon-trash"></span> </a>Xóa</p>
-                 </td>
+				  <c:forEach items="${listLevel}" var="level">
+								<c:if test="${item.levelid eq level.levelid}">
+									<td class="container" style="text-align: center;">${level.levelname}</td>
+								</c:if>
+				  </c:forEach>
+                 <td class="container" style="text-align: center;">
+								<a href="AdminVocabularyContent?vocabid=${item.vocabularyguidelineid}"><span class="glyphicon glyphicon-search"></span> Chi Tiết</a>
+				 <td class="container" style="text-align: center;">
+			                
+			                	<button class="btn btn-primary edit_data" id="${item.vocabularyguidelineid }">
+									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
+								</button>
+			                
+			                	<button class="btn btn-danger delete_data" id="${item.vocabularyguidelineid }">
+									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
+								</button>
+			     </td>
                   
                  
                 </tr>
-                <%i++;%>
+                <%i++; %>
                 </c:forEach>
                
                 </tbody>
