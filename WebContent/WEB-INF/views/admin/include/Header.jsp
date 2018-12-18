@@ -117,8 +117,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
                     
-         <li class="treeview ">
-          <a href="#">
+         <li >
+          <a href="AdminMember">
             <i class="fa fa-book"></i> <span>Quản lý người dùng</span>
          	
           </a>   

@@ -108,18 +108,23 @@
                 <c:forEach items="${listQuestion}" var="item">
                  <tr>
                   <td><%=i %></td>
-                  <td class="container">${item.question}</td>
-                  <td class="container">
-               		   <img alt="" style="width: 150px; height: 100px; "src="images/ListenQuestion/${item.imagename }">
-						<br> ${item.audiomp3 }			
+                  <td class="container" style="text-align: center;">${item.question}</td>
+                  <td class="container" style="text-align: center;">
+               		   <img alt="" style="height: 50px; "src="images/ListenQuestion/${item.imagename }">
+               		   <br>
+						<audio controls style="width: 200px;"> <source src="Audio/${item.audiomp3 }" type="audio/mpeg"></audio>	
 				  </td>
 <%-- 				 <td class="container"> <audio controls style="width: 250px;"> <source src="Audio/${item.audiomp3 }" type="audio/mpeg"></audio></td> --%>
-				 <td class="container">Đáp án 1: ${item.option1}<br>Đáp án 2: ${item.option2}<br>Đáp án 3: ${item.option3}<br>Đáp án 4: ${item.option4}</td>
-				 <td class="container">${item.correctanswer}</td>
-                 <td class="container"> <p>
-                 		<a href="/AdminListListenQuestion?idListenExercis=${item.listenquestionid}"><span class="glyphicon glyphicon-search"></span> DS câu hỏi</a>
-                 		<a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>
-                 		<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</p></a>
+				 <td class="container" style="text-align: center;">Đáp án 1: ${item.option1}<br>Đáp án 2: ${item.option2}<br>Đáp án 3: ${item.option3}<br>Đáp án 4: ${item.option4}</td>
+				 <td class="container" style="text-align: center;">${item.correctanswer}</td>
+                 <td class="container" style="text-align: center;"> 
+                 		<button class="btn btn-primary edit_data" id="${item.listenexerciseid }">
+									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
+								</button>
+			                
+			                	<button class="btn btn-danger delete_data" id="${item.listenexerciseid }">
+									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
+								</button>
                  </td>
                 </tr>
                 <%i++; %>

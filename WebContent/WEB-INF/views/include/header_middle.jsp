@@ -9,6 +9,14 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		$('#search').keypress(function(event){
+			var key1= $('#search').val();
+		    var keycode = (event.keyCode ? event.keyCode : event.which);
+		    if(keycode == '13'){
+		    	window.location.href = 'SearchAll?key='+key1 +'&page=1';
+		    }
+
+		});
 		$('#login_form').on('submit',function(event) {
 			event.preventDefault();
 			$.ajax({
@@ -140,11 +148,11 @@
 										<li><a href="login.html">Login</a></li> 
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#">Thi thử<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
+								<li><a href="exam?stt=1">Thi thử</a>
+<!--                                     <ul role="menu" class="sub-menu"> -->
+<!--                                         <li><a href="blog.html">Blog List</a></li> -->
+<!-- 										<li><a href="blog-single.html">Blog Single</a></li> -->
+<!--                                     </ul> -->
                                 </li> 
 								<li><a href="contact-us.html">Liên hệ</a></li>
 							</ul>
@@ -152,7 +160,7 @@
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Tìm kiếm"/>
+							<input id ="search" type="text" placeholder="Tìm kiếm"/>
 						</div>
 					</div>
 				</div>
