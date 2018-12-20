@@ -57,13 +57,13 @@ public class AdminListenQuestionController {
 	}
 	@RequestMapping(value="/addListenQuestion1", method=RequestMethod.POST)
 	public ModelAndView AddListenQuestion(Listenquestion listenQuestion,@RequestParam(value = "file_picture") CommonsMultipartFile picture,
-			@RequestParam(value = "file_picture") CommonsMultipartFile fileMp3,HttpServletRequest request,ModelMap modelMap)
+			@RequestParam(value = "file_mp3") CommonsMultipartFile fileMp3,HttpServletRequest request,ModelMap modelMap)
 	{
 		String imagename = picture.getOriginalFilename();
 		String audiomp3= fileMp3.getOriginalFilename();
 		listenQuestion.setAudiomp3(audiomp3);
 		listenQuestion.setImagename(imagename);
-		String dirFile = request.getRealPath("images\\listenexercises");
+		String dirFile = request.getRealPath("images\\ListenQuestion");
 		System.out.println(dirFile);
 		File fileDir = new File(dirFile);
 		if (!fileDir.exists()) {
@@ -76,7 +76,7 @@ public class AdminListenQuestionController {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		String dirFile1 = request.getRealPath("Audio\\listenexercises");
+		String dirFile1 = request.getRealPath("Audio\\listenquestion");
 		System.out.println(dirFile1);
 		File fileDir1 = new File(dirFile1);
 		if (!fileDir1.exists()) {

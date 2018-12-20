@@ -126,7 +126,7 @@
                		   ${item.imagename}
 				  </td>
 				  <td class="container" style="text-align: center;">
-				  	<audio controls style="width: 150px;"> <source src="Audio/listen_exercise/${item.audiomp3 }" type="audio/mpeg"></audio>	
+				  	<audio controls style="width: 150px;"> <source src="Audio/listenquestion/${item.audiomp3 }" type="audio/mpeg"></audio>	
                		   <br>
                		   ${item.audiomp3}
 						
