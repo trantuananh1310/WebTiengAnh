@@ -179,11 +179,11 @@
 						</tr>	
 					</table>
 					<input type="hidden"   class="form-control" name="listenexerciseid"  value="${listenexerciseid}" />
-					<input type="hidden"   class="form-control" name="listenquestionid"  />
+					<input type="hidden"   class="form-control" name="listenquestionid"  value="${item.listenquestionid}"/>
 							
               </form>
               <div style="text-align: center;">
-					<input  id='editQuestion' type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
+					<input  id='editQuestion' type="button" value="Lưu" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
 			</div>
 <!--               <textarea class="form-textarea" id="noiDung">Chào mừng bạn đến với Blog Kênh Lập Trình</textarea> -->
             </div>
@@ -241,7 +241,7 @@
 		  	var question= $('#question').val();
 		  	var file_mp3 = $('#file_mp3').val();
 		  	var file_picture=$('#file_picture').val();
-		  	if(question==''||option1==''||option2==''||option3==''||option4==''||file_mp3==''||file_picture=='')
+		  	if(question==''||option1==''||option2==''||option3==''||option4=='')
 		  		{
 		  		swal("","Các trường không được để trống","warning");
 		  		}
@@ -250,7 +250,7 @@
 			  		if(option1!=option2&&option1!=option3&&option1!=option4&&option2!=option3&&option2!=option4&&option3!=option4) {
 				    	  $('#radio1').val(option1); $('#radio2').val(option2);
 						  $('#radio3').val(option3); $('#radio4').val(option4);
-		 		    	$('#addListenQuestion').submit()
+		 		    	$('#editListenQuestion').submit()
 				    }
 				    else
 			    	{

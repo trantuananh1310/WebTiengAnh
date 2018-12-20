@@ -54,21 +54,14 @@
       <div class="container" > 
       <div>
       <div class="col-sm-3" style=" padding-top: 10px;">
-      <select id="Level" class="form-control" style="margin-left: -29px;width: 150px;">
-      <input type="hidden" id ="idListenExercis" value="${idListenExercis}"/>
-      		<option value="0">Tất cả</option>
-            <c:forEach items="${listLevel}" var="item">
-			   <option value=${item.levelid }>${item.levelname}</option>
-			 </c:forEach>
-		</select>
+      
 		</div>	
 		<div class="col-sm-9 " style=" text-align: right;padding-right: 60px;">
 			<div class="col-xs-9">
 			<div class="col-xs-8">
-			<input id="file_add" type="file" name="file" class="form-control" />
 			</div>
 			<div class="col-xs-4">
-			<button type="button" data-toggle="modal"  class="btn btn-block btn-primary btn-flat" >
+			<button type="button" id="addexecl"  class="btn btn-block btn-primary btn-flat" >
 				 Nhập từ execl</button>
 			</div>
 			</div>
@@ -175,143 +168,55 @@
 	</div>
 
  </div>
-    <div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-			<form action="editGMGLAction" method="post"
-				enctype="multipart/form-data">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm mới chủ đề</h4>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<label class="col-sm-2 " for="form-field-1">
-									<h5>Nhập tên:</h5> <br />
-									<h5>Chọn ảnh:</h5> <br />
-									<h5>Level:</h5>
-								</label>
-
-								<div class="col-sm-10">
-									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="grammarname"  /> 
-										<br />
-										<input type="file" name="file" class="form-control" />
-										<br />
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-
-
-									<div class="col-xs-12" >
-										<!-- PAGE CONTENT BEGINS -->
-										<div class="row" >
-
-											<div class="widget-box widget-color-grey">
-
-												<div class="widget-body">
-													<div class="widget-main no-padding">
-													<select id="Level" class="form-control" >
-											            <c:forEach items="${listLevel}" var="item">
-														   <option value=${item.levelid }>${item.levelname}</option>
-														 </c:forEach>
-													</select>													</div>
-
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- <a href="#" id="btn-scroll-up"
-											class="btn-scroll-up btn btn-sm btn-inverse"> <i
-											class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-										</a> -->
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-info" type="submit">
-							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-
 <div class="row">
-	
-
  </div>
-    <div class="modal fade" id="myModalEdit" role="dialog">
+   	<div class="modal fade" id="AddNewWithFileExecl" role="dialog">
 		<div class="modal-dialog">
-			<form action="editGMGLAction" method="post"
-				enctype="multipart/form-data">
+			<form id="add_form_file" action="addListenQuestionExecl" method="post" enctype="multipart/form-data">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Sửa nội dung chủ đề</h4>
+						<h4 id="modal_title" class="modal-title">Nhập dữ liệu từ file execl</h4>
 					</div>
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<label class="col-sm-2 " for="form-field-1">
-									<h5>Nhập tên:</h5> <br />
-									<h5>Chọn ảnh:</h5> <br />
-									<h5>Level:</h5>
-								</label>
-
-								<div class="col-sm-10">
-									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="grammarname"  /> 
-										<br />
-										<input type="file" name="file" class="form-control" />
-										<br />
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-
-
-									<div class="col-xs-12" >
-										<!-- PAGE CONTENT BEGINS -->
-										<div class="row" >
-
-											<div class="widget-box widget-color-grey">
-
-												<div class="widget-body">
-													<div class="widget-main no-padding">
-													<select id="Level" class="form-control" >
-											            <c:forEach items="${listLevel}" var="item">
-														   <option value=${item.levelid }>${item.levelname}</option>
-														 </c:forEach>
-													</select> 
-													</div>
-
-												</div>
-											</div>
+								<table>
+								<tr>
+									<td class="col-sm-3"><br><label  for="form-field-1"><h5>Chọn file execl:</h5> <br /></label></td>
+									<td class="col-sm-12">
+										<div >
+										<input id="file_execl" type="file" name="execl" class="form-control" />
 										</div>
-									</div>
-
-									<!-- <a href="#" id="btn-scroll-up"
-											class="btn-scroll-up btn btn-sm btn-inverse"> <i
-											class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-										</a> -->
-
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
-
-								</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-3"><br><label  for="form-field-1"><h5>Chọn file ảnh:</h5> <br /></label></td>
+									<td class="col-sm-12">
+										<div >
+										<input id="file_image" type="file" name="image" class="form-control" multiple="multiple" />
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-3"><br><label  for="form-field-1" multiple="multiple"><h5>Chọn file mp3:</h5> <br /></label></td>
+									<td class="col-sm-12">
+										<div >
+										<input id="file_mp3" type="file" name="filemp3" class="form-control" />
+										</div>
+									</td>
+								</tr>
+								</table>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-info" type="submit">
-							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
-						</button>
+						<input type="button" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add_file"></input>
+<!-- 						<button class="btn btn-info" type="submit" id="btn_add"> -->
+<!-- 							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới -->
+<!-- 						</button> -->
 					</div>
 				</div>
 			</form>
@@ -402,7 +307,23 @@
 			  window.location.reload();
 		});
 	  })
+	  $('#addexecl').on('click',function(event){
+		  $('#AddNewWithFileExecl').modal('show');
+	  })
+	  $('#btn_add_file').on('click', function(event){
+		  var file_execl=$('#file_execl').val();
+		  var file_mp3 =$('#file_mp3').val();
+		  var file_image=$('#file_image').val();
+		  if(file_execl==''||file_mp3==''||file_image==''){
+			swal("","Các trường không được để trống","warning");
+		  }
+		  else{
+			  $('#add_form_file').submit();
+		  }
+			 
+	  })
   })
 </script>
+<script src="js/sweetalert.min.js"></script>
 </body>
 </html>
