@@ -142,7 +142,7 @@ public class AdminListenQuestionController {
 	}
 	@RequestMapping(value="/addListenQuestionExecl", method=RequestMethod.POST)
 	public ModelAndView addListenQuestionExecl(@RequestParam(value = "execl") CommonsMultipartFile execl,@RequestParam(value = "image") CommonsMultipartFile[] image,
-			@RequestParam(value = "filemp3") CommonsMultipartFile[] fileMp3,HttpServletRequest request,ModelMap modelMap) throws IOException
+			@RequestParam(value = "filemp3") CommonsMultipartFile[] fileMp3,HttpServletRequest request,ModelMap modelMap,int listenexerciseid) throws IOException
 	{
 		//upload
 		InputStream in = execl.getInputStream();
@@ -200,7 +200,7 @@ public class AdminListenQuestionController {
 	       for(CommonsMultipartFile item:fileMp3){
 	    	   uploadFile(item,"Audio\\listenquestion",request,modelMap);
 	       }
-		return new ModelAndView("redirect:/AdminListListenQuestion?idListenExercis=2");
+		return new ModelAndView("redirect:/AdminListListenQuestion?idListenExercis="+listenexerciseid);
 	}
 	public void uploadFile(CommonsMultipartFile CommonsMultipartFile, String path,HttpServletRequest request,ModelMap modelMap)
 	{
