@@ -81,6 +81,7 @@
                   <th style="text-align: center;">STT</th>
                   <th style="text-align: center;">Họ và tên </th>
                   <th style="text-align: center;">Tên tài khoản</th>
+                  <th style="text-align: center;">Email</th>
                   <th style="text-align: center;">Loại thành viên</th>
                   <th style="text-align: center;"></th>
                   	
@@ -92,6 +93,7 @@
 			                <td  style="text-align: center;"><%=i %></td>
 			                <td class="container">${item.name}</td>
 			                 <td class="container">${item.membername}</td>
+			                 <td class="container">${item.email}</td>
 							<c:forEach items="${listCategory}" var="Category">
 								<c:if test="${item.categorymemberid eq Category.categorymemberid}">
 									<td class="container" style="text-align: center;">${Category.categorymembername}</td>
@@ -111,9 +113,9 @@
 <!-- 							</td> -->
 			                <td class="container" style="text-align: center;">
 			                
-			                	<button class="btn btn-primary edit_data" id="${item.memberid }">
-									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
-								</button>
+<%-- 			                	<button class="btn btn-primary edit_data" id="${item.memberid }"> --%>
+<!-- 									<i class="ace-icon fa fa-edit bigger-110"></i> Phân quyền -->
+<!-- 								</button> -->
 			                
 			                	<button class="btn btn-danger delete_data" id="${item.memberid }">
 									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
@@ -205,6 +207,7 @@
 										 </td>
 									</tr>
 								</table>
+								<input type="hidden" id="memberid" placeholder="Xác nhận mật khẩu" class="form-control" name="memberid" required="" />
 								</form>
 								
 
@@ -213,10 +216,10 @@
 					</div>
 					<div class="modal-footer">
 <!-- 						<input type="submit" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add"></input> -->
-						<button class="btn btn-info" type="submit" id="btn_edit">
+						<button class="btn btn-info" type="" id="btn_edit">
 							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
 						</button>
-						<button class="btn btn-info" type="submit" id="btn_add">
+						<button class="btn btn-info" type="" id="btn_add">
 							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới
 						</button>
 					</div>
@@ -288,6 +291,7 @@
 	  
 	  $('#btn_add').on('click',function(event) {
 		  debugger;
+		  event.preventDefault();
 		  var pass= $('#pass').val();
 		  var confirmPass=$('#confirmpass').val();
 		  var user =$('#user').val();
@@ -298,7 +302,7 @@
 		  else {
 			  if(confirmPass==pass){
 				  $.ajax({
-						type:"GET",
+						type:"POST",
 						url:"addMember",
 						data:$('#add_form').serialize(),
 						success:function(result){
@@ -313,16 +317,18 @@
 									  window.location.reload();
 								});	
 							}
+							else if(result=='ErrorMember'){
+								swal("", "Tài khoản đã tồn tại", "warning");
+							}
 							else{
-								$('#err_user').html('Tài khoản đã tồn tại');
+								 swal("", "Số điện thoại sai định dạng", "warning");
 							}
 								
-							
 						}
-					})
+					});
 			  }
 			  else{
-				$('#err_confirm_pass').html('Mật khẩu không khớp.Vui lòng kiểm tra lại');  
+				  swal("", "Xác nhận password không đúng", "warning");
 			  }
 		  }
 	  });
@@ -330,7 +336,7 @@
 	  $(document).on('click','.edit_data',function() {
 			var readExerciseId = $(this).attr("id");
 			$.ajax({
-				 type:"GET",
+				 type:"POST",
 				 contentType : "application/json",
 				 url:"editReadExercise",
 				 data: {readExerciseId: readExerciseId},
@@ -354,12 +360,12 @@
 					 $("#btn_add").show();
 					 $("#btn_edit").hide();
 					 $("#modal_title").text("Thêm mới thành viên");
-					 $("#myModal").showModal();
+					 $("#myModal").modal('show');
 	  });
 	  
 	  $(document).on('click','.delete_data',function() {
 		  debugger;
-		  var readExerciseId = $(this).attr("id");
+		  var memberId = $(this).attr("id");
 		  swal({
 			  title: "Bạn có chắc chắn muốn xóa?",
 // 			  text: "Your will not be able to recover this imaginary file!",
@@ -372,8 +378,8 @@
 			function(){
 				$.ajax({
 					 type:"POST",
-					 url:"deleteReadExercise",
-					 data: {readExerciseId: readExerciseId},
+					 url:"deleteMember",
+					 data: {memberId: memberId},
 				})
 				swal({
 					  title: "Đã xóa thành công!",

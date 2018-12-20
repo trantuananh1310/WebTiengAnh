@@ -22,6 +22,7 @@
   <!-- AdminLTE Skins. Choose a skin from the admin/css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="admin/css/_all-skins.min.css">
+  <link rel="stylesheet" href="css/sweetalert.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,23 +49,32 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quản lý từ vựng
+        Quản lý bài tập nghe
       </h1>
       <div class="container" > 
       <div>
-      <div class="col-sm-6 " style=" padding-top: 10px;">
+      <div class="col-sm-3" style=" padding-top: 10px;">
       <select id="Level" class="form-control" style="margin-left: -29px;width: 150px;">
+      <input type="hidden" id ="idListenExercis" value="${idListenExercis}"/>
       		<option value="0">Tất cả</option>
             <c:forEach items="${listLevel}" var="item">
 			   <option value=${item.levelid }>${item.levelname}</option>
 			 </c:forEach>
 		</select>
 		</div>	
-		<div class="col-sm-6 " style=" text-align: right;padding-right: 60px;">
-			<div class="col-xs-12">
-				<h5 style="color: red">${msg }</h5>
-				<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-block btn-primary btn-flat" 
-				style="width: 200px;margin-left: 272px;">
+		<div class="col-sm-9 " style=" text-align: right;padding-right: 60px;">
+			<div class="col-xs-9">
+			<div class="col-xs-8">
+			<input id="file_add" type="file" name="file" class="form-control" />
+			</div>
+			<div class="col-xs-4">
+			<button type="button" data-toggle="modal"  class="btn btn-block btn-primary btn-flat" >
+				 Nhập từ execl</button>
+			</div>
+			</div>
+			<div class="col-xs-3">
+				
+				<button id="addNew" type="button"  class="btn btn-block btn-primary btn-flat" >
 				Thêm mới
 				</button>
 			</div>
@@ -97,7 +107,8 @@
                 <tr>
                   <th>STT</th>
                   <th>Câu hỏi</th>
-                  <th>Hình Ảnh/File nghe</th>
+                  <th>Hình Ảnh</th>
+                  <th>File nghe</th>
                   <th>Câu trả lời </th>
                   <th>Đáp án</th>
                   <th></th>
@@ -112,17 +123,22 @@
                   <td class="container" style="text-align: center;">
                		   <img alt="" style="height: 50px; "src="images/ListenQuestion/${item.imagename }">
                		   <br>
-						<audio controls style="width: 200px;"> <source src="Audio/${item.audiomp3 }" type="audio/mpeg"></audio>	
+               		   ${item.imagename}
+				  </td>
+				  <td class="container" style="text-align: center;">
+				  	<audio controls style="width: 150px;"> <source src="Audio/listen_exercise/${item.audiomp3 }" type="audio/mpeg"></audio>	
+               		   <br>
+               		   ${item.audiomp3}
+						
 				  </td>
 <%-- 				 <td class="container"> <audio controls style="width: 250px;"> <source src="Audio/${item.audiomp3 }" type="audio/mpeg"></audio></td> --%>
 				 <td class="container" style="text-align: center;">Đáp án 1: ${item.option1}<br>Đáp án 2: ${item.option2}<br>Đáp án 3: ${item.option3}<br>Đáp án 4: ${item.option4}</td>
 				 <td class="container" style="text-align: center;">${item.correctanswer}</td>
                  <td class="container" style="text-align: center;"> 
-                 		<button class="btn btn-primary edit_data" id="${item.listenexerciseid }">
+                 		<button class="btn btn-primary edit_data" id="${item.listenquestionid }">
 									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
 								</button>
-			                
-			                	<button class="btn btn-danger delete_data" id="${item.listenexerciseid }">
+			                	<button class="btn btn-danger delete_data" id="${item.listenquestionid }">
 									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
 								</button>
                  </td>
@@ -133,13 +149,6 @@
                 </tbody>
                 <tfoot>
                 <tr>
-<!--                   <th>STT</th> -->
-<!--                   <th>Câu hỏi</th> -->
-<!--                   <th>Hình Ảnh</th> -->
-<!--                   <th>File nghe </th> -->
-<!--                   <th>Câu trả lời </th> -->
-<!--                   <th>Đáp án</th> -->
-<!-- <!--                   <th></th> --> 
                
                 </tr>
                 
@@ -333,8 +342,9 @@
 <script src="admin/js/demo.js"></script>
 <!-- page script -->
 <script src="admin/js/ckeditor/ckeditor.js" ></script>
-
+<script src="js/sweetalert.min.js"></script>
 <script type="text/javascript" language="javascript">
+
 //    CKEDITOR.replace('noiDung');
 </script>
 <script>
@@ -363,6 +373,34 @@
 			 }
 			 
 		  })
+	  })
+	  $('#addNew').on('click',function(event){
+		  var idListenExercis = $('#idListenExercis').val();
+		  window.location.href = "addListenQuestion?listenexerciseid="+idListenExercis;
+	  })
+	  $('.edit_data').on('click',function(event){
+		  debugger;
+		  var listenQuestionId= $(this).attr("id");
+		  var idListenExercis = $('#idListenExercis').val();
+		  window.location.href = "editListenQuestion?listenQuestionid="+listenQuestionId+"&listenexerciseid="+idListenExercis;
+	  })
+	  $('.delete_data').on('click',function(event){
+		  var listenQuestionId= $(this).attr("id");
+		  var idListenExercis = $('#idListenExercis').val();
+		 $.ajax({
+			 type:"POST",
+			 url:"deleteListenQuestion",
+			 data:{listenQuestionId:listenQuestionId},
+		 })
+		 swal({
+			  title: "Đã xóa thành công!",
+			  type: "success",
+			  confirmButtonText: "OK",
+//			  closeOnConfirm: false
+			},
+			function(){
+			  window.location.reload();
+		});
 	  })
   })
 </script>
