@@ -6,6 +6,7 @@ encoding//WebContent/WEB-INF/views/admin/include/Header.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/admin/index.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/home.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/list_grammar_guideline.jsp=UTF-8
+encoding//src/dakt/javatech/jhibernate/controller/AdminExaminationquestionController.java=UTF-8
 encoding//src/dakt/javatech/jhibernate/controller/AdminListenExerciseController.java=UTF-8
 encoding//src/dakt/javatech/jhibernate/controller/AdminListenGuidelineController.java=UTF-8
 encoding//src/dakt/javatech/jhibernate/controller/AdminListenQuestionController.java=UTF-8
