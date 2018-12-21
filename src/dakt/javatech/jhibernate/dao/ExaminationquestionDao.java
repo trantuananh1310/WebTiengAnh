@@ -1,5 +1,6 @@
 package dakt.javatech.jhibernate.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,6 +94,19 @@ public class ExaminationquestionDao {
 																			new ParameterizedTypeReference<List<Examinationquestion>>(){});
 		List<Examinationquestion> lstExam = rateResponse.getBody();
 		return lstExam;
+	}
+	public List<String> getListPart()
+	{
+		List<String> listPart= new ArrayList<String>();
+		List<Examinationquestion> list=list();
+		for (Examinationquestion item : list) {
+			int check=0;
+			for (String item1 : listPart) {
+				if(item1.equals(item.getPart())){check=1; break;}
+			}
+			if(check==0) listPart.add(item.getPart());
+		}
+		return listPart;
 	}
 	
 }
