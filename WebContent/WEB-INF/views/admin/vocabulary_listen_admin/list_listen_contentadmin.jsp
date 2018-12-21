@@ -109,7 +109,7 @@
 <div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 			<form id="add_form" action="addListenGuideline" method="post" enctype="multipart/form-data">
-				<!-- Modal content-->
+				Modal content
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -118,7 +118,7 @@
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
+								PAGE CONTENT BEGINS
 								<label class="col-sm-2 " for="form-field-1">
 									<h5>Nội dung:</h5>
 								</label>

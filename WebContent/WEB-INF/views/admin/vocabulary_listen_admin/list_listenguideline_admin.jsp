@@ -309,6 +309,7 @@
 					 $("#listenname").val(result.listenname);
 					 $("#add_level").val(result.levelid);
 					 $("#listen_guideline_id").val(result.listenguidelineid);
+					 $("#content").val(result.content);
 					 $("#modal_title").text("Sửa chủ đề");
 					 $("#btn_edit").show();
 					 $("#btn_add").hide();

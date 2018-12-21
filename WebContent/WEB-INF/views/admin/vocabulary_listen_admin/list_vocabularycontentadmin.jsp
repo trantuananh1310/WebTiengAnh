@@ -22,6 +22,7 @@
   <!-- AdminLTE Skins. Choose a skin from the admin/css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="admin/css/_all-skins.min.css">
+   <link rel="stylesheet" href="css/sweetalert.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -67,6 +68,7 @@
           			<div class="row">
           				<div class="col-sm-6">
           					<select id="Level" class="form-control" style="width: 150px;">
+          					<input type="hidden" id ="vocabid" value="${vocabid}"/>
 							    <option value="0">Tất cả</option>
 							    <c:forEach items="${listLevel}" var="item">
 									<option value=${item.levelid }>${item.levelname}</option>
@@ -75,7 +77,9 @@
           				</div>
           			
           				<div class="col-sm-6" style="text-align: right;">
-          					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
+          					<button id="addNew" type="button"  class="btn btn-block btn-primary btn-flat" style="width: 150px;" >
+									Thêm mới
+							</button>
           				</div>
           			</div>
           	</div>
@@ -106,11 +110,11 @@
 				 <td class="container" style="text-align: center;">${item.mean}</td>
                  <td class="container" style="text-align: center;">
 			                
-			                	<button class="btn btn-primary edit_data" id="${item.vocabularyguidelineid }">
+			                	<button class="btn btn-primary edit_data" id="${item.vocabularycontentid }">
 									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
 								</button>
 			                
-			                	<button class="btn btn-danger delete_data" id="${item.vocabularyguidelineid }">
+			                	<button class="btn btn-danger delete_data" id="${item.vocabularycontentid }">
 									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
 								</button>
 			     </td>
@@ -211,60 +215,60 @@
 	
 
  </div>
-    <div class="modal fade" id="myModalEdit" role="dialog">
-		<div class="modal-dialog">
-			<form action="editGMGLAction" method="post"
-				enctype="multipart/form-data">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Sửa nội dung chủ đề</h4>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<label class="col-sm-2 " for="form-field-1">
-									<h5>Từ vựng:</h5> <br />
-									<h5>Phiên âm:</h5> <br />
-									<h5>Chọn mp3:</h5> <br />
-									<h5>Chọn ảnh:</h5> <br />
-									<h5>Nghĩa tiếng Việt:</h5>
-								</label>
+<!--     <div class="modal fade" id="myModalEdit" role="dialog"> -->
+<!-- 		<div class="modal-dialog"> -->
+<!-- 			<form action="editGMGLAction" method="post" -->
+<!-- 				enctype="multipart/form-data"> -->
+<!-- 				Modal content -->
+<!-- 				<div class="modal-content"> -->
+<!-- 					<div class="modal-header"> -->
+<!-- 						<button type="button" class="close" data-dismiss="modal">&times;</button> -->
+<!-- 						<h4 class="modal-title">Sửa nội dung chủ đề</h4> -->
+<!-- 					</div> -->
+<!-- 					<div class="modal-body"> -->
+<!-- 						<div class="row"> -->
+<!-- 							<div class="col-xs-12"> -->
+<!-- 								PAGE CONTENT BEGINS -->
+<!-- 								<label class="col-sm-2 " for="form-field-1"> -->
+<!-- 									<h5>Từ vựng:</h5> <br /> -->
+<!-- 									<h5>Phiên âm:</h5> <br /> -->
+<!-- 									<h5>Chọn mp3:</h5> <br /> -->
+<!-- 									<h5>Chọn ảnh:</h5> <br /> -->
+<!-- 									<h5>Nghĩa tiếng Việt:</h5> -->
+<!-- 								</label> -->
 
-								<div class="col-sm-10">
-									<input type="text" id="form-field-2-1" placeholder="Từ vựng" class="form-control" name="vocabularyname"  /> 
-										<br />
-										<input type="text" id="form-field-2-2" placeholder="Phiên âm" class="form-control" name="trancribe"  /> 
-										<br />
-										<input type="file" name="filemp3" class="form-control" />
-										<br />
-										<input type="file" name="fileimg" class="form-control" />
-										<br />
-										<input type="text" id="form-field-2-3" placeholder="Nghĩa của từ vựng" class="form-control" name="mean"  /> 
-										<br />
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input type="text" id="form-field-2-1" placeholder="Từ vựng" class="form-control" name="vocabularyname"  />  -->
+<!-- 										<br /> -->
+<!-- 										<input type="text" id="form-field-2-2" placeholder="Phiên âm" class="form-control" name="trancribe"  />  -->
+<!-- 										<br /> -->
+<!-- 										<input type="file" name="filemp3" class="form-control" /> -->
+<!-- 										<br /> -->
+<!-- 										<input type="file" name="fileimg" class="form-control" /> -->
+<!-- 										<br /> -->
+<!-- 										<input type="text" id="form-field-2-3" placeholder="Nghĩa của từ vựng" class="form-control" name="mean"  />  -->
+<!-- 										<br /> -->
 
-									<!-- <a href="#" id="btn-scroll-up"
-											class="btn-scroll-up btn btn-sm btn-inverse"> <i
-											class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-										</a> -->
+<!-- 									<a href="#" id="btn-scroll-up"
+<!-- 											class="btn-scroll-up btn btn-sm btn-inverse"> <i -->
+<!-- 											class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i> -->
+<!-- 										</a> --> -->
 
-									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
+<!-- 									///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
 
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-info" type="submit">
-							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="modal-footer"> -->
+<!-- 						<button class="btn btn-info" type="submit"> -->
+<!-- 							<i class="ace-icon fa fa-check bigger-110"></i> Sửa -->
+<!-- 						</button> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</form> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
 
   <!-- Control Sidebar -->
@@ -320,33 +324,36 @@
 			 
 		  })
 	  });
-	  $('#btn_add').on('click',function(event) {
+	  $('#addNew').on('click',function(event){
+		  var vocabid = $('#vocabid').val();
+		  window.location.href = "addVocabularyContent?vocabularyguidelineid="+vocabid;
+	  })
+	  $('.edit_data').on('click',function(event){
 		  debugger;
-			event.preventDefault();
-			var vocabularycontentname= $("#vocabularycontentname").val();
-			var trancribe= $("#trancribe").val();
-// 			var filename= $("#file_add").val();
-			var mean= $("#mean").val();
-// 			if(vocabularycontentname=='' || filename==''){
-			if(vocabularycontentname==''){
-				swal("", "Các trường không được để trống", "warning");
-			}
-			else{
-				$('#add_form').submit();
-			}
+		  var vocabularyContentId= $(this).attr("id");
+		  var vocabid = $('#vocabid').val();
+		  window.location.href = "editVocabularyContent?vocabularyContentid="+vocabularyContentId+"&vocabularyguidelineid="+vocabid;
+	  })
+	  $('.delete_data').on('click',function(event){
+		  var vocabularyContentId= $(this).attr("id");
+		  var vocabid = $('#vocabid').val();
+		 $.ajax({
+			 type:"POST",
+			 url:"deleteVocabularyContent",
+			 data:{vocabularyContentId:vocabularyContentId},
+		 })
+		 swal({
+			  title: "Đã xóa thành công!",
+			  type: "success",
+			  confirmButtonText: "OK",
+//			  closeOnConfirm: false
+			},
+			function(){
+			  window.location.reload();
 		});
-	  
-	  $(document).on('click','.add_data',function() {
-			 $("#vocabularycontentname").val('');
-			 $("#trancribe").val('');
-			 $("#mean").val('');
-			 $("#vocabulary_content_id").val('');
-			 $("#btn_add").show();
-// 			 $("#btn_edit").hide();
-			 $("#modal_title").text("Thêm mới chủ đề");
-			 $("#myModal").modal('show');
-		});
+	  })
   })
 </script>
+<script src="js/sweetalert.min.js"></script>
 </body>
 </html>

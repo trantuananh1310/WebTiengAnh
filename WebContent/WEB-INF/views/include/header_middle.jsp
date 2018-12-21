@@ -139,14 +139,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="home" class="active">Trang chủ</a></li>
-								<li class="dropdown"><a href="#">Về chúng tôi<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
+								<li><a href="AboutUs">Về chúng tôi<i ></i></a>
                                 </li> 
 								<li><a href="exam?stt=1">Thi thử</a>
 <!--                                     <ul role="menu" class="sub-menu"> -->

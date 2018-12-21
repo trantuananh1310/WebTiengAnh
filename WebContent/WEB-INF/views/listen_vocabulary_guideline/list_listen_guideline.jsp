@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Listenning</title>
+<title>Content Vocabulary</title>
 
 <link rel="stylesheet" href="css/sweetalert.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -26,68 +26,68 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#login_form').on('submit',function(event) {
-			event.preventDefault();
-			$.ajax({
-				type : "POST",
-				url : "loginAction",
-				data : {
-					username : $('#username').val(),
-					password : $('#password').val()
-				},
-				success : function(result) {
 
-					if (result == "USER") {
-						window.location.reload();
-					}else if(result=="ADMIN"){
-						window.location.href = 'test';
-					}else {
-						$("#xyz").text("Tài khoản hoặc mật khẩu không đúng!");
+		$("#btn_score").on('click',function(event) {
+			event.preventDefault();
+			var countInput=$("input[type='radio']").length;
+			var countQuestion= (countInput/4);
+			var countCheck=$("input[type='radio']:checked").length;
+			var input=$("input[type='radio'][name='answer[0]']:checked").val();
+			
+			if(countCheck < countQuestion){
+				swal("", "Bạn chưa trả lời hết các câu hỏi", "warning");
+			}
+			else{
+				$.ajax({
+					type : "POST",
+					url : "checkScoreReadQuestion",
+					data : $('form').serialize(),
+					success : function(result) {
+						$('#check_form').hide();
+						$("#btn_score").hide();
+						$("#btn_tapescript").hide();
+						$('#result_score').html(result);
 					}
-// 						$("#xyz").html(result);
-// 						$("#xyz").slideToggle();
-				}
-			})
+				});
+			}
 		});
 		
-		$('#register_form').on('submit',function(event) {
+		$("#btn_again").on('click',function(event) {
 			event.preventDefault();
-			$.ajax({
-				type : "POST",
-				url : "registerAction",
-				data : {
-					username : $('#user').val(),
-					password : $('#pass').val(),
-					fullname : $('#fullname').val(),
-					email : $('#email').val(),
-					confirmpass : $('#confirmpass').val(),
-					phone : $('#phone').val(),
-				},
-				success : function(result) {
-					if (result == "ErrConfirmPass") {
-						swal("", "Mật khẩu không khớp. Hãy thử lại", "error");
-					}else if(result=="ErrUserName"){
-						swal(" ", "Tên người dùng đã được sử dụng. Hãy thử tên khác.", "error");
-					}else if(result=="ErrPhone"){
-						swal(" ", "Số điện thoại không đúng !!!", "error");
-					}else{
-						swal({
-							  title: "Thành công",
-							  text: "Đăng ký tài khoản thành công!",
-							  type: "success",
-							  confirmButtonText: "OK",
-//							  closeOnConfirm: false
-							},
-							function(){
-							  window.location.reload();
-						});
+			window.location.reload();
+		});
+		
+		$("#btn_tapescript").on('click',function(event) {
+			event.preventDefault();
+			var countInput=$("input[type='radio']").length;
+			var countQuestion= (countInput/4);
+			var countCheck=$("input[type='radio']:checked").length;
+			var input=$("input[type='radio'][name='answer[0]']:checked").val();
+			
+			if(countCheck < countQuestion){
+				swal("", "Bạn chưa trả lời hết các câu hỏi", "warning");
+			}
+			else{
+// 				$("input[type='radio']:checked").each(function( index ) {
+// 					alert(index);
+// 					alert( index + ": " + $("input[type='radio'][name='answer["+index+"]']:checked").val());
+// 				});
+				
+				$.ajax({
+					type : "POST",
+					url : "checkAction",
+					data : $('form').serialize(),
+					success : function(result) {
+						$('#check_form').hide();
+						$("#btn_score").hide();
+						$("#btn_tapescript").hide();
+						$('#result_score').html(result);
 					}
-				}
-			})
+				});
+			}
 		});
 	});
 </script>
-
 </head>
 <body>
     <div id="fb-root"></div>

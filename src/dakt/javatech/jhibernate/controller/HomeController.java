@@ -35,4 +35,15 @@ public class HomeController {
 		modelView.addObject("lstSlide", lstSlide);
 		return modelView;
 	}
+	
+	@RequestMapping(value="/AboutUs", method=RequestMethod.GET)
+	public ModelAndView AboutUs(ModelMap model)
+	{
+		List<Level> lstLevel=levelDao.list();
+		ModelAndView modelView=new ModelAndView("include/about_us");
+		modelView.addObject("lstLevel",lstLevel);
+		return modelView;
+	}
+	
+	
 }
