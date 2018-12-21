@@ -144,8 +144,8 @@
             <li ><a href="AdminListenExercise"><i class="fa fa-circle-o"></i> Quản lý bài tập nghe</a></li>
           </ul>        
         </li>
-          <li class="treeview ">
-          <a href="#">
+          <li >
+          <a href="AdminExamination">
             <i class="fa fa-book"></i> <span>Quản lý đề thi</span>
           </a>           
         </li>

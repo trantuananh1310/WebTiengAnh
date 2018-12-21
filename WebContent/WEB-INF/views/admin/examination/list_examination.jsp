@@ -41,7 +41,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quản lý thành viên
+        Quản lý bài tập đọc
       </h1>
       
       <ol class="breadcrumb">
@@ -56,17 +56,9 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-          		<div class="box-title">
+          	<div style="display: block;padding-top: 10px; padding-right: 10px; padding-left: 10px">
+<!--           		<div class="box-title"> -->
           			<div class="row">
-          				<div class="col-sm-6">
-          					<select id="Level" class="form-control" style="width: 150px;">
-							    <option value="0">Tất cả</option>
-							    <c:forEach items="${listCategory}" var="item">
-									<option value=${item.categorymemberid }>${item.categorymembername}</option>
-								</c:forEach>
-							</select>
-          				</div>
-          			
           				<div class="col-sm-6" style="text-align: right;">
           					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
 <!--           					<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-flat" style="width: 150px;">Thêm mới</a> -->
@@ -79,48 +71,42 @@
                 <thead>
                 <tr>
                   <th style="text-align: center;">STT</th>
-                  <th style="text-align: center;">Họ và tên </th>
-                  <th style="text-align: center;">Tên tài khoản</th>
-                  <th style="text-align: center;">Email</th>
-                  <th style="text-align: center;">Loại thành viên</th>
+                  <th style="text-align: center;">Tên chủ đề</th>
+                  <th style="text-align: center;">Hình Ảnh</th>
+                  <th style="text-align: center;"></th>
                   <th style="text-align: center;"></th>
                   	
                 </tr>
                 </thead>
                 <tbody id="box-body1">
-	                <c:forEach items="${listMember}" var="item">
+	                <c:forEach items="${list}" var="item">
 		                <tr>
 			                <td  style="text-align: center;"><%=i %></td>
-			                <td class="container">${item.name}</td>
-			                 <td class="container">${item.membername}</td>
-			                 <td class="container">${item.email}</td>
-							<c:forEach items="${listCategory}" var="Category">
-								<c:if test="${item.categorymemberid eq Category.categorymemberid}">
-									<td class="container" style="text-align: center;">${Category.categorymembername}</td>
-								</c:if>
-							</c:forEach>
-<!-- 							<td class="container" style="text-align: center;"> -->
-<%-- 								<a href="AdminListReadQuestion?readexerciseid=${item.readexeriseid}"><span class="glyphicon glyphicon-search"></span> Chi Tiết</a> --%>
-<!-- 							</td> -->
+			                <td class="container">${item.examinationame}</td>
+			                <td class="container" style="text-align: center;"><img alt="" style="height: 50px; "
+												src="images/examination/${item.examinatioimage }"></td>
+							<td class="container" style="text-align: center;">
+								<a href="Examinationquestion?examinationid=${item.examinationid}"><span class="glyphicon glyphicon-search"></span> DS câu hỏi</a>
+							</td>
 <!-- 							<td class="container" style="text-align: center;"> -->
 							
-<%-- 								<button class="btn btn-primary edit_data" id="${item.readexeriseid }"> --%>
+<%-- 								<button class="btn btn-primary edit_data" id="${item.examinationid }"> --%>
 <!-- 									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa -->
 <!-- 								</button> -->
 							
-<%-- 								<input type="button" value="Sửa" class="btn btn-primary btn-flat edit_data" id="${item.readexeriseid }"></input> --%>
-<%-- 								<a href="" id="${item.readexeriseid }" class="edit_data"><span class="glyphicon glyphicon-pencil"></span> Sửa</a> --%>
+<%-- 								<input type="button" value="Sửa" class="btn btn-primary btn-flat edit_data" id="${item.examinationid }"></input> --%>
+<%-- 								<a href="" id="${item.examinationid }" class="edit_data"><span class="glyphicon glyphicon-pencil"></span> Sửa</a> --%>
 <!-- 							</td> -->
 			                <td class="container" style="text-align: center;">
 			                
-<%-- 			                	<button class="btn btn-primary edit_data" id="${item.memberid }"> --%>
-<!-- 									<i class="ace-icon fa fa-edit bigger-110"></i> Phân quyền -->
-<!-- 								</button> -->
+			                	<button class="btn btn-primary edit_data" id="${item.examinationid }">
+									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
+								</button>
 			                
-			                	<button class="btn btn-danger delete_data" id="${item.memberid }">
+			                	<button class="btn btn-danger delete_data" id="${item.examinationid }">
 									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
 								</button>
-<%-- 			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.readexeriseid }"></input> --%>
+<%-- 			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.examinationid }"></input> --%>
 <!-- 			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a> -->
 			                </td>
 		                </tr>
@@ -147,79 +133,38 @@
   <!--Modal-->
     <div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
-			<form id="add_form" action="" method="post" enctype="multipart/form-data">
+			<form id="add_form" action="addReadExercise" method="post" enctype="multipart/form-data">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 id="modal_title" class="modal-title">Thêm mới thành viên</h4>
+						<h4 id="modal_title" class="modal-title">Thêm mới chủ đề</h4>
 					</div>
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<form  id="register_form">
-								<table class="col-xs-12">
-									<tr>
-										<td class="col-sm-4 "><h5>Nhập tên tài khoản:</h5><br></td>
-										<td class="col-sm-8"><input type="text" id="user" placeholder="Tên tài khoản" class="form-control" name="membername" required="" />
-										<span id="err_user" style="color: red;"></span> <br> </td>
-									</tr>
-									<tr>
-										<td class="col-sm-4 "><h5>Mật khẩu:</h5><br></td>
-										<td class="col-sm-8"><input type="password" id="pass" placeholder="Mật Khẩu" class="form-control" name="memberpass" required="" /><br> </td>
-									</tr>
-									<tr>
-										<td class="col-sm-4 "><h5>Xác nhận mật khẩu</h5><br></td>
-										<td class="col-sm-8"><input type="password" id="confirmpass" placeholder="Xác nhận mật khẩu" class="form-control" name="" required="" /> 
-										<span id="err_confirm_pass" style="color: red;"></span> <br></td>
-									</tr>
-									<tr>
-										<td class="col-sm-4 "><h5>Họ Và Tên:</h5><br></td>
-										<td class="col-sm-8"><input type="text" id="fullname" placeholder="Họ và tên" class="form-control" name="name" required="" /><br> </td>
-									</tr>
-									<tr>
-										<td class="col-sm-4 "><h5>Email:</h5><br></td>
-										<td class="col-sm-8"><input type="text" id="email" placeholder="Email" class="form-control" name="email" required="" /><br> </td>
-									</tr>
-									<tr>
-										<td class="col-sm-4 "><h5>Số điện thoại:</h5><br></td>
-										<td class="col-sm-8"><input type="text" id="phone" placeholder="Số điện thoại" class="form-control" name="sdt" required="" />
-										<span id="err_username_exist" style="color: red;"></span><br> </td>
-									</tr> 
-									<tr>
-										<td class="col-sm-4 "><h5>Loại thành viên:</h5><br></td>
-										<td class="col-sm-8">
-										
-											<div class="widget-box widget-color-grey">
-												<div class="widget-body">
-													<div class="widget-main ">
-														<select id="add_level" name="categorymemberid" class="form-control" >
-												            <c:forEach items="${listCategory}" var="item">
-																<option value=${item.categorymemberid }>${item.categorymembername}</option>
-															</c:forEach>
-														</select>													
-													</div>
-												</div>
-											</div>
-											<br>
-										
-										 </td>
-									</tr>
-								</table>
-								<input type="hidden" id="memberid" placeholder="Xác nhận mật khẩu" class="form-control" name="memberid" required="" />
-								</form>
-								
+								<label class="col-sm-2 " for="form-field-1">
+									<h5>Nhập tên:</h5> <br />
+									<h5>Chọn ảnh:</h5> <br />
+								</label>
 
+								<div class="col-sm-10">
+									<input type="text" id="examinationid" placeholder="Tên bài thi" class="form-control" name="examinationid"  /> 
+									<br />
+									<input id="file_add" type="file" name="file" class="form-control" />
+									<br />
+									<input type="hidden" name="examinationid" id="examination_id"  />
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
 <!-- 						<input type="submit" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add"></input> -->
-						<button class="btn btn-info" type="" id="btn_edit">
+						<button class="btn btn-info" type="submit" id="btn_edit">
 							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
 						</button>
-						<button class="btn btn-info" type="" id="btn_add">
+						<button class="btn btn-info" type="submit" id="btn_add">
 							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới
 						</button>
 					</div>
@@ -254,9 +199,7 @@
 <script src="admin/js/demo.js"></script>
 <!-- page script -->
 <script src="admin/js/ckeditor/ckeditor.js" ></script>
-<script src="js/main.js"></script>
-<script src="js/jquery.scrollUp.min.js"></script>
-<script src="js/price-range.js"></script>
+
 <script type="text/javascript" language="javascript">
 //    CKEDITOR.replace('noiDung');
 </script>
@@ -290,61 +233,29 @@
 	  });
 	  
 	  $('#btn_add').on('click',function(event) {
-		  debugger;
-		  event.preventDefault();
-		  var pass= $('#pass').val();
-		  var confirmPass=$('#confirmpass').val();
-		  var user =$('#user').val();
-		  var email= $('#email').val();
-		  var sdt=$('#phone').val();
-		  var fullname =$('#fullname').val();
-		  if(user==''||pass==''|| confirmPass==''||email==''||sdt==''||fullname==''){}
-		  else {
-			  if(confirmPass==pass){
-				  $.ajax({
-						type:"POST",
-						url:"addMember",
-						data:$('#add_form').serialize(),
-						success:function(result){
-							if(result=='success'){
-								swal({
-									title:"Thành công",
-									type:"success",
-									confirmButtonText: "OK",
-									 closeOnConfirm: false
-								},
-								function(){
-									  window.location.reload();
-								});	
-							}
-							else if(result=='ErrorMember'){
-								swal("", "Tài khoản đã tồn tại", "warning");
-							}
-							else{
-								 swal("", "Số điện thoại sai định dạng", "warning");
-							}
-								
-						}
-					});
-			  }
-			  else{
-				  swal("", "Xác nhận password không đúng", "warning");
-			  }
-		  }
-	  });
+			event.preventDefault();
+			var examinationid= $("#examinationid").val();
+			var filename= $("#file_add").val();
+			if(examinationid=='' || filename==''){
+				swal("", "Các trường không được để trống", "warning");
+			}
+			else{
+				$('#add_form').submit();
+			}
+		});
 	  
 	  $(document).on('click','.edit_data',function() {
 			var readExerciseId = $(this).attr("id");
 			$.ajax({
-				 type:"POST",
+				 type:"GET",
 				 contentType : "application/json",
 				 url:"editReadExercise",
 				 data: {readExerciseId: readExerciseId},
 				 dataType:"json",
 				 success:function(result){
-					 $("#readname").val(result.readname);
+					 $("#examinationid").val(result.examinationid);
 					 $("#add_level").val(result.levelid);
-					 $("#read_exerise_id").val(result.readexeriseid);
+					 $("#read_exerise_id").val(result.examinationid);
 					 $("#modal_title").text("Sửa chủ đề");
 					 $("#btn_edit").show();
 					 $("#btn_add").hide();
@@ -354,18 +265,18 @@
 	  });
 	  
 	  $(document).on('click','.add_data',function() {
-					 $("#readname").val('');
+					 $("#examinationid").val('');
 					 $("#add_level").val("1");
 					 $("#read_exerise_id").val('');
 					 $("#btn_add").show();
 					 $("#btn_edit").hide();
-					 $("#modal_title").text("Thêm mới thành viên");
+					 $("#modal_title").text("Thêm mới chủ đề");
 					 $("#myModal").modal('show');
 	  });
 	  
 	  $(document).on('click','.delete_data',function() {
 		  debugger;
-		  var memberId = $(this).attr("id");
+		  var readExerciseId = $(this).attr("id");
 		  swal({
 			  title: "Bạn có chắc chắn muốn xóa?",
 // 			  text: "Your will not be able to recover this imaginary file!",
@@ -378,8 +289,8 @@
 			function(){
 				$.ajax({
 					 type:"POST",
-					 url:"deleteMember",
-					 data: {memberId: memberId},
+					 url:"deleteReadExercise",
+					 data: {readExerciseId: readExerciseId},
 				})
 				swal({
 					  title: "Đã xóa thành công!",
@@ -398,9 +309,9 @@
 	  
 // 	  $('#add_form').on('submit',function(event) {
 // 			event.preventDefault();
-// 			var readname= $("#form-file_add-2-1").val();
+// 			var examinationid= $("#form-file_add-2-1").val();
 // 			var filename= $("#file_add").val();
-// 			if(readname=='' || filename==''){
+// 			if(examinationid=='' || filename==''){
 // 				swal("", "Các trường không được để trống", "warning");
 // 			}
 // 			else{

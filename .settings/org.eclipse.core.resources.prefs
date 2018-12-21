@@ -1,14 +1,15 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=941e91d3f1efe346dd1a25552e38db96d9d225f3
 eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/views/admin/include/Header.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/admin/index.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/home.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/list_grammar_guideline.jsp=UTF-8
-<<<<<<< HEAD
 encoding//src/dakt/javatech/jhibernate/controller/AdminListenExerciseController.java=UTF-8
-=======
 encoding//src/dakt/javatech/jhibernate/controller/AdminListenGuidelineController.java=UTF-8
+encoding//src/dakt/javatech/jhibernate/controller/AdminListenQuestionController.java=UTF-8
 encoding//src/dakt/javatech/jhibernate/controller/AdminVocabGuiController.java=UTF-8
->>>>>>> 941e91d3f1efe346dd1a25552e38db96d9d225f3
 encoding//src/dakt/javatech/jhibernate/controller/ExamController.java=UTF-8
 encoding//src/dakt/javatech/jhibernate/controller/GrammarguidelineController.java=UTF-8
 encoding//src/dakt/javatech/jhibernate/controller/HomeController.java=UTF-8
