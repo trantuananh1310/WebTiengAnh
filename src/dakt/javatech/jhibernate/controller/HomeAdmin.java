@@ -8,9 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeAdmin {
 
-	@RequestMapping(value="/HomeAdmin", method=RequestMethod.GET)
+	@RequestMapping(value="/errorAdmin", method=RequestMethod.GET)
 	public ModelAndView HomeAdmin()
 	{
-		return new ModelAndView("admin/index");
+		return new ModelAndView("admin/404");
 	}
 }

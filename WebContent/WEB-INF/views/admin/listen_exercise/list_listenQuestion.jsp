@@ -54,7 +54,7 @@
       <div class="container" > 
       <div>
       <div class="col-sm-3" style=" padding-top: 10px;">
-      
+      <input type="hidden" id="idListenExercis" value="${idListenExercis}">
 		</div>	
 		<div class="col-sm-9 " style=" text-align: right;padding-right: 60px;">
 			<div class="col-xs-9">

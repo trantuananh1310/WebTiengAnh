@@ -60,7 +60,7 @@
 <!--           		<div class="box-title"> -->
           			<div class="row">
           				<div class="col-sm-6">
-          					<select id="Level" class="form-control" style="width: 150px;">
+          					<select id="Part" class="form-control" style="width: 150px;">
 							    <c:forEach items="${listPart}" var="item">
 									<option value="${item}">Part ${item}</option>
 								</c:forEach>
@@ -68,13 +68,15 @@
           				</div>
           			
           				<div class="col-sm-6" style="text-align: right;">
+          				<input id ="btn_add_Execl" type="button" value="Nhập từ execl" class="btn btn-primary btn-flat" style="width: 150px;"></input>
           					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
 <!--           					<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-flat" style="width: 150px;">Thêm mới</a> -->
           				</div>
           			</div>
           	</div>
             <!-- /.box-header -->
-            <div class="box-body" >
+            <input type="hidden" id="examinationid" name="examinationid" value="${examinationid}"></intput>
+            <div class="box-body" id="box-body" >
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -137,6 +139,58 @@
   </div>
   <!-- /.content-wrapper -->
   <!--Modal-->
+  	<div class="modal fade" id="AddNewWithFileExecl" role="dialog">
+		<div class="modal-dialog">
+			<form id="add_form_file" action="addExamQuestionExecl" method="post" enctype="multipart/form-data">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 id="modal_title" class="modal-title">Nhập dữ liệu từ file execl</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<table>
+								<tr>
+									<td class="col-sm-3"><br><label  for="form-field-1"><h5>Chọn file execl:</h5> <br /></label></td>
+									<td class="col-sm-12">
+										<div >
+										<input id="file_execl" type="file" name="execl" class="form-control" />
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-3"><br><label  for="form-field-1"><h5>Chọn file ảnh:</h5> <br /></label></td>
+									<td class="col-sm-12">
+										<div >
+										<input id="file_image" type="file" name="image" class="form-control" multiple="multiple" />
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-3"><br><label  for="form-field-1" multiple="multiple"><h5>Chọn file mp3:</h5> <br /></label></td>
+									<td class="col-sm-12">
+										<div >
+										<input id="file_mp3" type="file" name="filemp3" class="form-control" />
+										</div>
+									</td>
+								</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add_file"></input>
+<!-- 						<button class="btn btn-info" type="submit" id="btn_add"> -->
+<!-- 							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới -->
+<!-- 						</button> -->
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
     <div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 			<form id="add_form" action="addReadExercise" method="post" enctype="multipart/form-data">
@@ -240,21 +294,45 @@
     })
   })
   $(document).ready(function() {
+	 
 // 	  swal("", "Các trường không được để trống", "warning");
-	  $("#Level").on('change',function(event){
-		  var val= $("#Level").val();
-		  $.ajax({
-			 type:"GET",
-			 url:"getListExrciseByLevelIdAjax",
-			 data: {levelId: $("#Level").val()},
-			 success:function(result)
-			 {
-				 $('#box-body1').html(result);
-			 }
-			 
-		  })
+	  $("#Part").on('change',function(event){
+		  event.preventDefault();
+		  debugger;
+		  var val= $("#Part").val();
+		  if(val=='1'){
+			  window.location.reload();
+		  }
+		  else{
+			 $.ajax({
+				 type:"GET",
+				 url:"getListExamQuestionByPart",
+				 data: {
+					 Part:val,
+					 examinationid:$('#examinationid').val()
+					 },
+				 success:function(result)
+				 {
+					 $('#box-body').html(result);
+				 }
+			  })  
+		  }
 	  });
-	  
+	  $("#btn_add_Execl").on('click',function(event){
+		  $('#AddNewWithFileExecl').modal('show');
+	  })
+	  $('#btn_add_file').on('click', function(event){
+		  var file_execl=$('#file_execl').val();
+		  var file_mp3 =$('#file_mp3').val();
+		  var file_image=$('#file_image').val();
+		  if(file_execl==''||file_mp3==''||file_image==''){
+			swal("","Các trường không được để trống","warning");
+		  }
+		  else{
+			  $('#add_form_file').submit();
+		  }
+			 
+	  })
 	  $('#btn_add').on('click',function(event) {
 			event.preventDefault();
 			var readname= $("#readname").val();
