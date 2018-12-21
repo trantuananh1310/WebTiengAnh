@@ -58,7 +58,7 @@ public class AdminVocabGuiContentController {
 	public ModelAndView editVocabularyContent(int vocabularyContentid,int vocabularyguidelineid)
 	{
 		Vocabularycontent item=vocabconDao.getById(vocabularyContentid);
-		ModelAndView modelView= new ModelAndView("admin/vocabulary_listen_admin/edit_content");
+		ModelAndView modelView= new ModelAndView("admin/vocabulary_listen_admin/edit_vocabulary");
 		modelView.addObject("item", item);
 		modelView.addObject("vocabularyguidelineid", vocabularyguidelineid);
 		return modelView;

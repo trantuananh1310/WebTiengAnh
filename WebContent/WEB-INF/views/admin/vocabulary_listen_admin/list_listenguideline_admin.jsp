@@ -118,7 +118,8 @@
 								</button>
 <%-- 			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.readexeriseid }"></input> --%>
 <!-- 			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a> -->
-			                </td>
+			     </td>
+			     <input type="hidden"   class="form-control" name="content" value="${item.content}" />
                   
                  
                 </tr>
