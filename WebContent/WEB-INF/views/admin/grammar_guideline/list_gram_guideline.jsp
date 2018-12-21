@@ -41,12 +41,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quản lý dề thi
+        Quản lý học ngữ pháp
       </h1>
       
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
+        <li><a href="HomeAdmin"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="AdminGrammarguideline">Quản lý Grammar</a></li>
         <li class="active">Data tables</li>
       </ol>
     </section>
@@ -61,8 +61,9 @@
           			<div class="row">
           				<div class="col-sm-6">
           					<select id="Level" class="form-control" style="width: 150px;">
-							    <c:forEach items="${listPart}" var="item">
-									<option value="${item}">Part ${item}</option>
+							    <option value="0">Tất cả</option>
+							    <c:forEach items="${listLevel}" var="item">
+									<option value=${item.levelid }>${item.levelname}</option>
 								</c:forEach>
 							</select>
           				</div>
@@ -78,46 +79,54 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                 <th>STT</th>
-                  <th>Câu hỏi</th>
-                  <th>Hình Ảnh</th>
-                  <th>File nghe</th>
-                  <th>Câu trả lời </th>
-                  <th>Đáp án</th>
-                  <th></th>
+                  <th style="text-align: center;">STT</th>
+                  <th style="text-align: center;">Tên chủ đề</th>
+                  <th style="text-align: center;">Hình Ảnh</th>
+                  <th style="text-align: center;">Level</th>
+                  <th style="text-align: center;"></th>
+                  <th style="text-align: center;"></th>
                   	
                 </tr>
                 </thead>
                 <tbody id="box-body1">
-	                 <c:forEach items="${list}" var="item">
-                 <tr>
-                  <td><%=i %></td>
-                  <td class="container" style="text-align: center;">${item.question}</td>
-                  <td class="container" style="text-align: center;">
-               		   <img alt="" style="height: 50px; "src="images/examinationquestion/${item.imagequestion }">
-               		   <br>
-               		   ${item.imagequestion}
-				  </td>
-				  <td class="container" style="text-align: center;">
-				  	<audio controls style="width: 150px;"> <source src="Audio/examinationquestion/${item.audiomp3 }" type="audio/mpeg"></audio>	
-               		   <br>
-               		   ${item.audiomp3}
-						
-				  </td>
-<%-- 				 <td class="container"> <audio controls style="width: 250px;"> <source src="Audio/${item.audiomp3 }" type="audio/mpeg"></audio></td> --%>
-				 <td class="container" style="text-align: center;">Đáp án 1: ${item.option1}<br>Đáp án 2: ${item.option2}<br>Đáp án 3: ${item.option3}<br>Đáp án 4: ${item.option4}</td>
-				 <td class="container" style="text-align: center;">${item.correctanswer}</td>
-                 <td class="container" style="text-align: center;"> 
-                 		<button class="btn btn-primary edit_data" id="${item.examinationquestionid }">
+	                <c:forEach items="${lstGramGui}" var="item">
+		                <tr>
+			                <td  style="text-align: center;"><%=i %></td>
+			                <td class="container">${item.grammarname}</td>
+			                <td class="container" style="text-align: center;"><img alt="" style="height: 50px; "
+												src="images/grammargui/${item.grammarimage }"></td>
+							<c:forEach items="${listLevel}" var="level">
+								<c:if test="${item.levelid eq level.levelid}">
+									<td class="container" style="text-align: center;">${level.levelname}</td>
+								</c:if>
+							</c:forEach>
+							<td class="container" style="text-align: center;">
+								<a href="AdminListGrammarguidelineContent?grammarguidelineid=${item.grammarguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>
+							</td>
+<!-- 							<td class="container" style="text-align: center;"> -->
+							
+<%-- 								<button class="btn btn-primary edit_data" id="${item.readexeriseid }"> --%>
+<!-- 									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa -->
+<!-- 								</button> -->
+							
+<%-- 								<input type="button" value="Sửa" class="btn btn-primary btn-flat edit_data" id="${item.readexeriseid }"></input> --%>
+<%-- 								<a href="" id="${item.readexeriseid }" class="edit_data"><span class="glyphicon glyphicon-pencil"></span> Sửa</a> --%>
+<!-- 							</td> -->
+			                <td class="container" style="text-align: center;">
+			                
+			                	<button class="btn btn-primary edit_data" id="${item.grammarguidelineid }">
 									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
 								</button>
-			                	<button class="btn btn-danger delete_data" id="${item.examinationquestionid }">
+			                
+			                	<button class="btn btn-danger delete_data" id="${item.grammarguidelineid }">
 									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
 								</button>
-                 </td>
-                </tr>
-                <%i++; %>
-                </c:forEach>
+<%-- 			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.readexeriseid }"></input> --%>
+<!-- 			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a> -->
+			                </td>
+		                </tr>
+	                <%i++; %>
+	                </c:forEach>
                 </tbody>
                 <tfoot>
                 </tfoot>
@@ -138,8 +147,8 @@
   <!-- /.content-wrapper -->
   <!--Modal-->
     <div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-			<form id="add_form" action="addReadExercise" method="post" enctype="multipart/form-data">
+		<div class="modal-dialog"  style="width: 1100px">
+			<form id="add_form" action="addGrammarGui" method="post" enctype="multipart/form-data">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -153,15 +162,16 @@
 								<label class="col-sm-2 " for="form-field-1">
 									<h5>Nhập tên:</h5> <br />
 									<h5>Chọn ảnh:</h5> <br />
-									<h5>Level:</h5>
+									<h5>Level:</h5> <br />
+									<h5>Nội dung:</h5>
 								</label>
 
 								<div class="col-sm-10">
-									<input type="text" id="readname" placeholder="Tên tiêu đề bài tập" class="form-control" name="readname"  /> 
+									<input type="text" id="grammarname" placeholder="Tên chủ đề" class="form-control" name="grammarname"  /> 
 									<br />
 									<input id="file_add" type="file" name="file" class="form-control" />
 									<br />
-									<input type="hidden" name="readexeriseidd" id="read_exerise_id"  />
+									<input type="hidden" name="grammarguidelineidd" id="grammar_guideline_id"  />
 									<div class="col-xs-12" >
 										<!-- PAGE CONTENT BEGINS -->
 										<div class="row" >
@@ -178,6 +188,10 @@
 											</div>
 										</div>
 									</div>
+									<br/>
+									<br/>
+									<br/>
+									<textarea id="content" class="ckeditor" name="content" class="form-control" ></textarea>
 								</div>
 							</div>
 						</div>
@@ -229,7 +243,9 @@
 <script>
   $(function () {
 	  
-    $('#example1').DataTable()
+    $('#example1').DataTable({
+    	'scrollY': true
+    })
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': true,
@@ -245,7 +261,7 @@
 		  var val= $("#Level").val();
 		  $.ajax({
 			 type:"GET",
-			 url:"getListExaminationByLevelIdAjax",
+			 url:"getListGrammarGuidelineByLevelIdAjax",
 			 data: {levelId: $("#Level").val()},
 			 success:function(result)
 			 {
@@ -257,29 +273,32 @@
 	  
 	  $('#btn_add').on('click',function(event) {
 			event.preventDefault();
-			var readname= $("#readname").val();
+			var grammarname= $("#grammarname").val();
 			var filename= $("#file_add").val();
-			if(readname=='' || filename==''){
+			var content= $("#content").val();
+			if(grammarname=='' || filename==''){
 				swal("", "Các trường không được để trống", "warning");
 			}
 			else{
 				$('#add_form').submit();
 			}
+				
 		});
 	  
 	  $(document).on('click','.edit_data',function() {
-			var readExerciseId = $(this).attr("id");
+			var grammarGuidelineId = $(this).attr("id");//lấy ra toàn thông tin của thẻ đó ... truyển id để lấy ra được id của thẻ hiện tai
 			$.ajax({
 				 type:"GET",
-				 contentType : "application/json",
-				 url:"editReadExercise",
-				 data: {readExerciseId: readExerciseId},
+ 				 contentType : "application/json",
+				 url:"editGrammarGuideline",
+				 data: {grammarGuidelineId: grammarGuidelineId},
 				 dataType:"json",
 				 success:function(result){
-					 $("#readname").val(result.readname);
+					 $("#grammarname").val(result.grammarname);
 					 $("#add_level").val(result.levelid);
-					 $("#read_exerise_id").val(result.readexeriseid);
+					 $("#grammar_guideline_id").val(result.grammarguidelineid);
 					 $("#modal_title").text("Sửa chủ đề");
+					 $("#content").val(result.content);
 					 $("#btn_edit").show();
 					 $("#btn_add").hide();
 					 $("#myModal").modal('show');
@@ -288,9 +307,10 @@
 	  });
 	  
 	  $(document).on('click','.add_data',function() {
-					 $("#readname").val('');
+					 $("#grammarname").val('');
 					 $("#add_level").val("1");
-					 $("#read_exerise_id").val('');
+					 $("#content").val('');
+					 $("#grammar_guideline_id").val('');
 					 $("#btn_add").show();
 					 $("#btn_edit").hide();
 					 $("#modal_title").text("Thêm mới chủ đề");
@@ -299,7 +319,7 @@
 	  
 	  $(document).on('click','.delete_data',function() {
 		  debugger;
-		  var readExerciseId = $(this).attr("id");
+		  var grammarGuidelineId = $(this).attr("id");
 		  swal({
 			  title: "Bạn có chắc chắn muốn xóa?",
 // 			  text: "Your will not be able to recover this imaginary file!",
@@ -312,8 +332,8 @@
 			function(){
 				$.ajax({
 					 type:"POST",
-					 url:"deleteReadExercise",
-					 data: {readExerciseId: readExerciseId},
+					 url:"deleteGrammarGuideline",
+					 data: {grammarGuidelineId: grammarGuidelineId},
 				})
 				swal({
 					  title: "Đã xóa thành công!",

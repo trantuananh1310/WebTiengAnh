@@ -129,7 +129,7 @@
           </a>
           <ul class="treeview-menu ">
             <li><a href="AdminVocabularyGuideline"><i class="fa fa-circle-o"></i> Quản lý chia sẻ từ vựng</a></li>
-            <li ><a href="new 1.html"><i class="fa fa-circle-o"></i> Quản lý chia sẻ ngữ pháp</a></li>
+            <li ><a href="AdminGrammarguideline"><i class="fa fa-circle-o"></i> Quản lý chia sẻ ngữ pháp</a></li>
             <li ><a href="AdminListenGuideline"><i class="fa fa-circle-o"></i> Quản lý chia sẻ nghe</a></li>
           </ul>
         </li>
