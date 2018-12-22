@@ -10,6 +10,7 @@ encoding//src/dakt/javatech/jhibernate/controller/AdminExaminationquestionContro
 encoding//src/dakt/javatech/jhibernate/controller/AdminListenExerciseController.java=UTF-8
 encoding//src/dakt/javatech/jhibernate/controller/AdminListenGuidelineController.java=UTF-8
 encoding//src/dakt/javatech/jhibernate/controller/AdminListenQuestionController.java=UTF-8
+encoding//src/dakt/javatech/jhibernate/controller/AdminReadQuestionController.java=UTF-8
 encoding//src/dakt/javatech/jhibernate/controller/AdminVocabGuiController.java=UTF-8
 encoding//src/dakt/javatech/jhibernate/controller/ExamController.java=UTF-8
 encoding//src/dakt/javatech/jhibernate/controller/GrammarguidelineController.java=UTF-8
