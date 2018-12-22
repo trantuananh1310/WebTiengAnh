@@ -41,7 +41,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quản lý bài tập đọc
+        Quản lý đề thi
       </h1>
       
       <ol class="breadcrumb">
@@ -133,7 +133,7 @@
   <!--Modal-->
     <div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
-			<form id="add_form" action="addReadExercise" method="post" enctype="multipart/form-data">
+			<form id="add_form" action="addAndEditExamination" method="post" enctype="multipart/form-data">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -150,11 +150,11 @@
 								</label>
 
 								<div class="col-sm-10">
-									<input type="text" id="examinationid" placeholder="Tên bài thi" class="form-control" name="examinationid"  /> 
+									<input type="text" id="examinationame" placeholder="Tên bài thi" class="form-control" name="examinationame"  /> 
 									<br />
 									<input id="file_add" type="file" name="file" class="form-control" />
 									<br />
-									<input type="hidden" name="examinationid" id="examination_id"  />
+									<input type="hidden" name="examinationidd" id="examination_id"  />
 								</div>
 							</div>
 						</div>
@@ -218,25 +218,27 @@
   })
   $(document).ready(function() {
 // 	  swal("", "Các trường không được để trống", "warning");
-	  $("#Level").on('change',function(event){
-		  var val= $("#Level").val();
-		  $.ajax({
-			 type:"GET",
-			 url:"getListExrciseByLevelIdAjax",
-			 data: {levelId: $("#Level").val()},
-			 success:function(result)
-			 {
-				 $('#box-body1').html(result);
-			 }
+// 	  $("#Level").on('change',function(event){
+// 		  var val= $("#Level").val();
+// 		  $.ajax({
+// 			 type:"GET",
+// 			 url:"getListExrciseByLevelIdAjax",
+// 			 //data: {levelId: $("#Level").val()},
+// 			 success:function(result)
+// 			 {
+// 				 $('#box-body1').html(result);
+// 			 }
 			 
-		  })
-	  });
+// 		  })
+// 	  });
 	  
 	  $('#btn_add').on('click',function(event) {
 			event.preventDefault();
-			var examinationid= $("#examinationid").val();
+			var examinationame= $("#examinationame").val();
+			//var examinationid= $("#examinationid").val();
+			
 			var filename= $("#file_add").val();
-			if(examinationid=='' || filename==''){
+			if(examinationame=='' || filename==''){
 				swal("", "Các trường không được để trống", "warning");
 			}
 			else{
@@ -245,17 +247,18 @@
 		});
 	  
 	  $(document).on('click','.edit_data',function() {
-			var readExerciseId = $(this).attr("id");
+			var examinationId = $(this).attr("id");
 			$.ajax({
 				 type:"GET",
 				 contentType : "application/json",
-				 url:"editReadExercise",
-				 data: {readExerciseId: readExerciseId},
+				 url:"editExamination",
+				 data: {examinationId: examinationId},
 				 dataType:"json",
 				 success:function(result){
-					 $("#examinationid").val(result.examinationid);
-					 $("#add_level").val(result.levelid);
-					 $("#read_exerise_id").val(result.examinationid);
+					 $("#examinationame").val(result.examinationame);
+					// $("#examinationid").val(result.examinationid);
+					// $("#add_level").val(result.levelid);
+					 $("#examination_id").val(result.examinationid);
 					 $("#modal_title").text("Sửa chủ đề");
 					 $("#btn_edit").show();
 					 $("#btn_add").hide();
@@ -265,9 +268,9 @@
 	  });
 	  
 	  $(document).on('click','.add_data',function() {
-					 $("#examinationid").val('');
-					 $("#add_level").val("1");
-					 $("#read_exerise_id").val('');
+					 $("#examinationame").val('');
+					// $("#add_level").val("1");
+					 $("#examination_id").val('');
 					 $("#btn_add").show();
 					 $("#btn_edit").hide();
 					 $("#modal_title").text("Thêm mới chủ đề");
@@ -276,7 +279,7 @@
 	  
 	  $(document).on('click','.delete_data',function() {
 		  debugger;
-		  var readExerciseId = $(this).attr("id");
+		  var examinationId = $(this).attr("id");
 		  swal({
 			  title: "Bạn có chắc chắn muốn xóa?",
 // 			  text: "Your will not be able to recover this imaginary file!",
@@ -289,8 +292,8 @@
 			function(){
 				$.ajax({
 					 type:"POST",
-					 url:"deleteReadExercise",
-					 data: {readExerciseId: readExerciseId},
+					 url:"deleteExamination",
+					 data: {examinationId: examinationId},
 				})
 				swal({
 					  title: "Đã xóa thành công!",

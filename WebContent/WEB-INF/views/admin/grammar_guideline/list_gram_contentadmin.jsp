@@ -9,7 +9,6 @@
   <title>AdminLTE 2 | Data Tables</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="css/sweetalert.css">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="admin/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -24,9 +23,16 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="admin/css/_all-skins.min.css">
 
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+	
+  <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-        
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <%int i=1;%>
@@ -42,13 +48,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quản lý Listen
+        Quản lý Grammar
       </h1>
       
       <ol class="breadcrumb">
-        <li><a href="HomeAdmin"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="AdminListenGuideline">Quản lý Listen</a></li>
-        <li><a href="AdminListenGuidelineContent">Nội dung</a></li>
+        <li><a href="HomeAdmin"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="AdminGrammarguideline">Quản lý Grammar</a></li>
+        <li><a href="AdminListGrammarguidelineContent">Nội dung</a></li>
         <li class="active">Data tables</li>
       </ol>
     </section>
@@ -57,33 +63,37 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
+          
+
           <div class="box">
-            <div style="display: block;padding-top: 10px; padding-right: 10px; padding-left: 10px" >
-<!--           		<div class="box-title"> -->
-          			<div class="row">
-          				<div class="col-sm-6" style="text-align: right;">
-          					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
-          				</div>
-          			</div>
-          	</div>
+            <div class="box-header">
+            </div>
             <!-- /.box-header -->
             <div class="box-body" >
+            
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
+                
                 <tr>
                   <th>Nội dung</th>
                   <th></th>
+                  
                 </tr>
+      
                 </thead>
                 <tbody id="box-body1">
+                
                  <tr>
-                  <td class="container">${Content.content}</td>
+                  <td class="container">${lstgram.content}</td>
                   </td>
                   <td >
                    <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                
                   </td> 
+                  
                 </tr>
+       
                 </tbody>
+          
               </table>
 <!--               <textarea class="form-textarea" id="noiDung">Chào mừng bạn đến với Blog Kênh Lập Trình</textarea> -->
             </div>
@@ -103,38 +113,69 @@
 	<div class="col-xs-12">
 		<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-white btn-default btn-round">Thêm mới chủ đề</button>
 	</div>
-  </div>
-<div class="row">
-	<!-- page script -->
-<div class="modal fade" id="myModal" role="dialog">
+
+ </div>
+    <div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
-			<form id="add_form" action="addListenGuideline" method="post" enctype="multipart/form-data">
-				Modal content
+			<form action="editGMGLAction" method="post"
+				enctype="multipart/form-data">
+				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 id="modal_title" class="modal-title">Thêm mới chủ đề</h4>
+						<h4 class="modal-title">Thêm mới chủ đề</h4>
 					</div>
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-xs-12">
-								PAGE CONTENT BEGINS
+								<!-- PAGE CONTENT BEGINS -->
 								<label class="col-sm-2 " for="form-field-1">
-									<h5>Nội dung:</h5>
+									<h5>Nhập tên:</h5> <br />
+									<h5>Chọn ảnh:</h5> <br />
+									<h5>Level:</h5>
 								</label>
+
 								<div class="col-sm-10">
-									<textarea id="content" class="ckeditor" name="content" class="col-xs-12" >
-       							    </textarea>
+									<input type="text" id="form-field-2-1" placeholder="Tên tiêu đề bài tập" class="form-control" name="grammarname"  /> 
+										<br />
+										<input type="file" name="file" class="form-control" />
+										<br />
+
+									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
+
+
+									<div class="col-xs-12" >
+										<!-- PAGE CONTENT BEGINS -->
+										<div class="row" >
+
+											<div class="widget-box widget-color-grey">
+
+												<div class="widget-body">
+													<div class="widget-main no-padding">
+													<select id="Level" class="form-control" >
+											            <c:forEach items="${listLevel}" var="item">
+														   <option value=${item.levelid }>${item.levelname}</option>
+														 </c:forEach>
+													</select>													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- <a href="#" id="btn-scroll-up"
+											class="btn-scroll-up btn btn-sm btn-inverse"> <i
+											class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+										</a> -->
+
+									<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////- -->
+
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
-<!-- 						<input type="submit" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add"></input> -->
-						<button class="btn btn-info" type="submit" id="btn_edit">
-							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
-						</button>
-						<button class="btn btn-info" type="submit" id="btn_add">
+						<button class="btn btn-info" type="submit">
 							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới
 						</button>
 					</div>
@@ -142,16 +183,20 @@
 			</form>
 		</div>
 	</div>
+
+<div class="row">
+	
+
  </div>
-    <div class="modal fade" id="myModalEdit" role="dialog" >
+    <div class="modal fade" id="myModalEdit" role="dialog">
 		<div class="modal-dialog">
 			<form action="editGMGLAction" method="post"
 				enctype="multipart/form-data">
 				<!-- Modal content-->
-				<div class="modal-content" >
+				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Sửa nội dung chủ đề</h4>
+<!-- 						<h4 class="modal-title">Sửa nội dung chủ đề</h4> -->
 					</div>
 					<div class="modal-body">
 						<div class="row">
@@ -161,9 +206,9 @@
        							</textarea>
 							</div>
 						</div>
-					</div>
+					</div>		
 					<div class="modal-footer">
-						<button class="btn btn-info" type="submit">
+						<button class="btn btn-info" type="submit" id="btn_edit">
 							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
 						</button>
 					</div>
@@ -171,6 +216,7 @@
 			</form>
 		</div>
 	</div>
+
 
   <!-- Control Sidebar -->
  <jsp:include page="../include/footer.jsp"></jsp:include>
@@ -216,7 +262,7 @@
 		  var val= $("#Level").val();
 		  $.ajax({
 			 type:"GET",
-			 url:"getListListenByLevelIdAjax",
+			 url:"getListGrammarGuidelineByLevelIdAjax",
 			 data: {levelId: $("#Level").val()},
 			 success:function(result)
 			 {
@@ -224,21 +270,11 @@
 			 }
 			 
 		  })
-	  });
-	  $('#btn_add').on('click',function(event) {
-		  debugger;
-			event.preventDefault();
-			var content= $("#content").val();
-			$('#add_form').submit();
-		});
-	  $(document).on('click','.add_data',function() {
-			 $("#content").val('');
-			 $("#btn_add").show();
-			 $("#btn_edit").hide();
-			 $("#modal_title").text("Thêm mới chủ đề");
-			 $("#myModal").modal('show');
-		});
-  })
+	  })
+  });
+ 
+ 
+
 </script>
 </body>
 </html>

@@ -35,21 +35,18 @@
   <header class="main-header">
     <!-- Logo -->
     <jsp:include page="../include/Header.jsp"></jsp:include>
-    
-    <!-- page script -->
-	<script src="admin/js/ckeditor/ckeditor.js" ></script>
-    
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quản lý Listen
+        Quản lý học ngữ pháp
       </h1>
+      
       <ol class="breadcrumb">
         <li><a href="HomeAdmin"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="AdminListenGuideline">Quản lý Listen</a></li>
+        <li><a href="AdminGrammarguideline">Quản lý Grammar</a></li>
         <li class="active">Data tables</li>
       </ol>
     </section>
@@ -59,7 +56,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-          <div style="display: block;padding-top: 10px; padding-right: 10px; padding-left: 10px">
+          	<div style="display: block;padding-top: 10px; padding-right: 10px; padding-left: 10px">
 <!--           		<div class="box-title"> -->
           			<div class="row">
           				<div class="col-sm-6">
@@ -73,12 +70,12 @@
           			
           				<div class="col-sm-6" style="text-align: right;">
           					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
+<!--           					<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-flat" style="width: 150px;">Thêm mới</a> -->
           				</div>
           			</div>
           	</div>
             <!-- /.box-header -->
             <div class="box-body" >
-            
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -92,44 +89,46 @@
                 </tr>
                 </thead>
                 <tbody id="box-body1">
-                <c:forEach items="${listAdListenGui}" var="item">
-                 <tr>
-                  <td style="text-align: center;"><%=i %></td>
-                  <td class="container">${item.listenname}</td>
-                  <td class="container" style="text-align: center;"><img alt="" style="width: 150px; height: 100px; "
-									src="images/Listengui/${item.listenimage }">
-				  </td>
-				  <c:forEach items="${listLevel}" var="level">
+	                <c:forEach items="${lstGramGui}" var="item">
+		                <tr>
+			                <td  style="text-align: center;"><%=i %></td>
+			                <td class="container">${item.grammarname}</td>
+			                <td class="container" style="text-align: center;"><img alt="" style="height: 50px; "
+												src="images/grammargui/${item.grammarimage }"></td>
+							<c:forEach items="${listLevel}" var="level">
 								<c:if test="${item.levelid eq level.levelid}">
 									<td class="container" style="text-align: center;">${level.levelname}</td>
 								</c:if>
 							</c:forEach>
-                  <td class="container" style="text-align: center;"> <p>
-                 		<a href="AdminListenGuidelineContent?id=${item.listenguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>               		
-                 </td>
-                 <td class="container" style="text-align: center;">
+							<td class="container" style="text-align: center;">
+								<a href="AdminListGrammarguidelineContent?grammarguidelineid=${item.grammarguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>
+							</td>
+<!-- 							<td class="container" style="text-align: center;"> -->
+							
+<%-- 								<button class="btn btn-primary edit_data" id="${item.readexeriseid }"> --%>
+<!-- 									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa -->
+<!-- 								</button> -->
+							
+<%-- 								<input type="button" value="Sửa" class="btn btn-primary btn-flat edit_data" id="${item.readexeriseid }"></input> --%>
+<%-- 								<a href="" id="${item.readexeriseid }" class="edit_data"><span class="glyphicon glyphicon-pencil"></span> Sửa</a> --%>
+<!-- 							</td> -->
+			                <td class="container" style="text-align: center;">
 			                
-			                	<button class="btn btn-primary edit_data" id="${item.listenguidelineid }">
+			                	<button class="btn btn-primary edit_data" id="${item.grammarguidelineid }">
 									<i class="ace-icon fa fa-edit bigger-110"></i> Sửa
 								</button>
 			                
-			                	<button class="btn btn-danger delete_data" id="${item.listenguidelineid }">
+			                	<button class="btn btn-danger delete_data" id="${item.grammarguidelineid }">
 									<i class="ace-icon fa fa-trash bigger-110"></i> Xóa
 								</button>
 <%-- 			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.readexeriseid }"></input> --%>
 <!-- 			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a> -->
-			     </td>
-			     <input type="hidden"   class="form-control" name="content" value="${item.content}" />
-                  
-                 
-                </tr>
-                <%i++; %>
-                </c:forEach>
-               
+			                </td>
+		                </tr>
+	                <%i++; %>
+	                </c:forEach>
                 </tbody>
                 <tfoot>
-             
-                
                 </tfoot>
                 
               </table>
@@ -147,18 +146,9 @@
   </div>
   <!-- /.content-wrapper -->
   <!--Modal-->
- 
-<div class="row">
-  <!-- page script -->
-<!--    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
-   
-<!--    <script src="../ckeditor.js"></script> -->
-<!--    <script src="../adapters/jquery.js"></script> -->
-	
- </div>
     <div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog" style="width: 1100px">
-			<form id="add_form" action="addListenGuideline" method="post" enctype="multipart/form-data">
+		<div class="modal-dialog"  style="width: 1100px">
+			<form id="add_form" action="addGrammarGui" method="post" enctype="multipart/form-data">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -177,11 +167,11 @@
 								</label>
 
 								<div class="col-sm-10">
-									<input type="text" id="listenname" placeholder="Tên chủ đề" class="form-control" name="listenname"  /> 
+									<input type="text" id="grammarname" placeholder="Tên chủ đề" class="form-control" name="grammarname"  /> 
 									<br />
 									<input id="file_add" type="file" name="file" class="form-control" />
 									<br />
-									<input type="hidden" name="listenguidelineid" id="listen_guideline_id"  />
+									<input type="hidden" name="grammarguidelineidd" id="grammar_guideline_id"  />
 									<div class="col-xs-12" >
 										<!-- PAGE CONTENT BEGINS -->
 										<div class="row" >
@@ -219,6 +209,8 @@
 			</form>
 		</div>
 	</div>
+<div class="row">
+</div>
 
 
   <!-- Control Sidebar -->
@@ -250,22 +242,26 @@
 </script>
 <script>
   $(function () {
-    $('#example1').DataTable()
+	  
+    $('#example1').DataTable({
+    	'scrollY': true
+    })
     $('#example2').DataTable({
       'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
+      'lengthChange': true,
+      'searching'   : true,
       'ordering'    : true,
-      'info'        : true,
+      'info'        : false,
       'autoWidth'   : false
     })
   })
   $(document).ready(function() {
+// 	  swal("", "Các trường không được để trống", "warning");
 	  $("#Level").on('change',function(event){
 		  var val= $("#Level").val();
 		  $.ajax({
 			 type:"GET",
-			 url:"getListListenByLevelIdAjax",
+			 url:"getListGrammarGuidelineByLevelIdAjax",
 			 data: {levelId: $("#Level").val()},
 			 success:function(result)
 			 {
@@ -274,53 +270,56 @@
 			 
 		  })
 	  });
+	  
 	  $('#btn_add').on('click',function(event) {
-		  debugger;
 			event.preventDefault();
-			var listenname= $("#listenname").val();
+			var grammarname= $("#grammarname").val();
 			var filename= $("#file_add").val();
 			var content= $("#content").val();
-			if(listenname=='' || filename==''){
+			if(grammarname=='' || filename==''){
 				swal("", "Các trường không được để trống", "warning");
 			}
 			else{
 				$('#add_form').submit();
 			}
+				
 		});
-	  $(document).on('click','.add_data',function() {
-			 $("#listenname").val('');
-			 $("#add_level").val("1");
-			 $("#content").val('');
-			 $("#listen_guideline_id").val('');
-			 $("#btn_add").show();
-			 $("#btn_edit").hide();
-			 $("#modal_title").text("Thêm mới chủ đề");
-			 $("#myModal").modal('show');
-		});
+	  
 	  $(document).on('click','.edit_data',function() {
-		  debugger;
-			var listenGuidelineid = $(this).attr("id");
+			var grammarGuidelineId = $(this).attr("id");//lấy ra toàn thông tin của thẻ đó ... truyển id để lấy ra được id của thẻ hiện tai
 			$.ajax({
 				 type:"GET",
-				 contentType : "application/json",
-				 url:"editListenGuideline",
-				 data: {listenGuidelineid: listenGuidelineid},
+ 				 contentType : "application/json",
+				 url:"editGrammarGuideline",
+				 data: {grammarGuidelineId: grammarGuidelineId},
 				 dataType:"json",
 				 success:function(result){
-					 $("#listenname").val(result.listenname);
+					 $("#grammarname").val(result.grammarname);
 					 $("#add_level").val(result.levelid);
-					 $("#listen_guideline_id").val(result.listenguidelineid);
-					 $("#content").val(result.content);
+					 $("#grammar_guideline_id").val(result.grammarguidelineid);
 					 $("#modal_title").text("Sửa chủ đề");
+					 $("#content").val(result.content);
 					 $("#btn_edit").show();
 					 $("#btn_add").hide();
 					 $("#myModal").modal('show');
 				 }
 			  })
 	  });
+	  
+	  $(document).on('click','.add_data',function() {
+					 $("#grammarname").val('');
+					 $("#add_level").val("1");
+					 $("#content").val('');
+					 $("#grammar_guideline_id").val('');
+					 $("#btn_add").show();
+					 $("#btn_edit").hide();
+					 $("#modal_title").text("Thêm mới chủ đề");
+					 $("#myModal").modal('show');
+	  });
+	  
 	  $(document).on('click','.delete_data',function() {
 		  debugger;
-		  var listenGuidelineId = $(this).attr("id");
+		  var grammarGuidelineId = $(this).attr("id");
 		  swal({
 			  title: "Bạn có chắc chắn muốn xóa?",
 // 			  text: "Your will not be able to recover this imaginary file!",
@@ -333,8 +332,8 @@
 			function(){
 				$.ajax({
 					 type:"POST",
-					 url:"deleteListenGuideline",
-					 data: {listenGuidelineId: listenGuidelineId},
+					 url:"deleteGrammarGuideline",
+					 data: {grammarGuidelineId: grammarGuidelineId},
 				})
 				swal({
 					  title: "Đã xóa thành công!",
@@ -345,11 +344,33 @@
 					function(){
 					  window.location.reload();
 				});
+				
 // 			  swal("Đã xóa thành công!", "", "success");
 			});
 		  
 	  });
-  })
+	  
+// 	  $('#add_form').on('submit',function(event) {
+// 			event.preventDefault();
+// 			var readname= $("#form-file_add-2-1").val();
+// 			var filename= $("#file_add").val();
+// 			if(readname=='' || filename==''){
+// 				swal("", "Các trường không được để trống", "warning");
+// 			}
+// 			else{
+// 				$('#add_form').submit();
+// 				swal("", "ngon rồi", "success");
+// 				$.ajax({
+// 					type: "POST",
+// 					url: "addReadExercise",
+// 					data:{},
+// 					success:function(result){
+// 						alert("dm");
+// 					}
+// 				})
+// 			}
+// 		});
+  });
 </script>
 <script src="js/sweetalert.min.js"></script>
 </body>

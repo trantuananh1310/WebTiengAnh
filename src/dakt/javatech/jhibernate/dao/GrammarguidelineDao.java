@@ -44,7 +44,7 @@ public class GrammarguidelineDao {
 	}
 	public Grammarguideline getById(int id)
 	{
-		String uri="http://localhost:8084/Service/getGrammarguideline/"+id;
+		String uri="http://localhost:8084/Service/getGrammarguidelineById/"+id;
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Grammarguideline> rateResponse = restTemplate.exchange(uri, HttpMethod.GET, null, 
 																			new ParameterizedTypeReference<Grammarguideline>(){});
