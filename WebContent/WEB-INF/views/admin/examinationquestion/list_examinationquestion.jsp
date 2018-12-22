@@ -191,64 +191,7 @@
 			</form>
 		</div>
 	</div>
-    <div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-			<form id="add_form" action="addReadExercise" method="post" enctype="multipart/form-data">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 id="modal_title" class="modal-title">Thêm mới chủ đề</h4>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<label class="col-sm-2 " for="form-field-1">
-									<h5>Nhập tên:</h5> <br />
-									<h5>Chọn ảnh:</h5> <br />
-									<h5>Level:</h5>
-								</label>
-
-								<div class="col-sm-10">
-									<input type="text" id="readname" placeholder="Tên tiêu đề bài tập" class="form-control" name="readname"  /> 
-									<br />
-									<input id="file_add" type="file" name="file" class="form-control" />
-									<br />
-									<input type="hidden" name="readexeriseidd" id="read_exerise_id"  />
-									<div class="col-xs-12" >
-										<!-- PAGE CONTENT BEGINS -->
-										<div class="row" >
-											<div class="widget-box widget-color-grey">
-												<div class="widget-body">
-													<div class="widget-main no-padding">
-														<select id="add_level" name="levelid" class="form-control" >
-												            <c:forEach items="${listLevel}" var="item">
-																<option value=${item.levelid }>${item.levelname}</option>
-															</c:forEach>
-														</select>													
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-<!-- 						<input type="submit" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add"></input> -->
-						<button class="btn btn-info" type="submit" id="btn_edit">
-							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
-						</button>
-						<button class="btn btn-info" type="submit" id="btn_add">
-							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+   
 <div class="row">
 </div>
 
@@ -333,6 +276,7 @@
 		  }
 			 
 	  })
+	  
 	  $('#btn_add').on('click',function(event) {
 			event.preventDefault();
 			var readname= $("#readname").val();
@@ -346,23 +290,10 @@
 		});
 	  
 	  $(document).on('click','.edit_data',function() {
-			var readExerciseId = $(this).attr("id");
-			$.ajax({
-				 type:"GET",
-				 contentType : "application/json",
-				 url:"editReadExercise",
-				 data: {readExerciseId: readExerciseId},
-				 dataType:"json",
-				 success:function(result){
-					 $("#readname").val(result.readname);
-					 $("#add_level").val(result.levelid);
-					 $("#read_exerise_id").val(result.readexeriseid);
-					 $("#modal_title").text("Sửa chủ đề");
-					 $("#btn_edit").show();
-					 $("#btn_add").hide();
-					 $("#myModal").modal('show');
-				 }
-			  })
+		  	var examinationid = $("#examinationid").val();
+			var examinationquestionid = $(this).attr("id");
+			 window.location.href="editExaminationquestion?examinationid="+examinationid+"&examinationquestionid="+examinationquestionid;
+
 	  });
 	  
 	  $(document).on('click','.add_data',function() {
@@ -377,7 +308,7 @@
 	  
 	  $(document).on('click','.delete_data',function() {
 		  debugger;
-		  var readExerciseId = $(this).attr("id");
+		  var examinationQuestionId = $(this).attr("id");
 		  swal({
 			  title: "Bạn có chắc chắn muốn xóa?",
 // 			  text: "Your will not be able to recover this imaginary file!",
@@ -390,8 +321,8 @@
 			function(){
 				$.ajax({
 					 type:"POST",
-					 url:"deleteReadExercise",
-					 data: {readExerciseId: readExerciseId},
+					 url:"deleteExaminationQuestion",
+					 data: {examinationQuestionId: examinationQuestionId},
 				})
 				swal({
 					  title: "Đã xóa thành công!",
