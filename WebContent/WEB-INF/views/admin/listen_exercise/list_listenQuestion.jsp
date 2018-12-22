@@ -204,7 +204,7 @@
 									<td class="col-sm-3"><br><label  for="form-field-1" multiple="multiple"><h5>Chọn file mp3:</h5> <br /></label></td>
 									<td class="col-sm-12">
 										<div >
-										<input id="file_mp3" type="file" name="filemp3" class="form-control" />
+										<input id="file_mp3" type="file" name="filemp3" class="form-control" multiple="multiple" />
 										</div>
 									</td>
 								</tr>
@@ -213,6 +213,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
+						<input type="hidden" value="${idListenExercis}" name="listenexerciseid">
 						<input type="button" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add_file"></input>
 <!-- 						<button class="btn btn-info" type="submit" id="btn_add"> -->
 <!-- 							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới -->

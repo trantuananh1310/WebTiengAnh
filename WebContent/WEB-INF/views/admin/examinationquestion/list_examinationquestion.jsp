@@ -75,7 +75,6 @@
           			</div>
           	</div>
             <!-- /.box-header -->
-            <input type="hidden" id="examinationid" name="examinationid" value="${examinationid}"></intput>
             <div class="box-body" id="box-body" >
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -170,10 +169,11 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="col-sm-3"><br><label  for="form-field-1" multiple="multiple"><h5>Chọn file mp3:</h5> <br /></label></td>
+									<td class="col-sm-3"><br><label  for="form-field-1" ><h5>Chọn file mp3:</h5> <br /></label></td>
 									<td class="col-sm-12">
 										<div >
-										<input id="file_mp3" type="file" name="filemp3" class="form-control" />
+										<input type="hidden" id="examinationid" name="examinationid" value="${examinationid}"></intput>
+										<input id="file_mp3" type="file" name="filemp3" class="form-control"  multiple="multiple" />
 										</div>
 									</td>
 								</tr>

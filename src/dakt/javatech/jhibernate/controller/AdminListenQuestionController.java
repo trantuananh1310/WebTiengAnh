@@ -145,6 +145,8 @@ public class AdminListenQuestionController {
 			@RequestParam(value = "filemp3") CommonsMultipartFile[] fileMp3,HttpServletRequest request,ModelMap modelMap,int listenexerciseid) throws IOException
 	{
 		//upload
+		try{
+			
 		InputStream in = execl.getInputStream();
 	    File currDir = new File(".");
 	    String path = currDir.getAbsolutePath();
@@ -182,13 +184,9 @@ public class AdminListenQuestionController {
 			        	   else if(i==5) item.setOption3(cell.getStringCellValue());
 			        	   else if(i==6) item.setOption4(cell.getStringCellValue());
 			        	   else if(i==7) item.setCorrectanswer(cell.getStringCellValue());
-			        	   else{ 
-			        		   String number=String.valueOf(cell.getNumericCellValue());
-			        		   String[] array =number.split(".0");
-			        		   item.setListenexerciseid(Integer.parseInt(array[0]));  
-			        	   }
 			        	   i++;
 		           }
+		           item.setListenexerciseid(listenexerciseid);
 		           listQuestionDao.add(item);
 	    	   }
 	           numberRow++;
@@ -200,7 +198,12 @@ public class AdminListenQuestionController {
 	       for(CommonsMultipartFile item:fileMp3){
 	    	   uploadFile(item,"Audio\\listenquestion",request,modelMap);
 	       }
-		return new ModelAndView("redirect:/AdminListListenQuestion?idListenExercis="+listenexerciseid);
+	       return new ModelAndView("redirect:/AdminListListenQuestion?idListenExercis="+listenexerciseid);
+		}
+		catch(Exception e)
+		{
+			return new ModelAndView("redirect:/errorAdmin");
+		}
 	}
 	public void uploadFile(CommonsMultipartFile CommonsMultipartFile, String path,HttpServletRequest request,ModelMap modelMap)
 	{

@@ -26,19 +26,19 @@
 <div class="col-md-12 col-sm-12 col-xs-12" style="height: 400px;border: 1px solid #ecebeb;">
 			 <br>
 <div><b>${stt}:${Question.question}</b></div>
-	<c:if test="${not empty Question.imagequestion }">
+	<c:if test="${not empty Question.imagequestion && Question.imagequestion!=' ' }">
 	 <div style="text-align:center;height: 200px;">
 	 	<img src="images/examinationquestion/${Question.imagequestion }" >
 	 </div>
 	 </c:if>
-	 <c:if test="${not empty Question.audiomp3 }">
+	 <c:if test="${not empty Question.audiomp3 && Question.audiomp3!=' '}">
 	 	 <div style="text-align:center"><audio src="Audio/examinationquestion/${Question.audiomp3} " controls=""></audio></div>
 	 </c:if>
 	 
-	 <c:if test="${not empty Question.option1}">A:&nbsp&nbsp${Question.option1}<br></c:if>
-	<c:if test="${not empty Question.option2}">B:&nbsp&nbsp${Question.option2}<br></c:if>
-	<c:if test="${not empty Question.option3}">C:&nbsp&nbsp${Question.option3}<br></c:if>
-	<c:if test="${not empty Question.option4}">D:&nbsp&nbsp${Question.option4}<br></c:if>
+	 <c:if test="${not empty Question.option1 && Question.option1!=' '}">A:&nbsp&nbsp${Question.option1}<br></c:if>
+	<c:if test="${not empty Question.option2 &&  Question.option2!=' '}">B:&nbsp&nbsp${Question.option2}<br></c:if>
+	<c:if test="${not empty Question.option3 && Question.option3!=' '}">C:&nbsp&nbsp${Question.option3}<br></c:if>
+	<c:if test="${not empty Question.option4 && Question.option4!=' '}">D:&nbsp&nbsp${Question.option4}<br></c:if>
 	
 </div>
 <div style="text-align:center">

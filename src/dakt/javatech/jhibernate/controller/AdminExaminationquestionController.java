@@ -93,26 +93,30 @@ public class AdminExaminationquestionController {
 			           Examinationquestion item = new Examinationquestion();
 			           while (cellIterator.hasNext()) {
 			        	   Cell cell = cellIterator.next();
-				        	   if(i==0) item.setImagequestion(cell.getStringCellValue()); 
-				        	   else if(i==1) item.setAudiomp3(cell.getStringCellValue());
-				        	   else if(i==2) item.setQuestion(cell.getStringCellValue());
-				        	   else if(i==3) item.setOption1(cell.getStringCellValue());
-				        	   else if(i==4) item.setOption2(cell.getStringCellValue());
-				        	   else if(i==5) item.setOption3(cell.getStringCellValue());
-				        	   else if(i==6) item.setOption4(cell.getStringCellValue());
-				        	   else if(i==7) item.setCorrectanswer(cell.getStringCellValue());
-				        	   else if(i==8){ 
-				        		   String number=String.valueOf(cell.getNumericCellValue());
-				        		   String[] array =number.split(".0");
-				        		   item.setExaminationid(Integer.parseInt(array[0]));  
-				        	   }
+			        	   String value;
+			        	   try{if( !cell.getStringCellValue().equals(".")) value=cell.getStringCellValue();
+			        	   			else value=" ";
+			        	   }
+			        	   catch(Exception e)
+			        	   {
+			        		   value=String.valueOf(cell.getNumericCellValue());
+			        	   }
+				        	   if(i==0) item.setImagequestion(value); 
+				        	   else if(i==1) item.setAudiomp3(value);
+				        	   else if(i==2) item.setQuestion(value);
+				        	   else if(i==3) item.setOption1(value);
+				        	   else if(i==4) item.setOption2(value);
+				        	   else if(i==5) item.setOption3(value);
+				        	   else if(i==6) item.setOption4(value);
+				        	   else if(i==7) item.setCorrectanswer(value);
 				        	   else { 
-				        		   String number=String.valueOf(cell.getNumericCellValue());
+				        		   String number=String.valueOf(value);
 				        		   String[] array =number.split(".0");
 				        		   item.setPart(array[0]);  
 				        	   }
 				        	   i++;
 			           }
+			           item.setExaminationid(examinationid);
 			           examquestionDao.add(item);
 		    	   }
 		           numberRow++;
@@ -128,7 +132,7 @@ public class AdminExaminationquestionController {
 		}
 		catch(Exception e)
 		{
-			return new ModelAndView("errorAdmin");
+			return new ModelAndView("redirect:/errorAdmin");
 		}
 				
 	}

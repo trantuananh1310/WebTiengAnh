@@ -8,6 +8,18 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
+	function Exam(){
+		debugger;
+		var val= $("#check_session").val();
+		if(val==2)
+			{
+			swal("", "Bạn cần đăng nhập để thực hiện chức năng này!", "error");
+			}
+		else
+		{
+			window.location.href='exam?stt=1'
+		}
+	}
 	$(document).ready(function() {
 		$('#search').keypress(function(event){
 			var key1= $('#search').val();
@@ -91,8 +103,10 @@
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#" data-toggle="modal" data-target="#">${sessionuser}</a></li>
+							<ul class="nav navbar-nav">	
+								
+								<input type="hidden" id="check_session" value="1">
+								<li><a  href="#" data-toggle="modal" data-target="#">${sessionuser}</a></li>
 								<li><a href="logoutAction"><i class="glyphicon glyphicon-log-out"></i>Đăng xuất</a></li>
 							</ul>
 						</div>
@@ -101,7 +115,6 @@
 			</div>
 		</div><!--/header-middle-->
 	</c:if>
-	
 	<c:if test="${sessionuser == null }">
 		<div class="header-middle"><!--header-middle-->
 			<div class="container header_bim">
@@ -114,6 +127,7 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
+								<input type="hidden" id="check_session" value="2">
 								<li><a href="#" data-toggle="modal" data-target="#modelDangNhap"><i class="	glyphicon glyphicon-log-in"></i>Đăng nhập</a></li>
 								<li><a href="#" data-toggle="modal" data-target="#modelDangKy"><i class="glyphicon glyphicon-edit"></i>Đăng ký</a></li>
 							</ul>
@@ -141,7 +155,7 @@
 								<li><a href="home" class="active">Trang chủ</a></li>
 								<li><a href="AboutUs">Về chúng tôi<i ></i></a>
                                 </li> 
-								<li><a href="exam?stt=1">Thi thử</a>
+								<li><a href="javascript:Exam()">Thi thử</a>
 <!--                                     <ul role="menu" class="sub-menu"> -->
 <!--                                         <li><a href="blog.html">Blog List</a></li> -->
 <!-- 										<li><a href="blog-single.html">Blog Single</a></li> -->

@@ -34,7 +34,7 @@ public class ExamController {
 	@RequestMapping(value="/ExamQuestion", method=RequestMethod.GET)
 	public ModelAndView getQuestionByStt(int stt,String examinationId)
 	{
-		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(Integer.parseInt("26"));
+		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(Integer.parseInt(examinationId));
 		ModelAndView modelView = new ModelAndView("/ExamQuestion");
 		modelView.addObject("listQuestion",  list);
 		modelView.addObject("Question", list.get(stt-1));
@@ -45,7 +45,7 @@ public class ExamController {
 	@RequestMapping(value="/ExamQuestionByPart", method=RequestMethod.GET)
 	public ModelAndView getQuestionByPart(String part,String examinationId)
 	{
-		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(Integer.parseInt("26"));
+		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(Integer.parseInt(examinationId));
 		int stt=0;
 		// tìm vị trí của câu hỏi đầu tiên thỏa mãn đk 
 		for (Examinationquestion item : list) {
@@ -61,18 +61,15 @@ public class ExamController {
 	}
 	@RequestMapping(value="/NopBai", method=RequestMethod.POST)
 	@ResponseBody
-	public String checkQuestion(HttpServletRequest request)
+	public String checkQuestion(HttpServletRequest request,String examinationId )
 	{
-		List<Examinationquestion> list = examinationquestionDAO.getListByExaminationId(26);
+		List<Examinationquestion> list = examinationquestionDAO.getListByExaminationId(Integer.parseInt(examinationId));
 		int countRow = list.size();
 		int soCauDung=0;
 		for( int i=0;i<countRow;i++)
 		{
 			String answer = request.getParameter("question["+i+"]");
 			if(answer!=null){
-//				AnswerUser au= new AnswerUser();
-//				au.setNumber(list.get(i).getExaminationquestionid());
-//				au.setAnswer(answer);
 				if(list.get(i).getCorrectanswer().equals(answer))
 				{
 					soCauDung++;
@@ -90,7 +87,7 @@ public class ExamController {
         int randomNum =rn.nextInt(listExam.size());
         int examinationId = listExam.get(randomNum).getExaminationid();
 		// lấy các câu hỏi của đề thi
-		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(26);
+		List<Examinationquestion>  list= examinationquestionDAO.getListByExaminationId(examinationId);
 		ModelAndView modelView = new ModelAndView("/exam");
 		modelView.addObject("listQuestion",  list);
 		modelView.addObject("Question", list.get(stt-1));
