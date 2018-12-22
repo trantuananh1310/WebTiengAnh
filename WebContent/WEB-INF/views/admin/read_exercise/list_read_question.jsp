@@ -62,6 +62,7 @@
 <!--           		<div class="box-title"> -->
           			<div class="row">
           				<div class="col-sm-12" style="text-align: right;">
+          					<input type="button" value="Nhập từ excel" id="add_excel" class="btn btn-primary btn-flat" style="width: 150px;"></input>
           					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
 <!--           					<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-flat" style="width: 150px;">Thêm mới</a> -->
           				</div>
@@ -184,6 +185,42 @@
 
 <div class="row">
 </div>
+
+<div class="modal fade" id="AddNewWithFileExecl" role="dialog">
+		<div class="modal-dialog">
+			<form id="add_form_file" action="addReadQuestionExcel" method="post" enctype="multipart/form-data">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 id="modal_title" class="modal-title">Nhập dữ liệu từ file execl</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<table>
+								<tr>
+									<td class="col-sm-3"><br><label  for="form-field-1"><h5>Chọn file execl:</h5> <br /></label></td>
+									<td class="col-sm-12">
+										<div >
+										<input id="file_excel" type="file" name="excel" class="form-control" />
+										</div>
+									</td>
+								</tr>
+								</table>
+							</div>
+						</div>
+						<input type="hidden" id="readexerciseid" class="form-control" name="readexerciseid" value="${readexerciseid }" />
+					</div>
+					
+					<div class="modal-footer">
+						<input type="button" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add_file"></input>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 
   <!-- Control Sidebar -->
  <jsp:include page="../include/footer.jsp"></jsp:include>
@@ -346,6 +383,20 @@
 				});
 			  
 		  });
+		
+		$('#add_excel').on('click',function(event){
+			  $('#AddNewWithFileExecl').modal('show');
+		});
+		
+		$('#btn_add_file').on('click', function(event){
+			  var file_excel=$('#file_excel').val();
+			  if(file_excel==''){
+				swal("","Các trường không được để trống","warning");
+			  }
+			  else{
+				  $('#add_form_file').submit();
+			  }
+		 })
   })
 </script>
 <script src="js/sweetalert.min.js"></script>
