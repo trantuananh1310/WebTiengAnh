@@ -76,7 +76,7 @@
           			</div>
           	</div>
             <!-- /.box-header -->
-            <div class="box-body" >
+            <div class="box-body" id="box-body" >
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -297,7 +297,7 @@
 			 data: {levelId: $("#Level").val()},
 			 success:function(result)
 			 {
-				 $('#box-body1').html(result);
+				 $('#box-body').html(result);
 			 }
 			 
 		  })

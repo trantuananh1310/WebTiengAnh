@@ -122,6 +122,7 @@
 							</div>
 							<div class="col-sm-9 header_bim">
 								<a href="contentlisten?id=${item.listenguidelineid }">${item.listenname }</a>
+								<br>Phần Nghe tranh gồm 10 câu hỏi . Đối với tranh trong nhà (indoor pictures), trọng tâm nghe tập trung vào những đồ vật trong một căn phòng hoặc trong một office Đối với tranh ngoài trời outdoor pictures), trọng tâm nghe là cảnh vật xung quanh Sau...
 							</div>
 
 						</div>

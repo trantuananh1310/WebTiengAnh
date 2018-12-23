@@ -161,7 +161,7 @@
 <!-- 										<li><a href="blog-single.html">Blog Single</a></li> -->
 <!--                                     </ul> -->
                                 </li> 
-								<li><a href="contact-us.html">Liên hệ</a></li>
+								<li><a href="Contact">Liên hệ</a></li>
 							</ul>
 						</div>
 					</div>

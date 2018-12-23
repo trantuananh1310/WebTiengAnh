@@ -48,6 +48,7 @@
 									</div>
 									<div class="col-sm-9 header_bim">
 										<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }&page=1">${item.listenexercisename }</a>
+										<br>Chào các em, Ms Anh Thư - DAKT ENGLISH gửi tới các em danh sách các bài tập đọc, nhằm mục đích giúp các em cải thiện khả năng làm bài tập đọc của mình. Chúc các em làm bài tốt.
 									</div>
 								</div>
 								<div class="container col-sm-12">

@@ -43,11 +43,11 @@
 							<c:forEach items="${list.get('Vocabularyguideline')}" var ="item" >
 								<div class="container col-sm-12">
 									<div class="col-sm-3 header_bim">
-										<a style="font-size: 18px;" href="contentvocabulary?vocabid=3&page=1">
+										<a style="font-size: 18px;" href="contentvocabulary?vocabid=${item.vocabularyguidelineid }&page=1">
 										<img alt="" style="width: 150px;" src="images/Vocabgui/${item.vocabularyimage}"></a>
 									</div>
 									<div class="col-sm-9 header_bim">
-										<a style="font-size: 18px;" href="contentvocabulary?vocabid=3&page=1">${item.vocabularyname }</a>
+										<a style="font-size: 18px;" href="contentvocabulary?vocabid=${item.vocabularyguidelineid}&page=1">${item.vocabularyname }</a>
 									</div>
 								</div>
 								<div class="container col-sm-12">
@@ -57,11 +57,11 @@
 							<c:forEach items="${list.get('Grammarguideline')}" var ="item" >
 								<div class="container col-sm-12">
 									<div class="col-sm-3 header_bim">
-										<a style="font-size: 18px;" href="contentGrammar?id=48">
+										<a style="font-size: 18px;" href="contentGrammar?id=${item.grammarguidelineid}">
 										<img alt="" style="width: 150px;" src="images/grammargui/${item.grammarimage}"></a>
 									</div>
 									<div class="col-sm-9 header_bim">
-										<a style="font-size: 18px;" href="contentGrammar?id=48">${item.grammarname }</a>
+										<a style="font-size: 18px;" href="contentGrammar?id=${item.grammarguidelineid}">${item.grammarname }</a>
 									</div>
 								</div>
 								<div class="container col-sm-12">
@@ -71,11 +71,11 @@
 							<c:forEach items="${list.get('ListenGuideline')}" var ="item" >
 								<div class="container col-sm-12">
 									<div class="col-sm-3 header_bim">
-										<a style="font-size: 18px;" href="contentlisten?id=1">
+										<a style="font-size: 18px;" href="contentlisten?id=${item.listenguidelineid }">
 										<img alt="" style="width: 150px;" src="images/Listengui/${item.listenimage}"></a>
 									</div>
 									<div class="col-sm-9 header_bim">
-										<a style="font-size: 18px;" href="contentlisten?id=1">${item.listenname}</a>
+										<a style="font-size: 18px;" href="contentlisten?id=${item.listenguidelineid }">${item.listenname}</a>
 									</div>
 								</div>
 								<div class="container col-sm-12">
@@ -85,11 +85,11 @@
 							<c:forEach items="${list.get('Listenexercise')}" var ="item" >
 								<div class="container col-sm-12">
 									<div class="col-sm-3 header_bim">
-										<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=2&page=1">
+										<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }&page=1">
 										<img alt="" style="width: 150px;" src="images/listenexercises/${item.listenexerciseimage}"></a>
 									</div>
 									<div class="col-sm-9 header_bim">
-										<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=2&page=1">${item.listenexercisename }</a>
+										<a style="font-size: 18px;" href="ListListenQuestion?ListenExerciseId=${item.listenexerciseid }&page=1">${item.listenexercisename }</a>
 									</div>
 								</div>
 								<div class="container col-sm-12">
@@ -99,11 +99,11 @@
 							<c:forEach items="${list.get('Readexercise')}" var ="item" >
 								<div class="container col-sm-12">
 									<div class="col-sm-3 header_bim">
-										<a style="font-size: 18px;" href="#">
+										<a style="font-size: 18px;" href="listReadQuestion?readexercise=${item.readexeriseid}&page=1">
 										<img alt="" style="width: 150px;" src="images/readexercises/${item.readimage}"></a>
 									</div>
 									<div class="col-sm-9 header_bim">
-										<a style="font-size: 18px;" href="#">${item.readname }</a>
+										<a style="font-size: 18px;" href="listReadQuestion?readexercise=${item.readexeriseid}&page=1">${item.readname }</a>
 									</div>
 								</div>
 								<div class="container col-sm-12">

@@ -45,5 +45,14 @@ public class HomeController {
 		return modelView;
 	}
 	
+	@RequestMapping(value="/Contact", method=RequestMethod.GET)
+	public ModelAndView Contact(ModelMap model)
+	{
+		List<Level> lstLevel=levelDao.list();
+		ModelAndView modelView=new ModelAndView("contact");
+		modelView.addObject("lstLevel",lstLevel);
+		return modelView;
+	}
+	
 	
 }
