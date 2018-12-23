@@ -40,7 +40,7 @@
 					if (result == "USER") {
 						window.location.reload();
 					}else if(result=="ADMIN"){
-						window.location.href = 'test';
+						window.location.href = 'homeAdmin';
 					}else {
 						$("#xyz").text("Tài khoản hoặc mật khẩu không đúng!");
 					}

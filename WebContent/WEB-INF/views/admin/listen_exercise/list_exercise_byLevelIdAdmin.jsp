@@ -10,13 +10,25 @@
 <body>
 <%int i=1;%>
 
-                <tbody >
-                 <c:forEach items="${listListenExer}" var="item">
+           <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th style="text-align: center;">STT</th>
+                  <th style="text-align: center;">Tên chủ đề</th>
+                  <th style="text-align: center;">Hình Ảnh</th>
+                  <th style="text-align: center;">Level</th>
+                  <th style="text-align: center;"></th>
+                  <th style="text-align: center;"></th>
+                  	
+                </tr>
+                </thead>
+                <tbody id="box-body1">
+	                <c:forEach items="${listListenExer}" var="item">
 		                <tr>
 			                <td  style="text-align: center;"><%=i %></td>
 			                <td class="container">${item.listenexercisename}</td>
 			                <td class="container" style="text-align: center;"><img alt="" style="height: 50px; "
-												src="images/readexercises/${item.listenexerciseimage }"></td>
+												src="images/listenexercises/${item.listenexerciseimage }"></td>
 							<c:forEach items="${listLevel}" var="level">
 								<c:if test="${item.levelid eq level.levelid}">
 									<td class="container" style="text-align: center;">${level.levelname}</td>
@@ -49,8 +61,15 @@
 		                </tr>
 	                <%i++; %>
 	                </c:forEach>
-               
                 </tbody>
+                <tfoot>
+                </tfoot>
+                
+              </table>
                 
 </body>
+<script type="text/javascript">
+<script type="text/javascript">
+$('#example1').DataTable()
+</script>  
 </html>
