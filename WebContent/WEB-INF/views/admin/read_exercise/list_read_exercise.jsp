@@ -249,12 +249,11 @@
     })
   })
   $(document).ready(function() {
-// 	  swal("", "Các trường không được để trống", "warning");
 	  $("#Level").on('change',function(event){
 		  var val= $("#Level").val();
 		  $.ajax({
 			 type:"GET",
-			 url:"getListExrciseByLevelIdAjax",
+			 url:"getListReadExrciseByLevelIdAjax",
 			 data: {levelId: $("#Level").val()},
 			 success:function(result)
 			 {
@@ -333,8 +332,6 @@
 					function(){
 					  window.location.reload();
 				});
-				
-// 			  swal("Đã xóa thành công!", "", "success");
 			});
 		  
 	  });

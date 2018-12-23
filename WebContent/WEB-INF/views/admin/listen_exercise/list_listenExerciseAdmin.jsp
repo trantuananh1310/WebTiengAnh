@@ -41,7 +41,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Quản lý bài tập đọc
+        Quản lý bài tập nghe
       </h1>
       
       <ol class="breadcrumb">
