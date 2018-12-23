@@ -56,12 +56,12 @@ public class AdminReadQuestionController {
 	
 	@RequestMapping(value="/addReadQuestion", method=RequestMethod.POST)
 	@ResponseBody
-	public void AddAndEditReadQuestion(Readquestion readQuestion, String readquestionid,ModelMap modelMap,HttpServletRequest request)
+	public void AddAndEditReadQuestion(Readquestion readQuestion, String readquesid,ModelMap modelMap,HttpServletRequest request)
 	{
 		
-		if(readquestionid!=null && !readquestionid.isEmpty()) {
+		if(readquesid!=null && !readquesid.isEmpty()) {
 			Readquestion readQues = new Readquestion();
-			readQues = readQuesDao.getById(Integer.parseInt(readquestionid));
+			readQues = readQuesDao.getById(Integer.parseInt(readquesid));
 			readQues.setQuestion(readQuestion.getQuestion());
 			readQues.setOption1(readQuestion.getOption1());
 			readQues.setOption2(readQuestion.getOption2());

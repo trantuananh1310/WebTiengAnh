@@ -140,7 +140,7 @@
 						<input type="hidden" id="pageid" name="page" value="${page }"/>	
 						
 						<div class="col-sm-6 padding-right">
-								<c:if test="${page ==1 }">
+								<c:if test="${page ==1 && page != maxpage }">
 									<a class="btn btn-default disabled" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page-1 }">Prev</a>
 									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page+1 }">Next</a>
 								</c:if>
@@ -148,7 +148,7 @@
 									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page-1 }">Prev</a>
 									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page+1 }">Next</a>
 								</c:if>
-								<c:if test="${page == maxpage }">
+								<c:if test="${page !=1 && page == maxpage }">
 									<a class="btn btn-default" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page-1 }">Prev</a>
 									<a class="btn btn-default disabled" style="background: #FE980F; color: white;margin-bottom: 10px;margin-top: 10px;" href="contentvocabulary?vocabid=${vocabularyid }&page=${page+1 }">Next</a>
 								</c:if>								
