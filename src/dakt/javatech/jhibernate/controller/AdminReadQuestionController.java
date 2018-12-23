@@ -56,12 +56,12 @@ public class AdminReadQuestionController {
 	
 	@RequestMapping(value="/addReadQuestion", method=RequestMethod.POST)
 	@ResponseBody
-	public void AddAndEditReadQuestion(Readquestion readQuestion, String readquestionid,ModelMap modelMap,HttpServletRequest request)
+	public void AddAndEditReadQuestion(Readquestion readQuestion, String readquesid,ModelMap modelMap,HttpServletRequest request)
 	{
 		
-		if(readquestionid!=null && !readquestionid.isEmpty()) {
+		if(readquesid!=null && !readquesid.isEmpty()) {
 			Readquestion readQues = new Readquestion();
-			readQues = readQuesDao.getById(Integer.parseInt(readquestionid));
+			readQues = readQuesDao.getById(Integer.parseInt(readquesid));
 			readQues.setQuestion(readQuestion.getQuestion());
 			readQues.setOption1(readQuestion.getOption1());
 			readQues.setOption2(readQuestion.getOption2());
@@ -94,37 +94,44 @@ public class AdminReadQuestionController {
 	public ModelAndView addListenQuestionExecl(@RequestParam(value = "excel") CommonsMultipartFile execl
 												,HttpServletRequest request,ModelMap modelMap,int readexerciseid) throws IOException
 	{
-		//upload
-		InputStream in = execl.getInputStream();
-	    File currDir = new File(".");
-	    String path = currDir.getAbsolutePath();
-	    String fileLocation = path.substring(0, path.length() - 1) + execl.getOriginalFilename();
-	    FileOutputStream f = new FileOutputStream(fileLocation);
-	    int ch = 0;
-	    while ((ch = in.read()) != -1) {
-	        f.write(ch);
-	    }
-	    f.flush();
-	    f.close();	
-	    FileInputStream inputStream = new FileInputStream(new File(fileLocation));
-	    // Đối tượng workbook cho file XSL.
-	      XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
-	      // Lấy ra sheet đầu tiên từ workbook
-	       XSSFSheet sheet = workbook.getSheetAt(0);
-	       int a=sheet.getLastRowNum();
-	       for(int i=0; i<sheet.getLastRowNum();i++) {
-	    	   Row row = sheet.getRow(i+1);
-	    	   Readquestion readQues = new Readquestion();
-	    	   readQues.setQuestion(row.getCell(0).getStringCellValue());
-	    	   readQues.setOption1(row.getCell(1).getStringCellValue());
-	    	   readQues.setOption2(row.getCell(2).getStringCellValue());
-	    	   readQues.setOption3(row.getCell(3).getStringCellValue());
-	    	   readQues.setOption4(row.getCell(4).getStringCellValue());
-	    	   readQues.setCorrectanswer(row.getCell(5).getStringCellValue());
-	    	   readQues.setReadexerciseid(readexerciseid);
-	    	   readQuesDao.add(readQues);
-	       }
-		return new ModelAndView("redirect:/AdminListReadQuestion?readexerciseid="+readexerciseid);
+		try {
+			//upload
+			InputStream in = execl.getInputStream();
+		    File currDir = new File(".");
+		    String path = currDir.getAbsolutePath();
+		    String fileLocation = path.substring(0, path.length() - 1) + execl.getOriginalFilename();
+		    FileOutputStream f = new FileOutputStream(fileLocation);
+		    int ch = 0;
+		    while ((ch = in.read()) != -1) {
+		        f.write(ch);
+		    }
+		    f.flush();
+		    f.close();	
+		    FileInputStream inputStream = new FileInputStream(new File(fileLocation));
+		    // Đối tượng workbook cho file XSL.
+		      XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+		      // Lấy ra sheet đầu tiên từ workbook
+		       XSSFSheet sheet = workbook.getSheetAt(0);
+		       int a=sheet.getLastRowNum();
+		       for(int i=0; i<sheet.getLastRowNum();i++) {
+		    	   Row row = sheet.getRow(i+1);
+		    	   Readquestion readQues = new Readquestion();
+		    	   readQues.setQuestion(row.getCell(0).getStringCellValue());
+		    	   readQues.setOption1(row.getCell(1).getStringCellValue());
+		    	   readQues.setOption2(row.getCell(2).getStringCellValue());
+		    	   readQues.setOption3(row.getCell(3).getStringCellValue());
+		    	   readQues.setOption4(row.getCell(4).getStringCellValue());
+		    	   readQues.setCorrectanswer(row.getCell(5).getStringCellValue());
+		    	   readQues.setReadexerciseid(readexerciseid);
+		    	   readQuesDao.add(readQues);
+		       }
+			return new ModelAndView("redirect:/AdminListReadQuestion?readexerciseid="+readexerciseid);
+		}
+		catch(Exception e)
+		{
+			return new ModelAndView("admin/404");
+		}
+		
 	}
 //	public void uploadFile(CommonsMultipartFile CommonsMultipartFile, String path,HttpServletRequest request,ModelMap modelMap)
 //	{

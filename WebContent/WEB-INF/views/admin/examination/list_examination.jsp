@@ -59,7 +59,7 @@
           	<div style="display: block;padding-top: 10px; padding-right: 10px; padding-left: 10px">
 <!--           		<div class="box-title"> -->
           			<div class="row">
-          				<div class="col-sm-6" style="text-align: right;">
+          				<div class="col-sm-12" style="text-align: right;">
           					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
 <!--           					<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-flat" style="width: 150px;">Thêm mới</a> -->
           				</div>

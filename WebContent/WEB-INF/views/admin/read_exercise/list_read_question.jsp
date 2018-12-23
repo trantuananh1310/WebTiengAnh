@@ -165,7 +165,7 @@
 									<br />
 									<input type="text" id="correctanswer" placeholder="Đáp án đúng" class="form-control" name="correctanswer"  />
 									<input type="hidden" id="readexerciseid" class="form-control" name="readexerciseid" value="${readexerciseid }" />
-									<input type="hidden" name="vocabularycontentid" id="vocabulary_content_id"  /> 
+									<input type="hidden" name="readquesid" id="read_question_id"  /> 
 								</div>
 							</div>
 						</div>

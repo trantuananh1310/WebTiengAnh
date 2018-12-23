@@ -108,5 +108,23 @@ public class AdminReadExerciseController {
 		}
 		readExDao.delete(readExerciseId);
 	}
+	
+	@RequestMapping(value="/getListReadExrciseByLevelIdAjax",method=RequestMethod.GET)
+	public ModelAndView getListExrciseByLevelIdAjax(String levelId)
+	{
+		List<Level> lstLevel=levelDao.list();
+		List<Readexercise> lstReadEx= new ArrayList<Readexercise>();
+		if(levelId.equals("0")){
+			lstReadEx=readExDao.list();
+		}
+		else {
+			lstReadEx= readExDao.getListByLevelId(levelId);
+		}
+		ModelAndView modelView= new ModelAndView("admin/read_exercise/list_exercise_by_level");
+		modelView.addObject("lstReadEx",lstReadEx);
+		modelView.addObject("listLevel",lstLevel);
+		return modelView;
+	}
+	
 		
 }
