@@ -111,9 +111,9 @@ public class AdminReadQuestionController {
 	      XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
 	      // Lấy ra sheet đầu tiên từ workbook
 	       XSSFSheet sheet = workbook.getSheetAt(0);
-	       
+	       int a=sheet.getLastRowNum();
 	       for(int i=0; i<sheet.getLastRowNum();i++) {
-	    	   Row row = sheet.getRow(i);
+	    	   Row row = sheet.getRow(i+1);
 	    	   Readquestion readQues = new Readquestion();
 	    	   readQues.setQuestion(row.getCell(0).getStringCellValue());
 	    	   readQues.setOption1(row.getCell(1).getStringCellValue());
@@ -122,40 +122,8 @@ public class AdminReadQuestionController {
 	    	   readQues.setOption4(row.getCell(4).getStringCellValue());
 	    	   readQues.setCorrectanswer(row.getCell(5).getStringCellValue());
 	    	   readQues.setReadexerciseid(readexerciseid);
+	    	   readQuesDao.add(readQues);
 	       }
-	       
-	    // Lấy ra Iterator cho tất cả các dòng của sheet hiện tại.
-//	       Iterator<Row> rowIterator = sheet.iterator();
-//	       int numberRow=0;
-//	       while (rowIterator.hasNext()) {
-//	    	   Row row = rowIterator.next();
-//	    	   if(numberRow==0){}
-//	    	   else
-//	    	   {
-//	    		   Iterator<Cell> cellIterator = row.cellIterator();
-//		           int i=0;
-//		           Readquestion item = new Readquestion();
-//		           while (cellIterator.hasNext()) {
-//		        	   Cell cell = cellIterator.next();
-//			        	   if(i==0) item.setImagename(cell.getStringCellValue()); 
-//			        	   else if(i==1) item.setAudiomp3(cell.getStringCellValue());
-//			        	   else if(i==2) item.setQuestion(cell.getStringCellValue());
-//			        	   else if(i==3) item.setOption1(cell.getStringCellValue());
-//			        	   else if(i==4) item.setOption2(cell.getStringCellValue());
-//			        	   else if(i==5) item.setOption3(cell.getStringCellValue());
-//			        	   else if(i==6) item.setOption4(cell.getStringCellValue());
-//			        	   else if(i==7) item.setCorrectanswer(cell.getStringCellValue());
-//			        	   else{ 
-//			        		   String number=String.valueOf(cell.getNumericCellValue());
-//			        		   String[] array =number.split(".0");
-//			        		   item.setListenexerciseid(Integer.parseInt(array[0]));  
-//			        	   }
-//			        	   i++;
-//		           }
-//		           listQuestionDao.add(item);
-//	    	   }
-//	           numberRow++;
-//	     }
 		return new ModelAndView("redirect:/AdminListReadQuestion?readexerciseid="+readexerciseid);
 	}
 //	public void uploadFile(CommonsMultipartFile CommonsMultipartFile, String path,HttpServletRequest request,ModelMap modelMap)
