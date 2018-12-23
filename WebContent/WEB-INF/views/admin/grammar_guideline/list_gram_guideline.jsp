@@ -147,7 +147,7 @@
   <!-- /.content-wrapper -->
   <!--Modal-->
     <div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog"  style="width: 1100px">
+		<div class="modal-dialog"  style="width: 1200px;">
 			<form id="add_form" action="addGrammarGui" method="post" enctype="multipart/form-data">
 				<!-- Modal content-->
 				<div class="modal-content">
@@ -191,7 +191,7 @@
 									<br/>
 									<br/>
 									<br/>
-									<textarea id="content" class="ckeditor" name="content" class="form-control" ></textarea>
+									<textarea id="content" class="ckeditor" name="content"  ></textarea>
 								</div>
 							</div>
 						</div>

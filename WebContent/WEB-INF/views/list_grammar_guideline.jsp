@@ -50,6 +50,8 @@
 							</div>
 							<div class="col-sm-9 header_bim">
 								<a href="contentGrammar?id=${item.grammarguidelineid }">${item.grammarname }</a>
+								<br>Chào các em, Ms Anh Thư - DAKT ENGLISH gửi tới các em các kiến thức liên quan đến các thì trong tiếng anh.Trong tiếng anh có những thì nào, chúng được sử dụng ra sao, bài học này chúng ta hãy cùng đi tìm hiểu về chúng.
+								C. Chúc các em học tốt!  
 							</div>
 
 						</div>

@@ -165,6 +165,7 @@
 							</div>
 							<div class="col-sm-9 header_bim">
 								<a href="contentvocabulary?vocabid=${item.vocabularyguidelineid}&page=1">${item.vocabularyname }</a>
+								<br>Chào các em! Các em có thường xuyên học từ vựng mỗi ngày không? Từ vựng cần tích lũy trong quá trình dài, không thể chỉ học ngày một ngày hai được. Các em tiếp tục cùng Ms Anh Thư – DAKT ENGLISH học một số từ vựng về phương tiện...
 							</div>
 						</div>
 						<div class="container col-sm-12">

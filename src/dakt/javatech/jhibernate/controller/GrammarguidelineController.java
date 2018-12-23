@@ -25,7 +25,7 @@ public class GrammarguidelineController {
 	@Autowired
 	LevelDao levelDao;
 	
-	private static final int Count_Exc_Page=2;
+	private static final int Count_Exc_Page=5;
 	private static final int Count_Silde=3;
 
 	@RequestMapping(value="/listGrammarguideline", method=RequestMethod.GET)
