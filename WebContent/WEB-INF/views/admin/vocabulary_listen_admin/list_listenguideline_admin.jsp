@@ -103,7 +103,7 @@
 								<c:if test="${item.levelid eq level.levelid}">
 									<td class="container" style="text-align: center;">${level.levelname}</td>
 								</c:if>
-							</c:forEach>
+				  </c:forEach>
                   <td class="container" style="text-align: center;"> <p>
                  		<a href="AdminListenGuidelineContent?id=${item.listenguidelineid}"><span class="glyphicon glyphicon-search"></span> Nội dung</a>               		
                  </td>
@@ -119,9 +119,6 @@
 <%-- 			                	<input type="button" value="Xóa" class="btn btn-primary btn-flat delete_data" id="${item.readexeriseid }"></input> --%>
 <!-- 			                	<a href="#" ><span class="glyphicon glyphicon-trash"></span> Xóa</a> -->
 			     </td>
-			     <input type="hidden"   class="form-control" name="content" value="${item.content}" />
-                  
-                 
                 </tr>
                 <%i++; %>
                 </c:forEach>
@@ -150,10 +147,10 @@
  
 <div class="row">
   <!-- page script -->
-<!--    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
    
-<!--    <script src="../ckeditor.js"></script> -->
-<!--    <script src="../adapters/jquery.js"></script> -->
+   <script src="admin/js/ckeditor/ckeditor.js" ></script>
+   <script src="admin/js/ckeditor/adapters/jquery.js"></script>
 	
  </div>
     <div class="modal fade" id="myModal" role="dialog">
@@ -201,7 +198,7 @@
 									<br/>
 									<br/>
 									<br/>
-									<textarea id="content" class="ckeditor" name="content" class="form-control" ></textarea>
+									<textarea id="content" class="ckeditor" name="content" ></textarea>
 								</div>
 							</div>
 						</div>

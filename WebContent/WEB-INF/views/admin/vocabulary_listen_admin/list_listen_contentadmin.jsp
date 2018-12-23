@@ -60,11 +60,6 @@
           <div class="box">
             <div style="display: block;padding-top: 10px; padding-right: 10px; padding-left: 10px" >
 <!--           		<div class="box-title"> -->
-          			<div class="row">
-          				<div class="col-sm-6" style="text-align: right;">
-          					<input type="button" value="Thêm mới" class="btn btn-primary btn-flat add_data" style="width: 150px;"></input>
-          				</div>
-          			</div>
           	</div>
             <!-- /.box-header -->
             <div class="box-body" >
@@ -72,16 +67,15 @@
                 <thead>
                 <tr>
                   <th>Nội dung</th>
-                  <th></th>
                 </tr>
                 </thead>
                 <tbody id="box-body1">
                  <tr>
                   <td class="container">${Content.content}</td>
                   </td>
-                  <td >
-                   <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                
-                  </td> 
+<!--                   <td > -->
+<!--                    <a href="#" data-toggle="modal" data-target="#myModalEdit" ><span class="glyphicon glyphicon-pencil"></span> Sửa</a>                 -->
+<!--                   </td>  -->
                 </tr>
                 </tbody>
               </table>
@@ -99,49 +93,10 @@
   </div>
   <!-- /.content-wrapper -->
   <!--Modal-->
-  <div class="row">
-	<div class="col-xs-12">
-		<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-white btn-default btn-round">Thêm mới chủ đề</button>
-	</div>
-  </div>
+  
 <div class="row">
 	<!-- page script -->
-<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-			<form id="add_form" action="addListenGuideline" method="post" enctype="multipart/form-data">
-				Modal content
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 id="modal_title" class="modal-title">Thêm mới chủ đề</h4>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-xs-12">
-								PAGE CONTENT BEGINS
-								<label class="col-sm-2 " for="form-field-1">
-									<h5>Nội dung:</h5>
-								</label>
-								<div class="col-sm-10">
-									<textarea id="content" class="ckeditor" name="content" class="col-xs-12" >
-       							    </textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-<!-- 						<input type="submit" value="Thêm mới" class="btn btn-primary btn-flat" id="btn_add"></input> -->
-						<button class="btn btn-info" type="submit" id="btn_edit">
-							<i class="ace-icon fa fa-check bigger-110"></i> Sửa
-						</button>
-						<button class="btn btn-info" type="submit" id="btn_add">
-							<i class="ace-icon fa fa-check bigger-110"></i> Thêm mới
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+
  </div>
     <div class="modal fade" id="myModalEdit" role="dialog" >
 		<div class="modal-dialog">
@@ -225,19 +180,6 @@
 			 
 		  })
 	  });
-	  $('#btn_add').on('click',function(event) {
-		  debugger;
-			event.preventDefault();
-			var content= $("#content").val();
-			$('#add_form').submit();
-		});
-	  $(document).on('click','.add_data',function() {
-			 $("#content").val('');
-			 $("#btn_add").show();
-			 $("#btn_edit").hide();
-			 $("#modal_title").text("Thêm mới chủ đề");
-			 $("#myModal").modal('show');
-		});
   })
 </script>
 </body>
