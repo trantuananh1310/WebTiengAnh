@@ -66,18 +66,11 @@
             <div style="display: block;padding-top: 10px; padding-right: 10px; padding-left: 10px">
 <!--           		<div class="box-title"> -->
           			<div class="row">
-          				<div class="col-sm-6">
-          					<select id="Level" class="form-control" style="width: 150px;">
+          				<div class="col-sm-10">
           					<input type="hidden" id ="vocabid" value="${vocabid}"/>
-							    <option value="0">Tất cả</option>
-							    <c:forEach items="${listLevel}" var="item">
-									<option value=${item.levelid }>${item.levelname}</option>
-								</c:forEach>
-							</select>
           				</div>
-          			
-          				<div class="col-sm-6" style="text-align: right;">
-          					<button id="addNew" type="button"  class="btn btn-block btn-primary btn-flat" style="width: 150px;" >
+          				<div class="col-sm-2" style="text-align: right;">
+          					<button id="addNew" type="button"  class="btn btn-block btn-primary btn-flat" style="style="width: 150px;margin-left: 370px;" >
 									Thêm mới
 							</button>
           				</div>
