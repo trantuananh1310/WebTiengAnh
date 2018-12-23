@@ -374,7 +374,7 @@
 	function checkAswer()
 	{
 		swal({
-			  title: "Bạn có chắc chắn muốn xóa?",
+			  title: "Bạn có muốn nộp bài không?",
 // 			  text: "Your will not be able to recover this imaginary file!",
 			  type: "warning",
 			  showCancelButton: true,
