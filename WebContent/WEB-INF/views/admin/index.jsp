@@ -26,6 +26,12 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	<style type="text/css">
+		.paddingtop-image
+		{
+			padding-top:130px;
+		}
+	</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -38,7 +44,9 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-
+    <center class="paddingtop-image">
+		<img style="width: 500px" src="images/homeadmin.gif" />
+	</center>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
